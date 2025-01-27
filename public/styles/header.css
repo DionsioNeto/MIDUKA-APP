@@ -1,0 +1,131 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid var(--link);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px var(--link);
+    position: fixed;
+    width: calc(100% - 10px);
+    z-index: 1;
+}
+
+header .logo img{
+    width: 40px;
+}
+
+
+header .search-input{
+    background-color: var(--preto-claro);
+    border: 1px solid var(--link);
+    padding: 6px 7px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+header .search{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header .search-input form{
+    width: 100%;
+}
+
+header .search-input form input{
+    outline: none;
+    background-color: transparent;
+    border: none;
+    color: var(--branco);
+    width: calc(100% - 20px);
+}
+
+header .last-header{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header .last-header a .img-photo{
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--destaque);
+}
+
+header .last-header a .img-photo img{
+    width: 40px;
+    height: 40px;
+}
+
+header .last-header div.notification{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+header .last-header * i{
+    color: var(--link);
+    font-size: 25px;
+}
+
+header .last-header div.notification .counter{
+    background-color: var(--vermelho);
+    color: var(--branco);
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+}
+
+.search-btn{
+    display: none;
+}
+
+@media screen and (max-width:  750px) {
+    header .search-input{
+        display: none;
+    }
+    .search-btn{
+        display: block;
+    }
+}
+
+.relactive{
+    position: relative;
+}
+
+.result{
+    position: fixed;
+    border-radius: 10px;
+    border: 1px solid var(--branco);
+    top: 75px;
+    left: calc(50% - 150px);
+    background-color: var(--preto);
+    padding: 10px;
+}
+
+.list-group{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.list-group-item{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--bg);
+}
+
+.list-group-item a{
+    width: 100%;
+    padding: 3px;
+}

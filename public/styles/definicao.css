@@ -1,0 +1,33 @@
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+main .box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 10px;
+    transform: 500ms;
+}
+
+main .red *{
+    color: var(--vermelho);
+    font-weight: 600;
+}
+
+main .box:hover{
+    background-color: var(--hover-card);
+}
+
+main .box:hover *{
+    color: var(--preto);
+}
+
+main .box .icons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

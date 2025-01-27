@@ -1,0 +1,229 @@
+div#main{
+    padding: 0;
+    display: flex;
+}
+
+div#main div.conteudo{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+div.header{
+    width: calc(100% - 10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid var(--link);
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px var(--link);
+    z-index: 1;
+}
+
+div.header .logo img{
+    width: 40px;
+}
+
+div.header .last-header{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+div.header .last-header a .img-photo{
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--destaque);
+}
+
+div.header .last-header a .img-photo img{
+    width: 40px;
+    height: 40px;
+}
+
+div.header .last-header div.notification{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+
+div.header .last-header * i{
+    color: var(--link);
+    font-size: 25px;
+}
+
+div.header .last-header div.notification .counter{
+    background-color: var(--vermelho);
+    color: var(--branco);
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -50%;
+    left: -50%;
+}
+
+div#main div.conteudo video{
+    max-height: calc(100vh - 70px);
+    width: 99%;
+    border-radius: 10px;
+}
+
+.description{
+    padding: 5px 5px;
+}
+
+  /*-----------------------------/*
+ |    comentários               |
+/*----------------------------*/
+
+div#main div.comentarios{
+    background-color: rgba(53, 52, 52, 0.29);
+    width: 450px;
+    max-height: 100vh;
+    overflow-y: scroll;
+    top: 0;
+}
+
+@media screen and (max-width:  850px) {
+    div#main{
+        display: flex;
+        flex-direction: column;
+    }
+    div#main div.comentarios{
+        width: 100%;
+        height: auto;
+    }
+    div#main div.conteudo{
+        height: auto;
+    }
+
+    div#main div.conteudo video{
+        max-height: 80vh;
+    }
+    
+}
+ .user-description {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-description a.inline{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+div.opc{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--link);
+    border-radius: 50%;
+}
+
+.user-description div.foll{
+    background-color: var(--branco);
+    color: var(--preto);
+    padding: 5px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bolder;
+}
+
+.img-photo{
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--destaque);
+    max-width: 40px;
+    min-width: 40px;
+    max-height: 40px;
+}
+
+.img-photo img{
+    width: 100%;
+}
+
+.user-description .page-name{
+    margin-bottom: 5px;
+}
+
+.options{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--link);
+    border-bottom: 1px solid var(--link);
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.options a{
+    background-color: var(--destaque);
+    min-width: 23%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 0px;
+    border-radius: 30px;
+}
+
+.container{
+    padding: 15px 10px;
+}
+
+.mainCom{
+    margin-bottom: 10px;
+}
+
+.name{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box{
+    display: flex;
+    gap: 5px;
+}
+
+.content{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+    background-color: rgb(68, 80, 77);
+    border-radius: 5px 15px 15px 15px;
+}
+
+.like{
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.like div{
+    background-color: var(--destaque);
+    min-width: 23%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 0px;
+    border-radius: 30px;
+}
+
+

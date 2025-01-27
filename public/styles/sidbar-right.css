@@ -1,0 +1,46 @@
+
+/*
+    #Barra lateral
+*/
+.sidbar-right{
+    padding: 10px;
+    height: calc(98vh - 65px);
+    margin: 70px 5px 5px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-left: 1px solid var(--link);
+    position: fixed;
+    right: 0;
+    width: 250px;
+    overflow-x: hidden;
+}
+
+.inside{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidbar-right a{
+    color: var(--link);
+    font-weight: 600;
+    transition: 400ms;
+}
+
+.sidbar-right a:hover{
+    text-decoration: underline;
+    color: var(--cinza);
+}
+
+@media screen and ( max-width: 1200px) {
+    .sidbar-right{
+        display: none;
+    }
+
+}
+
+.relactive{
+    animation-name: animat;
+    animation-duration: 50ms;
+}

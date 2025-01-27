@@ -1,0 +1,92 @@
+
+/*
+*   #Barra lateral
+*/
+
+input[type="checkbox"]#sidbar{
+    display: none;
+}
+
+input[type="checkbox"]#sidbar:focus ~ .sidbar{
+    width: 50px;
+}
+
+input[type="checkbox"]#sidbar:focus ~ .sidbar .s-text{
+    display: none;
+}
+
+input[type="checkbox"]#sidbar:focus ~ main{
+    padding-top: 63px;
+    padding-left: 75px;
+    padding-right: 10px;
+}
+
+.sidbar{
+    padding: 10px;
+    height: calc(98vh - 65px);
+    margin: 70px 5px 5px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-right: 1px solid var(--link);
+    position: fixed;
+    width: 250px;
+    overflow-x: hidden;
+}
+
+@media screen and ( max-width: 1200px){
+    .sidbar{
+        margin-left: -5px;
+    }
+}
+
+@media screen and ( max-width: 600px){
+    .sidbar{
+        display: none;
+    }
+}
+
+.sidbar img.user{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.sidbar .sib-box{
+    display: flex;
+    gap: 20px;
+    padding: 5px;
+    width: 100%;
+    border-radius: 15px;
+    transition: 500ms;
+}
+
+.sidbar .destaque{
+    background-color: var(--hover-card);
+}
+
+.sidbar .destaque *{
+    color: var(--preto);
+}
+
+.sidbar .sib-box:hover{
+    background-color: var(--hover-card);
+    color: var(--preto);
+}
+
+.sidbar .sib-box:hover *{
+    color: var(--preto);
+}
+.sidbar::-webkit-scrollbar { width: 5px; }
+
+.sidbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidbar::-webkit-scrollbar-thumb {
+    border: 3px solid var(--destaque);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.sidbar::-webkit-scrollbar-thumb:hover { background: var(--hover-card);}

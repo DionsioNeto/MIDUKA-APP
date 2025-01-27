@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            }
+
+            body{
+                background-color: #f4f1f1;
+            }
+
+            .container{
+                display: flex;
+                justify-content: space-between;
+                padding: 10px
+            }
+
+            .container .img{
+                width: 60vw;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            } 
+
+            .container .form{
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 10px;
+                min-height: 90vh;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                justify-content: center;
+                align-items: center;
+                width: 400px;
+            }
+            .container .form .top{
+                width: 100%;
+            }
+            .container .form form{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+            }
+
+            .container .form form > div{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .container .form form input[type="email"],
+            .container .form form input[type="password"]{
+                border: none;
+                border-bottom: 2px solid #cecece;
+                padding: 5px 0px;
+                outline: none;
+                font-size: 15px;
+                background-color: transparent;
+            }
+            .container .form form input[type="email"]::placeholder,
+            .container .form form input[type="password"]::placeholder{
+                color: #000000;
+                font-size: 15px;
+            }
+
+
+            .container .form form input[type="email"]:focus,
+            .container .form form input[type="password"]:focus{
+                border-bottom: 2px solid #000;
+            }
+            .container .form form button[type="submit"]{
+                border: none;
+                background-color: #000;
+                color: #fff;
+                border-radius: 20px;
+                padding: 10px;
+            }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <div class="img">
+            <img src="" alt="">
+            <h1>O mambo tá kit</h1>
+        </div>
+        <div class="form">
+            <div class="top">
+                <h1>Bem vindo de volta!</h1>
+                <small>Porfavor entre com os seus dados de acesso</small>
+            </div>
+            <form action="">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <div>
+                    <div>
+                        <input type="checkbox"> Relembrar-me
+                    </div>
+                    <small>
+                        <a href="">
+                            Esqueceu a palavra pass?
+                        </a>
+                    </small>
+                </div>
+                <button type="submit">Log In</button>
+            </form>
+            <small>
+                Não Tem uma conta?
+                <a href="">Criar conta</a>
+            </small>
+    </div>
+</body>
+</html>
