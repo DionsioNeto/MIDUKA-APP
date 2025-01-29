@@ -15,30 +15,22 @@
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Para poder rodar esta aplicação web, você vai precisar de ter instalado em sua máquina:
+- composer
+- PHP
+- Qualquer CMD ou linha de comando
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Depois de importar esta a plicação em sua máquina você precisará de seguir os seguintes passos dentro da linha de comando:
+  Você precisa abrir o CMD dentro da pasta do arquivo.<br>Se vc não estiver dentro da pasta então você precisará navegar até lá com o comando "cd ./o caminho do arquivo"
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- cd nome-do-projeto // Navegue para o diretório do projeto
+- composer install // Instalar dependências PHP com o Composer
+- cp .env.example .env // Criar o arquivo .env a partir do exemplo
+- php artisan key:generate // Gerar a chave da aplicação
+# Configure o banco de dados no arquivo .env
+- php artisan migrate // Rodar as migrações
+- (Não é de todo necessário neste projecto) npm install // Instalar dependências do Node.js (se houver frontend)
+- (Não é de todo necessário neste projecto) npm run dev  // Compilar arquivos frontend para desenvolvimento
+- php artisan serve // Rodar o servidor de desenvolvimento
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
