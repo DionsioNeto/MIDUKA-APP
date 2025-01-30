@@ -1,4 +1,4 @@
-
+{{--
 
 <div class="card-upload">
 
@@ -53,101 +53,120 @@ flex-direction: column;
 
 
 </div>
- livewire <?php
- namespace App\Http\Livewire;
-
- use Livewire\Component;
- use Livewire\WithFileUploads;
- use Illuminate\Support\Facades\Storage;
-
- class UploadComponent extends Component
- {
-     use WithFileUploads;
-
-     public $file1;
-     public $file2;
-     public $text;
-
-     public function upload()
-     {
-         $this->validate([
-             'file1' => 'required|file|max:2048', // Max 2MB
-             'file2' => 'required|file|max:2048',
-             'text' => 'required|string|max:255',
-         ]);
-
-         $path1 = $this->file1->store('uploads', 'public');
-         $path2 = $this->file2->store('uploads', 'public');
-
-         session()->flash('message', 'Upload realizado com sucesso!');
-
-         // Salva paths e texto para futuro uso, exemplo
-         info("File 1: {$path1}, File 2: {$path2}, Text: {$this->text}");
-
-         // Limpa os dados após upload
-         $this->reset(['file1', 'file2', 'text']);
-     }
-
-     public function render()
-     {
-         return view('livewire.upload-component');
-     }
- }
 
 
- blade
 
- <div class="p-6">
-    @if (session()->has('message'))
-        <div class="bg-green-100 text-green-700 p-2 rounded mb-4">
-            {{ session('message') }}
+ livewire --}}
+
+{{-- // config/filesystem.php
+
+// 'public' => [
+//     'driver' => 'local',
+//     'root' => storage_path('app/public'),
+//     'url' => env('APP_URL') . '/storage',
+//     'visibility' => 'public',
+// ],
+
+
+// php artisan storage:link
+// npm install && npm run dev
+// php artisan serve --}}
+@livewireStyles
+@stack('styles')
+
+<div class="keyboard-container">
+    <div class="input-area">
+        <input type="text" wire:model="inputText" readonly class="input-text">
+        <button wire:click="toggleKeyboard" class="btn-toggle-keyboard">
+            {{ $isKeyboardVisible ? 'Fechar Teclado' : 'Abrir Teclado' }}
+        </button>
+    </div>
+
+    @if($isKeyboardVisible)
+        <div id="keyboard" class="keyboard" draggable="true" ondragstart="startDrag(event)">
+            <div class="keyboard-row">
+                @foreach(range('a', 'z') as $letter)
+                    <button wire:click="addCharacter('{{ $letter }}')" class="key">{{ $letter }}</button>
+                @endforeach
+                <button wire:click="addCharacter(' ')" class="key">Space</button>
+                <button wire:click="removeCharacter()" class="key">Backspace</button>
+            </div>
         </div>
     @endif
-
-    <form wire:submit.prevent="upload" enctype="multipart/form-data">
-        <div class="mb-4">
-            <label for="file1" class="block text-sm font-medium">Escolha o primeiro arquivo:</label>
-            <input type="file" id="file1" wire:model="file1" class="mt-2">
-            @error('file1') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
-
-            @if ($file1)
-                <p class="mt-2 text-sm">Pré-visualização:</p>
-                <img src="{{ $file1->temporaryUrl() }}" class="w-32 h-32 object-cover mt-2">
-            @endif
-        </div>
-
-        <div class="mb-4">
-            <label for="file2" class="block text-sm font-medium">Escolha o segundo arquivo:</label>
-            <input type="file" id="file2" wire:model="file2" class="mt-2">
-            @error('file2') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
-
-            @if ($file2)
-                <p class="mt-2 text-sm">Pré-visualização:</p>
-                <img src="{{ $file2->temporaryUrl() }}" class="w-32 h-32 object-cover mt-2">
-            @endif
-        </div>
-
-        <div class="mb-4">
-            <label for="text" class="block text-sm font-medium">Texto:</label>
-            <input type="text" id="text" wire:model="text" class="mt-2 p-2 border rounded w-full">
-            @error('text') <span class="text-red-600 text-sm">{{ $message }}</span> @enderror
-        </div>
-
-        <button type="submit" class="bg-blue-600 text-white p-2 rounded">Fazer Upload</button>
-    </form>
 </div>
 
+@push('styles')
+    <style>
+        .keyboard-container {
+            position: relative;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .input-area {
+            margin-bottom: 20px;
+        }
+        .input-text {
+            width: 300px;
+            padding: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .btn-toggle-keyboard {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .keyboard {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 360px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .keyboard-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .key {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ddd;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .key:hover {
+            background-color: #ccc;
+        }
+    </style>
+@endpush
 
-config/filesystem.php
+@push('scripts')
+    <script>
+        function startDrag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
 
-'public' => [
-    'driver' => 'local',
-    'root' => storage_path('app/public'),
-    'url' => env('APP_URL') . '/storage',
-    'visibility' => 'public',
-],
+        const keyboard = document.querySelector("#keyboard");
 
+        keyboard.addEventListener("drag", function(e) {
+            e.preventDefault();
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
 
-php artisan storage:link
-npm install && npm run dev
-php artisan serve
+            // Movimentar o teclado com o mouse
+            keyboard.style.left = `${mouseX - keyboard.offsetWidth / 2}px`;
+            keyboard.style.top = `${mouseY - keyboard.offsetHeight / 2}px`;
+        });
+    </script>
+@endpush
+@livewireScripts
+@stack('scripts')

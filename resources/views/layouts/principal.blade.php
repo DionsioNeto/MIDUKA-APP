@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="./styles/responsive-nav.css">
         {{-- Livewire styles  --}}
         @livewireStyles
+        @stack('styles')
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
         <!-- Estilos específicos da rota -->
@@ -47,6 +48,7 @@
 <body>
     @yield('content')
     @livewireScripts
+    @stack('scripts')
     {{-- <script src="./js/script.js"></script> --}}
     <script src="./js/script.js"></script>
 </body>
