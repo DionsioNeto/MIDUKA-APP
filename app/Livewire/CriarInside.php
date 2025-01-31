@@ -25,12 +25,16 @@ class CriarInside extends Component {
 
     // Atualizar o arquivo e gerar URL temporária
     public function updatedFile() {
-        $this->validate();
-
+        $this->validateOnly('file'); // Valida somente o campo 'file'
         if ($this->file) {
             $this->fileUrl = $this->file->temporaryUrl();
             $this->fileType = $this->file->getClientOriginalExtension();
         }
+    }
+
+    // Validação independente para a capa
+    public function updatedCapa() {
+        $this->validateOnly('capa'); // Valida somente o campo 'capa'
     }
 
     public function store(){
