@@ -40,7 +40,7 @@
 
             {{-- Exibir pré-visualização dependendo do tipo de arquivo --}}
             @if ($fileUrl)
-            <div class="mt-4">
+            <div>
                 <p><strong>Pré-visualização:</strong></p>
 
                 <!-- Vídeo (mp4) -->

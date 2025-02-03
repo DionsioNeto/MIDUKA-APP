@@ -37,7 +37,7 @@
                 </div>
             </button>
             @guest
-            <a href="/regiter">
+            <a href="/login">
                 <div class="img-photo">
                     <img src="./imgs/avatar.webp" alt="">
                 </div>

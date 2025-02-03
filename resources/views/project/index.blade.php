@@ -2,10 +2,10 @@
 @section('title', 'Mi | Principal')
 @session('content')
 @endsession
-<livewire:header lazy/>
-<livewire:sidbar lazy/>
-<livewire:sidbar-right lazy/>
+<livewire:header />
+<livewire:sidbar />
+<livewire:sidbar-right />
 <livewire:responsive-nav />
 <main>
-    <livewire:content lazy/>
+    <livewire:content />
 </main>

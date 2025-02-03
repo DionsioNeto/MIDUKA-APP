@@ -1,3 +1,55 @@
-# Privacy Policy
+# Politicas de privacidade
 
-Edit this file to define the privacy policy for your application.
+## Termos na generalidade
+### 1. Termos de usabilidade:
+
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+
+### 2. Termos de denuncia
+
+
+### 1. Termos de usabilidade:
+
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+
+### 2. Termos de denuncia
+
+
+### 1. Termos de usabilidade:
+
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+
+### 2. Termos de denuncia
+
+
+### 1. Termos de usabilidade:
+
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+
+### 2. Termos de denuncia
+
+
+### 1. Termos de usabilidade:
+
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+
+### 2. Termos de denuncia
+
+
+### 1. Termos de usabilidade:
+
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+- Ao criar conta você está aceitano todos os termos descritos abaixo
+
+### 2. Termos de denuncia

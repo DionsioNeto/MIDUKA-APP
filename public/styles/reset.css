@@ -8,7 +8,7 @@
     --laranja: #ff6923;
     --hover-card: #d0efe8;
     --azul: #006aff;
-    --transparente: #41655cb1;
+    --transparente: #2c3734b1;
     --bg-dark: #e4e4e4;
 
 }
@@ -27,6 +27,7 @@
 body{
     background-color: var(--bg);
     transition: 1s;
+    position: relative;
 }
 
 main{

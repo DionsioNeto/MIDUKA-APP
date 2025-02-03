@@ -9,8 +9,9 @@ main .box{
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 20px;
     transform: 500ms;
+    cursor: pointer;
 }
 
 main .red *{
@@ -30,4 +31,47 @@ main .box .icons{
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.modalAccount{
+    width: 100%;
+    height: 100%;
+    color: var(--link);
+    padding: 10px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--transparente);
+    z-index: 2;
+}
+
+.modalAccount .contentModal{
+    background: var(--preto);
+    padding: 15px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--link);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+
+.modalAccount .contentModal .buttons{
+    display: flex;
+    gap: 5px;
+}
+
+.modalAccount .contentModal .buttons .btn{
+    background-color: var(--vermelho);
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.modalAccount .contentModal .buttons .btn:nth-child(2){
+    background-color: var(--link);
 }

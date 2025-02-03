@@ -5,8 +5,10 @@
 @endsession
 <livewire:header />
 <livewire:sidbar />
+<livewire:sidbar-right />
+<livewire:responsive-nav />
 <main>
-    <livewire:audios lazy/>
+    <livewire:audios />
 </main>
 
 
