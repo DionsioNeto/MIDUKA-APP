@@ -3,8 +3,9 @@
         <div>
             <div class="modalAccount">
                 <div class="contentModal">
+                    <i class="fa fa-trash"></i>
                     <h4>Tem a certeza que pretende excluir a sua conta?</h4>
-                    <p>Lembrando que se excluir a conta {{ Auth::user()->name }}, você perderá alguns previlégios</p>
+                    <p>Lembrando que se excluir a conta <strong>{{ Auth::user()->name }}</strong> , você perderá alguns previlégios</p>
                     <div class="buttons">
                         <div class="btn" wire:click="destroy">Excluir conta</div>
                         <div class="btn" wire:click="toggleModal">Cancelar</div>

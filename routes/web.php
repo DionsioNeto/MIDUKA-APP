@@ -80,6 +80,10 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard-usuario', [dashboardController::class, 'usuarios'])->name('dashboard-usuario');;
+    Route::get('/dashboard-support', [dashboardController::class, 'support'])->name('dashboard-support');
+    Route::get('/dashboard-denuncias', [dashboardController::class, 'denucias'])->name('dashboard-denuncias');
+    Route::get('/dashboard-conteudos', [dashboardController::class, 'conteudos'])->name('dashboard-conteudos');
 
     //Rota que nos leva ao perfil de usuário logado.
     Route::get('/perfil', function(){

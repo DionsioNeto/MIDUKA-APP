@@ -6,7 +6,7 @@
             </div>
         </a>
         <div class="search-input search">
-            <button>
+            <button wire:click='openKeyBoard'>
                 <i class="fa fa-keyboard"></i>
             </button>
 

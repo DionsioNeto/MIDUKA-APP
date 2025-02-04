@@ -35,6 +35,10 @@ class Header extends Component{
 
     }
 
+    public function openKeyBoard(){
+        
+    }
+
 
     public $search = ''; // Variável para armazenar a pesquisa
     public function render(){

@@ -12,4 +12,16 @@ class dashboardController extends Controller{
     public function index(){
             return view('dashboard');
     }
+    public function usuarios(){
+        return view('dashboard-usuario');
+    }
+    public function denucias(){
+        return view('dashboard-denuncias');
+    }
+    public function conteudos(){
+        return view('dashboard-conteudos');
+    }
+    public function support(){
+        return view('dashboard-support');
+    }
 }

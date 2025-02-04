@@ -18,25 +18,25 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="dash-user" :active="request()->routeIs('/dash-user')">
+                    <x-nav-link href="{{ route('dashboard-usuario') }}" :active="request()->routeIs('dashboard-usuario')">
                         {{ __('Usuários') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="dash-user" :active="request()->routeIs('/dash-user')">
+                    <x-nav-link href="{{ route('dashboard-denuncias') }}" :active="request()->routeIs('dashboard-denuncias')">
                         {{ __('Denúncias') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="dash-user" :active="request()->routeIs('/dash-user')">
+                    <x-nav-link href="{{ route('dashboard-support') }}" :active="request()->routeIs('dashboard-support')">
                         {{ __('Msg de support') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="dash-user" :active="request()->routeIs('/dash-user')">
+                    <x-nav-link href="{{ route('dashboard-conteudos') }}" :active="request()->routeIs('dashboard-conteudos')">
                         {{ __('Conteúdos') }}
                     </x-nav-link>
                 </div>

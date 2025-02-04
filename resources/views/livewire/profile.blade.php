@@ -10,8 +10,32 @@
             </div>
             <div class="nameOPtion">
                 <h2>{{ Auth::user()->name }}</h2>
-                <a href="/definicoes" class="op">
-                    <i class="fa-solid fa-pen-to-square"></i>
+                <a class="op">
+                    <div class="opc">
+                        <details>
+                            <summary>
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </summary>
+                            <ul>
+                                <li>
+                                    <i class="fa fa-mega-phone"></i>
+                                    Denunciar
+                                </li>
+                                <li>
+                                    <i class="fa fa-link"></i>
+                                    Cópiar URL
+                                </li>
+                                <li>
+                                    <i class="fa-regular fa-bookmark"></i>
+                                    Guardar para ler mais tarde
+                                </li>
+                                <li>
+                                    <i class="fa fa-bug"></i>
+                                    Notificar possível erro
+                                </li>
+                            </ul>
+                        </details>
+                    </div>
                 </a>
             </div>
             <small>{{ Auth::user()->email }}</small>
