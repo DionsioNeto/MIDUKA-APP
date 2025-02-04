@@ -3,7 +3,7 @@
         <div>
             <div class="modalAccount">
                 <div class="contentModal">
-                    <i class="fa fa-trash"></i>
+                    <i class="fa-solid fa-triangle-exclamation"></i>
                     <h4>Tem a certeza que pretende excluir a sua conta?</h4>
                     <p>Lembrando que se excluir a conta <strong>{{ Auth::user()->name }}</strong> , você perderá alguns previlégios</p>
                     <div class="buttons">
@@ -108,5 +108,11 @@
         </a>
 
     </form>
+    <div wire:offline>
+        <h1>
+            Você está offline.
+        </h1>
+    </div>
+    <h1>online</h1>
     </main>
 </div>

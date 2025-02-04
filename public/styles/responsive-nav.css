@@ -1,7 +1,5 @@
-
-
-
-nav.nav-down{
+div.nav-down{
+    background-color: var(--bg);
     margin: 5px;
     padding: 5px;
     border: 1px solid var(--link);
@@ -12,17 +10,43 @@ nav.nav-down{
     background-color: var(--bg);
     bottom: 0;
     display: none;
-}
-
-nav.nav-down ul{
-    display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 5px;
+    z-index: 1;
+}
+
+
+div.nav-down .box a{
+    background-color: var(--transparente);
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
 }
 
 @media screen and ( max-width: 600px){
-    nav.nav-down{
-        display: block;
+    div.nav-down{
+        display: flex;
     }
 }
 
+@media screen and ( min-width: 600px){
+    .sidbar-responsive{
+        display: none;
+    }
+}
+
+.sidbar-responsive{
+    position: fixed;
+    bottom: 0;
+    margin: 70px 5px 55px 0px;
+    width: 70%;
+    height: calc(100% - 120px);
+    border-right: 2px solid var(--link);
+    background-color: var(--bg);
+    z-index: 1;
+}
