@@ -1,5 +1,5 @@
 <div>
-    <div class="nav-down relactive">
+    <div class="nav-down">
         <div class="box">
             <a href="/">
                 <button><i class="fa fa-home"></i></button>
@@ -17,8 +17,10 @@
         </div>
     </div>
     @if($isNavSidbar)
-    <div class="sidbar-responsive">
-        <h1>Sidbar responsive</h1>
+    <div class="relactive">
+        <div class="sidbar-responsive">
+            <h1>Sidbar responsive</h1>
+        </div>
     </div>
     @endif
 </div>

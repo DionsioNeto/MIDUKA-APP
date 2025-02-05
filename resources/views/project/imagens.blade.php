@@ -5,8 +5,9 @@
 @endsession
 <livewire:header />
 <livewire:sidbar />
+<livewire:responsive-nav />
 <main>
-    <livewire:imagens lazy/>
+    <livewire:imagens />
 </main>
 
 

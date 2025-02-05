@@ -5,8 +5,9 @@
 
 <livewire:header/>
 <livewire:sidbar />
+<livewire:responsive-nav />
 <main>
-    
+
     <div class="main">
         <h1>Notificações</h1>
         <div class="container">
@@ -15,7 +16,7 @@
                     Uma curtida no seu PDF
                 </div>
                 <div class="hours">
-                    02/12/2024 - 18h 20m 
+                    02/12/2024 - 18h 20m
                 </div>
             </div>
             <div class="card-notification">
@@ -23,13 +24,13 @@
                     O grupo MIduka da-lhe as boas vindas
                 </div>
                 <div class="hours">
-                    02/12/2024 - 18h 20m 
+                    02/12/2024 - 18h 20m
                 </div>
             </div>
         </div>
     </div>
-    
+
 </main>
 
-    
+
 @endsection

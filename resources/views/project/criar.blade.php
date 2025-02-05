@@ -3,11 +3,11 @@
 @session('content')
 
 @endsession
-<livewire:header lazy/>
-<livewire:sidbar lazy/>
-<livewire:sidbar-right lazy/>
-<livewire:responsive-nav lazy/>
+<livewire:header />
+<livewire:sidbar />
+<livewire:sidbar-right />
+<livewire:responsive-nav />
 
 <main>
-    <livewire:criar-inside lazy/>
+    <livewire:criar-inside />
 </main>

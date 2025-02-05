@@ -5,7 +5,8 @@
 @endsession
 <livewire:header />
 <livewire:sidbar />
+<livewire:responsive-nav />
 <main>
-    <livewire:livros lazy/>
+    <livewire:livros />
 </main>
 

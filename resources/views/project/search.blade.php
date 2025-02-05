@@ -5,9 +5,10 @@
 <livewire:header />
 <livewire:sidbar />
 <livewire:sidbar-right />
+<livewire:responsive-nav />
 <style>
 .card-user{
-    padding: 10px;    
+    padding: 10px;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -64,7 +65,7 @@
                 <p>Aderio em: 2025</p>
             </div>
         </div>
-            
+
         <div class="opc">
             <details>
                 <summary>

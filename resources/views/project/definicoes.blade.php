@@ -6,6 +6,8 @@
 <livewire:header />
 <livewire:sidbar />
 <livewire:sidbar-right />
+<livewire:responsive-nav />
+
 <livewire:definicoes />
 
 
