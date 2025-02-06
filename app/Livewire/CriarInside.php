@@ -3,7 +3,8 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Conteudo;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
-use Livewire\Features\SupportFileUploads\temporaryUrl;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Lazy;
 #[Lazy]
 
@@ -49,19 +50,27 @@ class CriarInside extends Component {
         $capa = $this->capa;
         $extension = $capa->extension();
         $CapaName = md5($capa->getClientOriginalName() . strtotime('now')).".".$extension;
-        $capa->StorageAs::move(public_path('uploads/capas'), $CapaName);
+        //$capa->StorageAs::move(public_path('uploads/capas'), $CapaName);
         $cont->capa = $CapaName;
+
+
+        // Gerar um novo nome para o arquivo
+        // $filename = Str::random(10) . '.' . $this->file->getClientOriginalExtension();
+
+        // Armazenar o arquivo no diretório 'uploads'
+        $this->capa->storeAs('uploads', $CapaName, 'public');
+
 
         //Upload do arquivo
         $content = $this->file;
         $contentExtension = $content->extension();
         $contentName = md5($content->getClientOriginalName() . strtotime('now')).".".$contentExtension;
-        $content->StorageAs::move(public_path('uploads/archives'), $contentName);
+        // $content->StorageAs::move(public_path('uploads/archives'), $contentName);
         $cont->content = $contentName;
 
         $cont->type_tag = $contentExtension;
 // dd("archive->" .$contentName, "Capa->" . $CapaName);
-
+        $this->capa->storeAs('uploads', $CapaName, 'public');
         if( $cont->save() ){
             $this->capa = $this->description = $this->file = null;
             session()->flash('msg', 'Sucesso na criação do seu conteúdo');

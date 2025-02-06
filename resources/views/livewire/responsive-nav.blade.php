@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="box">
-            <a href="">
+            <a href="/criar">
                 <button><i class="fa-solid fa-add"></i></button>
             </a>
         </div>
