@@ -60,11 +60,13 @@ main .alert-content i{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .card-video .container-conteudo video,
 .card-video .container-conteudo img{
-    height: 100%;
+    width: 100%;
+    height: auto;
     border-radius: 5px;
 }
 

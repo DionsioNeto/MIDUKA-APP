@@ -9,6 +9,9 @@
 <livewire:responsive-nav />
 <main>
     <livewire:audios />
+    <div wire:offline>
+        <livewire:all-pages />
+    </div>
 </main>
 
 

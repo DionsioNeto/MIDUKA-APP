@@ -8,5 +8,8 @@
 <livewire:responsive-nav />
 <main>
     <livewire:livros />
+    <div wire:offline>
+        <livewire:all-pages />
+    </div>
 </main>
 

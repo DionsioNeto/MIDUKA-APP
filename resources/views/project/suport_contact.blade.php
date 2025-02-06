@@ -10,4 +10,7 @@
 <livewire:responsive-nav />
 <main>
    <livewire:suppor-inside />
+   <div wire:offline>
+        <livewire:all-pages />
+    </div>
 </main>

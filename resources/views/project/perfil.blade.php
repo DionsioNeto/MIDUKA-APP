@@ -10,4 +10,7 @@
 
 <main>
     <livewire:profile />
+    <div wire:offline>
+        <livewire:all-pages />
+    </div>
 </main>

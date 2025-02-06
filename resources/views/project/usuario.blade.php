@@ -9,4 +9,7 @@
 <livewire:responsive-nav />
 <main>
     <livewire:usuario />
+    <div wire:offline>
+        <livewire:all-pages />
+    </div>
 </main>

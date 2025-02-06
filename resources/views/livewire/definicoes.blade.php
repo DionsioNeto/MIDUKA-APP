@@ -109,10 +109,7 @@
 
     </form>
     <div wire:offline>
-        <h1>
-            Você está offline.
-        </h1>
+        <livewire:all-pages />
     </div>
-    <h1>online</h1>
     </main>
 </div>

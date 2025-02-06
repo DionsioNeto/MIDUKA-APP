@@ -1,4 +1,4 @@
-
+{{--
 @livewireStyles
 @stack('styles')
 
@@ -97,4 +97,15 @@
     </script>
 @endpush
 @livewireScripts
-@stack('scripts')
+@stack('scripts') --}}
+@extends('layouts.principal')
+@section('title', 'Mi | Criar conteúdo')
+@session('content')
+
+@endsession
+
+<div>
+
+
+
+</div>

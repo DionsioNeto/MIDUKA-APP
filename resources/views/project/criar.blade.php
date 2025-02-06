@@ -10,4 +10,7 @@
 
 <main>
     <livewire:criar-inside />
+    <div wire:offline>
+        <livewire:all-pages />
+    </div>
 </main>

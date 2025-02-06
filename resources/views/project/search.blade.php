@@ -93,5 +93,7 @@
         </div>
     </div>
 
-
+    <div wire:offline>
+        <livewire:all-pages />
+    </div>
 </main>
