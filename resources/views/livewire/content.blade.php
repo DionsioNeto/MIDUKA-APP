@@ -16,7 +16,7 @@
                             <div class="page-name">
                                 {{ $item->user->name }}
                                 <br>
-                                <small>@dionisio.miduka</small><i class="fa-regular fa-eye"></i>
+                                <small>@dionisio.miduka</small>
                             </div>
                         </a>
                         <div class="fle">
@@ -58,15 +58,16 @@
                         <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo" autoplay loop></video>
                         @endif
                     </div>
-                    <div class="date">
+                    <div class="date cinza">
                         <i class="fa fa-calendar"></i>
-                        {{ date('d/m/Y', strtotime($item->created_at)) }}
+                        {{ date('d/m/Y', strtotime($item->created_at)) }} |
                         <i class="fa fa-clock"></i>
-                        {{ date(' H', strtotime($item->created_at)) }} H {{ date('m', strtotime($item->created_at)) }} M
+                        {{ date(' H', strtotime($item->created_at)) }} H {{ date('m', strtotime($item->created_at)) }} M |
+                        <i class="fa-regular fa-eye"></i> 0
                     </div>
                     <a href="/ver{{$item->id}}">
                         <div class="description">
-                            {{ strlen($item->description) > 100 ? substr($item->description, 0, 100) . ' ver mais...' : $item->description }}
+                            {{ strlen($item->description) > 100 ? substr($item->description, 0, 100) . ' ver mais ...' : $item->description }}
                         </div>
                     </a>
                     <div class="comment">
@@ -88,29 +89,29 @@
                     <div class="options">
                         @auth
                         @if ($item->Likes->count())
-                        <a href="#" wire:click.prevent="unlike({{ $item->id }})">
+                        <a wire:click.prevent="unlike({{ $item->id }})">
                             <i class="fa fa-thumbs-up"></i>
-                            <div class="contador">8M</div>
+                            <div class="contador">0</div>
                         </a>
                         @else
                         <a href="#" wire:click.prevent="like({{ $item->id }})">
                             <i class="fa-regular fa-thumbs-up"></i>
-                            <div class="contador">8M</div>
+                            <div class="contador">0</div>
                         </a>
                         @endif
                         @endauth
                         @guest
                         <a href="/login">
                             <i class="fa-regular fa-thumbs-up"></i>
-                            <div class="contador">8M</div>
+                            <div class="contador">0</div>
                         </a>
                         @endguest
 
                         <a href="#">
                             <i class="fa-regular fa-comments"></i>
-                            <div class="contador">1K</div>
+                            <div class="contador">0</div>
                         </a>
-                        <a href="./uploads/{{ $item->content }}" download>
+                        <a href="{{ url("storage/uploads/{$item->content}") }}" download>
                             <i class="fa fa-download"></i>
                         </a>
                         <a href="#">
@@ -147,3 +148,8 @@
         @else
            <livewire:no-content />
         @endif
+        <div wire:offline>
+            <livewire:all-pages />
+        </div>
+</div>
+

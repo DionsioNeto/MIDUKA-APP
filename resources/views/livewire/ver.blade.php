@@ -53,52 +53,56 @@
                 </a>
                 @endauth
             </div>
-    </div>
-        <video src="./uploads/1.mp4" controls alt="{{ $item->content }}"></video>
+        </div>
+        @if ($item->type_tag == "jpg")
+        <img src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo">
+        @elseif($item->type_tag == "mp4")
+        <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo" controls></video>
+        @endif
     </div>
     <div class="comentarios">
         <div class="user-description">
-                        <a href="/usuario{{ $item->user->id }}" class="inline">
-                            <div class="img-photo">
-                                <img src="{{ $item->user->profile_photo_url }}">
-                            </div>
-                            <div class="page-name">
-                                {{ $item->user->name }}
-                                <br>
-                                <small>@dionisio.miduka</small><i class="fa-regular fa-eye"></i>
-                            </div>
-                        </a>
-                        <div class="fle">
-                            <div class="foll">
-                                Seguir
-                            </div>
-                            <div class="opc">
-                                <details>
-                                    <summary>
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                    </summary>
-                                    <ul>
-                                        <li>
-                                            <i class="fa fa-mega-phone"></i>
-                                            Denunciar
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-link"></i>
-                                            Cópiar URL
-                                        </li>
-                                        <li>
-                                            <i class="fa-solid fa-bookmark"></i>
-                                            Guardar para ler mais tarde
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bug"></i>
-                                            Notificar possível erro
-                                        </li>
-                                    </ul>
-                                </details>
-                            </div>
-                        </div>
-                    </div>
+            <a href="/usuario{{ $item->user->id }}" class="inline">
+                <div class="img-photo">
+                    <img src="{{ $item->user->profile_photo_url }}">
+                </div>
+                <div class="page-name">
+                    {{ $item->user->name }}
+                    <br>
+                    <small>@dionisio.miduka</small><i class="fa-regular fa-eye"></i>
+                </div>
+            </a>
+            <div class="fle">
+                <div class="foll">
+                    Seguir
+                </div>
+                <div class="opc">
+                    <details>
+                        <summary>
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </summary>
+                        <ul>
+                            <li>
+                                <i class="fa fa-mega-phone"></i>
+                                Denunciar
+                            </li>
+                            <li>
+                                <i class="fa fa-link"></i>
+                                Cópiar URL
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-bookmark"></i>
+                                Guardar para ler mais tarde
+                            </li>
+                            <li>
+                                <i class="fa fa-bug"></i>
+                                Notificar possível erro
+                            </li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+        </div>
         <div class="description">
             {{$item->description}}
         </div>
