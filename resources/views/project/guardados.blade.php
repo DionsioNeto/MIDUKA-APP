@@ -1,4 +1,17 @@
-<livewire:Key-board />
+@extends('layouts.principal')
+@section('title', 'Mi | Audios')
+@session('content')
 
-@livewireScripts
-@stack('scripts')
+@endsession
+<livewire:header />
+<livewire:sidbar />
+<livewire:sidbar-right />
+<livewire:responsive-nav />
+<main>
+    <h1>Itens guardados</h1>
+</main>
+
+
+
+
+

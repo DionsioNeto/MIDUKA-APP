@@ -50,13 +50,7 @@ class CriarInside extends Component {
         $capa = $this->capa;
         $extension = $capa->extension();
         $CapaName = md5($capa->getClientOriginalName() . strtotime('now')).".".$extension;
-        //$capa->StorageAs::move(public_path('uploads/capas'), $CapaName);
         $cont->capa = $CapaName;
-
-
-        // Gerar um novo nome para o arquivo
-        // $filename = Str::random(10) . '.' . $this->file->getClientOriginalExtension();
-
         // Armazenar o arquivo no diretório 'uploads'
         $this->capa->storeAs('uploads', $CapaName, 'public');
 
