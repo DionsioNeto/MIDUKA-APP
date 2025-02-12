@@ -15,9 +15,9 @@
         {{-- CSS --}}
 
 
+        <link rel="stylesheet" href="./styles/reset.css">
         <link rel="stylesheet" href="./styles/header.css">
         <link rel="stylesheet" href="./styles/sidbar.css">
-        <link rel="stylesheet" href="./styles/reset.css">
         <link rel="stylesheet" href="./styles/perfil.css">
         <link rel="stylesheet" href="./styles/sidbar-right.css">
         <link rel="stylesheet" href="./styles/responsive-nav.css">

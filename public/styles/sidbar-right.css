@@ -24,7 +24,7 @@
 .sidbar-right form input{
     margin: 3px 0px;
     width: 100%;
-    background-color: var(--bg);
+    background-color: transparent;
     border: 1px solid var(--link);
     border-radius: 5px;
     padding: 5px;

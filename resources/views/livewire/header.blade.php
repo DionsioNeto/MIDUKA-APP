@@ -26,11 +26,11 @@
                 </button>
             </a>
 
-            <button class="dark-mode" id="toggle-mode">
+            <button class="dark-mode">
                 <i class="fa-solid fa-circle-half-stroke"></i>
             </button>
 
-            <button>
+            <button wire:click="openNotification">
                 <div class="notification">
                         <i class="fa fa-bell"></i>
                     <div class="counter">15</div>
@@ -67,4 +67,13 @@
         </ul>
     </div>
     @endif
+
+
+
+    @if ($isNotification)
+    <div class="modalNotification">
+        <h1>Notificações</h1>
+    </div>
+    @endif
+
 </div>

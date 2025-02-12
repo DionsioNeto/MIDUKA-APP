@@ -35,8 +35,10 @@ class Header extends Component{
 
     }
 
-    public function openKeyBoard(){
-        
+    public $isNotification = false;
+    
+    public function openNotification(){
+        $this->isNotification = !$this->isNotification;
     }
 
 

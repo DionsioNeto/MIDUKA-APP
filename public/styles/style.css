@@ -61,12 +61,13 @@ main .alert-content i{
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    border-radius: 5px;
 }
 
 .card-video .container-conteudo video,
 .card-video .container-conteudo img{
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 5px;
 }
 
@@ -217,10 +218,6 @@ main .alert-content i{
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-    .card-video .container-conteudo video,
-    .card-video .container-conteudo img{
-        width: auto;
     }
 
 }

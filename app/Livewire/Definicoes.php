@@ -10,11 +10,43 @@ class Definicoes extends Component{
         return redirect("/")->with('delete', 'A sua conta foi deletada com sucesso');
     }
 
+    // Modal para excluir conta ddo usuário
     public $isModalVisible = false;
-
     // Método para mostrar ou esconder o modal
     public function toggleModal(){
         $this->isModalVisible = !$this->isModalVisible;
+    }
+
+    // Modal para alterar ou excluir foto do usuário
+
+    public $plofileImage = false;
+
+    public function toggleModalImage(){
+        $this->plofileImage = !$this->plofileImage;
+    }
+
+    public $isProfileEmail = false;
+
+    public function toggleProfileEmail(){
+        $this->isProfileEmail = !$this->isProfileEmail;
+    }
+
+    public $isPlofileImage = false;
+
+    public function toggleProfileImage(){
+        $this->isPlofileImage = !$this->isPlofileImage;
+    }
+
+    public $isPassWord = false;
+
+    public function togglePassWord(){
+        $this->isPassWord = !$this->isPassWord;
+    }
+
+    public $imageProfileCap = false;
+
+    public function toggleImageProfileCap(){
+        $this->imageProfileCap = !$this->imageProfileCap;
     }
 
     public function render(){

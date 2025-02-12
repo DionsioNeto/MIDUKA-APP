@@ -72,6 +72,15 @@ main .box .icons{
     border-radius: 5px;
 }
 
+body#dark .contentModal *{
+    color: var(--branco);
+}
+
+body#dark .red,
+body#dark .red *{
+    color: var(--vermelho);
+}
+
 .modalAccount .contentModal .buttons .btn:nth-child(2){
     background-color: var(--link);
 }
