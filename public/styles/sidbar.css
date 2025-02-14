@@ -21,7 +21,8 @@ input[type="checkbox"]#sidbar:focus ~ main{
     padding-right: 10px;
 }
 
-.sidbar{
+.sidbar,
+.sidbar-responsive{
     padding: 10px;
     height: calc(98vh - 65px);
     margin: 70px 5px 5px 25px;
@@ -46,13 +47,14 @@ input[type="checkbox"]#sidbar:focus ~ main{
     }
 }
 
-.sidbar img.user{
+.sidbar img.user,
+.sidbar-responsive img.user{
     width: 20px;
     height: 20px;
     border-radius: 50%;
 }
 
-.sidbar .sib-box{
+ .sib-box{
     display: flex;
     gap: 20px;
     padding: 5px;
@@ -77,16 +79,20 @@ input[type="checkbox"]#sidbar:focus ~ main{
 .sidbar .sib-box:hover *{
     color: var(--preto);
 }
-.sidbar::-webkit-scrollbar { width: 5px; }
+.sidbar::-webkit-scrollbar,
+.sidbar-responsive::-webkit-scrollbar { width: 5px; }
 
-.sidbar::-webkit-scrollbar-track {
+.sidbar::-webkit-scrollbar-track,
+.sidbar-responsive::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.sidbar::-webkit-scrollbar-thumb {
+.sidbar::-webkit-scrollbar-thumb,
+.sidbar-responsive::-webkit-scrollbar-thumb {
     border: 3px solid var(--destaque);
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
 
-.sidbar::-webkit-scrollbar-thumb:hover { background: var(--hover-card);}
+.sidbar::-webkit-scrollbar-thumb:hover,
+.sidbar-responsive::-webkit-scrollbar-thumb:hover { background: var(--hover-card);}

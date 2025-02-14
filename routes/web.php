@@ -45,10 +45,6 @@ Route::get('/livros-pdfs', function(){
 Route::get('/audios', function(){
     return view('project.audios');
 });
-//Rota que nos leva a view de definições
-Route::get('/definicoes', function(){
-    return view('project.definicoes');
-});
 
 
 Route::get('/criar', [indexController:: class, 'criar']);
@@ -84,6 +80,10 @@ Route::middleware([
     Route::get('/dashboard-denuncias', [dashboardController::class, 'denucias'])->name('dashboard-denuncias');
     Route::get('/dashboard-conteudos', [dashboardController::class, 'conteudos'])->name('dashboard-conteudos');
 
+    //Rota que nos leva a view de definições
+    Route::get('/definicoes', function(){
+        return view('project.definicoes');
+    });
     //Rota que nos leva ao perfil de usuário logado.
     Route::get('/perfil', function(){
         return view('project.perfil');

@@ -46,7 +46,8 @@
     gap: 6px;
 }
 
-.sidbar-right a{
+.sidbar-right a
+,.inside a{
     text-decoration: underline;
     font-weight: 600;
     transition: 400ms;

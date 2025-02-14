@@ -16,6 +16,9 @@ div.nav-down{
     z-index: 1;
 }
 
+body#dark div.nav-down{
+    background-color: var(--bg-dark);
+}
 
 div.nav-down .box a{
     background-color: var(--transparente);
@@ -49,4 +52,8 @@ div.nav-down .box a{
     border-right: 2px solid var(--link);
     background-color: var(--bg);
     z-index: 1;
+}
+
+body#dark .sidbar-responsive{
+    background-color: var(--bg-dark);
 }

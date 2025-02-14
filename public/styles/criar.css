@@ -54,7 +54,7 @@ div#modal-video div.steps div.bar div.progress{
 
 div#modal-video .recept{
     padding: 10px 5px;
-    border: 1px solid var(--branco);
+    border: 1px solid var(--link);
     margin: 10px 0px;
     border-radius: 8px;
     display: flex;
@@ -82,7 +82,7 @@ div#modal-video form{
 div#modal-video form textarea{
     background-color: transparent;
     border-radius: 8px;
-    border: 1px solid var(--branco);
+    border: 1px solid var(--link);
     padding: 10px;
     width: 100%;
     height: 100px;

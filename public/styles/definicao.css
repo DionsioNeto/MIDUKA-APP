@@ -47,6 +47,10 @@ main .box .icons{
     z-index: 2;
 }
 
+.modalAccount i{
+    font-size: 20px;
+}
+
 .modalAccount .contentModal{
     background: var(--preto);
     padding: 15px 10px;
@@ -60,6 +64,30 @@ main .box .icons{
     text-align: center;
 }
 
+.modalAccount .contentModal input[type="text"]{
+    border: 2px solid var(--link);
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 14px;
+    margin: 3px auto;
+}
+
+.modalAccount .contentModal input[type="text"]:focus{
+    border: 2px solid var(--hover-card);
+}
+
+.modalAccount .contentModal .img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.modalAccount .contentModal .img img{
+    width: 100%;
+}
+
 .modalAccount .contentModal .buttons{
     display: flex;
     gap: 5px;
@@ -70,6 +98,9 @@ main .box .icons{
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 body#dark .contentModal *{
@@ -81,6 +112,6 @@ body#dark .red *{
     color: var(--vermelho);
 }
 
-.modalAccount .contentModal .buttons .btn:nth-child(2){
+.modalAccount .contentModal .buttons .btn:last-child{
     background-color: var(--link);
 }

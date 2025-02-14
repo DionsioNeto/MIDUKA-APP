@@ -17,20 +17,16 @@ class Definicoes extends Component{
         $this->isModalVisible = !$this->isModalVisible;
     }
 
-    // Modal para alterar ou excluir foto do usuário
 
-    public $plofileImage = false;
 
-    public function toggleModalImage(){
-        $this->plofileImage = !$this->plofileImage;
-    }
-
+    // Modal para alterar email do perfil
     public $isProfileEmail = false;
 
     public function toggleProfileEmail(){
         $this->isProfileEmail = !$this->isProfileEmail;
     }
 
+    // Modal para alterar ou excluir foto do usuário
     public $isPlofileImage = false;
 
     public function toggleProfileImage(){

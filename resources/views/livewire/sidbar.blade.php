@@ -1,12 +1,6 @@
 <div class="relactive">
     <div class="sidbar">
-
-        <label for="sidbar">
-            <div class="sib-box">
-                <button><i class="fa fa-bars"></i></button>
-            </div>
-        </label>
-
+        
         <a href="/">
             <div class="sib-box {{Request::is('/') ? 'destaque' : ''}}">
                 <button><i class="fa fa-home"></i></button>
@@ -137,5 +131,6 @@
             </div>
         </a>
         @endguest
+    </div>
 
 </div>
