@@ -4,10 +4,13 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\Conteudo;
+use Livewire\WithPagination;
+use Livewire\WithoutUrlPagination;
 use Livewire\Attributes\Lazy;
 #[Lazy]
 
 class Usuario extends Component{
+    use WithPagination, WithoutUrlPagination;
     public function placeholder(){
         return  <<<'HTML'
                     <div class="loading">

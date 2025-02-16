@@ -227,3 +227,23 @@ details ul li:hover i{
         margin: 0;
     }
 }
+
+/*
+no content
+*/
+
+main .alert-content{
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    animation-name: animat;
+    animation-duration: 80ms;
+}
+
+main .alert-content i{
+    font-size: 60px;
+}

@@ -2,6 +2,8 @@
 
 namespace App\Livewire;
 use Livewire\Component;
+use Livewire\Attributes\Lazy;
+#[Lazy]
 
 class ResponsiveNav extends Component{
 

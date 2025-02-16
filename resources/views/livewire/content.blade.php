@@ -117,41 +117,64 @@
     @endforeach
     </div>
 
-
-
-
-
-
-
-
-
-    {{ $conteudos->links() }}
-
+    <hr>
     <div id="pag">
+
         @if ($conteudos->hasPages())
+        <div>
+            <p class="text-sm text-gray-700 leading-5 dark:text-gray-400">
+                {!! __('Showing') !!}
+                @if ($conteudos->firstItem())
+                    <span class="font-medium">{{ $conteudos->firstItem() }}</span>
+                    {!! __('to') !!}
+                    <span class="font-medium">{{ $conteudos->lastItem() }}</span>
+                @else
+                    {{ $conteudos->count() }}
+                @endif
+                {!! __('of') !!}
+                <span class="font-medium">{{ $conteudos->total() }}</span>
+                {!! __('results') !!}
+            </p>
+        </div>
         <nav role="navigation" aria-label="Pagination Navigation">
             <span>
                 @if ($conteudos->onFirstPage())
-                    <span>Anterior</span>
+                    <span>
+                        Anterior
+                    </span>
                 @else
-                    <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev">Anterior</button>
+                    <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev">
+                        <i class="fa-solid fa-arrow-left-long"></i>
+                        Anterior
+                    </button>
                 @endif
             </span>
+
             <span>
                 @if ($conteudos->onLastPage())
-                    <span>Proximo</span>
+                    <span>
+                        Proximo
+                    </span>
                 @else
-                    <button wire:click="nextPage" wire:loading.attr="disabled" rel="next">Proximo<</button>
+                    <button wire:click="nextPage" wire:loading.attr="disabled" rel="next">
+                        Proximo
+                        <i class="fa-solid fa-arrow-right-long"></i>
+                    </button>
                 @endif
             </span>
         </nav>
         @endif
     </div>
-@else
+    @else
     <livewire:no-content />
-@endif
+    @endif
     <div wire:offline>
         <livewire:all-pages />
     </div>
 </div>
+
+
+
+
+
 

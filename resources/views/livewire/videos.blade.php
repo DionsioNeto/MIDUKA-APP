@@ -1,8 +1,5 @@
 <div class="relactive">
     <h1>Vídeos</h1>
-
-
-
     @if (count($conteudos) > 0)
         <div class="grid">
         @foreach ($conteudos as $item)
@@ -121,28 +118,6 @@
         @endforeach
         </div>
 
-        {{-- {{ $conteudos->links() }}
-
-        <div id="pag">
-            @if ($conteudos->hasPages())
-            <nav role="navigation" aria-label="Pagination Navigation">
-                <span>
-                    @if ($conteudos->onFirstPage())
-                        <span>Anterior</span>
-                    @else
-                        <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev">Anterior</button>
-                    @endif
-                </span>
-                <span>
-                    @if ($conteudos->onLastPage())
-                        <span>Proximo</span>
-                    @else
-                        <button wire:click="nextPage" wire:loading.attr="disabled" rel="next">Proximo<</button>
-                    @endif
-                </span>
-            </nav>
-            @endif
-        </div> --}}
     @else
         <livewire:no-content />
     @endif
