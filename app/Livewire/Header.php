@@ -36,7 +36,7 @@ class Header extends Component{
     }
 
     public $isNotification = false;
-    
+
     public function openNotification(){
         $this->isNotification = !$this->isNotification;
     }

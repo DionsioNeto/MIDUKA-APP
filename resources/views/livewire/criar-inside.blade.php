@@ -2,13 +2,19 @@
     <div id="modal-video">
         <div class="cima">
             @if(session('msg'))
-                {{ session('msg') }}
+            <div>
+                <div class="modalAccount">
+                    <div class="contentModal">
+                        <i class="fa fa-check"></i>
+                        {{ session('msg') }}
+                        </div>
+                    </div>
+                </div>
             @endif
             @if(session('Erro'))
                 {{ session('Erro') }}
             @endif
-            <h1>Criar</h1>
-            <p>Aqui os seus tu podes criar os seus conteúdos.</p>
+            <h1>Criar conteúdos</h1>
         </div>
         <div class="steps">
             <div class="boll">1</div>

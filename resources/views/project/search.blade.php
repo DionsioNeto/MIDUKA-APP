@@ -47,6 +47,20 @@
 </style>
 <main>
     <h1>Pesquisa</h1>
+    <div class="search-input search">
+            <button wire:click='openKeyBoard'>
+                <i class="fa fa-keyboard"></i>
+            </button>
+
+            <form action="/Pesquisar" method="get" class="search">
+                @csrf
+                <input type="text" wire:model.live="search" class="form-control" placeholder="Pesquisar usuário..." />
+                <button>
+                    <i class="fa fa-search"></i>
+                </button>
+            </form>
+
+        </div>
     <p>Resultados de suas pesquisas:</p>
     <hr>
     <h3>Contúdos:</h3>

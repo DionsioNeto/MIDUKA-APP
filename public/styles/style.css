@@ -152,7 +152,7 @@
 }
 
 .comment .c-img img{
-    height: 100%;
+    width: 100%;
 }
 
 .comment form{
@@ -213,3 +213,7 @@
 .cinza *{
     color: var(--link);
 }
+
+
+
+

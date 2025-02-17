@@ -33,37 +33,6 @@ main .box .icons{
     gap: 10px;
 }
 
-.modalAccount{
-    width: 100%;
-    height: 100%;
-    color: var(--link);
-    padding: 10px;
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: var(--transparente);
-    z-index: 2;
-}
-
-.modalAccount i{
-    font-size: 20px;
-}
-
-.modalAccount .contentModal{
-    background: var(--preto);
-    padding: 15px 10px;
-    border-radius: 8px;
-    border: 1px solid var(--link);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-}
-
 .modalAccount .contentModal input[type="text"]{
     border: 2px solid var(--link);
     background-color: transparent;

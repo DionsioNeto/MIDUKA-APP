@@ -71,7 +71,7 @@ main *{
 
 li { list-style: none; }
 
-button:not(div#pag *) {
+button{
     background: none;
     font: inherit;
     border: none;
@@ -246,4 +246,57 @@ main .alert-content{
 
 main .alert-content i{
     font-size: 60px;
+}
+
+/*
+*
+* Estilo de paginação
+*
+*/
+
+.pag{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pag button{
+    padding: 10px;
+    background-color: var(--link);
+    border-radius: 10px;
+}
+
+
+
+.modalAccount{
+    width: 100%;
+    height: 100%;
+    color: var(--link);
+    padding: 10px;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--transparente);
+    z-index: 2;
+}
+
+.modalAccount i{
+    font-size: 20px;
+}
+
+.modalAccount .contentModal{
+    background: var(--preto);
+    padding: 15px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--link);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
 }

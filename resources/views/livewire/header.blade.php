@@ -30,7 +30,7 @@
                 <i class="fa-solid fa-circle-half-stroke"></i>
             </button>
 
-            <button wire:click="openNotification">
+            <button wire:click='openNotification'>
                 <div class="notification">
                         <i class="fa fa-bell"></i>
                     <div class="counter">15</div>

@@ -5,7 +5,6 @@
 
     @endsession
     <link rel="stylesheet" href="./styles/ver.css">
-
     <div id="main">
     <div class="conteudo">
         <div class="header">
@@ -55,9 +54,9 @@
             </div>
         </div>
         @if ($item->type_tag == "jpg")
-        <img src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo">
+        <img src="{{ url("storage/uploads/{$item->content}") }}" class="archive">
         @elseif($item->type_tag == "mp4")
-        <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo" controls></video>
+        <video src="{{ url("storage/uploads/{$item->content}") }}" class="archive" controls></video>
         @endif
     </div>
     <div class="comentarios">

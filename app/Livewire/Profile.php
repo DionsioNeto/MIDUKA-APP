@@ -63,8 +63,7 @@ class Profile extends Component{
 
 
     public function render(){
-        $id = auth()->user()->id;
-        $conteudos = Conteudo::where('id', $id)->get();
+        $conteudos = Conteudo::where('id', auth()->user()->id)->get();
         return view('livewire.profile', ['conteudos' => $conteudos]);
     }
 }

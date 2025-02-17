@@ -110,7 +110,7 @@ div#main div.comentarios{
     div#main div.conteudo video{
         max-height: 80vh;
     }
-    
+
 }
  .user-description {
     display: flex;
@@ -225,5 +225,6 @@ div.opc{
     padding: 5px 0px;
     border-radius: 30px;
 }
+
 
 

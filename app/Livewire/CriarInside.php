@@ -19,8 +19,8 @@ class CriarInside extends Component {
     public $description;
 
     protected $rules = [
-        'file' => 'required|mimes:jpg,jpeg,png,bmp,tiff,webp,mp4,mp3,pdf|max:10240', // Permitindo diferentes tipos de arquivos
-        'capa' => 'required|mimes:jpg,jpeg,png,bmp,tiff,webp',
+        'file' => 'required|mimes:jpg,jpeg,png,bmp,tiff,webp,mp4,mp3,pdf|max:20240', // Permitindo diferentes tipos de arquivos
+        'capa' => 'required|mimes:jpg,jpeg,png,bmp,tiff,webp|max:20240',
         'description' => 'required|min:20',
     ];
 
@@ -51,19 +51,19 @@ class CriarInside extends Component {
         $extension = $capa->extension();
         $CapaName = md5($capa->getClientOriginalName() . strtotime('now')).".".$extension;
         $cont->capa = $CapaName;
-        // Armazenar o arquivo no diretório 'uploads'
+        // Armazenar o arquivo de capa no diretório 'uploads'
         $this->capa->storeAs('uploads', $CapaName, 'public');
 
 
-        //Upload do arquivo
+        //Upload do arquivo no diretório 'uploads'
         $content = $this->file;
         $contentExtension = $content->extension();
         $contentName = md5($content->getClientOriginalName() . strtotime('now')).".".$contentExtension;
-        // $content->StorageAs::move(public_path('uploads/archives'), $contentName);
+        $this->file->storeAs('uploads', $contentName, 'public');
         $cont->content = $contentName;
 
         $cont->type_tag = $contentExtension;
-// dd("archive->" .$contentName, "Capa->" . $CapaName);
+
         $this->capa->storeAs('uploads', $CapaName, 'public');
         if( $cont->save() ){
             $this->capa = $this->description = $this->file = null;

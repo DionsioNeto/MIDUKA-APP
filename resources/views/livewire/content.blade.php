@@ -117,10 +117,10 @@
     @endforeach
     </div>
 
+    @if ($conteudos->hasPages())
     <hr>
-    <div id="pag">
+    <div class="pag">
 
-        @if ($conteudos->hasPages())
         <div>
             <p class="text-sm text-gray-700 leading-5 dark:text-gray-400">
                 {!! __('Showing') !!}
@@ -137,7 +137,7 @@
             </p>
         </div>
         <nav role="navigation" aria-label="Pagination Navigation">
-            <span>
+            <span class="btn-nav">
                 @if ($conteudos->onFirstPage())
                     <span>
                         Anterior
@@ -150,7 +150,7 @@
                 @endif
             </span>
 
-            <span>
+            <span  class="btn-nav">
                 @if ($conteudos->onLastPage())
                     <span>
                         Proximo
@@ -163,8 +163,8 @@
                 @endif
             </span>
         </nav>
-        @endif
     </div>
+    @endif
     @else
     <livewire:no-content />
     @endif

@@ -3,12 +3,11 @@
 namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Conteudo;
-use Livewire\Attributes\Lazy;
+
 
 
 
 class Ver extends Component{
-    #[Lazy]
     public function placeholder(){
         return <<<'HTML'
             <div id="si"class="loading">
