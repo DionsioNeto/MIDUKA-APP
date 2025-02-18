@@ -50,7 +50,7 @@
                 @if ($item->type_tag == "jpg")
                 <img src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo">
                 @elseif($item->type_tag == "mp4")
-                <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo" autoplay loop></video>
+                <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo" {{--autoplay loop--}}></video>
                 @endif
             </div>
             <div class="date cinza">
@@ -62,7 +62,7 @@
             </div>
             <a href="/ver{{$item->id}}">
                 <div class="description">
-                    {{ strlen($item->description) > 100 ? substr($item->description, 0, 100) . ' ver mais ...' : $item->description }}
+                    {{ strlen($item->description) > 100 ? substr($item->description, 0, 120) . ' ver mais ...' : $item->description }}
                 </div>
             </a>
             <div class="comment">

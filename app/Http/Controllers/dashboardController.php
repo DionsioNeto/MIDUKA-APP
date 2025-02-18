@@ -10,18 +10,18 @@ use App\Models\{
 class dashboardController extends Controller{
     //Rota da Dashboard da aplicação...
     public function index(){
-            return view('dashboard');
+            return view('dashboard.dashboard');
     }
     public function usuarios(){
-        return view('dashboard-usuario');
+        return view('dashboard.dashboard-usuario');
     }
     public function denucias(){
-        return view('dashboard-denuncias');
+        return view('dashboard.dashboard-denuncias');
     }
     public function conteudos(){
-        return view('dashboard-conteudos');
+        return view('dashboard.dashboard-conteudos');
     }
     public function support(){
-        return view('dashboard-support');
+        return view('dashboard.dashboard-support');
     }
 }
