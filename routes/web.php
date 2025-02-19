@@ -47,7 +47,6 @@ Route::get('/audios', function(){
 });
 
 
-Route::get('/criar', [indexController:: class, 'criar']);
 
 //Rota que nos leva a view de Support
 Route::get('/support', function(){
@@ -74,6 +73,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
 
+    Route::get('/criar', [indexController:: class, 'criar']);
     Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard-usuario', [dashboardController::class, 'usuarios'])->name('dashboard-usuario');;
     Route::get('/dashboard-support', [dashboardController::class, 'support'])->name('dashboard-support');
