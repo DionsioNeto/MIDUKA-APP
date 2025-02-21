@@ -9,9 +9,9 @@ main .box{
     justify-content: space-between;
     align-items: center;
     padding: 5px;
-    border-radius: 20px;
     transform: 500ms;
     cursor: pointer;
+    border-bottom: 2px solid var(--link);
 }
 
 main .red *{
@@ -19,9 +19,7 @@ main .red *{
     font-weight: 600;
 }
 
-main .box:hover{
-    background-color: var(--hover-card);
-}
+
 
 main .box:hover *{
     color: var(--preto);
