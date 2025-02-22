@@ -97,6 +97,7 @@
 
     <main>
     <h1>Definições</h1>
+    <hr>
     <a id="toggle-mode">
         <div class="box">
             <div class="icons">
@@ -157,9 +158,9 @@
         </div>
     </a>
 
-    <hr>
-
     <h3>Zona perigosa</h3>
+
+    <hr>
 
     <a href="/">
         <div class="box red">

@@ -4,14 +4,15 @@ main{
     gap: 10px;
 }
 
+
 main .box{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
+    padding: 5px 5px 15px 5px;
     transform: 500ms;
     cursor: pointer;
-    border-bottom: 2px solid var(--link);
+    border-bottom: 1px solid var(--link);
 }
 
 main .red *{
@@ -20,7 +21,7 @@ main .red *{
 }
 
 
-
+/*
 main .box:hover *{
     color: var(--preto);
 }
@@ -29,7 +30,7 @@ main .box .icons{
     display: flex;
     align-items: center;
     gap: 10px;
-}
+} */
 
 .modalAccount .contentModal input[type="text"]{
     border: 2px solid var(--link);

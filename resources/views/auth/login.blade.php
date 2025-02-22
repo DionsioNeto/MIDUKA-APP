@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Iniciar sessão</title>
 </head>
 <body>
     <style>
@@ -177,7 +177,7 @@
             <input type="email" name="email" :value="old('email')" required placeholder="Digite seu Email"/>
 
             <input type="password" name="password" required placeholder="Digite sua palavra-passe"minlength="8" />
-            <p>Password precisa ter 8 caracteres</p>
+            <p>Palavra-passe precisa ter no mínimo 8 caracteres</p>
 
             <button type="submit">Iniciar sessão</button>
 
