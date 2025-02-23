@@ -4,7 +4,7 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div>
-                <h3>Inicie sua sessão</h3>
+                <h3>{{__('Log in')}}</h3>
                 <input type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Email">
                 <input type="password" name="password" required autocomplete="current-password" placeholder="Palavra-passe">
                 <input type="submit" value="{{ __('Login') }}">

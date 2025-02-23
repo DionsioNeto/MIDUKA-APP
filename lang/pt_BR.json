@@ -55,6 +55,7 @@
   "Hello!": "Olá!",
   "Home": "Principal",
   "I agree to the :terms_of_service and :privacy_policy": "Eu concordo com os :terms_of_service e com a :privacy_policy",
+  "I already have an account": "Já tenho uma conta",
   "If necessary, you may log out of all of your other browser sessions across all of your devices. Some of your recent sessions are listed below; however, this list may not be exhaustive. If you feel your account has been compromised, you should also update your password.": "Se necessário, você pode sair de todas as outras sessões do navegador em todos os seus dispositivos. Algumas de suas sessões recentes estão listadas abaixo; no entanto, esta lista pode não ser exaustiva. Se você acha que sua conta foi comprometida, você também deve atualizar sua senha.",
   "If you already have an account, you may accept this invitation by clicking the button below:": "Se já tiver uma conta, você pode aceitar esse convite através do botão abaixo:",
   "If you did not create an account, no further action is required.": "Se você não criou a conta, favor desconsiderar este e-mail",
@@ -170,5 +171,7 @@
   "Your password": "Digite sua Palavra-passe",
   "You acknowledge that you read, and agree, to our": "Reconhece que leu e concorda com os nossos",
   "Photo": "Foto",
-  "Welcome back!": "Bem-vindo de volta!"
+  "Welcome back!": "Bem-vindo (a) de volta!",
+  "Welcome!": "Bem vindo (a)!"
+
 }
