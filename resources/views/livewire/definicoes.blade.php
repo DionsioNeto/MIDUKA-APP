@@ -150,7 +150,7 @@
         <div class="box">
             <div class="icons">
                 <i class="fa fa-edit"></i>
-                <span>Alterar sua palavra-passe</span>
+                <span>{{__('Update Password')}}</span>
             </div>
             <div>
                 <i class="fa-solid fa-arrow-right-long"></i>
@@ -158,7 +158,7 @@
         </div>
     </a>
 
-    <h3>Zona perigosa</h3>
+    <h3>{{__('Danger zone')}}</h3>
 
     <hr>
 
@@ -178,7 +178,7 @@
         <div class="box red">
             <div class="icons">
                 <i class="fa fa-trash"></i>
-                <span>Excluir a sua conta</span>
+                <span>{{__('Delete Account')}}</span>
             </div>
             <div>
                 <i class="fa-solid fa-arrow-right-long"></i>

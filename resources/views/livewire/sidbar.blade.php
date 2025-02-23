@@ -1,6 +1,6 @@
 <div class="relactive">
     <div class="sidbar">
-        
+
         <a href="/">
             <div class="sib-box {{Request::is('/') ? 'destaque' : ''}}">
                 <button><i class="fa fa-home"></i></button>
@@ -39,7 +39,7 @@
                 <button>
                     <i class="fa fa-user"></i>
                 </button>
-                <div class="text">Perfil</div>
+                <div class="text">{{__('Profile')}}</div>
             </div>
         </a>
 
@@ -49,7 +49,7 @@
                 <div class="sib-box">
                     <button><i class="fa fa-share"></i></button>
                     <div class="text">
-                        Criar conta
+                        {{ __('Create Account') }}
                     </div>
                 </div>
             </a>
@@ -117,7 +117,7 @@
                 <div class="sib-box">
                     <button><i class="fa-solid fa-right-from-bracket"></i></button>
                     <div class="text">
-                        Terminar sessão
+                        {{__('Log Out')}}
                     </div>
                 </div>
             </a>
@@ -127,7 +127,7 @@
         <a href="{{ route('login') }}">
             <div class="sib-box">
                 <button><i class="fa-solid fa-right-to-bracket"></i></button>
-                <div class="text">Iniciar sessão</div>
+                <div class="text">{{__('Log in')}}</div>
             </div>
         </a>
         @endguest

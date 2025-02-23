@@ -47,21 +47,33 @@ main .padding .informacao .profile-photo img{
     width: 100%;
 }
 
-div.dados{
-    width: 100%;
+.all{
     display: flex;
-    justify-content: space-around;
-    padding: 10px;
-    gap: 15px;
+    justify-content: space-between;
+    gap: 10px;
+    overflow-x: scroll;
+    padding: 0 10px;
+    margin-top: 10px;
 }
 
-div.dados div{
-    background-color: var(--preto);
-    padding: 10px;
-    border-radius: 10px;
-    width: 80%;
+.all div{
+    padding: 5px 0;
+    border-bottom: 3px solid var(--link);
+    cursor: pointer;
 }
 
+.all div a{
+    border-radius: 5px;
+    padding: 3px 1px;
+}
+
+.all div a:hover{
+    background-color: var(--destaque);
+}
+
+hr{
+    margin-top: 0;
+}
 .nameOPtion{
     display: flex;
     justify-content: space-between;

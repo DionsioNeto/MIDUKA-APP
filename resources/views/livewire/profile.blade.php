@@ -40,21 +40,30 @@
             </div>
             <small>{{ Auth::user()->email }}</small>
        </div>
-    </div>
-    <div class="dados">
-        <div class="bio">
+       <br>
+       <div class="bio">
             {{ __('Bio') }}😪🧠
         </div>
+       <div class="">
+           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quibusdam quia est adipisci tempora suscipit voluptas nisi doloremque, nulla consequatur maxime eveniet possimus ut architecto, quae unde libero sed quod ex.
+       </div>
+    </div>
+
+    <div class="all">
         <div>
-            <i class="fa fa-location"></i>
-            Luanda, Angola
+            <a href="">Tudo</a>
         </div>
         <div>
-            <i class="fa fa-calendar"></i>
-            Aderiu em 2024
+            <a href="">Vídeos 0</a>
         </div>
-        <div class="seguidor">
-            <i class="fa-solid fa-handshake-simple"></i> Conexões: 0
+        <div>
+            <a href="">Imagens 0</a>
+        </div>
+        <div>
+            <a href="">Livros 0</a>
+        </div>
+        <div>
+            <a href="">Audios 0</a>
         </div>
     </div>
 

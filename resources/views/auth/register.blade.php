@@ -149,9 +149,6 @@
             grid-auto-flow: column;
             font-size: small;
         }
-        .flex-inside p a{
-            display: block;
-        }
     </style>
 
 
@@ -162,7 +159,7 @@
 
                 </div>
             </a>
-            <h1>Bem-vido (a) !</h1>
+            <h1>Bem-vindo (a) !</h1>
             <p>Já tenho uma conta
                 <a href="/login">Iniciar sessão</a>
             </p>
@@ -195,16 +192,18 @@
             <p>O campo acima precisa ter no minímo 8 caracteres</p>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-            <div class="flex-inside">
-                <p>
-                    <input type="checkbox" name="terms" required />
+            <label for="check">
+                <div class="flex-inside">
+                    <p class="not">
+                        <input type="checkbox" id="check" name="terms" required />
 
-                    {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                            'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Terms of Service').'</a>',
-                            'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Privacy Policy').'</a>',
-                    ]) !!}
-                </p>
-            </div>
+                        {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Terms of Service').'</a>',
+                                'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">'.__('Privacy Policy').'</a>',
+                        ]) !!}
+                    </p>
+                </div>
+            </label>
             @endif
 
             <button type="submit">Iniciar sessão</button>

@@ -99,19 +99,19 @@ html {
 * scrollbar style
 */
 
-body::-webkit-scrollbar { width: 5px; }
+*::-webkit-scrollbar { width: 5px; }
 
-body::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background: transparent;
 }
 
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     border: 3px solid var(--destaque);
     -webkit-border-radius: 10px;
     border-radius: 10px;
 }
 
-body::-webkit-scrollbar-thumb:hover { background: var(--hover-card);}
+*::-webkit-scrollbar-thumb:hover { background: var(--hover-card);}
 
 
 /* Controles de cor */
