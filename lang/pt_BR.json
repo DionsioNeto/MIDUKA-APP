@@ -1,5 +1,6 @@
 {
   "(and :count more error)": "(e mais :count erro)",
+  "and our": "e nossas",
   "(and :count more errors)": "(e mais :count erros)",
   "A fresh verification link has been sent to your email address.": "Um novo link de verificação foi enviado para seu e-mail",
   "A new verification link has been sent to your email address.": "Um novo link de verificação foi enviado para seu endereço de e-mail.",
@@ -40,6 +41,7 @@
   "Delete API Token": "Deletar o Token de API",
   "Delete Account": "Excluir a sua Conta",
   "Disable": "Desabilitar",
+  "Dont have an account yet?": "Ainda não tem conta?",
   "Editor users have the ability to read, create, and update.": "O editor pode ler, criar e atualizar",
   "E-Mail Address": "E-mail",
   "Email Address": "Endereço de e-mail",
@@ -81,6 +83,7 @@
   "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "Depois que sua conta for excluída, todos os seus recursos e dados serão excluídos permanentemente. Antes de excluir sua conta, baixe todos os dados ou informações que deseja reter.",
   "Page Expired": "Página expirada",
   "Password": "Palavra-passe",
+  "Password must be at least 8 characters long":"Palavra-passe precisa ter no mínimo 8 caracteres",
   "Payment Required": "Pagamento necessário",
   "Permanently delete your account.": "Deleta permanentemente a sua conta.",
   "Permissions": "Permissões",
@@ -91,6 +94,7 @@
   "Please copy your new API token. For your security, it won't be shown again.": "Por favor, copie o seu Token de API. Por motivo de segurança, ele não será mostrado novamente.",
   "Please provide the email address of the person you would like to add to this team.": "Por favor, forneça o endereço de e-mail da pessoa que você gostaria de adicionar a este time.",
   "Privacy Policy": "Política de Privacidade",
+  "General Policy": "Politicas no geral",
   "Profile": "Perfil",
   "Profile Information": "Informação do Perfil",
   "Recovery Code": "Código Recuperado",
@@ -134,6 +138,7 @@
   "The :attribute must be at least :length characters and contain at least one uppercase character.": "O campo :attribute deve ter pelo menos :length e conter pelo menos um caractere maiúsculo.",
   "The :attribute must be at least :length characters.": "O campo :attribute deve ter pelo menos :length caracteres.",
   "The given data was invalid.": "Os dados fornecidos são inválidos.",
+  "The field above must have at least 8 characters": "O campo acima deve ter no mínimo 8 caracteres",
   "This action is unauthorized.": "Esta ação não é autorizada.",
   "This is a secure area of the application. Please confirm your password before continuing.": "Essa é uma área segura da aplicação. Por favor confirme sua senha antes de continuar.",
   "This password does not match our records.": "Esta Senha não bate com nossos registros.",
@@ -163,6 +168,7 @@
   "Your email address is unverified.": "Seu endereço de e-mail não foi verificado.",
   "Your email address":"Digite Seu e-mail",
   "Your password": "Digite sua Palavra-passe",
+  "You acknowledge that you read, and agree, to our": "Reconhece que leu e concorda com os nossos",
   "Photo": "Foto",
   "Welcome back!": "Bem-vindo de volta!"
 }

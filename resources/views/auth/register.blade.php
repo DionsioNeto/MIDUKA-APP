@@ -185,7 +185,7 @@
 
             <input type="password" name="password" required autocomplete="new-password" placeholder="Digite sua palavra-passe" minlength="8" />
 
-            <p>O campo acima precisa ter no minímo 8 caracteres</p>
+            <p>{{__('The field above must have at least 8 characters')}}</p>
 
             <input type="password" name="password_confirmation" required autocomplete="new-password" placeholder="Confirme a sua palavra-passe" minlength="8"/>
 
@@ -211,7 +211,7 @@
             <div class="or">OU</div>
             <button class="sso" type="button">Login Com a Google</button>
             <p>
-                You acknowledge that you read, and agree, to our <a href="/terms-of-service">Termos de serviços</a> e nossas <a href="/privacy-policy">Politicas no geral</a>.
+                {{__('You acknowledge that you read, and agree, to our')}} <a href="/terms-of-service">{{__('Terms of Service')}}</a> {{__('and our')}} <a href="/privacy-policy">{{__('General Policy')}}</a>.
             </p>
         </form>
 </body>

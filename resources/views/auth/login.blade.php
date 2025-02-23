@@ -16,7 +16,7 @@
                 </div>
             </a>
             <h1>{{ __('Welcome back!')}}</h1>
-            <p>Ainda não tem conta?
+            <p>{{__('Dont have an account yet?')}}
                 <a href="/register">{{ __('Create Account') }}</a>
             </p>
         </header>
@@ -38,7 +38,7 @@
             <input type="email" name="email" :value="old('email')" required placeholder="{{__('Your email address')}}"/>
 
             <input type="password" name="password" required placeholder="{{__('Your password')}}" minlength="8" />
-            <p>Palavra-passe precisa ter no mínimo 8 caracteres</p>
+            <p>{{__('Password must be at least 8 characters long')}}</p>
 
             <button type="submit">{{ __('Log in') }}</button>
 
@@ -53,7 +53,7 @@
             <div class="or">{{ __('or') }}</div>
             <button class="sso" type="button">{{ __('Login with Google') }}</button>
             <p>
-                You acknowledge that you read, and agree, to our <a href="/terms-of-service">Termos de serviços</a> e nossas <a href="/privacy-policy">Politicas no geral</a>.
+                {{__('You acknowledge that you read, and agree, to our')}} <a href="/terms-of-service">{{__('Terms of Service')}}</a> {{__('and our')}} <a href="/privacy-policy">{{__('General Policy')}}</a>.
             </p>
         </form>
 </body>
