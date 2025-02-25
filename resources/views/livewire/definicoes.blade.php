@@ -23,10 +23,17 @@
                     <i class="fa-solid fa-envelope"></i>
                     <h4>Tem a certeza que pretende editar o email de sua conta?</h4>
                     <div>
-                        <input type="text" value="{{ Auth::user()->email }}">
+                        <form wire:submit.prevent="updateEmail">
+                            @error('email')
+                            <span>{{ $message }}</span>
+                            @enderror
+                            <input type="email" id="email" wire:model="email" placeholder="Digite seu novo e-mail">
+
+                            <button type="submit" class="btn">Atualizar E-mail</button>
+
+                        </form>
                     </div>
                     <div class="buttons">
-                        <div class="btn" wire:click="">OK</div>
                         <div class="btn" wire:click="toggleProfileEmail">Cancelar</div>
                     </div>
                 </div>
@@ -61,12 +68,26 @@
                     <i class="fa-solid fa-lock"></i>
                     <h4>Tem a certeza que pretende editar o email de sua conta?</h4>
                     <div>
-                        <input type="text" placeholder="Digite a sua palavra passe actual">
-                        <input type="text" placeholder="Digite a sua nova palavra passe">
-                        <input type="text" placeholder="Confirme a sua nova palavra passe">
+                        <form wire:submit.prevent="updatePassword">
+                            <div class="mb-3">
+                                <input type="password" id="current_password" wire:model="current_password" class="form-control" placeholder="Digite sua senha atual">
+                                @error('current_password') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="password" id="new_password" wire:model="new_password" class="form-control" placeholder="Digite sua nova senha">
+                                @error('new_password') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="password" id="new_password_confirmation" wire:model="new_password_confirmation" class="form-control" placeholder="Confirme sua nova senha">
+                                @error('new_password_confirmation') <span class="text-danger">{{ $message }}</span> @enderror
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Atualizar Senha</button>
+                        </form>
                     </div>
                     <div class="buttons">
-                        <div class="btn" wire:click="">OK</div>
                         <div class="btn" wire:click="togglePassWord">Cancelar</div>
                     </div>
                 </div>

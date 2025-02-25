@@ -10,7 +10,15 @@ use App\Models\{
 class dashboardController extends Controller{
     //Rota da Dashboard da aplicação...
     public function index(){
-            return view('dashboard.dashboard');
+        $user = User::get();
+        $content = Conteudo::get();
+        return view(
+            'dashboard.dashboard',
+            [
+                "user" => $user,
+                "content" => $content,
+            ]
+        );
     }
     public function usuarios(){
         return view('dashboard.dashboard-usuario');

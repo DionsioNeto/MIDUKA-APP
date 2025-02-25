@@ -32,7 +32,9 @@ main .box .icons{
     gap: 10px;
 } */
 
-.modalAccount .contentModal input[type="text"]{
+.modalAccount input[type="text"],
+.modalAccount input[type="email"],
+.modalAccount input[type="password"]{
     border: 2px solid var(--link);
     background-color: transparent;
     border-radius: 5px;
@@ -41,7 +43,9 @@ main .box .icons{
     margin: 3px auto;
 }
 
-.modalAccount .contentModal input[type="text"]:focus{
+.modalAccount input[type="text"]:focus,
+.modalAccount input[type="email"]:focus,
+.modalAccount input[type="password"]:focus{
     border: 2px solid var(--hover-card);
 }
 
@@ -83,3 +87,4 @@ body#dark .red *{
 .modalAccount .contentModal .buttons .btn:last-child{
     background-color: var(--link);
 }
+
