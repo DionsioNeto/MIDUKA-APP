@@ -20,9 +20,18 @@ class dashboardController extends Controller{
             ]
         );
     }
+
     public function usuarios(){
-        return view('dashboard.dashboard-usuario');
+        $users = User::paginate();
+        return view(
+            'dashboard.dashboard-usuario',
+            [
+                "users"=> $users,
+            ]
+        );
     }
+
+
     public function denucias(){
         return view('dashboard.dashboard-denuncias');
     }
