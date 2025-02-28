@@ -22,7 +22,7 @@ class dashboardController extends Controller{
     }
 
     public function usuarios(){
-        $users = User::paginate();
+        $users = User::paginate(3);
         return view(
             'dashboard.dashboard-usuario',
             [
