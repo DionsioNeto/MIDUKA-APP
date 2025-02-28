@@ -2,30 +2,32 @@
 
 namespace App\Livewire;
 use Livewire\Component;
-use App\Models\Support;
+use App\Models\Denuncias;
 
 class SupporInside extends Component{
     public $email;
     public $description;
-    public $phoneNumber;
+    public $tel;
     public $typeProblem;
 
     protected $rules = [
         'email' => 'required',
         'description' => 'required|min:20',
-        'phoneNumber' => 'required',
+        // 'tel' => 'required',
         'typeProblem' => 'required',
     ];
 
     public function store(){
         $this->validate();
-        $su = new Support();
+        $su = new Denuncias();
         $su->email = $this->email;
-        $su->description = $this->description;
+        $su->phoneNumber = "123";
         $su->user_id = auth()->user()->id;
+        $su->description = $this->description;
+        $su->typeProblem = $this->typeProblem;
 
         if( $su->save() ){
-            $this->email = $this->description = $this->phoneNumber = $this->typeProblem = null;
+            $this->email = $this->description = $this->tel = $this->typeProblem = null;
             session()->flash('msg', 'Sucesso no envia da sua mensagen, aguarde pelo deferimento');
         }else{
             session()->flash('Erro', 'Sem Sucesso no envia da sua mensagen');

@@ -11,13 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('supports', function (Blueprint $table) {
+        Schema::create('denuncias', function (Blueprint $table) {
             $table->id();
-            $table->string('userId');
+
             $table->string('email');
             $table->string('phoneNumber');
             $table->string('description');
             $table->string('typeProblem');
+
+            //Criando chave estrangeira
+            $table->unsignedBigInteger('user_id');
+
+             //relacionando a chave "user_id" com o id da tabela "user"
+             $table->foreign('user_id')
+             ->references('id')
+             ->on('users');
+
             $table->timestamps();
         });
     }
@@ -27,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('supports');
+        Schema::dropIfExists('denuncias');
     }
 };

@@ -1,6 +1,10 @@
 <div class="main-all">
     <div class="main-img">
+        @if (Auth::user()->photo_de_capa == null)
+        <img src="{{ url("storage/more/default.jpg") }}" alt="{{ Auth::user()->name }}">
+        @else
         <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
+        @endif
     </div>
 
     <div class="padding">

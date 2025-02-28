@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\{
     Conteudo,
     User,
+    Denuncias
 };
 
 class dashboardController extends Controller{
@@ -33,12 +34,25 @@ class dashboardController extends Controller{
 
 
     public function denucias(){
-        return view('dashboard.dashboard-denuncias');
+        $denuncias = Denuncias::get();
+        return view(
+            'dashboard.dashboard-denuncias'
+        );
     }
+
+
     public function conteudos(){
         return view('dashboard.dashboard-conteudos');
     }
+
     public function support(){
-        return view('dashboard.dashboard-support');
+        $denuncias = Denuncias::latest()->paginate(3);
+
+        return view(
+            'dashboard.dashboard-support',
+            [
+                "denuncias" => $denuncias,
+            ]
+        );
     }
 }

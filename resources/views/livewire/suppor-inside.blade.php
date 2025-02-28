@@ -19,10 +19,10 @@
             {{ $message }}
         @enderror
         <input type="text" wire:model='description' placeholder="descrição">
-        @error('phoneNumber')
+        @error('tel')
             {{ $message }}
         @enderror
-        <input type="text" wire:mode='phoneNumber' placeholder="Telefone">
+        <input type="text" wire:mode='tel' placeholder="Telefone">
         @error('typeProblem')
             {{ $message }}
         @enderror
