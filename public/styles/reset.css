@@ -10,7 +10,7 @@
     --azul: #006aff;
     --transparente: #2c3734b1;
     --bg-dark: #e4e4e4;
-
+    box-sizing: border-box;
 }
 
 *{
@@ -28,6 +28,7 @@ body{
     background-color: var(--bg);
     transition: 1s;
     position: relative;
+    box-sizing: border-box;
 }
 
 main{
@@ -233,7 +234,7 @@ no content
 */
 
 main .alert-content{
-    min-height: 80vh;
+    min-height: 65vh;
     display: flex;
     justify-content: center;
     align-items: center;

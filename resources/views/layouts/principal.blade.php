@@ -49,6 +49,8 @@
             <link rel="stylesheet" href="./styles/video.css">
         @elseif(request()->is('criar'))
             <link rel="stylesheet" href="./styles/criar.css">
+        @elseif(request()->is('Pesquisar'))
+            <link rel="stylesheet" href="./styles/search.css">
         @elseif(request()->is(''))
         @endif
 </head>

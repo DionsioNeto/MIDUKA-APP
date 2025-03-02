@@ -21,7 +21,7 @@ header .search-input{
     background-color: var(--preto-claro);
     border: 1px solid var(--link);
     padding: 6px 7px;
-    border-radius: 10px;
+    border-radius: 6px;
     width: 50%;
 }
 
@@ -49,7 +49,7 @@ header .last-header{
     gap: 20px;
 }
 
-header .last-header a .img-photo{
+header .img-photo{
     border-radius: 50%;
     overflow: hidden;
     border: 3px solid var(--destaque);
@@ -129,3 +129,48 @@ header .last-header div.notification .counter{
     width: 100%;
     padding: 3px;
 }
+
+
+header .modalNotification{
+    position: absolute;
+    top: 60px;
+    right: 0;
+    max-width: 280px;
+    min-height: 70vh;
+    background-color: var(--bg);
+    border: 1px solid var(--link);
+    border-radius: 10px;
+    margin: 2px;
+}
+
+body#dark header .modalNotification{
+    background-color: var(--bg-dark);
+    border: 1px solid var(--bg);
+}
+
+header .modalNotification h2{
+    margin: 5px 10px;
+}
+
+header .modalNotification .notification-content{
+    width: 100%;
+    border-top: 1px solid var(--link);
+}
+
+header .modalNotification .notification-content .notification-box{
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    border-bottom: 1px solid var(--link);
+    margin: 5px;
+}
+
+header .modalNotification .notification-content .notification-box img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid var(--destaque);
+}
+
+
+

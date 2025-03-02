@@ -26,16 +26,18 @@
                 </button>
             </a>
 
-            <button class="dark-mode">
+            <button class="dark-mode" id="toggle-mode">
                 <i class="fa-solid fa-circle-half-stroke"></i>
             </button>
 
-            <button wire:click='openNotification'>
-                <div class="notification">
-                        <i class="fa fa-bell"></i>
-                    <div class="counter">15</div>
-                </div>
-            </button>
+            <a wire:click="openNotification">
+                <button>
+                    <div class="notification">
+                            <i class="fa fa-bell"></i>
+                        <div class="counter">0</div>
+                    </div>
+                </button>
+            </a>
             @guest
             <a href="/login">
                 <div class="img-photo">
@@ -51,6 +53,28 @@
             </a>
             @endauth
         </div>
+
+        @if ($isNotification)
+        <div class="modalNotification">
+            <h2>Notificações</h2>
+            <div class="notification-content">
+                <div class="notification-box">
+                    <img src="./imgs/avatar.webp" alt="" >
+                    <div class="text">
+                        <div class="nome">Dionísio Neto</div>
+                        <div class="notify">Lorem ipsum, dolor sit amet...</div>
+                    </div>
+                </div>
+                <div class="notification-box">
+                    <img src="./imgs/avatar.webp" alt="" >
+                    <div class="text">
+                        <div class="nome">Dionísio Neto</div>
+                        <div class="notify">Lorem ipsum, dolor sit amet...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
     </header>
 
     @if($search)
@@ -70,10 +94,6 @@
 
 
 
-    @if ($isNotification)
-    <div class="modalNotification">
-        <h1>Notificações</h1>
-    </div>
-    @endif
+
 
 </div>
