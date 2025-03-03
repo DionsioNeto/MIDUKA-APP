@@ -75,9 +75,9 @@
                     <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                     @endauth
                 </div>
-                <form action="" method="post">
-                    <input type="text" placeholder="Digite seu comentário">
-                    <button>
+                <form wire:submit.prevent="storageComment({{ $item->id }})" method="post">
+                    <input type="text" placeholder="Digite seu comentário" wire:model='content'>
+                    <button type="submit">
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </button>
                 </form>
@@ -103,9 +103,9 @@
                 </a>
                 @endguest
 
-                <a href="#">
+                <a href="/ver{{$item->id}}">
                     <i class="fa-regular fa-comments"></i>
-                    <div class="contador">0</div>
+                    <div class="contador">{{ $item->Comments }}</div>
                 </a>
                 <a href="{{ url("storage/uploads/{$item->content}") }}" download>
                     <i class="fa fa-download"></i>

@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Livewire;
-use App\Models\Conteudo;
-use Livewire\Component;
+use Livewire\Component; 
 use Livewire\WithPagination;
 use Livewire\WithoutUrlPagination;
 use Livewire\Attributes\Lazy;
+use App\Models\Conteudo;                  
+use App\Models\Comments;
 #[Lazy]
 
 
@@ -63,6 +64,7 @@ class Content extends Component{
 
     public function render(){
         $conteudos = Conteudo::latest()->paginate(2);
+        $comments = Comments::get();
         return view('livewire.content', ['conteudos' => $conteudos]);
     }
 
@@ -76,4 +78,35 @@ class Content extends Component{
     public function unlike(Conteudo $conteudo){
         $conteudo->likes()->delete();
     }
+
+    public $Content;
+
+    protected $rules = [
+        'Content' => 'required', // Permitindo diferentes tipos de arquivos
+    ];
+
+    public function storageComment($idConteudo){
+        if(auth()->user()){
+            $creat = new Comments();
+
+            $this->validate();
+
+            $creat->content = $this->content;
+            $creat->user_id = auth()->user()->id;
+
+            if($creat->save()){
+                $this->Content = null;
+                session()->flash('msg', 'Sucesso no envio do seu comentário');
+            }else{
+                session()->flash('Erro', 'Sem Sucesso no envio do seu comentário');
+            }
+        }else{
+            session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
+        }
+    }
+
+
+
+
+
 }
