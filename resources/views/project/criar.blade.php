@@ -8,9 +8,4 @@
 <livewire:sidbar-right />
 <livewire:responsive-nav />
 
-<main>
-    <livewire:criar-inside />
-    <div wire:offline>
-        <livewire:all-pages />
-    </div>
-</main>
+<livewire:criar-inside />

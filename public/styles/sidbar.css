@@ -3,23 +3,6 @@
 *   #Barra lateral
 */
 
-input[type="checkbox"]#sidbar{
-    display: none;
-}
-
-input[type="checkbox"]#sidbar:focus ~ .sidbar{
-    width: 50px;
-}
-
-input[type="checkbox"]#sidbar:focus ~ .sidbar .s-text{
-    display: none;
-}
-
-input[type="checkbox"]#sidbar:focus ~ main{
-    padding-top: 63px;
-    padding-left: 75px;
-    padding-right: 10px;
-}
 
 .sidbar,
 .sidbar-responsive{

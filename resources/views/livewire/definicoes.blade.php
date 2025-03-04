@@ -1,117 +1,107 @@
 <div>
     {{-- Model excluir conta! --}}
     @if($isModalVisible)
-        <div>
-            <div class="modalAccount">
-                <div class="contentModal">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    <h4>Tem a certeza que pretende excluir a sua conta?</h4>
-                    <p>Lembrando que se excluir a conta <strong>{{ Auth::user()->name }}</strong> , você perderá alguns previlégios</p>
-                    <div class="buttons">
-                        <div class="btn" wire:click="destroy">Excluir conta</div>
-                        <div class="btn" wire:click="toggleModal">Cancelar</div>
-                    </div>
-                </div>
+    <div class="modalAccount">
+        <div class="contentModal">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <h4>Tem a certeza que pretende excluir a sua conta?</h4>
+            <p>Lembrando que se excluir a conta <strong>{{ Auth::user()->name }}</strong> , você perderá alguns previlégios</p>
+            <div class="buttons">
+                <div class="btn" wire:click="destroy">Excluir conta</div>
+                <div class="btn" wire:click="toggleModal">Cancelar</div>
             </div>
         </div>
+    </div>
     @endif
     {{-- Modal de alteração de email --}}
     @if($isProfileEmail)
-        <div>
-            <div class="relactive modalAccount">
-                <div class="contentModal">
-                    <i class="fa-solid fa-envelope"></i>
-                    <h4>Tem a certeza que pretende editar o email de sua conta?</h4>
-                    <div>
-                        <form wire:submit.prevent="updateEmail">
-                            @error('email')
-                            <span>{{ $message }}</span>
-                            @enderror
-                            <input type="email" id="email" wire:model="email" placeholder="Digite seu novo e-mail">
+    <div class="modalAccount">
+        <div class="contentModal">
+            <i class="fa-solid fa-envelope"></i>
+            <h4>Tem a certeza que pretende editar o email de sua conta?</h4>
+            <div>
+                <form wire:submit.prevent="updateEmail">
+                    @error('email')
+                    <span>{{ $message }}</span>
+                    @enderror
+                    <input type="email" id="email" wire:model="email" placeholder="Digite seu novo e-mail">
 
-                            <button type="submit" class="btn">Atualizar E-mail</button>
+                    <button type="submit" class="btn">Atualizar E-mail</button>
 
-                        </form>
-                    </div>
-                    <div class="buttons">
-                        <div class="btn" wire:click="toggleProfileEmail">Cancelar</div>
-                    </div>
-                </div>
+                </form>
+            </div>
+            <div class="buttons">
+                <div class="btn" wire:click="toggleProfileEmail">Cancelar</div>
             </div>
         </div>
+    </div>
     @endif
     {{-- Modal da imagens de perfil --}}
 
     @if($isPlofileImage)
-        <div>
-            <div class="relactive modalAccount">
-                <div class="contentModal">
-                    <i class="fa fa-images"></i>
-                    <h4>Tem a certeza que pretende alterar a sua foto de perfil?</h4>
-                    <div class="img">
-                        <img src="{{ Auth::user()->profile_photo_url }}" alt="">
-                    </div>
-                    <div class="buttons">
-                        <div class="btn" wire:click="">Remover imagem</div>
-                        <div class="btn" wire:click="">Selecionar imagem</div>
-                        <div class="btn" wire:click="toggleProfileImage">Cancelar</div>
-                    </div>
-                </div>
+    <div class="modalAccount">
+        <div class="contentModal">
+            <i class="fa fa-images"></i>
+            <h4>Tem a certeza que pretende alterar a sua foto de perfil?</h4>
+            <div class="img">
+                <img src="{{ Auth::user()->profile_photo_url }}" alt="">
+            </div>
+            <div class="buttons">
+                <div class="btn" wire:click="">Remover imagem</div>
+                <div class="btn" wire:click="">Selecionar imagem</div>
+                <div class="btn" wire:click="toggleProfileImage">Cancelar</div>
             </div>
         </div>
+    </div>
     @endif
     {{-- Modal de alteração de palavra-passe --}}
     @if($isPassWord)
-        <div>
-            <div class="modalAccount">
-                <div class="contentModal">
-                    <i class="fa-solid fa-lock"></i>
-                    <h4>Tem a certeza que pretende editar o email de sua conta?</h4>
-                    <div>
-                        <form wire:submit.prevent="updatePassword">
-                            <div class="mb-3">
-                                <input type="password" id="current_password" wire:model="current_password" class="form-control" placeholder="Digite sua senha atual">
-                                @error('current_password') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <input type="password" id="new_password" wire:model="new_password" class="form-control" placeholder="Digite sua nova senha">
-                                @error('new_password') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
-
-                            <div class="mb-3">
-                                <input type="password" id="new_password_confirmation" wire:model="new_password_confirmation" class="form-control" placeholder="Confirme sua nova senha">
-                                @error('new_password_confirmation') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Atualizar Senha</button>
-                        </form>
+    <div class="modalAccount">
+        <div class="contentModal">
+            <i class="fa-solid fa-lock"></i>
+            <h4>Tem a certeza que pretende editar o email de sua conta?</h4>
+            <div>
+                <form wire:submit.prevent="updatePassword">
+                    <div class="mb-3">
+                        <input type="password" id="current_password" wire:model="current_password" class="form-control" placeholder="Digite sua senha atual">
+                        @error('current_password') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="buttons">
-                        <div class="btn" wire:click="togglePassWord">Cancelar</div>
+
+                    <div class="mb-3">
+                        <input type="password" id="new_password" wire:model="new_password" class="form-control" placeholder="Digite sua nova senha">
+                        @error('new_password') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                </div>
+
+                    <div class="mb-3">
+                        <input type="password" id="new_password_confirmation" wire:model="new_password_confirmation" class="form-control" placeholder="Confirme sua nova senha">
+                        @error('new_password_confirmation') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Atualizar Senha</button>
+                </form>
+            </div>
+            <div class="buttons">
+                <div class="btn" wire:click="togglePassWord">Cancelar</div>
             </div>
         </div>
+    </div>
     @endif
 
     @if ($imageProfileCap)
-        <div>
-            <div class="modalAccount">
-                <div class="contentModal">
-                    <i class="fa fa-images"></i>
-                    <h4>Tem a certeza que pretende alterar a sua foto de capa</h4>
-                    <div class="img">
-                        <img src="{{ Auth::user()->profile_photo_url }}" alt="">
-                    </div>
-                    <div class="buttons">
-                        <div class="btn" wire:click="">Remover imagem</div>
-                        <div class="btn" wire:click="">Selecionar imagem</div>
-                        <div class="btn" wire:click="toggleImageProfileCap">Cancelar</div>
-                    </div>
-                </div>
+    <div class="modalAccount">
+        <div class="contentModal">
+            <i class="fa fa-images"></i>
+            <h4>Tem a certeza que pretende alterar a sua foto de capa</h4>
+            <div class="img">
+                <img src="{{ Auth::user()->profile_photo_url }}" alt="">
+            </div>
+            <div class="buttons">
+                <div class="btn" wire:click="">Remover imagem</div>
+                <div class="btn" wire:click="">Selecionar imagem</div>
+                <div class="btn" wire:click="toggleImageProfileCap">Cancelar</div>
             </div>
         </div>
+    </div>
     @endif
 
 

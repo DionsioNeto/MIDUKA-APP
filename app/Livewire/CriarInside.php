@@ -10,6 +10,43 @@ use Livewire\Attributes\Lazy;
 
 
 class CriarInside extends Component {
+
+    // Para abrir o modal do video
+    public $modalVideo = false;
+
+    public function togleModalVideo(){
+        $this->modalVideo = !$this->modalVideo;
+    }
+
+    // Para abrir o modal img
+
+    public $modalImg = false;
+
+    public function togleModalImg(){
+        $this->modalImg = !$this->modalImg;
+    }
+
+    // Para abrir o modal audio
+
+    public $modalAudio = false;
+
+    public function togleModalAudio(){
+        $this->modalAudio = !$this->modalAudio;
+    }
+
+    // Para abrir o modal pdf
+
+
+    public $modalPdf = false;
+
+    public function togleModalPdf(){
+        $this->modalPdf = !$this->modalPdf;
+    }
+
+
+
+
+
     use WithFileUploads;
 
     public $file;
