@@ -14,33 +14,29 @@
             </div>
             <div class="nameOPtion">
                 <h2>{{ Auth::user()->name }}</h2>
-                <a class="op">
-                    <div class="opc">
-                        <details>
-                            <summary>
-                                <i class="fa-solid fa-ellipsis"></i>
-                            </summary>
-                            <ul>
-                                <li>
-                                    <i class="fa fa-mega-phone"></i>
-                                    Denunciar
-                                </li>
-                                <li>
-                                    <i class="fa fa-link"></i>
-                                    Cópiar URL
-                                </li>
-                                <li>
-                                    <i class="fa-regular fa-bookmark"></i>
-                                    Guardar para ler mais tarde
-                                </li>
-                                <li>
-                                    <i class="fa fa-bug"></i>
-                                    Notificar possível erro
-                                </li>
-                            </ul>
-                        </details>
-                    </div>
-                </a>
+                <details>
+                    <summary>
+                    <a class="op">
+                        <div class="opc">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+                    </a>
+                    </summary>
+                    <ul>
+                        <li>
+                            <i class="fa-regular fa-copy"></i>
+                            Cópiar link da página
+                        </li>
+                        <li>
+                            <i class="fa-regular fa-edit"></i>
+                            Editar perfil
+                        </li>
+                        <li>
+                            <i class="fa fa-bug"></i>
+                            Notificar possível erro
+                        </li>
+                    </ul>
+                </details>
             </div>
             <small>{{ Auth::user()->email }}</small>
        </div>
@@ -91,31 +87,29 @@
                         <div class="foll">
                             Seguir
                         </div>
-                        <div class="opc">
-                            <details>
-                                <summary>
+                        <details>
+                            <summary>
+                            <a class="op">
+                                <div class="opc">
                                     <i class="fa-solid fa-ellipsis"></i>
-                                </summary>
-                                <ul>
-                                    <li>
-                                        <i class="fa fa-mega-phone"></i>
-                                        Denunciar
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-link"></i>
-                                        Cópiar URL
-                                    </li>
-                                    <li>
-                                        <i class="fa-regular fa-bookmark"></i>
-                                        Guardar para ler mais tarde
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-bug"></i>
-                                        Notificar possível erro
-                                    </li>
-                                </ul>
-                            </details>
-                        </div>
+                                </div>
+                            </a>
+                            </summary>
+                            <ul>
+                                <li>
+                                    <i class="fa-regular fa-copy"></i>
+                                    Cópiar link da página
+                                </li>
+                                <li>
+                                    <i class="fa-regular fa-edit"></i>
+                                    Editar perfil
+                                </li>
+                                <li>
+                                    <i class="fa fa-bug"></i>
+                                    Notificar possível erro
+                                </li>
+                            </ul>
+                        </details>
                     </div>
                 </div>
                 <div class="container-conteudo">
@@ -123,7 +117,7 @@
                     @if ($item->type_tag == "jpg")
                     <img src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo">
                     @elseif($item->type_tag == "mp4")
-                    <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo" autoplay loop></video>
+                    <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo" {{-- autoplay loop--}}></video>
                     @endif
                 </div>
                 <div class="date cinza">

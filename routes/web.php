@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\dashboardController;
+use App\Http\Middleware\adminAcess;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\{
     Usuario,
@@ -9,7 +10,7 @@ use App\Livewire\{
 };
 
 
-Route::get('/test', [KeyBoard::class, 'render']);
+// Route::get('/test', [KeyBoard::class, 'render']);
 
 // Rota principal da aplicação (index).
 Route::get('/', [indexController:: class, 'index']);
@@ -53,10 +54,14 @@ Route::get('/support', function(){
     return view('project.suport_contact');
 });
 
-Route::get('/test/test/', function(){
-    return view('project.test');
-});
+    Route::get('/test', function(){
+        return view('project.test');
+    });
+    
+// Route::middleware(['adminAcess'])->group(function () {
 
+
+// });
 
 Route::get('/guardados', function(){
     return view('project.guardados');

@@ -9,26 +9,15 @@ use Livewire\Component;
 
 class KeyBoard extends Component{
 
-    public $inputText = '';
-    public $isKeyboardVisible = false;
+    public $dataToCopy = "Texto a ser copiado para o clipboard"; // Dado que será copiado
 
-    // Método para adicionar uma letra ao input
-    public function addCharacter($char)
+    // Função que simula a preparação do dado para copiar
+    public function prepareData()
     {
-        $this->inputText .= $char;
+        // Aqui você pode preparar os dados conforme necessário, por exemplo, manipular arquivos ou conteúdo.
+        $this->dataToCopy = "Novo conteúdo gerado para o clipboard!";
     }
 
-    // Método para remover a última letra do input
-    public function removeCharacter()
-    {
-        $this->inputText = substr($this->inputText, 0, -1);
-    }
-
-    // Método para mostrar ou esconder o teclado
-    public function toggleKeyboard()
-    {
-        $this->isKeyboardVisible = !$this->isKeyboardVisible;
-    }
     public function render(){
         return view('livewire.key-board');
     }

@@ -49,7 +49,7 @@
         <hr>
     @if (count($conteudos) > 0)
         <div class="grid">
-             @foreach ($conteudos as $item)
+             @foreach ($conteudos->auth->user-> as $item)
              <div class="card-video">
                 <div class="user-description">
                     <a href="/usuario{{ $item->user->id }}" class="inline">
@@ -57,7 +57,7 @@
                             <img src="{{ $item->user->profile_photo_url }}">
                         </div>
                         <div class="page-name">
-                            {{ $item->user->name }}
+                            {{ $item->name }}
                             <br>
                             <small>@dionisio.miduka</small>
                         </div>

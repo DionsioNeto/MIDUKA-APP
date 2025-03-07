@@ -1,21 +1,21 @@
 <div>
 
     @if ($modalImg)
-    <div class="modalAccount criar" id="modal-video">
+    <div class="modalAccount criar modal-video">
         <button wire:click='togleModalImg'>abrir IMG</button>
-        <h1>PDF</h1>
+        <h1>IMG</h1>
     </div>
     @endif
 
     @if ($modalAudio)
-    <div class="modalAccount criar" id="modal-video">
+    <div class="modalAccount criar modal-video">
         <button wire:click='togleModalAudio'>abrir audio</button>
         <h1>Audio</h1>
     </div>
     @endif
 
     @if ($modalPdf)
-    <div class="modalAccount criar" id="modal-video">
+    <div class="modalAccount criar modal-video">
         <div class="contentModal">
             <button wire:click='togleModalPdf'>abrir PDF</button>
             <h1>PDF</h1>
@@ -24,7 +24,7 @@
     @endif
 
     @if ($modalVideo)
-    <div class="modalAccount" id="modal-video">
+    <div class="modalAccount modal-video">
 
         <div class="contentModal">
             <button wire:click='togleModalVideo'>abrir Video</button>
@@ -137,7 +137,6 @@
                     </div>
                     <textarea wire:model='description'></textarea>
                 </div>
-                <button type="submit">Cancelar</button>
                 <button type="submit">Adicionar</button>
             </form>
 
@@ -147,13 +146,32 @@
     @endif
 
     <main>
-    <button wire:click='togleModalVideo'>abrir Video</button>
-    <button wire:click='togleModalImg'>abrir IMG</button>
-    <button wire:click='togleModalAudio'>abrir audio</button>
-    <button wire:click='togleModalPdf'>abrir PDF</button>
+        <h1>Criar conteúdos</h1>
+        <div class="grid-criar relactive">
+            <div class="box-criar" wire:click='togleModalVideo'>
+                <i class="fa fa-images"></i>
+                <h3>Vídeo</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
+            </div>
+            <div class="box-criar" wire:click='togleModalImg'>
+                <i class="fa fa-images"></i>
+                <h3>Imagens</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
+            </div>
+            <div class="box-criar" wire:click='togleModalAudio'>
+                <i class="fa fa-images"></i>
+                <h3>Audivos</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
+            </div>
+            <div class="box-criar" wire:click='togleModalPdf'>
+                <i class="fa fa-images"></i>
+                <h3>PDF (livros)</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
+            </div>
+        </div>
 
-    <div wire:offline>
-        <livewire:all-pages />
-    </div>
-</main>
+        <div wire:offline>
+            <livewire:all-pages />
+        </div>
+    </main>
 </div>

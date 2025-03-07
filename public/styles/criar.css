@@ -13,7 +13,7 @@ h3{
 |
 |_______________________*/
 
-div#modal-video{
+div.modal-video{
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -21,14 +21,14 @@ div#modal-video{
     animation-duration: 150ms;
 }
 
-div#modal-video div.steps{
+div.modal-video div.steps{
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 8px;
 }
 
-div#modal-video div.steps div.boll{
+div.modal-video div.steps div.boll{
     border: 2px solid var(--branco);
     border-radius: 50%;
     min-width: 30px;
@@ -38,21 +38,21 @@ div#modal-video div.steps div.boll{
     align-items: center;
 }
 
-div#modal-video div.steps div.bar{
+div.modal-video div.steps div.bar{
     width: 100%;
     height: 8px;
     border-radius: 10px;
     border: 1px solid var(--branco);
 }
 
-div#modal-video div.steps div.bar div.progress{
+div.modal-video div.steps div.bar div.progress{
     background-color: var(--azul);
     width: 20%;
     border-radius: 10px;
     height: 100%;
 }
 
-div#modal-video .recept{
+div.modal-video .recept{
     padding: 10px 5px;
     border: 1px solid var(--link);
     margin: 10px 0px;
@@ -73,13 +73,13 @@ input[type="file"]{
     opacity: 0;
 }
 
-div#modal-video form{
+div.modal-video form{
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-div#modal-video form textarea{
+div.modal-video form textarea{
     background-color: transparent;
     border-radius: 8px;
     border: 1px solid var(--link);
@@ -89,20 +89,20 @@ div#modal-video form textarea{
     resize: none;
 }
 
-div#modal-video form button{
+div.modal-video form button{
     background-color: var(--destaque);
     width: 110px;
     padding: 10px;
     border-radius: 8px;
 }
 
-div#modal-video .btns{
+div.modal-video .btns{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-div#modal-video .btn{
+div.modal-video .btn{
     background-color: var(--hover-card);
     padding: 5px 3px;
     color: var(--preto);
@@ -112,5 +112,33 @@ div#modal-video .btn{
 .danger{
     color: var(--vermelho);
     font-weight: bold;
+}
+
+.grid-criar{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,2fr);
+    gap: 10px;
+    padding: 10px 3px;
+}
+
+@media screen and (max-width: 486px) {
+    .grid-criar{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+.grid-criar .box-criar{
+    border: 1px solid var(--link);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 0px var(--link);
+    transition: 500ms;
+}
+
+.grid-criar .box-criar:hover{
+    box-shadow: 0px 5px 1px 1px var(--link);
 }
 

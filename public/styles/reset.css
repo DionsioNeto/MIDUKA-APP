@@ -150,6 +150,7 @@ details ul{
     right: 100%;
     width: max-content;
     background-color: var(--branco);
+    
     border-radius: 5px;
 }
 
