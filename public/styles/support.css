@@ -1,0 +1,23 @@
+.grid{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2,2fr);
+}
+
+@media screen and (max-width: 435px) {
+    .grid{
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(1,2fr);
+    }
+}
+
+.grid .grid-insid{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.grid .grid-insid{
+    width: 100%;
+}

@@ -64,7 +64,7 @@ class SidbarRight extends Component{
                         right: 0;
                         width: 250px;
                     }
-                    @media screen and ( max-width: 800px) {
+                    @media screen and ( max-width: 1200px) {
                         div#sir{
                             display: none;
                         }

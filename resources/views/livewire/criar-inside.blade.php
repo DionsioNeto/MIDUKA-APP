@@ -15,10 +15,62 @@
     @endif
 
     @if ($modalPdf)
-    <div class="modalAccount criar modal-video">
+    <div class="modalAccount modal-video">
         <div class="contentModal">
-            <button wire:click='togleModalPdf'>abrir PDF</button>
-            <h1>PDF</h1>
+            <div class="cima">
+                <h1>Postar PDF (Livros)</h1>
+                <button wire:click='togleModalPdf'>&times;</button>
+            </div>
+            <form wire:submit.prevent='store' method="post" enctype="multipart/form-data">
+                @csrf
+
+                <div>
+                    <h3>Reservado para adicionar o PDF (Livro) que pretende postar</h3>
+                    <div class="danger">
+                    @error('content')
+                        {{ $message }}
+                    @enderror
+                    </div>
+                    <div class="recept">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>Clique neste campo ou arraste o seu arquivo e solte aqui para começar o upload</p>
+                        <small>(jpg, jpeg, png, bmp, tiff, webp, mp4, mp3, pdf.)</small>
+                        <input type="file" id="content" wire:model='file'>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div>
+                    <h3>Reservado para adicionar a capa do conteúdo</h3>
+                    <div class="danger">
+                        @error('capa')
+                            {{ $message }}
+                        @enderror
+                    </div>
+                    <div class="recept">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p>Clique neste campo ou arraste o seu arquivo e solte aqui para começar o upload</p>
+                        <small>(jpg, jpeg, png, bmp, tiff, webp.)</small>
+                        <input type="file" id="" wire:model='capa'>
+                    </div>
+                </div>
+                @if ($capa)
+                    <h4>Pré-visualizar</h4>
+                    <img src="{{ $capa->temporaryUrl() }}"  width="50%" />
+                @endif
+                <hr>
+                <div>
+                    <h3>Adicione aqui a descrição completa</h3>
+                    <div class="danger">
+                        @error('description')
+                            {{ $message }}
+                        @enderror
+                    </div>
+                    <textarea wire:model='description' placeholder="Fale detalhadamente sobre o livro em questão..."></textarea>
+                </div>
+                <button type="submit">Adicionar</button>
+            </form>
         </div>
     </div>
     @endif
@@ -27,8 +79,6 @@
     <div class="modalAccount modal-video">
 
         <div class="contentModal">
-            <button wire:click='togleModalVideo'>abrir Video</button>
-
             <div class="cima">
                 @if(session('msg'))
                 <div>
@@ -44,8 +94,10 @@
                     {{ session('Erro') }}
                 @endif
                 <h1>Criar conteúdos</h1>
+                <button wire:click='togleModalVideo'>&times;</button>
             </div>
-            <div class="steps">
+
+            {{-- <div class="steps">
                 <div class="boll">1</div>
                 <div class="bar">
                     <div class="progress"></div>
@@ -53,7 +105,7 @@
                 <div class="boll">2</div>
                 <div class="bar"></div>
                 <div class="boll">3</div>
-            </div>
+            </div> --}}
 
             <form wire:submit.prevent='store' method="post" enctype="multipart/form-data">
                 @csrf

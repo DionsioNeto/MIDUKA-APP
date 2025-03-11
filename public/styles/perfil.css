@@ -1,14 +1,76 @@
-.main-all{
-    animation-name: animat;
-    animation-duration: 150ms;
+/**
+*
+*   Modal para edicão de perfil
+*
+**/
+
+.img-all .capa{
+    max-height: 150px;
+    overflow: hidden;
 }
-@keyframes animat{
-    0%{
-        margin-left: -10px;
-    }100%{
-        margin: 0;
-    }
+
+.img-all .capa img{
+    width: 100%;
 }
+
+.img-all .edit-profile-photo{
+    width: 85px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin:  -40px 0px 10px 10px;
+    border: 3px solid var(--destaque);
+}
+
+.img-all .edit-profile-photo img{
+    max-width: 100%;
+    height: auto;
+}
+
+.content-text{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 5px 0px;
+}
+
+.content-text .info-text{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--destaque);
+    border-radius: 3px;
+    padding: 5px;
+}
+
+.content-text .btn button{
+    background-color: var(--branco);
+    border-radius: 20px;
+    padding: 5px 10px;
+    color: var(--preto);
+}
+
+.content-text .info-text small{
+    color: var(--link);
+    font-size: 12px;
+}
+
+
+.content-text .info-text input[type="text"],
+.content-text .info-text textarea{
+    border: none;
+    background: transparent;
+    padding: 5px 0px;
+}
+
+
+
+
+
+/**
+*
+*   Conteúdo principal
+*
+*/
+
 
 main .main-img{
     max-width: 100%;
@@ -40,7 +102,7 @@ main .padding .informacao .profile-photo{
     display: flex;
     justify-content: center;
     overflow: hidden;
-    border: 5px solid var(--background);
+    border: 3px solid var(--destaque);
 }
 
 main .padding .informacao .profile-photo img{

@@ -206,6 +206,27 @@
 
 }
 
+.card-video .container-conteudo .grid-img-conteudo{
+    display: grid;
+    grid-template-columns: repeat(2,2fr);
+    width: 100%;
+    height: 100%;
+    gap: 1px;
+}
+
+.card-video .container-conteudo .grid-img-conteudo div{
+    border: 1px solid var(--link);
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.card-video .container-conteudo .grid-img-conteudo div > img{
+    width: 100%;
+    height: auto;
+}
+
 .cinza{
     color: var(--link);
 }

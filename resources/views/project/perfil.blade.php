@@ -7,10 +7,5 @@
 <livewire:sidbar />
 <livewire:sidbar-right />
 <livewire:responsive-nav />
+<livewire:profile />
 
-<main>
-    <livewire:profile />
-    <div wire:offline>
-        <livewire:all-pages />
-    </div>
-</main>

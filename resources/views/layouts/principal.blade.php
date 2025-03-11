@@ -39,6 +39,8 @@
         <!-- Estilos específicos da rota -->
         @if(request()->is('/'))
             <link rel="stylesheet" href="./styles/style.css">
+        @elseif(request()->is('support'))
+            <link rel="stylesheet" href="./styles/support.css">
         @elseif(request()->is('login'))
             <link rel="stylesheet" href="./styles/login.css">
         @elseif(request()->is('perfil'))
@@ -51,7 +53,9 @@
             <link rel="stylesheet" href="./styles/criar.css">
         @elseif(request()->is('Pesquisar'))
             <link rel="stylesheet" href="./styles/search.css">
-        @elseif(request()->is(''))
+        {{-- @elseif(request()->is(''))
+        @elseif(request()->is('')) --}}
+
         @endif
 </head>
 <body>

@@ -20,26 +20,6 @@
     color: var(--link);
 }
 
-
-.sidbar-right form input{
-    margin: 3px 0px;
-    width: 100%;
-    background-color: transparent;
-    border: 1px solid var(--link);
-    border-radius: 5px;
-    padding: 5px;
-    color: var(--branco);
-}
-
-.sidbar-right form input[type="submit"]{
-    background-color: var(--branco);
-    color: var(--preto);
-    width: 40%;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 .inside{
     display: flex;
     flex-direction: column;

@@ -21,13 +21,6 @@ div.modal-video{
     animation-duration: 150ms;
 }
 
-div.modal-video div.steps{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-}
-
 div.modal-video div.steps div.boll{
     border: 2px solid var(--branco);
     border-radius: 50%;

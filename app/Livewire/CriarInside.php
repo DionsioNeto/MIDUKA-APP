@@ -37,7 +37,7 @@ class CriarInside extends Component {
     // Para abrir o modal pdf
 
 
-    public $modalPdf = false;
+    public $modalPdf = true;
 
     public function togleModalPdf(){
         $this->modalPdf = !$this->modalPdf;

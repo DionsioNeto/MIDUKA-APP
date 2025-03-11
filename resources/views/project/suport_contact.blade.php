@@ -8,9 +8,5 @@
 <livewire:sidbar />
 <livewire:sidbar-right />
 <livewire:responsive-nav />
-<main>
-   <livewire:suppor-inside />
-   <div wire:offline>
-        <livewire:all-pages />
-    </div>
-</main>
+
+<livewire:suppor-inside />

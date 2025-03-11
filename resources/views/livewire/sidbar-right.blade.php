@@ -5,9 +5,9 @@
             @csrf
             <div>
                 <h3>{{__('Log in')}}</h3>
-                <input type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Email">
-                <input type="password" name="password" required autocomplete="current-password" placeholder="Palavra-passe">
-                <input type="submit" value="{{ __('Login') }}">
+                <input type="email" name="email" :value="old('email')" required autofocus autocomplete="username" placeholder="Email" class="btn-simple">
+                <input type="password" name="password" required autocomplete="current-password" placeholder="Palavra-passe" class="btn-simple">
+                <input type="submit" value="{{ __('Login') }}" class="btn-submit-simple">
                 <span>Ainda não tem conta? <a href="/register">{{ __('Create Account') }}</a></span>
             </div>
         </form>

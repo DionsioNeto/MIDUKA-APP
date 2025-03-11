@@ -150,7 +150,7 @@ details ul{
     right: 100%;
     width: max-content;
     background-color: var(--branco);
-    
+
     border-radius: 5px;
 }
 
@@ -300,3 +300,54 @@ main .alert-content i{
     overflow-x: hidden;
 }
 
+
+div.modal-video div.cima{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--link);
+}
+
+div.modal-video div.cima button{
+    background-color: var(--vermelho);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    font-size: 27px;
+}
+
+div.modal-video div.steps{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.modalAccount .contentModal a{
+    text-decoration: underline;
+    font-weight: 600;
+    color: var(--link);
+}
+
+.btn-simple{
+    margin: 3px 0px;
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid var(--link);
+    border-radius: 5px;
+    padding: 8px 5px;
+    color: var(--branco);
+}
+
+.btn-submit-simple{
+    background-color: var(--link);
+    color: var(--branco);
+    border: none;
+    width: 40%;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
