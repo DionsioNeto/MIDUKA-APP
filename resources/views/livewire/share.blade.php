@@ -17,7 +17,11 @@
     <!-- Formulário de Upload -->
     <div>
         <input type="file" wire:model="files" multiple>
-        @error('files.*') <span class="text-danger">{{ $message }}</span> @enderror
+        @error('files.*') 
+        <span class="text-danger">
+        {{ $message }}
+        </span> 
+        @enderror
     </div>
 
     <!-- Previews dos Arquivos -->
@@ -32,16 +36,3 @@
     <!-- Botão para Salvar os Arquivos -->
     <button wire:click="save" class="btn btn-primary mt-3">Salvar Arquivos</button>
 </div>
-
-{{--
-migrations
-// database/migrations/xxxx_xx_xx_create_files_table.php
-
-public function up()
-{
-    Schema::create('files', function (Blueprint $table) {
-        $table->id();
-        $table->json('files'); // Armazena os dados dos arquivos como JSON
-        $table->timestamps();
-    });
-} --}}

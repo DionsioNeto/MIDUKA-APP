@@ -3,6 +3,7 @@
 namespace App\Livewire;
 use Livewire\WithFileUploads;
 use Livewire\Component;
+use App\Models\Conteudo;                  
 
 class Share extends Component{
 
@@ -22,7 +23,7 @@ class Share extends Component{
         if (count($this->files) > self::MAX_FILES) {
             $this->files = array_slice($this->files, 0, self::MAX_FILES);
         }
-
+        
         // Gerar o preview dos arquivos
         foreach ($this->files as $file) {
             $this->preview[] = $file->temporaryUrl();
@@ -30,8 +31,8 @@ class Share extends Component{
     }
 
     // Função para gravar os dados no banco
-    public function save()
-    {
+    public function save(){
+        dd($this->file);
         // Validar a quantidade de arquivos
         if (count($this->files) > self::MAX_FILES) {
             session()->flash('error', 'Você não pode enviar mais de 4 arquivos.');
@@ -47,10 +48,10 @@ class Share extends Component{
         }, $this->files);
 
         // Exemplo de gravação no banco em formato JSON
-        \App\Models\File::create([
-            'files' => json_encode($fileData),
+        Conteudo::create([
+            'filesImg' => json_encode($fileData),
         ]);
-
+        
         session()->flash('message', 'Arquivos enviados com sucesso!');
     }
 
