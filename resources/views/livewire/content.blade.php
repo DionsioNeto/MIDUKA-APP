@@ -125,7 +125,7 @@
                     <div class="page-name">
                         {{ $item->user->name }}
                         <br>
-                        <small>@dionisio.miduka</small>
+                        <small>@{{ $item->user->user_name }}</small>
                     </div>
                 </a>
                 <div class="fle">
@@ -160,7 +160,7 @@
                 </div>
             </div>
             <div class="container-conteudo">
-                
+
                 <div class="grid-img-conteudo">
                     <div>
                         <img src="./imgs/bg.jpg" alt="">
@@ -225,7 +225,7 @@
                     <div class="contador">{{ $item->likes()->count() }}</div>
                 </a>
                 @endguest
-    
+
                 <a href="/ver{{$item->id}}">
                     <i class="fa-regular fa-comments"></i>
                     <div class="contador">{{ $item->Comments }}</div>

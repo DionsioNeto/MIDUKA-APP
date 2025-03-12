@@ -1,0 +1,14 @@
+update com o livewire {
+    email,
+    password,
+    img,
+}
+
+inserte de mais de 1 imagens com livewire, e salve no banco em formato de json
+
+
+com livewire, crie uma tabela de notificacao, e faca o seguinte: {
+    faca uma tabela de notificacao
+    faca outra de poste, e quando é postadoalguma coisa, preencha a tabela notificacao, e na tabela notificacao, faca o tratamento para que um usuarios possam se notificar entre eles, mas só se o usuario apertar no botao de notificarme sempre
+    
+}

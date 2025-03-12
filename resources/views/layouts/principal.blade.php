@@ -33,8 +33,6 @@
 
         {{-- Livewire styles  --}}
         @livewireStyles
-        @stack('styles')
-        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
 
         <!-- Estilos específicos da rota -->
         @if(request()->is('/'))

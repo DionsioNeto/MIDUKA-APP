@@ -351,3 +351,7 @@ div.modal-video div.steps{
     border-radius: 5px;
     cursor: pointer;
 }
+
+small.erro{
+    color: var(--vermelho);
+}

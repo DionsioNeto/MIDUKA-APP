@@ -15,6 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('site')->default('');
+            $table->string('profile_photo_capa_path', 4048)->nullable();
+            $table->string('bio')->default('');
+            $table->boolean('user_type_admin')->default(0);
+            $table->string('user_name')
+            ->default("usuario_" . md5(date('d/m/Y', strtotime('now'))))
+            ->unique();
+
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

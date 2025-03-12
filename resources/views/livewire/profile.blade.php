@@ -1,10 +1,10 @@
 <div>
-    
+
     @if ($modalEditProfile)
     <div class="modalAccount modal-video">
         <div class="contentModal">
             <div class="cima">
-                <h1>Postar PDF (Livros)</h1>
+                <h3>Postar PDF (Livros)</h3>
                 <button wire:click='ToggleModal'>&times;</button>
             </div>
             <div class="img-all">
@@ -16,23 +16,47 @@
                 </div>
             </div>
             <div class="content-text">
-                <div class="info-text">
-                    <small>Nome</small>
-                    <input type="text" value="{{ Auth::user()->name }}" placeholder="Este espaço não pode ficar vázio!">
-                </div>
-                <div class="info-text">
-                    <small>E-mail</small>
-                    <input type="text" value="{{ Auth::user()->email }}" placeholder="Este espaço não pode ficar vázio!">
-                </div>
 
-                <div class="info-text">
-                    <small>Site</small>
-                    <input type="text" value="" placeholder="Digite uma ligação (Link) site ou rede social">
-                </div>
-                <div class="info-text">
-                    <small>Bio</small>
-                    <textarea id="" placeholder="Edite a sua biográfia (opcional)"></textarea>
-                </div>
+                <label for="name">
+                    <small class="erro">Erro qualquer</small>
+                    <div class="info-text">
+                        <small>Nome</small>
+                        <input type="text" value="{{ Auth::user()->name }}" placeholder="Este espaço não pode ficar vázio!" id="name" wire:model='nome'>
+                    </div>
+                </label>
+
+                <label for="email">
+                    <small class="erro">Erro qualquer</small>
+                    <div class="info-text">
+                        <small>E-mail</small>
+                        <input type="text" value="{{ Auth::user()->email }}" placeholder="Este espaço não pode ficar vázio!" id="email">
+                    </div>
+                </label>
+
+                <label for="userName">
+                    <small class="erro">Erro qualquer</small>
+                    <div class="info-text">
+                        <small>Nome de usuário (o campo não pode conter espacamento)</small>
+                        <input type="text" value="{{ Auth::user()->user_name }}" placeholder="Este espaço não pode ficar vázio!" id="userName">
+                    </div>
+                </label>
+
+                <label for="site">
+                    <small class="erro">Erro qualquer</small>
+                    <div class="info-text">
+                        <small>Site</small>
+                        <input type="text" value="{{ Auth::user()->site }}" placeholder="Digite uma ligação (Link) site ou rede social" id="site">
+                    </div>
+                </label>
+
+                <label for="bio">
+                    <small class="erro">Erro qualquer</small>
+                    <div class="info-text">
+                        <small>Bio</small>
+                        <textarea id="bio" placeholder="Edite a sua biográfia (opcional)" value="{{ Auth::user()->bio }}"></textarea>
+                    </div>
+                </label>
+
                 <div class="btn">
                     <button>Salvar</button>
                 </div>
@@ -82,19 +106,27 @@
                             </ul>
                         </details>
                     </div>
-
                     <div class="information">
                         <a href="">
-                            <i class="fa fa-link"></i>
+                            <i class="fa-solid fa-at"></i>
+                            {{ Auth::user()->user_name }}
+                        </a>
+                    </div>
+
+                    <div class="information">
+                        <a>
+                            <i class="fa-solid fa-envelope"></i>
                             {{ Auth::user()->email }}
                         </a>
                     </div>
+                    @if (Auth::user()->site)
                     <div class="information">
-                        <a href="">
+                        <a href="{{ Auth::user()->site }}">
                             <i class="fa fa-link"></i>
-                            dion.com
+                            {{ Auth::user()->site }}
                         </a>
                     </div>
+                    @endif
 
                </div>
                <br>

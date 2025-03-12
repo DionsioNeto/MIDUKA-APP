@@ -57,7 +57,8 @@ Route::get('/support', function(){
     Route::get('/test', function(){
         return view('project.test');
     });
-    
+
+
 // Route::middleware(['adminAcess'])->group(function () {
 
 
