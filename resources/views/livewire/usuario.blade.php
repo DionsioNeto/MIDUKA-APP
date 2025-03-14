@@ -49,7 +49,7 @@
         <hr>
     @if (count($conteudos) > 0)
         <div class="grid">
-             @foreach ($conteudos->auth->user-> as $item)
+             @foreach ($conteudos as $item)
              <div class="card-video">
                 <div class="user-description">
                     <a href="/usuario{{ $item->user->id }}" class="inline">

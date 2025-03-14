@@ -3,8 +3,6 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\Conteudo;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Lazy;
 #[Lazy]
 

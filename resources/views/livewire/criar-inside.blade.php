@@ -125,6 +125,11 @@
                     </div>
                 </div>
 
+                <div wire:loading wire:target="file">
+                    <h1>A carregar</h1>
+                </div>
+                <h1>- - -</h1>
+
                 {{-- Exibir pré-visualização dependendo do tipo de arquivo --}}
                 @if ($fileUrl)
                 <div>

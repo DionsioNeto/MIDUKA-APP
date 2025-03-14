@@ -11,7 +11,10 @@
                     <div class="page-name">
                         {{ $item->user->name }}
                         <br>
-                        <small>@dionisio.miduka</small>
+                        <small>
+                            @
+                            {{ strlen($item->user->user_name) > 20 ? substr($item->user->user_name, 0, 20) . ' ...' : $item->user->user_name }}
+                </small>
                     </div>
                 </a>
                 <div class="fle">
@@ -27,6 +30,10 @@
                                 <li>
                                     <i class="fa fa-mega-phone"></i>
                                     Denunciar
+                                </li>
+                                <li>
+                                    <i class="fa-regular fa-bell"></i>
+                                    Notificar-me
                                 </li>
                                 <li>
                                     <i class="fa fa-link"></i>
@@ -125,7 +132,7 @@
                     <div class="page-name">
                         {{ $item->user->name }}
                         <br>
-                        <small>@{{ $item->user->user_name }}</small>
+                        <small>@ {{ $item->user->user_name }}</small>
                     </div>
                 </a>
                 <div class="fle">

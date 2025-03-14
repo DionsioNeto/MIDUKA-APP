@@ -28,7 +28,7 @@
             {{ strlen($item->description) > 100 ? substr($item->description, 0, 120) . ' ver mais ...' : $item->description }}
             <hr>
             {{ date('d/m/Y', strtotime($item->created_at)) }} |
-            {{ date(' H', strtotime($item->created_at)) }} H {{ date('m', strtotime($item->created_at)) }} M 
+            {{ date(' H', strtotime($item->created_at)) }} H {{ date('m', strtotime($item->created_at)) }} M
         </div>
     </div>
 
@@ -45,8 +45,7 @@
                 </div>
                 <div class="description">
                     <h4>{{ $item->name }}</h4>
-                    <p>Aderio em: {{ date('Y', strtotime($item->created_at)) }}</p>
-                    <p>Sobre a página: </p>
+                    <p><span>@</span>{{ $item->user_name }} </p>
                 </div>
             </div>
 

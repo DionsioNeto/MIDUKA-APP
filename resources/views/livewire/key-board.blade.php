@@ -1,4 +1,4 @@
-<div>
+{{-- <div>
     <div>
         <h3>Copiar Dados para o Clipboard</h3>
         <hr>
@@ -43,4 +43,12 @@
         </style>
     </div>
 
+</div> --}}
+
+
+<div>
+    <form wire:submit.prevent='s' method="post">
+        <input type="text" placeholder="digite" wire:model='ff'>
+        <input type="submit" value="go">
+    </form>
 </div>

@@ -17,10 +17,9 @@ use Livewire\Features\SupportFileUploads\WithFileUploads;
 
 class Profile extends Component{
     use WithPagination, WithoutUrlPagination;
-
-
+    use WithFileUploads;
+    
     public $modalEditProfile = false;
-
     public function ToggleModal(){
         $this->modalEditProfile = !$this->modalEditProfile;
     }
@@ -33,26 +32,53 @@ class Profile extends Component{
     public $profile_photo;
     public $profile_photo_capa_path;
 
-    protected $rules = [
-        'name' => 'required|min:20',
-        'email' => 'required|min:5',
-        'user_name' => 'required|min:20',
-        'bio' => '',
-        'site' => 'required|min:20',
-        'profile_photo' => 'max:2028|mimes:jpg,jpeg,png,bmp,tiff,webp',
-        'profile_photo_capa_path' => 'max:2028|mimes:jpg,jpeg,png,bmp,tiff,webp'
-    ];
-
-    use WithFileUploads;
-
-
     public function updatePrifileInfo(){
+        $this->validate([
+            'name' => '',
+            'email' => '',
+            'user_name' => '',
+            'bio' => '',
+            'site' => '',
+            'profile_photo' => '',
+        ]);
 
+        if($this->name == null){
+            $this->name = auth()->user()->name;
+        }
+        if($this->email == null){
+            $this->email = auth()->user()->email;
+        }
+        if($this->user_name == null){
+            $this->user_name = auth()->user()->user_name;
+        }
+
+
+        // dd($this->name, $this->email, $this->user_name, $this->bio, $this->site);
+
+        $User = User::find(auth()->user()->id);
+        $User->update([
+            'name' => $this->name,
+            'email' => $this->email,
+            'user_name' => $this->user_name,
+            'bio' => $this->bio,
+            'site' => $this->site,
+        ]);
+
+        session()->flash('message', 'Perfil atualizado com sucesso.');
+        // $this->resetInputFields();
     }
 
 
     public function render(){
-        $conteudos = Conteudo::where('user_id', auth()->user()->id)->get();
-        return view('livewire.profile', ['conteudos' => $conteudos]);
+        $conteudos = Conteudo::where
+        ('user_id', auth()->user()->id)
+        ->latest()
+        ->paginate(1);
+        return view(
+            'livewire.profile',
+            [
+                'conteudos' => $conteudos,
+            ]
+        );
     }
 }

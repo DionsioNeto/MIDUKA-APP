@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('type_tag');
             $table->text('content');
             $table->text('capa');
-            $table->json('files'); // Armazena os dados dos arquivos como JSON
+            // $table->json('files'); // Armazena os dados dos arquivos como JSON
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
  
