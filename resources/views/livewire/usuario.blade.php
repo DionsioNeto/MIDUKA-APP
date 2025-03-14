@@ -23,27 +23,79 @@
                 </div>
                 <div class="nameOPtion">
                     <h2>{{ $usuario->name }}</h2>
-                    <a href="" class="op">
-                        <i class="fa-solid fa-share"></i>
+                    <details>
+                        <summary>
+                        <a class="op">
+                            <div class="opc">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </div>
+                        </a>
+                        </summary>
+                        <ul>
+                            <li>
+                                <i class="fa-regular fa-copy"></i>
+                                Cópiar link da página
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-share"></i>
+                                Partilhar perfil
+                            </li>
+                            <li>
+                                <i class="fa fa-bug"></i>
+                                Notificar possível erro
+                            </li>
+                            <li>
+                                <i class="fa fa-error"></i>
+                                Denunciar
+                            </li>
+                        </ul>
+                    </details>
+                </div>
+                <div class="information">
+                    <i class="fa-solid fa-at"></i>
+                    {{ $usuario->user_name }}
+                </div>
+
+                <div class="information">
+                    <i class="fa-solid fa-envelope"></i>
+                    {{ $usuario->email }}
+                </div>
+                @if ($usuario->site)
+                <div class="information">
+                    <a href="{{ $usuario->site }}">
+                        <i class="fa fa-link"></i>
+                        {{ $usuario->site }}
                     </a>
                 </div>
-                <small>{{ $usuario->email }}</small>
+                @endif
+                <div>
+                    <i class="fa fa-calendar"></i>
+                    Aderiu em {{ date('Y' , strtotime($usuario->created_at)) }}
+                </div>
            </div>
         </div>
         <div class="dados">
+            @if($usuario->bio)
             <div class="bio">
-                Biográfia😪🧠
+                {{ $usuario->bio }}
+            </div>
+            @endif
+        </div>
+        <div class="all">
+            <div>
+                <a href="">Tudo 1</a>
             </div>
             <div>
-                <i class="fa fa-location"></i>
-                Luanda, Angola
+                <a href="">Vídeos 1</a>
             </div>
             <div>
-                <i class="fa fa-calendar"></i>
-                Aderiu em {{ date('Y' , strtotime($usuario->created_at)) }}
+                <a href="">Imagens 0</a>
             </div>
-            <div class="seguidor">
-                <i class="fa-solid fa-handshake-simple"></i> Conexões: 0
+            <div>
+                <a href="">Livros 0</a>
+            </div>
+            <div>
+                <a href="">Audios 0</a>
             </div>
         </div>
         <hr>
@@ -57,15 +109,12 @@
                             <img src="{{ $item->user->profile_photo_url }}">
                         </div>
                         <div class="page-name">
-                            {{ $item->name }}
+                            {{ $item->user->name }}
                             <br>
-                            <small>@dionisio.miduka</small>
+                            <small>@ {{ $item->user->user_name }}</small>
                         </div>
                     </a>
                     <div class="fle">
-                        <div class="foll">
-                            Seguir
-                        </div>
                         <div class="opc">
                             <details>
                                 <summary>
@@ -164,7 +213,53 @@
             </div>
              @endforeach
         </div>
+@if ($conteudos->hasPages())
+                <hr>
+                <div class="pag">
+                    <div>
+                        <p class="text-sm text-gray-700 leading-5 dark:text-gray-400">
+                            {!! __('Showing') !!}
+                            @if ($conteudos->firstItem())
+                                <span class="font-medium">{{ $conteudos->firstItem() }}</span>
+                                {!! __('to') !!}
+                                <span class="font-medium">{{ $conteudos->lastItem() }}</span>
+                            @else
+                                {{ $conteudos->count() }}
+                            @endif
+                            {!! __('of') !!}
+                            <span class="font-medium">{{ $conteudos->total() }}</span>
+                            {!! __('results') !!}
+                        </p>
+                    </div>
+                    <nav role="navigation" aria-label="Pagination Navigation">
+                        <span class="btn-nav">
+                            @if ($conteudos->onFirstPage())
+                                <span>
+                                    Anterior
+                                </span>
+                            @else
+                                <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev">
+                                    <i class="fa-solid fa-arrow-left-long"></i>
+                                    Anterior
+                                </button>
+                            @endif
+                        </span>
 
+                        <span  class="btn-nav">
+                            @if ($conteudos->onLastPage())
+                                <span>
+                                    Proximo
+                                </span>
+                            @else
+                                <button wire:click="nextPage" wire:loading.attr="disabled" rel="next">
+                                    Proximo
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </button>
+                            @endif
+                        </span>
+                    </nav>
+                </div>
+                @endif
         @else
             <section class="posts">
                 <div>

@@ -4,7 +4,7 @@
     <div class="modalAccount modal-video">
         <div class="contentModal">
             <div class="cima">
-                <h3>Postar PDF (Livros)</h3>
+                <h4>Atualizar dados do perfil</h4>
                 <button wire:click='ToggleModal'>&times;</button>
             </div>
             <div class="img-all">
@@ -75,7 +75,7 @@
                     <div class="btn">
                         <button type="submit">Salvar</button>
                     </div>
-                </form>     
+                </form>
             </div>
         </div>
     </div>
@@ -290,55 +290,54 @@
                     </div>
                     @endforeach
                 </div>
-                
+
                 @if ($conteudos->hasPages())
-    <hr>
-    <div class="pag">
+                <hr>
+                <div class="pag">
+                    <div>
+                        <p class="text-sm text-gray-700 leading-5 dark:text-gray-400">
+                            {!! __('Showing') !!}
+                            @if ($conteudos->firstItem())
+                                <span class="font-medium">{{ $conteudos->firstItem() }}</span>
+                                {!! __('to') !!}
+                                <span class="font-medium">{{ $conteudos->lastItem() }}</span>
+                            @else
+                                {{ $conteudos->count() }}
+                            @endif
+                            {!! __('of') !!}
+                            <span class="font-medium">{{ $conteudos->total() }}</span>
+                            {!! __('results') !!}
+                        </p>
+                    </div>
+                    <nav role="navigation" aria-label="Pagination Navigation">
+                        <span class="btn-nav">
+                            @if ($conteudos->onFirstPage())
+                                <span>
+                                    Anterior
+                                </span>
+                            @else
+                                <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev">
+                                    <i class="fa-solid fa-arrow-left-long"></i>
+                                    Anterior
+                                </button>
+                            @endif
+                        </span>
 
-        <div>
-            <p class="text-sm text-gray-700 leading-5 dark:text-gray-400">
-                {!! __('Showing') !!}
-                @if ($conteudos->firstItem())
-                    <span class="font-medium">{{ $conteudos->firstItem() }}</span>
-                    {!! __('to') !!}
-                    <span class="font-medium">{{ $conteudos->lastItem() }}</span>
-                @else
-                    {{ $conteudos->count() }}
+                        <span  class="btn-nav">
+                            @if ($conteudos->onLastPage())
+                                <span>
+                                    Proximo
+                                </span>
+                            @else
+                                <button wire:click="nextPage" wire:loading.attr="disabled" rel="next">
+                                    Proximo
+                                    <i class="fa-solid fa-arrow-right-long"></i>
+                                </button>
+                            @endif
+                        </span>
+                    </nav>
+                </div>
                 @endif
-                {!! __('of') !!}
-                <span class="font-medium">{{ $conteudos->total() }}</span>
-                {!! __('results') !!}
-            </p>
-        </div>
-        <nav role="navigation" aria-label="Pagination Navigation">
-            <span class="btn-nav">
-                @if ($conteudos->onFirstPage())
-                    <span>
-                        Anterior
-                    </span>
-                @else
-                    <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev">
-                        <i class="fa-solid fa-arrow-left-long"></i>
-                        Anterior
-                    </button>
-                @endif
-            </span>
-
-            <span  class="btn-nav">
-                @if ($conteudos->onLastPage())
-                    <span>
-                        Proximo
-                    </span>
-                @else
-                    <button wire:click="nextPage" wire:loading.attr="disabled" rel="next">
-                        Proximo
-                        <i class="fa-solid fa-arrow-right-long"></i>
-                    </button>
-                @endif
-            </span>
-        </nav>
-    </div>
-    @endif
 
             @else
                 <section class="posts">
