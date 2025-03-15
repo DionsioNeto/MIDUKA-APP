@@ -25,7 +25,7 @@
             </div>
             <hr>
             <div>
-                Miduka &copy; 2025
+                Miduka &copy; {{ date('Y', strtotime('now')) }}
             </div>
         </div>
     </div>

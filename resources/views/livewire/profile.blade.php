@@ -158,7 +158,7 @@
 
             <div class="all">
                 <div>
-                    <a href="">Tudo {{ $conteudos->count() }}</a>
+                    <a href="">Tudo {{ $conteudos->total() }}</a>
                 </div>
                 <div>
                     <a href="">Vídeos 1</a>
@@ -191,9 +191,7 @@
                                 </div>
                             </a>
                             <div class="fle">
-                                <div class="foll">
-                                    Seguir
-                                </div>
+
                                 <details>
                                     <summary>
                                     <a class="op">
@@ -209,7 +207,7 @@
                                         </li>
                                         <li>
                                             <i class="fa-regular fa-edit"></i>
-                                            Editar perfil
+                                            Editar conteúdo
                                         </li>
                                         <li>
                                             <i class="fa fa-bug"></i>

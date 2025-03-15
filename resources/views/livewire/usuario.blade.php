@@ -83,7 +83,7 @@
         </div>
         <div class="all">
             <div>
-                <a href="">Tudo 1</a>
+                <a href="">Tudo {{ $conteudos->total() }}</a>
             </div>
             <div>
                 <a href="">Vídeos 1</a>

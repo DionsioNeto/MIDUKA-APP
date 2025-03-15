@@ -11,21 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('conteudos', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
-            $table->text('type_tag');
-            $table->text('content');
-            $table->text('capa');
+            
+            $table->unsignedBigInteger('id_from');
 
-            $table->unsignedBigInteger('user_id');
-            $table->timestamps();
-
-
-            $table->foreign('user_id')
+            $table->foreign('id_from')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
+
+            $table->string('id_to');
+            $table->string('content_notification');
+            $table->boolean('verify')
+            ->default(0);
+            $table->timestamps();
         });
     }
 
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('conteudos');
+        Schema::dropIfExists('notifications');
     }
 };

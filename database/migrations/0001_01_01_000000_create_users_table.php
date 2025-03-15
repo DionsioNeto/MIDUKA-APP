@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('site')->default('');
             $table->string('profile_photo_capa_path', 4048)->nullable();
             $table->string('bio')->default('');
-            $table->boolean('user_type_admin')->default(0);
+            $table->boolean('user_type_admin')
+            ->default(0);
             $table->string('user_name')
             ->default("usuario_" . md5(date('d/m/Y', strtotime('now'))))
             ->unique();

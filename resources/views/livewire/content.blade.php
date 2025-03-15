@@ -14,13 +14,11 @@
                         <small>
                             @
                             {{ strlen($item->user->user_name) > 20 ? substr($item->user->user_name, 0, 20) . ' ...' : $item->user->user_name }}
-                </small>
+                        </small>
                     </div>
                 </a>
                 <div class="fle">
-                    <div class="foll">
-                        Seguir
-                    </div>
+                    
                     <div class="opc">
                         <details>
                             <summary>
@@ -136,9 +134,7 @@
                     </div>
                 </a>
                 <div class="fle">
-                    <div class="foll">
-                        Seguir
-                    </div>
+                    
                     <div class="opc">
                         <details>
                             <summary>

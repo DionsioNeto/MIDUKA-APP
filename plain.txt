@@ -12,3 +12,6 @@ com livewire, crie uma tabela de notificacao, e faca o seguinte: {
     faca outra de poste, e quando é postadoalguma coisa, preencha a tabela notificacao, e na tabela notificacao, faca o tratamento para que um usuarios possam se notificar entre eles, mas só se o usuario apertar no botao de notificarme sempre
     
 }
+
+
+estou com probles, estou a fazer um web app com laravel, e estou a vizualizar cada usuario, e quero q cada perfil faz um findOrFail para o "user_id" da tabela de post, como faço, e faz um paginate

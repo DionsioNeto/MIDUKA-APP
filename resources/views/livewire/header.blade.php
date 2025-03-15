@@ -34,7 +34,7 @@
                 <button>
                     <div class="notification">
                             <i class="fa fa-bell"></i>
-                        <div class="counter">0</div>
+                        <div class="counter">{{ $notification->count() }}</div>
                     </div>
                 </button>
             </a>
@@ -58,6 +58,8 @@
         <div class="modalNotification">
             <h2>Notificações</h2>
             <div class="notification-content">
+                @if (count($notification) > 0 )
+                @foreach ($notification as $item)
                 <div class="notification-box">
                     <img src="./imgs/avatar.webp" alt="" >
                     <div class="text">
@@ -65,14 +67,11 @@
                         <div class="notify">Lorem ipsum, dolor sit amet...</div>
                     </div>
                 </div>
-                <div class="notification-box">
-                    <img src="./imgs/avatar.webp" alt="" >
-                    <div class="text">
-                        <div class="nome">Dionísio Neto</div>
-                        <div class="notify">Lorem ipsum, dolor sit amet...</div>
-                    </div>
-                </div>
+                @endforeach
             </div>
+            @else
+            <h3>Sem Notificações...</h3>
+            @endif
         </div>
         @endif
     </header>

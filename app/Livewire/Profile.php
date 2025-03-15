@@ -18,7 +18,7 @@ use Livewire\Features\SupportFileUploads\WithFileUploads;
 class Profile extends Component{
     use WithPagination, WithoutUrlPagination;
     use WithFileUploads;
-    
+
     public $modalEditProfile = false;
     public function ToggleModal(){
         $this->modalEditProfile = !$this->modalEditProfile;
@@ -70,10 +70,10 @@ class Profile extends Component{
 
 
     public function render(){
-        $conteudos = Conteudo::where
-        ('user_id', auth()->user()->id)
+        $conteudos = Conteudo::where('user_id', auth()->user()->id)
         ->latest()
         ->paginate(1);
+
         return view(
             'livewire.profile',
             [

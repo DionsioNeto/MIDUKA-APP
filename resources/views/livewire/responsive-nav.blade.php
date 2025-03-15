@@ -61,18 +61,7 @@
                         <div class="text">Perfil</div>
                     </div>
                 </a>
-
-
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">
-                        <div class="sib-box">
-                            <button><i class="fa fa-share"></i></button>
-                            <div class="text">
-                                Criar conta
-                            </div>
-                        </div>
-                    </a>
-                @endif
+               
                 @endguest
 
                 <a href="/guardados">
@@ -143,6 +132,16 @@
                 </form>
                 @endauth
                 @guest
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}">
+                        <div class="sib-box">
+                            <button><i class="fa fa-user-plus"></i></button>
+                            <div class="text">
+                                {{ __('Create Account') }}
+                            </div>
+                        </div>
+                    </a>
+                @endif
                 <a href="{{ route('login') }}">
                     <div class="sib-box">
                         <button><i class="fa-solid fa-right-to-bracket"></i></button>
@@ -163,7 +162,7 @@
                     </div>
                     <hr>
                     <div>
-                        Miduka &copy; 2025
+                        Miduka &copy; {{ date('Y', strtotime('now')) }}
                     </div>
                 </div>
             </div>
