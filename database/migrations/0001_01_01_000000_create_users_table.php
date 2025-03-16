@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('user_type_admin')
             ->default(0);
             $table->string('user_name')
-            ->default("usuario_" . md5(date('d/m/Y', strtotime('now'))))
+            ->default("usuario_" . md5(strtotime('now')))
             ->unique();
 
 

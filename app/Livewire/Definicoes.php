@@ -36,27 +36,13 @@ class Definicoes extends Component{
         'new_password_confirmation' => 'required|same:new_password',
         ];
 
-    public function mount()
-    {
+    public function mount(){
         // Preenche o campo com o email atual do usuário
         $this->email = Auth::user()->email;
     }
 
-    public function updateEmail()
-    {
-        // Validação dos dados
-        $this->validate();
-
-        try {
-            // Atualiza o email do usuário
-            $user = Auth::user();
-            $user->email = $this->email;
-            $user->save();
-
-            session()->flash('message', 'E-mail atualizado com sucesso!');
-        } catch (\Exception $e) {
-            session()->flash('error', 'Ocorreu um erro ao atualizar o e-mail.');
-        }
+    public function updateEmail(){
+        
     }
 
 

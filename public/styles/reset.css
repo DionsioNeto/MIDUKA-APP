@@ -298,6 +298,7 @@ main .alert-content i{
     max-height: 70vh;
     text-align: start;
     overflow-x: hidden;
+    max-width: 600px;
 }
 
 

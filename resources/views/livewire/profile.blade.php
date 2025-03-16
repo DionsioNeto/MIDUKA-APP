@@ -27,8 +27,8 @@
                         <small class="erro">{{ $message }}</small>
                         @enderror
                         <div class="info-text">
-                            <small>Nome ({{ Auth::user()->name }})</small>
-                            <input type="text" placeholder="Este espaço não pode ficar vázio!" id="name" wire:model='name' value="{{ Auth::user()->name }}">
+                            <small>Nome</small>
+                            <input type="text" placeholder="Este espaço não pode ficar vázio!" id="name" wire:model='name'>
                         </div>
                     </label>
 
@@ -37,8 +37,8 @@
                         <small class="erro">{{ $message }}</small>
                         @enderror
                         <div class="info-text">
-                            <small>E-mail ({{ Auth::user()->email }})</small>
-                            <input type="text" value="{{ Auth::user()->email }}" placeholder="Este espaço não pode ficar vázio!" id="email" wire:model='email'>
+                            <small>E-mail</small>
+                            <input type="text" placeholder="Este espaço não pode ficar vázio!" id="email" wire:model='email'>
                         </div>
                     </label>
 
@@ -47,8 +47,8 @@
                         <small class="erro">{{ $message }}</small>
                         @enderror
                         <div class="info-text">
-                            <small>Nome de usuário ({{ Auth::user()->user_name }}), ATT:o campo não pode conter espacamento</small>
-                            <input type="text" value="{{ Auth::user()->user_name }}" placeholder="Este espaço não pode ficar vázio!" id="userName" wire:model='user_name'>
+                            <small>Nome de usuário, ATT:o campo não pode conter espacamento</small>
+                            <input type="text" placeholder="Este espaço não pode ficar vázio!" id="userName" wire:model='user_name'>
                         </div>
                     </label>
 
@@ -57,8 +57,8 @@
                         <small class="erro">{{ $message }}</small>
                         @enderror
                         <div class="info-text">
-                            <small>Site @if(Auth::user()->site) ({{ Auth::user()->site}}) @endif</small>
-                            <input type="text" value="{{ Auth::user()->site }}" placeholder="Digite uma ligação (Link) site ou rede social" id="site" wire:model='site'>
+                            <small>Site</small>
+                            <input type="text" placeholder="Digite uma ligação (Link) site ou rede social" id="site" wire:model='site'>
                         </div>
                     </label>
 
@@ -67,8 +67,8 @@
                         <small class="erro">{{ $message }}</small>
                         @enderror
                         <div class="info-text">
-                            <small>Bio @if(Auth::user()->bio) ({{ Auth::user()->bio}}) @endif</small>
-                            <textarea id="bio" placeholder="Edite a sua biográfia (opcional)" value="{{ Auth::user()->bio }}" wire:model='bio'></textarea>
+                            <small>Bio</small>
+                            <textarea id="bio" placeholder="Edite a sua biográfia (opcional)" wire:model='bio'></textarea>
                         </div>
                     </label>
 

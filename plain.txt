@@ -7,11 +7,6 @@ update com o livewire {
 inserte de mais de 1 imagens com livewire, e salve no banco em formato de json
 
 
-com livewire, crie uma tabela de notificacao, e faca o seguinte: {
-    faca uma tabela de notificacao
-    faca outra de poste, e quando é postadoalguma coisa, preencha a tabela notificacao, e na tabela notificacao, faca o tratamento para que um usuarios possam se notificar entre eles, mas só se o usuario apertar no botao de notificarme sempre
-    
-}
 
 
-estou com probles, estou a fazer um web app com laravel, e estou a vizualizar cada usuario, e quero q cada perfil faz um findOrFail para o "user_id" da tabela de post, como faço, e faz um paginate
+como livewire faca o seguinte: faca um script que faça a pesquisa de usuários do sistema, mas cria dois componentes, um com o nome de: pesquisa, e outro com nome de: resultados, onde no componente pesquisa ficará no blade apenas um input para fazer a pesquisa com o "wire:model", e no componente resultado fica os resultados, há essa possibilidade?

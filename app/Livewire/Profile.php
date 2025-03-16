@@ -9,7 +9,8 @@ use Livewire\WithoutUrlPagination;
 use Livewire\Attributes\Lazy;
 use Livewire\Attributes\Validate;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 #[Lazy]
 
@@ -31,6 +32,16 @@ class Profile extends Component{
     public $site;
     public $profile_photo;
     public $profile_photo_capa_path;
+
+    public function mount(){
+        $this->name = Auth::user()->name;
+        $this->user_name = Auth::user()->user_name;
+        $this->bio = Auth::user()->bio;
+        $this->site = Auth::user()->site;
+        // $this->bio = Auth::user()->bio;
+        // $this->bio = Auth::user()->bio;
+        $this->email = Auth::user()->email;
+    }
 
     public function updatePrifileInfo(){
         $this->validate([
