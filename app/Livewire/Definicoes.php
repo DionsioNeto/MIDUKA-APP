@@ -29,12 +29,7 @@ class Definicoes extends Component{
     public $email;
 
     // Regra de validação
-    protected $rules = [
-        'email' => 'required|email|unique:users,email', // Verifica se o email é único, ignorando o do usuário logado
-        'current_password' => 'required',
-        'new_password' => 'required|min:8|different:current_password',
-        'new_password_confirmation' => 'required|same:new_password',
-        ];
+
 
     public function mount(){
         // Preenche o campo com o email atual do usuário
@@ -42,7 +37,23 @@ class Definicoes extends Component{
     }
 
     public function updateEmail(){
-        
+        $this->validate([
+            'email' => 'required|email|unique:users,email',
+        ]);
+
+        if($this->email == null){
+            $this->email = auth()->user()->email;
+        }
+
+
+        // dd($this->email);
+
+        $User = User::find(auth()->user()->id);
+        $User->update([
+            'email' => $this->email,
+        ]);
+
+        session()->flash('msg-mail', 'E-mail foi atualizado.');
     }
 
 

@@ -21,6 +21,13 @@
             <h4>Tem a certeza que pretende editar o email de sua conta?</h4>
             <div>
                 <form wire:submit.prevent="updateEmail">
+                    @if(session('msg-mail'))
+                            <i class="fa-solid fa-check"></i><br>
+                            {{ session('msg-mail') }}
+                            <div>
+                                <a href="/">Voltar a página inicial</a>
+                            </div>
+                    @endif
                     @error('email')
                     <span>{{ $message }}</span>
                     @enderror

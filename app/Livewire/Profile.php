@@ -38,13 +38,11 @@ class Profile extends Component{
         $this->user_name = Auth::user()->user_name;
         $this->bio = Auth::user()->bio;
         $this->site = Auth::user()->site;
-        // $this->bio = Auth::user()->bio;
-        // $this->bio = Auth::user()->bio;
         $this->email = Auth::user()->email;
     }
 
     public function updatePrifileInfo(){
-        $this->validate([
+       $this->validate([
             'name' => '',
             'email' => '',
             'user_name' => '',
@@ -71,12 +69,11 @@ class Profile extends Component{
             'name' => $this->name,
             'email' => $this->email,
             'user_name' => $this->user_name,
-            'bio' => $this->bio,
             'site' => $this->site,
+            'bio' => $this->bio,
         ]);
 
         session()->flash('message', 'Perfil atualizado com sucesso.');
-        // $this->resetInputFields();
     }
 
 
