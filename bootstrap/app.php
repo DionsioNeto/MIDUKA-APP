@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->prepend([adminAcess::class]);
+        $middleware->prependToGroup('admin', [adminAcess::class]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
