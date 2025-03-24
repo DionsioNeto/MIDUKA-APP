@@ -54,15 +54,18 @@ Route::get('/support', function(){
     return view('project.suport_contact');
 });
 
-    Route::get('/test', function(){
-        return view('project.test');
+Route::get('/test', function(){
+    return view('project.test');
+});
+
+
+Route::middleware([adminAcess::class])->group(function () {
+
+    Route::get('/tt', function(){
+        // return view('project.test');
     });
 
-
-// Route::middleware(['adminAcess'])->group(function () {
-
-
-// });
+});
 
 Route::get('/guardados', function(){
     return view('project.guardados');

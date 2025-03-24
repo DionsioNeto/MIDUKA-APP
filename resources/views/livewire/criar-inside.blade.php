@@ -126,7 +126,8 @@
                 </div>
 
                 <div wire:loading wire:target="file">
-                    <h1>A carregar</h1>
+                    <img src="{{ url("storage/more/loading.gif") }}" width="50%">
+                    <p>A carregar...</p>
                 </div>
                 <h1>- - -</h1>
 

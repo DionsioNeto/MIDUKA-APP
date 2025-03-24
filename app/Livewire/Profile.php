@@ -62,7 +62,7 @@ class Profile extends Component{
         }
 
 
-        // dd($this->name, $this->email, $this->user_name, $this->bio, $this->site);
+        dd($this->name, $this->email, $this->user_name, $this->bio, $this->site);
 
         $User = User::find(auth()->user()->id);
         $User->update([

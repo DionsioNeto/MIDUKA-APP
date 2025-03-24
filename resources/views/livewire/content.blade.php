@@ -18,7 +18,7 @@
                     </div>
                 </a>
                 <div class="fle">
-                    
+
                     <div class="opc">
                         <details>
                             <summary>
@@ -80,8 +80,8 @@
                     <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                     @endauth
                 </div>
-                <form wire:submit.prevent="storageComment({{ $item->id }})" method="post">
-                    <input type="text" placeholder="Digite seu comentário" wire:model='content'>
+                <form wire:submit.prevent="commts({{ $item->id }})" method="post">
+                    <input type="text" placeholder="Digite seu comentário" wire:model='commentContent'>
                     <button type="submit">
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </button>
@@ -134,7 +134,7 @@
                     </div>
                 </a>
                 <div class="fle">
-                    
+
                     <div class="opc">
                         <details>
                             <summary>
