@@ -9,22 +9,13 @@ use App\Livewire\{
     KeyBoard,
 };
 
-
-// Route::get('/test', [KeyBoard::class, 'render']);
-
 // Rota principal da aplicação (index).
 Route::get('/', [indexController:: class, 'index']);
 // Rota para ver um conteúdo
-Route::get('/ver{id}',  [Ver::class, 'render'])->lazy();
+Route::get('/ver{id}',  [Ver::class, 'render']);
 //Rota que nos leva a view de perfis de outros usuários...
 
-Route::get('/usuario{id}',[Usuario::class, 'render'])->lazy();
-
-//Rota que nos mostra as notificações.
-Route::get('/notificacao', function(){
-    return view('project.notificacao');
-});
-
+Route::get('/usuario{id}',[Usuario::class, 'render']);
 
 Route::get('/Pesquisar', function(){
     return view('project.search');
@@ -47,19 +38,18 @@ Route::get('/audios', function(){
     return view('project.audios');
 });
 
-
-
-//Rota que nos leva a view de Support
-Route::get('/support', function(){
-    return view('project.suport_contact');
-});
-
 Route::get('/test', function(){
     return view('project.test');
 });
 
+//Rotute group, Rotas que requerem autenticação especial do administrador!
 
-Route::middleware([adminAcess::class])->group(function () {
+Route::middleware(['admin'])->group(function () {
+    Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard-usuario', [dashboardController::class, 'usuarios'])->name('dashboard-usuario');;
+    Route::get('/dashboard-support', [dashboardController::class, 'support'])->name('dashboard-support');
+    Route::get('/dashboard-denuncias', [dashboardController::class, 'denucias'])->name('dashboard-denuncias');
+    Route::get('/dashboard-conteudos', [dashboardController::class, 'conteudos'])->name('dashboard-conteudos');
 
     Route::get('/tt', function(){
         // return view('project.test');
@@ -67,34 +57,38 @@ Route::middleware([adminAcess::class])->group(function () {
 
 });
 
-Route::get('/guardados', function(){
-    return view('project.guardados');
-});
-
-Route::post('/store', [indexController::class, 'store']);
-
-
-
 //Rotute group, Rotas que requerem autenticação! (->middleware('auth');)
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-])->group(function () {
+    ])->group(function () {
 
-    Route::get('/criar', [indexController:: class, 'criar']);
-    Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
-    Route::get('/dashboard-usuario', [dashboardController::class, 'usuarios'])->name('dashboard-usuario');;
-    Route::get('/dashboard-support', [dashboardController::class, 'support'])->name('dashboard-support');
-    Route::get('/dashboard-denuncias', [dashboardController::class, 'denucias'])->name('dashboard-denuncias');
-    Route::get('/dashboard-conteudos', [dashboardController::class, 'conteudos'])->name('dashboard-conteudos');
+         Route::post('/store', [indexController::class, 'store']);
 
-    //Rota que nos leva a view de definições
-    Route::get('/definicoes', function(){
-        return view('project.definicoes');
-    });
-    //Rota que nos leva ao perfil de usuário logado.
-    Route::get('/perfil', function(){
-        return view('project.perfil');
-    })->lazy();
+        //Rota que nos leva a view de Support
+        Route::get('/support', function(){
+            return view('project.suport_contact');
+        });
+
+        Route::get('/criar', [indexController:: class, 'criar']);
+
+        Route::get('/guardados', function(){
+            return view('project.guardados');
+        });
+
+        //Rota que nos mostra as notificações.
+        Route::get('/notificacao', function(){
+            return view('project.notificacao');
+        });
+
+        //Rota que nos leva a view de definições
+        Route::get('/definicoes', function(){
+            return view('project.definicoes');
+        });
+        //Rota que nos leva ao perfil de usuário logado.
+        Route::get('/perfil', function(){
+            return view('project.perfil');
+        });
+
 });
