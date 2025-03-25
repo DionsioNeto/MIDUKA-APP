@@ -16,7 +16,7 @@ class adminAcess{
      */
 
     public function handle(Request $request, Closure $next): Response{
-        if(Auth()->check()){
+        if(auth()->check()){
             dd("Chegou");
             return $next($request);
         }else{

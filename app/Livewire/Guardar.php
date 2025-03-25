@@ -1,19 +1,13 @@
 <?php
 
 namespace App\Livewire;
-use Livewire\Component;
-use Livewire\WithPagination;
-use Livewire\WithoutUrlPagination;
 use Livewire\Attributes\Lazy;
-use App\Models\{
-    Conteudo,
-    Comments,
-};
+use Livewire\Component;
+use app\Models\Conteudo;
+
 #[Lazy()]
 
-class Content extends Component{
-    use WithPagination, WithoutUrlPagination;
-
+class Guardar extends Component{
     public function placeholder(){
         return  <<<'HTML'
                     <div class="loading">
@@ -63,59 +57,9 @@ class Content extends Component{
                 HTML;
     }
 
-    public function guard($idConteudo){
-        $guardar = Conteudo::find($idConteudo);
-        $guardar->Guardados()->create([
-            'user_id' => auth()->user()->id
-        ]);
-    }
-
-    public function unguard(Conteudo $guardar){
-        $guardar->Guardados()->delete();
-    }
-
-    public function like($idConteudo){
-        $conteudo = Conteudo::find($idConteudo);
-        $conteudo->likes()->create([
-            'user_id' => auth()->user()->id
-        ]);
-    }
-
-    public function unlike(Conteudo $conteudo){
-        $conteudo->likes()->delete();
-    }
-
-    public $comments = [];
-
-    public function storageComment($idConteudo){
-        $this->validate([
-            'comments' => 'min:1|required',
-        ]);
-        if(isset(auth()->user()->name)){
-
-            $storageComment = new Comments;
-
-            $storageComment->content = $this->comments[$idConteudo]['content'];
-
-            $storageComment->user_id = auth()->user()->id;
-
-            $storageComment->conteudo_id = $idConteudo;
-
-            if($storageComment->save()){
-                session()->flash('msg', 'Sucesso no envio do seu comentário');
-                $this->comments[$idConteudo]['content'] = null;
-            }else{
-                session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
-            }
-        }else{
-            session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
-        }
-    }
 
     public function render(){
-        $conteudos = Conteudo::latest()->paginate(2);
-        $comments = Comments::get();
-        return view('livewire.content', ['conteudos' => $conteudos]);
+        // $conteudos = Conteudo::where('user_id', $id)->latest()->paginate(1);
+        return view('livewire.guardar');
     }
-
 }
