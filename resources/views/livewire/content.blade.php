@@ -37,10 +37,23 @@
                                     <i class="fa fa-link"></i>
                                     Cópiar URL
                                 </li>
-                                <li>
-                                    <i class="fa-regular fa-bookmark"></i>
-                                    Guardar para ler mais tarde
-                                </li>
+                                @auth
+                                    @if ($item->Guardados->count())
+                                    <a wire:click.prevent="unguard({{ $item->id }})">
+                                        <li>
+                                            <i class="fa-solid fa-bookmark"></i>
+                                            Não guardar para mais tarde
+                                        </li>
+                                    </a>
+                                    @else
+                                    <a wire:click.prevent="guard({{ $item->id }})">
+                                        <li>
+                                            <i class="fa-regular fa-bookmark"></i>
+                                            Guardar para mais tarde
+                                        </li>
+                                    </a>
+                                    @endif
+                                @endauth
                                 <li>
                                     <i class="fa fa-bug"></i>
                                     Notificar possível erro
@@ -80,8 +93,12 @@
                     <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                     @endauth
                 </div>
-                <form wire:submit.prevent="commts({{ $item->id }})" method="post">
-                    <input type="text" placeholder="Digite seu comentário" wire:model='commentContent'>
+                <form wire:submit.prevent="storageComment({{ $item->id }})">
+                    <input
+                        type="text"
+                        placeholder="Digite seu comentário"
+                        wire:model='comments.{{ $item->id }}.content'
+                    >
                     <button type="submit">
                         <i class="fa-solid fa-arrow-right-long"></i>
                     </button>
