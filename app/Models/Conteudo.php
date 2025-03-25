@@ -22,4 +22,13 @@ class Conteudo extends Model
                 }
             });
     }
+
+    public function Guardados(){
+        return $this->hasMany(Guardados::class)
+            ->where(function($query){
+                if(auth()->check()){
+                    $query->where('user_id', auth()->user()->id);
+                }
+            });
+    }
 }
