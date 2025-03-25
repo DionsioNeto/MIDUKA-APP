@@ -5,8 +5,10 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithoutUrlPagination;
 use Livewire\Attributes\Lazy;
-use App\Models\Conteudo;
-use App\Models\Comments;
+use App\Models\{
+    Conteudo,
+    Comments,
+};
 #[Lazy]
 
 class Content extends Component{
@@ -61,6 +63,17 @@ class Content extends Component{
                 HTML;
     }
 
+    public function guard($idConteudo){
+        $guardar = Conteudo::find($idConteudo);
+        $guardar->Guardados()->create([
+            'user_id' => auth()->user()->id
+        ]);
+    }
+
+    public function unguard(Conteudo $guardar){
+        $guardar->Guardados()->delete();
+    }
+
     public function like($idConteudo){
         $conteudo = Conteudo::find($idConteudo);
         $conteudo->likes()->create([
@@ -72,14 +85,17 @@ class Content extends Component{
         $conteudo->likes()->delete();
     }
 
-    public $commentContent;
+    public $comments = [];
 
-    public function commts($idConteudo){
+    public function storageComment($idConteudo){
+        $this->validate([
+            'comments' => 'min:1|required',
+        ]);
         if(isset(auth()->user()->name)){
 
             $storageComment = new Comments;
 
-            $storageComment->content = $this->commentContent;
+            $storageComment->content = $this->comments[$idConteudo]['content'];
 
             $storageComment->user_id = auth()->user()->id;
 
@@ -87,7 +103,7 @@ class Content extends Component{
 
             if($storageComment->save()){
                 session()->flash('msg', 'Sucesso no envio do seu comentário');
-                $this->commentContent = null;
+                $this->comments[$idConteudo]['content'] = null;
             }else{
                 session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
             }
