@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -19,6 +20,18 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+
+    protected static function booted()
+    {
+        parent::booted();
+
+        static::creating(function ($user) {
+            // Gera um user_name único baseado no nome ou e-mail do usuário
+            if (!$user->user_name) {
+                $user->user_name = 'user_' . Str::random(10); // Exemplo de valor único
+            }
+        });
+    }
 
     /**
      * The attributes that are mass assignable.
