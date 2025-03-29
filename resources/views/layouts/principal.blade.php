@@ -51,8 +51,9 @@
             <link rel="stylesheet" href="./styles/criar.css">
         @elseif(request()->is('Pesquisar'))
             <link rel="stylesheet" href="./styles/search.css">
-        {{-- @elseif(request()->is(''))
-        @elseif(request()->is('')) --}}
+        @elseif(request()->is('guardados'))
+            <link rel="stylesheet" href="./styles/guardados.css">
+        {{-- @elseif(request()->is('')) --}}
 
         @endif
 </head>
