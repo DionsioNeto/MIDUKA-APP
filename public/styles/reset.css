@@ -68,8 +68,6 @@ main *{
     box-sizing: border-box;
 }
 
-
-
 li { list-style: none; }
 
 button{
@@ -114,8 +112,8 @@ html {
 
 *::-webkit-scrollbar-thumb:hover { background: var(--hover-card);}
 
-
 /* Controles de cor */
+
 header{
     background-color: var(--bg);
 }
@@ -123,7 +121,6 @@ header{
 header .search-input i{
     color: var(--branco);
 }
-
 
 body#dark{
     background-color: var(--bg-dark);
@@ -149,9 +146,14 @@ details ul{
     position: absolute;
     right: 100%;
     width: max-content;
-    background-color: var(--branco);
-
+    background-color: var(--bg);
+    border: 1px solid var(--link);
     border-radius: 5px;
+}
+
+body#dark details ul{
+    background-color: var(--bg-dark);
+
 }
 
 details ul li{
@@ -159,12 +161,12 @@ details ul li{
     margin: 5px;
     cursor: pointer;
     border-radius: 3px;
-    color: var(--preto);
+    color: var(--branco);
     background-color: var(--destaque);
 }
 
 details ul li i{
-    color: var(--preto);
+    color: var(--branco);
 }
 
 details ul li:hover{
@@ -176,11 +178,9 @@ details ul li:hover i{
     color: var(--branco);
 }
 
-
 /*-----------------------------------*\
 #   Offline Status                    #
 \*-----------------------------------*/
-
 
 .online-status{
     width: 270px;
@@ -196,14 +196,17 @@ details ul li:hover i{
     margin: 0px 5px 10px 0px;
     z-index: 3;
 }
+
 .online-status svg{
     max-width: 170px;
     padding: 0;
     margin: 0;
 }
+
 .online-status *{
     color: #b3b3b3;
 }
+
 .online-status a{
     color: var(--azul);
     text-decoration: underline;
@@ -270,8 +273,6 @@ main .alert-content i{
     border-radius: 10px;
 }
 
-
-
 .modalAccount{
     width: 100%;
     min-height: 100vh;
@@ -300,7 +301,6 @@ main .alert-content i{
     overflow-x: hidden;
     max-width: 600px;
 }
-
 
 div.modal-video div.cima{
     display: flex;
