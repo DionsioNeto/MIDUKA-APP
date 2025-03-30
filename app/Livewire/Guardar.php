@@ -3,9 +3,12 @@
 namespace App\Livewire;
 use Livewire\Attributes\Lazy;
 use Livewire\Component;
-use app\Models\Conteudo;
+use App\Models\{
+    Guardados,
+    Conteudo,
+};
 
-#[Lazy()]
+// #[Lazy()]
 
 class Guardar extends Component{
     public function placeholder(){
@@ -57,9 +60,20 @@ class Guardar extends Component{
                 HTML;
     }
 
+    public function unguard(Conteudo $guardar){
+        $guardar->Guardados()->delete();
+    }
 
     public function render(){
-        // $conteudos = Conteudo::where('user_id', $id)->latest()->paginate(1);
-        return view('livewire.guardar');
+        $item = Guardados::where('user_id', auth()->user()->id)
+        ->latest()
+        ->paginate(1);
+        
+        return view(
+            'livewire.guardar',
+            [
+                'item' => $item,
+            ]
+        );
     }
 }
