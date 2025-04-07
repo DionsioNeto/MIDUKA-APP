@@ -46,6 +46,7 @@ Route::get('/test', function(){
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/usuario/{id}', [dashboardController::class, 'user'])->name('dashboard-user');
     Route::get('/dashboard-usuario', [dashboardController::class, 'usuarios'])->name('dashboard-usuario');;
     Route::get('/dashboard-support', [dashboardController::class, 'support'])->name('dashboard-support');
     Route::get('/dashboard-denuncias', [dashboardController::class, 'denucias'])->name('dashboard-denuncias');
