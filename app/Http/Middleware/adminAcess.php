@@ -4,8 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Session\Middleware\AuthenticateSession;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
 
 
 class adminAcess{
@@ -16,12 +16,9 @@ class adminAcess{
      */
 
     public function handle(Request $request, Closure $next): Response{
-        if(auth()->check()){
-            dd("Chegou");
+        if(Auth::check()  && Auth::user()->user_type_admin){
             return $next($request);
-        }else{
-            dd("Inicie sua sessão... ");
         }
-
+        abort(401);
     }
 }
