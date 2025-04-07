@@ -131,3 +131,9 @@ input:invalid ~ button[type="submit"] {
     opacity: .6;
     pointer-events: none;
 }
+
+.flex-inside p{
+    display: grid;
+    grid-auto-flow: column;
+    font-size: small;
+}
