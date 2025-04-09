@@ -60,54 +60,7 @@
         </div>
         @endforeach
     </div>
-        @if ($item->hasPages())
-        <hr>
-        <div class="pag">
-
-            <div>
-                <p class="text-sm text-gray-700 leading-5 dark:text-gray-400">
-                    {!! __('Showing') !!}
-                    @if ($item->firstItem())
-                        <span class="font-medium">{{ $item->firstItem() }}</span>
-                        {!! __('to') !!}
-                        <span class="font-medium">{{ $item->lastItem() }}</span>
-                    @else
-                        {{ $item->count() }}
-                    @endif
-                    {!! __('of') !!}
-                    <span class="font-medium">{{ $item->total() }}</span>
-                    {!! __('results') !!}
-                </p>
-            </div>
-            <nav role="navigation" aria-label="Pagination Navigation">
-                <span class="btn-nav">
-                    @if ($item->onFirstPage())
-                        <span>
-                            Anterior
-                        </span>
-                    @else
-                        <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev">
-                            <i class="fa-solid fa-arrow-left-long"></i>
-                            Anterior
-                        </button>
-                    @endif
-                </span>
-
-                <span  class="btn-nav">
-                    @if ($item->onLastPage())
-                        <span>
-                            Proximo
-                        </span>
-                    @else
-                        <button wire:click="nextPage" wire:loading.attr="disabled" rel="next">
-                            Proximo
-                            <i class="fa-solid fa-arrow-right-long"></i>
-                        </button>
-                    @endif
-                </span>
-            </nav>
-        </div>
-        @endif
+       
     @else
     <livewire:no-content />
     @endif

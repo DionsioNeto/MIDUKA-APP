@@ -15,7 +15,7 @@
                             <i class="fa-solid fa-arrow-left-long"></i>
                         </button>
                     </a>
-                    <img src="./IMG_8610.JPG" alt="">
+                    <img src="{{ url("storage/more/logo.png") }}" class="Logo">
                 </div>
             </div>
             <button>
@@ -38,7 +38,7 @@
                     </div>
                 </button>
                 @guest
-                <a href="/regiter">
+                <a href="/perfil">
                     <div class="img-photo">
                         <img src="./imgs/avatar.webp" alt="">
                     </div>

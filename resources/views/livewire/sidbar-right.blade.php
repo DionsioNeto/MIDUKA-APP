@@ -32,7 +32,7 @@
             <a href="/terms-of-service">{{ __('Terms of Service') }}</a>
             <a href="/privacy-policy">Privacidade</a>
             <div>
-                By: <a href="">Dionísio Neto</a>
+                By: <a href="//dionisio-neto.netlify.app">Dionísio Neto</a> & <a href="#">Claudio jorge</a>
             </div>
             <hr>
             <div>

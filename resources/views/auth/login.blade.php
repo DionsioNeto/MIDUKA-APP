@@ -12,7 +12,7 @@
         <header>
             <a href="/">
                 <div class="logo">
-
+                    <img src="{{ url("storage/more/logo.png") }}" class="Logo">
                 </div>
             </a>
             <h1>{{ __('Welcome back!')}}</h1>

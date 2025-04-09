@@ -76,7 +76,6 @@
                 {{ date('d/m/Y', strtotime($item->created_at)) }} |
                 <i class="fa fa-clock"></i>
                 {{ date(' H', strtotime($item->created_at)) }} H {{ date('m', strtotime($item->created_at)) }} M |
-                <i class="fa-regular fa-eye"></i> 0 |
                 <i class="fa fa-thumbs-up"></i> {{ $item->likes()->count() }}
             </div>
             <a href="/ver{{$item->id}}">
@@ -138,7 +137,7 @@
             </div>
         </div>
 
-        <div class="card-video">
+        {{-- <div class="card-video">
             <div class="user-description">
                 <a href="/usuario{{ $item->user->id }}" class="inline">
                     <div class="img-photo">
@@ -257,7 +256,7 @@
                     <i class="fa fa-share-nodes"></i>
                 </a>
             </div>
-        </div>
+        </div> --}}
     @endforeach
     </div>
 

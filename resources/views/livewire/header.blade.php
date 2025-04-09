@@ -2,7 +2,7 @@
     <header>
         <a href="/">
             <div class="logo">
-                <img src="./IMG_8610.JPG" alt="">
+                <img src="{{ url("storage/more/logo.png") }}" class="Logo"  title="Logo">
             </div>
         </a>
         <div class="search-input search">
@@ -20,7 +20,7 @@
 
         </div>
         <div class="last-header">
-            <a href="/Pesquisar">
+            <a href="/Pesquisar"  title="Pesquisar">
                 <button class="search-btn">
                     <i class="fa fa-search"></i>
                 </button>
@@ -30,7 +30,7 @@
                 <i class="fa-solid fa-circle-half-stroke"></i>
             </button>
 
-            <a wire:click="openNotification">
+            <a wire:click="openNotification"  title="Notificações">
                 <button>
                     <div class="notification">
                             <i class="fa fa-bell"></i>
@@ -39,14 +39,14 @@
                 </button>
             </a>
             @guest
-            <a href="/login">
+            <a href="/perfil" title="Iniciar sessão">
                 <div class="img-photo">
                     <img src="./imgs/avatar.webp" alt="">
                 </div>
             </a>
             @endguest
             @auth
-            <a href="/perfil">
+            <a href="/perfil" title="{{ Auth::user()->name }}">
                 <div class="img-photo">
                     <img src="{{ Auth::user()->profile_photo_url }}" alt="">
                 </div>

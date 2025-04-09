@@ -9,23 +9,15 @@
         </a>
 
         @auth
-            <a href="/perfil">
-                <div class="sib-box {{ Request::is('perfil') ? 'destaque' : '' }}">
-                    <button>
-                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="user">
-                    </button>
-                    <div class="text">{{ Auth::user()->name }}</div>
-                </div>
-            </a>
-            <a href="{{ url('/dashboard') }}"class="">
-                <div class="sib-box">
-                    <button><i class="fa-solid fa-right-to-bracket"></i></button>
-                    <div class="text">Dashboard</div>
-                </div>
-            </a>
-
-
-        @endauth
+        <a href="/perfil">
+            <div class="sib-box {{ Request::is('perfil') ? 'destaque' : '' }}">
+                <button>
+                    <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="user">
+                </button>
+                <div class="text">{{ Auth::user()->name }}</div>
+            </div>
+        </a>
+         @endauth
         <a href="/criar"class="">
             <div class="sib-box {{ Request::is('criar') ? 'destaque' : '' }}">
                 <button><i class="fa-solid fa-add"></i></button>

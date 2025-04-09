@@ -44,33 +44,47 @@
 
                     <label for="userName">
                         @error('user_name')
-                        <small class="erro">{{ $message }}</small>
+                            <small class="erro">{{ $message }}</small>
                         @enderror
                         <div class="info-text">
-                            <small>Nome de usuário, ATT:o campo não pode conter espacamento</small>
-                            <input type="text" placeholder="Este espaço não pode ficar vázio!" id="userName" wire:model='user_name'>
+                            <small>Nome de usuário (sem espaços ou caracteres especiais)</small>
+                            <input type="text" placeholder="Digite seu nome de usuário" id="userName" wire:model='user_name'>
                         </div>
                     </label>
-
+                
+                    <!-- Campo Site -->
                     <label for="site">
                         @error('site')
-                        <small class="erro">{{ $message }}</small>
+                            <small class="erro">{{ $message }}</small>
                         @enderror
                         <div class="info-text">
-                            <small>Site</small>
-                            <input type="text" placeholder="Digite uma ligação (Link) site ou rede social" id="site" wire:model='site'>
+                            <small>Site (opcional)</small>
+                            <input type="text" placeholder="https://exemplo.com" id="site" wire:model='site'>
+                        </div>
+                    </label>
+                
+                    <!-- Campo Bio -->
+                    <label for="bio">
+                        @error('bio')
+                            <small class="erro">{{ $message }}</small>
+                        @enderror
+                        <div class="info-text">
+                            <small>Bio (opcional)</small>
+                            <textarea id="bio" placeholder="Conte um pouco sobre você" wire:model='bio'></textarea>
+                        </div>
+                    </label>
+                    
+                    <!-- Campo Foto de Perfil -->
+                    <label for="profile_photo">
+                        @error('profile_photo')
+                            <small class="erro">{{ $message }}</small>
+                        @enderror
+                        <div class="info-text">
+                            <small>Foto de Perfil (opcional)</small>
+                            <input type="file" id="profile_photo" wire:model='profile_photo'>
                         </div>
                     </label>
 
-                    <label for="bio">
-                        @error('bio')
-                        <small class="erro">{{ $message }}</small>
-                        @enderror
-                        <div class="info-text">
-                            <small>Bio</small>
-                            <textarea id="bio" placeholder="Edite a sua biográfia (opcional)" wire:model='bio'></textarea>
-                        </div>
-                    </label>
 
                     <div class="btn">
                         <button type="submit">Salvar</button>
