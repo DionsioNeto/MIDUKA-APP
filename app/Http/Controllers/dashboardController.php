@@ -23,7 +23,7 @@ class dashboardController extends Controller{
     }
 
     public function usuarios(){
-        $users = User::paginate(3);
+        $users = User::latest()->paginate(3);
         return view(
             'dashboard.dashboard-usuario',
             [
@@ -42,7 +42,13 @@ class dashboardController extends Controller{
 
 
     public function conteudos(){
-        return view('dashboard.dashboard-conteudos');
+        $itens = Conteudo::latest()->paginate(3);
+        return view(
+            'dashboard.dashboard-conteudos',
+            [
+                'itens' => $itens,
+            ]
+        );
     }
 
     public function support(){
@@ -55,4 +61,15 @@ class dashboardController extends Controller{
             ]
         );
     }
+
+    public function user($id){
+        $user = User::findOrFail($id);
+        return view(
+            'dashboard.dashboard-user',
+            [
+                'user' => $user
+            ]
+        );
+    }
 }
+ 
