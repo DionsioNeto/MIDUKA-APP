@@ -113,7 +113,7 @@ class Content extends Component{
     }
 
     public function render(){
-        $conteudos = Conteudo::latest()->paginate(2);
+        $conteudos = Conteudo::latest()->paginate(4);
         $comments = Comments::get();
         return view('livewire.content', ['conteudos' => $conteudos]);
     }

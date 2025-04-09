@@ -2,18 +2,16 @@
 
 namespace App\Livewire;
 use Livewire\Component;
-use App\Models\Conteudo;
-use App\Models\User;
+use App\Models\{
+    Conteudo,
+    User
+};
 use Livewire\WithPagination;
 use Livewire\WithoutUrlPagination;
 use Livewire\Attributes\Lazy;
-use Livewire\Attributes\Validate;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-
 #[Lazy]
-
 
 
 class Profile extends Component{
@@ -42,45 +40,46 @@ class Profile extends Component{
     }
 
     public function updatePrifileInfo(){
-       $this->validate([
-            'name' => '',
-            'email' => '',
-            'user_name' => '',
-            'bio' => '',
-            'site' => '',
-            'profile_photo' => '',
+        $this->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,'.auth()->id(),
+            'user_name' => 'required|string|max:50|unique:users,user_name,'.auth()->id().'|regex:/^[a-zA-Z0-9_]+$/',
+            'bio' => 'nullable|string|max:500',
+            'site' => 'nullable|url|max:255',
+            'profile_photo' => 'nullable|image|max:2048',
         ]);
 
-        if($this->name == null){
-            $this->name = auth()->user()->name;
-        }
-        if($this->email == null){
-            $this->email = auth()->user()->email;
-        }
-        if($this->user_name == null){
-            $this->user_name = auth()->user()->user_name;
-        }
-
-
-        dd($this->name, $this->email, $this->user_name, $this->bio, $this->site);
-
-        $User = User::find(auth()->user()->id);
-        $User->update([
+        $user = User::find(auth()->id());
+        
+        $updateData = [
             'name' => $this->name,
             'email' => $this->email,
             'user_name' => $this->user_name,
-            'site' => $this->site,
-            'bio' => $this->bio,
-        ]);
+            'bio' => $this->bio ?: null, // Converte string vazia para null
+            'site' => $this->site ?: null, // Converte string vazia para null
+        ];
 
-        session()->flash('message', 'Perfil atualizado com sucesso.');
+        // Tratamento para upload de foto de perfil
+        if ($this->profile_photo) {
+            $path = $this->profile_photo->store('profile-photos', 'public');
+            $updateData['profile_photo_path'] = $path;
+        }
+
+        $user->update($updateData);
+
+        session()->flash('message', 'Perfil atualizado com sucesso!');
+        
+        // Atualiza os dados na view se a foto foi alterada
+        if ($this->profile_photo) {
+            $this->mount();
+        }
     }
 
 
     public function render(){
         $conteudos = Conteudo::where('user_id', auth()->user()->id)
         ->latest()
-        ->paginate(1);
+        ->paginate(12);
 
         return view(
             'livewire.profile',

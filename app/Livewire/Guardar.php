@@ -3,14 +3,17 @@
 namespace App\Livewire;
 use Livewire\Attributes\Lazy;
 use Livewire\Component;
+use Livewire\WithPagination;
+use Livewire\WithoutUrlPagination;
 use App\Models\{
     Guardados,
     Conteudo,
 };
-
-// #[Lazy()]
+#[Lazy()]
 
 class Guardar extends Component{
+    use WithPagination, WithoutUrlPagination;
+
     public function placeholder(){
         return  <<<'HTML'
                     <div class="loading">
@@ -67,7 +70,7 @@ class Guardar extends Component{
     public function render(){
         $item = Guardados::where('user_id', auth()->user()->id)
         ->latest()
-        ->paginate(1);
+        ->paginate(100);
         
         return view(
             'livewire.guardar',
