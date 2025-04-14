@@ -18,10 +18,10 @@
     <div class="modalAccount modal-video">
         <div class="contentModal">
             <div class="cima">
-                <h1>Postar PDF (Livros)</h1>
+                <h1>Adicionar PDF (Livros)</h1>
                 <button wire:click='togleModalPdf'>&times;</button>
             </div>
-            <form wire:submit.prevent='store' method="post" enctype="multipart/form-data">
+            <form wire:submit.prevent='storePdf' method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div>
@@ -34,7 +34,7 @@
                     <div class="recept">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <p>Clique neste campo ou arraste o seu arquivo e solte aqui para começar o upload</p>
-                        <small>(jpg, jpeg, png, bmp, tiff, webp, mp4, mp3, pdf.)</small>
+                        <small>(PDF.)</small>
                         <input type="file" id="content" wire:model='file'>
                     </div>
                 </div>
@@ -93,19 +93,9 @@
                 @if(session('Erro'))
                     {{ session('Erro') }}
                 @endif
-                <h1>Criar conteúdos</h1>
+                <h1>Adicionar vídeo</h1>
                 <button wire:click='togleModalVideo'>&times;</button>
             </div>
-
-            {{-- <div class="steps">
-                <div class="boll">1</div>
-                <div class="bar">
-                    <div class="progress"></div>
-                </div>
-                <div class="boll">2</div>
-                <div class="bar"></div>
-                <div class="boll">3</div>
-            </div> --}}
 
             <form wire:submit.prevent='store' method="post" enctype="multipart/form-data">
                 @csrf
@@ -120,50 +110,48 @@
                     <div class="recept">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         <p>Clique neste campo ou arraste o seu arquivo e solte aqui para começar o upload</p>
-                        <small>(jpg, jpeg, png, bmp, tiff, webp, mp4, mp3, pdf.)</small>
+                        <small>(MP4.)</small>
                         <input type="file" id="content" wire:model='file'>
                     </div>
                 </div>
+                
+                
 
-                <div wire:loading wire:target="file">
-                    <img src="{{ url("storage/more/loading.gif") }}" width="50%">
-                    <p>A carregar...</p>
-                </div>
-                <h1>- - -</h1>
-
-                {{-- Exibir pré-visualização dependendo do tipo de arquivo --}}
-                @if ($fileUrl)
-                <div>
+                <div class="pag">
+                    <div wire:loading wire:target="file" class="center">
+                        <img src="{{ url("storage/more/loading.gif") }}" width="50%">
+                    </div>
+                    @if ($fileUrl)
                     <p><strong>Pré-visualização:</strong></p>
 
-                    <!-- Vídeo (mp4) -->
-                    @if (in_array($fileType, ['mp4', 'avi', 'mov', 'mkv']))
-                        <video src="{{ $fileUrl }}" controls width="50%">
-                            Seu navegador não suporta a visualização de vídeos.
-                        </video>
+                        <!-- Vídeo (mp4) -->
+                        @if (in_array($fileType, ['mp4', 'avi', 'mov', 'mkv']))
+                            <video src="{{ $fileUrl }}" controls width="50%">
+                                Seu navegador não suporta a visualização de vídeos.
+                            </video>
 
-                    <!-- Áudio (mp3) -->
-                    @elseif (in_array($fileType, ['mp3', 'wav', 'ogg']))
-                        <audio src="{{ $fileUrl }}" controls width="50%">
-                            Seu navegador não suporta a visualização de áudio.
-                        </audio>
+                        <!-- Áudio (mp3) -->
+                        @elseif (in_array($fileType, ['mp3', 'wav', 'ogg']))
+                            <audio src="{{ $fileUrl }}" controls width="50%">
+                                Seu navegador não suporta a visualização de áudio.
+                            </audio>
 
-                    <!-- Imagem (jpg, jpeg, png, etc.) -->
-                    @elseif (in_array($fileType, ['jpg', 'jpeg', 'png', 'bmp', 'tiff', 'webp']))
-                        <img src="{{ $fileUrl }}" alt="Imagem de pré-visualização" width="50%">
+                        <!-- Imagem (jpg, jpeg, png, etc.) -->
+                        @elseif (in_array($fileType, ['jpg', 'jpeg', 'png', 'bmp', 'tiff', 'webp']))
+                            <img src="{{ $fileUrl }}" alt="Imagem de pré-visualização" width="50%">
 
-                    <!-- PDF -->
-                    @elseif (in_array($fileType, ['pdf']))
-                        <iframe src="{{ $fileUrl }}" width="50%"></iframe>
+                        <!-- PDF -->
+                        @elseif (in_array($fileType, ['pdf']))
+                            <iframe src="{{ $fileUrl }}" width="50%"></iframe>
 
-                    @else
-                        <h4>Formato não suportado para pré-visualização.</h4>
-                        <div>
-                            {{$fileUrl}}
-                        </div>
+                        @else
+                            <h4>Formato não suportado para pré-visualização.</h4>
+                            <div>
+                                {{$fileUrl}}
+                            </div>
+                        @endif
                     @endif
                 </div>
-                @endif
 
                 <hr>
 
@@ -181,6 +169,10 @@
                         <input type="file" id="" wire:model='capa'>
                     </div>
                 </div>
+                <div wire:loading wire:target="capa" class="center">
+                    <img src="{{ url("storage/more/loading.gif") }}" width="50%">
+                    <p>A carregar...</p>
+                </div>
                 @if ($capa)
                     <h4>Pré-visualizar</h4>
                     <img src="{{ $capa->temporaryUrl() }}"  width="50%" />
@@ -193,7 +185,7 @@
                             {{ $message }}
                         @enderror
                     </div>
-                    <textarea wire:model='description'></textarea>
+                    <textarea wire:model='description' placeholder="Detalha a sua descrição"></textarea>
                 </div>
                 <button type="submit">Adicionar</button>
             </form>
@@ -207,7 +199,7 @@
         <h1>Criar conteúdos</h1>
         <div class="grid-criar relactive">
             <div class="box-criar" wire:click='togleModalVideo'>
-                <i class="fa fa-images"></i>
+                <i class="fa fa-video"></i>
                 <h3>Vídeo</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
             </div>
@@ -217,12 +209,12 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
             </div>
             <div class="box-criar" wire:click='togleModalAudio'>
-                <i class="fa fa-images"></i>
+                <i class="fa fa-microphone-lines"></i>
                 <h3>Audivos</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
             </div>
             <div class="box-criar" wire:click='togleModalPdf'>
-                <i class="fa fa-images"></i>
+                <i class="fa fa-book"></i>
                 <h3>PDF (livros)</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
             </div>
