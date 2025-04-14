@@ -302,6 +302,11 @@ main .alert-content i{
     max-width: 600px;
 }
 
+body#dark .modalAccount .contentModal{
+    background: var(--branco);
+}
+
+
 div.modal-video div.cima{
     display: flex;
     justify-content: space-between;
