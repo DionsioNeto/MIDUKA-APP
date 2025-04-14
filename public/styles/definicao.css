@@ -75,10 +75,6 @@ main .box .icons{
     align-items: center;
 }
 
-body#dark .contentModal *{
-    color: var(--branco);
-}
-
 body#dark .red,
 body#dark .red *{
     color: var(--vermelho);
