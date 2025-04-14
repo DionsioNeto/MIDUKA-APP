@@ -53,11 +53,27 @@
                 @endauth
             </div>
         </div>
-        @if ($item->type_tag == "jpg")
-        <img src="{{ url("storage/uploads/{$item->content}") }}" class="archive">
-        @elseif($item->type_tag == "mp4")
-        <video src="{{ url("storage/uploads/{$item->content}") }}" class="archive" controls></video>
-        @endif
+        <div class="content-archive">
+            @if ($item->type_tag == "jpg")
+            <img src="{{ url("storage/uploads/{$item->content}") }}" class="archive">
+            @elseif($item->type_tag == "mp4")
+            <video src="{{ url("storage/uploads/{$item->content}") }}" class="archive" controls></video>
+            @elseif ($item->type_tag == "mp3")
+            <div class="content-audio"> 
+                <img src="{{ url("storage/uploads/{$item->capa}") }}" class="archive">
+                <audio controls="" autoplay="" name="media">
+                    <source src="{{ url("storage/uploads/{$item->content}") }}" type="audio/mpeg">
+                </audio>
+                <div class="bor">
+                    <i class="fa fa-play"></i>
+                    <i class="fa fa-pause"></i>
+                    <i class="fa fa-re-place"></i>
+                </div>
+            </div> 
+            @elseif ($item->type_tag == "pdf")
+            <iframe src="{{ url("storage/uploads/{$item->content}") }}"" frameborder="0"></iframe>
+            @endif      
+        </div>
     </div>
     <div class="comentarios">
         <div class="user-description">
@@ -68,13 +84,10 @@
                 <div class="page-name">
                     {{ $item->user->name }}
                     <br>
-                    <small>@dionisio.miduka</small><i class="fa-regular fa-eye"></i>
+                    <small>@ {{ $item->user->user_name }}</small>
                 </div>
             </a>
             <div class="fle">
-                <div class="foll">
-                    Seguir
-                </div>
                 <div class="opc">
                     <details>
                         <summary>
@@ -108,13 +121,12 @@
         <div class="options">
             <a href="#">
                 <i class="fa-regular fa-thumbs-up"></i>
-                <div class="contador">8M</div>
+                <div class="contador">{{ $item->likes->count() }}</div>
             </a>
             <a href="#">
                 <i class="fa-regular fa-comments"></i>
-                <div class="contador">1K</div>
             </a>
-            <a href="./uploads/" download>
+            <a href="{{ url("storage/uploads/{$item->content}") }}" download>
                 <i class="fa fa-download"></i>
             </a>
             <a href="#">
