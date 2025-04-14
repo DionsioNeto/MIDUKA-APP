@@ -87,8 +87,7 @@ div#main div.conteudo video{
 /*----------------------------*/
 
 div#main div.comentarios{
-    background-color: rgba(53, 52, 52, 0.29);
-    width: 450px;
+    max-width: 50%;
     max-height: 100vh;
     overflow-y: scroll;
     top: 0;
@@ -100,7 +99,7 @@ div#main div.comentarios{
         flex-direction: column;
     }
     div#main div.comentarios{
-        width: 100%;
+        max-width: 100%;
         height: auto;
     }
     div#main div.conteudo{
@@ -226,5 +225,43 @@ div.opc{
     border-radius: 30px;
 }
 
+.content-archive{
+    background-color: rgba(31, 32, 33, 0.293);
+    max-width: 100%;
+    min-width: 99%;
+    height: calc(100% - 5px);
+    min-height: 80vh;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 2px;
+    position: relative;
+}
+
+.content-archive .archive{
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.content-archive .content-audio{
+    /* position: fixed; */
+    /* bottom: 50%; */
+    width: 100%;
+    /* height: 20px; */
+    background-color: rgb(32, 33, 35);
+}
+
+.content-archive .content-audio .bor{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+iframe{
+    width: 100%;
+    height: 100%;
+    min-height: 80vh;
+    border: none;
+    border-radius: 7px;
+}
 
 
