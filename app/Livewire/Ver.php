@@ -76,6 +76,7 @@ class Ver extends Component{
 
     public function render($id){
         $item = Conteudo::findOrFail($id);
+        dd($item->comments);
         return view('livewire.ver', ['item' => $item]);
     }
 }

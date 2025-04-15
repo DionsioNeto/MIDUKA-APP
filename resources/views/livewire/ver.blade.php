@@ -137,17 +137,17 @@
             <div class="mainCom">
                 <div class="box">
                     <div class="img-photo">
-                        <img src="./imgs/avatar.webp">
+                        {{-- <img src="{{ $item->comments->user->profile_photo_url }}"> --}}
                     </div>
                     <div class="content">
                         <div class="name">
-                            <div>Dionísio Neto</div>
+                            {{-- <div>{{ $item->comments->name }}</div> --}}
                             <div class="opc">
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </div>
                         </div>
                         <div class="teor">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, perferendis eos nam doloribus nihil laborum sit accusantium, ea repellendus consectetur officiis at ut? Amet consequuntur quaerat optio, impedit doloremque ab?
+                            {{ $item->user->comments->content }}
                         </div>
                     </div>
                 </div>

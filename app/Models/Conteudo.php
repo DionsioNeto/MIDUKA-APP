@@ -14,6 +14,10 @@ class Conteudo extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function comments(){
+        return $this->belongsTo(User::class);
+    }
+
     public function Likes(){
         return $this->hasMany(Like::class)
             ->where(function($query){

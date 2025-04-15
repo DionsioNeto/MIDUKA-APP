@@ -14,17 +14,15 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('conteudo_id');
 
             //relacionando a chave "user_id" com o id da tabela "user"
-            $table->foreign('user_id')
-            ->references('id')
-            ->on('users');
 
             $table->foreign('conteudo_id')
             ->references('id')
-            ->on('conteudos');
+            ->on('conteudos')
+            ->onDelete('cascade');
+            
             $table->timestamps();
         });
     }
