@@ -81,11 +81,12 @@
         <p>Resultados para: {{ $search }}</p>
         <ul class="list-group">
             @foreach($users as $user)
-            <li class="list-group-item">
-                <a href="/usuario/{{ $user->id }}">
-                    {{ $user->name }} ({{ $user->email }})
-                </a>
-            </li>
+            <a href="/usuario/{{ $user->id }}">
+                <li class="list-group-item">
+                    <img src="{{ $user->profile_photo_url }}" alt="Profil photo">
+                    {{ $user->name }}
+                </li>
+            </a>
             @endforeach
         </ul>
     </div>

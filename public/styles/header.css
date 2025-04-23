@@ -109,20 +109,32 @@ header .last-header div.notification .counter{
     border: 1px solid var(--branco);
     top: 75px;
     left: calc(50% - 150px);
-    background-color: var(--preto);
+    background-color: var(--bg);
     padding: 10px;
+    z-index: 1;
 }
 
 .list-group{
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 1px;
 }
 
 .list-group-item{
-    padding: 5px;
-    border-radius: 5px;
-    background-color: var(--bg);
+    padding: 1px 2px;
+    border-radius: 20px;
+    background-color: var(--destaque);
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.list-group-item img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 3px solid var(--destaque);
 }
 
 .list-group-item a{
