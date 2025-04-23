@@ -17,6 +17,11 @@
             {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
             </div>
         </header>
+        @session('status')
+        <div class="sucesso">
+            {{ $value }} <br> Verifique o seu email nos proximos 60 minutos
+        </div>
+        @endsession
         @if ($errors->any())
         <div class="erro">
             <div>{{ __('Whoops! Something went wrong.') }}</div>

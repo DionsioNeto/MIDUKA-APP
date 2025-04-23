@@ -47,7 +47,7 @@
                 @auth
                 <a href="/perfil">
                     <div class="img-photo">
-                        <img src="{{ Auth::user()->profile_photo_url }}" alt="">
+                        <img src="{{ Auth::user()->profile_photo_url }}" alt="profile img">
                     </div>
                 </a>
                 @endauth
@@ -99,13 +99,30 @@
                                 Denunciar
                             </li>
                             <li>
+                                <i class="fa-regular fa-bell"></i>
+                                Notificar-me
+                            </li>
+                            <li>
                                 <i class="fa fa-link"></i>
                                 Cópiar URL
                             </li>
-                            <li>
-                                <i class="fa-solid fa-bookmark"></i>
-                                Guardar para ler mais tarde
-                            </li>
+                            @auth
+                                @if ($item->Guardados->count())
+                                <a wire:click.prevent="unguard({{ $item->id }})">
+                                    <li>
+                                        <i class="fa-solid fa-bookmark"></i>
+                                        Não guardar para mais tarde
+                                    </li>
+                                </a>
+                                @else
+                                <a wire:click.prevent="guard({{ $item->id }})">
+                                    <li>
+                                        <i class="fa-regular fa-bookmark"></i>
+                                        Guardar para mais tarde
+                                    </li>
+                                </a>
+                                @endif
+                            @endauth
                             <li>
                                 <i class="fa fa-bug"></i>
                                 Notificar possível erro
@@ -135,19 +152,20 @@
         </div>
         <div class="container">
             <div class="mainCom">
+                @if (count($com) > 0)
+                @foreach ($com as $item)
                 <div class="box">
-                    <div class="img-photo">
-                        {{-- <img src="{{ $item->comments->user->profile_photo_url }}"> --}}
-                    </div>
+                    <a href="/usuario{{ $item->user->id }}">
+                        <div class="img-photo">
+                            <img src="{{ $item->user->profile_photo_url }}">
+                        </div>
+                    </a>
                     <div class="content">
                         <div class="name">
-                            {{-- <div>{{ $item->comments->name }}</div> --}}
-                            <div class="opc">
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                            </div>
+                            <a href="/usuario{{ $item->user->id }}"><div>{{ $item->user->name }}</div></a>
                         </div>
                         <div class="teor">
-                            {{ $item->user->comments->content }}
+                            {{ $item->content }}
                         </div>
                     </div>
                 </div>
@@ -160,7 +178,19 @@
                         <i class="fa fa-share-nodes"></i> 2
                     </div>
                 </div>
+                @endforeach
+                @else
+                    <h1>Sem comentários</h1>
+                @endif
             </div>
+        </div>
+        <div class="input-comment">
+            <form>
+                <textarea placeholder="Comentário"></textarea>
+                <button type="submit">
+                    <i class="fa fa-send"></i>Enviar
+                </button>
+            </form>
         </div>
     </div>
     </div>

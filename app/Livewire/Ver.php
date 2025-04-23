@@ -2,10 +2,10 @@
 
 namespace App\Livewire;
 use Livewire\Component;
-use App\Models\Conteudo;
-
-
-
+use App\Models\{
+    Conteudo,
+    Comments
+};
 
 class Ver extends Component{
     public function placeholder(){
@@ -76,7 +76,13 @@ class Ver extends Component{
 
     public function render($id){
         $item = Conteudo::findOrFail($id);
-        dd($item->comments);
-        return view('livewire.ver', ['item' => $item]);
+        $com =  Comments::where('conteudo_id', $id);
+        return view(
+            'livewire.ver',
+             [
+                'item' => $item,
+                'com' => $com,
+            ]
+        );
     }
 }

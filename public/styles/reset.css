@@ -10,7 +10,7 @@
     --azul: #006aff;
     --transparente: #2c3734b1;
     --bg-dark: #e4e4e4;
-    box-sizing: border-box;
+    --verde: rgb(18, 210, 114);
 }
 
 *{

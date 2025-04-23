@@ -87,13 +87,18 @@ div#main div.conteudo video{
 /*----------------------------*/
 
 div#main div.comentarios{
-    max-width: 50%;
+    width: 50%;
     max-height: 100vh;
     overflow-y: scroll;
-    top: 0;
+    padding-bottom: 35px;
+    position: relative;
 }
 
 @media screen and (max-width:  850px) {
+    div#main div.comentarios{
+        width: 100%;
+    }
+
     div#main{
         display: flex;
         flex-direction: column;
@@ -110,11 +115,16 @@ div#main div.comentarios{
         max-height: 80vh;
     }
 
+    .input-comment{
+        width: 100%;
+    }
+
 }
  .user-description {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 5px;
 }
 
 .user-description a.inline{
@@ -129,8 +139,12 @@ div.opc{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--link);
     border-radius: 50%;
+    cursor: pointer;
+}
+
+div.opc:hover{
+    background-color: var(--link);
 }
 
 .user-description div.foll{
@@ -201,11 +215,16 @@ div.opc{
 .content{
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 4px 8px;
     gap: 5px;
-    background-color: rgb(68, 80, 77);
-    border-radius: 5px 15px 15px 15px;
+    background-color: var(--destaque);
+    border-radius: 0px 10px 10px 10px;
 }
+
+.content .name{
+    font-size: 13px;
+    font-weight: 700;
+ }
 
 .like{
     display: flex;
@@ -264,4 +283,31 @@ iframe{
     border-radius: 7px;
 }
 
+.input-comment{
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+    margin: 2px;
+    border: 2px solid var(--link);
+    border-radius:7px;
+    /* width: 99%; */
+    bottom: 0;
+    background-color: var(--bg);
+    position: fixed;
+}
 
+body#dark .input-comment{
+    background-color: var(--bg-dark);
+}
+
+.input-comment textarea{
+    background-color: transparent;
+    width: calc(100% - 50px);
+    max-height: 200px;
+    resize: none;
+    border: none;
+}
+
+.input-comment button{
+    /* background-color: red; */
+}
