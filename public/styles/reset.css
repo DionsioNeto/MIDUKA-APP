@@ -361,3 +361,22 @@ div.modal-video div.steps{
 small.erro{
     color: var(--vermelho);
 }
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center > div{
+    margin: 20px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--link);
+}
+
+.center > div img{
+    width: 20px;
+}
