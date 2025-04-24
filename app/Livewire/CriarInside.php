@@ -89,8 +89,8 @@ class CriarInside extends Component {
  
 
     protected $rules = [
-        'file' => 'required|mp4|max:20240', // Permitindo diferentes tipos de arquivos
-        'capa' => 'required|file|mimes:jpg,jpeg,png,bmp,tiff,webp|max:20240',
+        'file' => 'required|mimes:jpg,jpeg,png,bmp,tiff,webp,mp4,mp3,pdf|max:20240', // Permitindo diferentes tipos de arquivos
+        'capa' => 'required|mimes:jpg,jpeg,png,bmp,tiff,webp|max:20240',
         'description' => 'required|min:20',
     ];
 
