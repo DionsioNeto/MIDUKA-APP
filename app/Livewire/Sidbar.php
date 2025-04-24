@@ -4,7 +4,7 @@ namespace App\Livewire;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 use Livewire\Attributes\Lazy;
-#[Lazy]
+// #[Lazy]
 
 
 class Sidbar extends Component{

@@ -1,6 +1,13 @@
 <div class="relactive">
 @if (count($conteudos) > 0)
-    <div class="grid">
+    <div class="grid"
+    x-data 
+    x-init="window.onscroll = () => {
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            Livewire.dispatch('carregarMais')
+        }
+    }"
+    >
     @foreach ($conteudos as $item)
         <div class="card-video">
             <div class="user-description">
@@ -260,7 +267,21 @@
     @endforeach
     </div>
 
-    @if ($conteudos->hasPages())
+
+
+
+    @if ($conteudos->hasMorePages())
+        <div class="center">
+            <div wire:loading.remove wire:target="loadMore" x-ref="infiniteScrollTrigger">
+                <img src="{{ url("storage/more/loading.gif") }}">
+                Carregando mais...
+            </div>
+            <div wire:loading wire:target="loadMore" class="text-center py-4">
+                <span>Carregando...</span>
+            </div>
+        </div>
+    @endif
+    {{-- @if ($conteudos->hasPages())
     <hr>
     <div class="pag">
 
@@ -307,7 +328,7 @@
             </span>
         </nav>
     </div>
-    @endif
+    @endif --}}
     @else
     <livewire:no-content />
     @endif

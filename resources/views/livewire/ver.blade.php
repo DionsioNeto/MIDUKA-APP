@@ -151,7 +151,7 @@
             </a>
         </div>
         <div class="container">
-            <div class="mainCom">
+            {{-- <div class="mainCom">
                 @if (count($com) > 0)
                 @foreach ($com as $item)
                 <div class="box">
@@ -182,7 +182,7 @@
                 @else
                     <h1>Sem comentários</h1>
                 @endif
-            </div>
+            </div> --}}
         </div>
         <div class="input-comment">
             <form>

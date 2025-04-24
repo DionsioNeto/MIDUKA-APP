@@ -1,5 +1,16 @@
 <div>
 
+    @if(session('msg'))
+    <div class="modalAccount" style="z-index: 6;">
+        <div class="contentModal">
+            <i class="fa fa-check"></i>
+            {{ session('msg') }}
+            <br>
+            <a href="/">Ir para página principal</a>
+        </div>
+    </div>
+    @endif
+
     @if ($modalImg)
     <div class="modalAccount criar modal-video">
         <button wire:click='togleModalImg'>abrir IMG</button>
@@ -80,16 +91,7 @@
 
         <div class="contentModal">
             <div class="cima">
-                @if(session('msg'))
-                <div>
-                    <div class="modalAccount">
-                        <div class="contentModal">
-                            <i class="fa fa-check"></i>
-                            {{ session('msg') }}
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                
                 @if(session('Erro'))
                     {{ session('Erro') }}
                 @endif

@@ -9,11 +9,13 @@ use App\Models\{
     Conteudo,
     Comments,
 };
-#[Lazy()]
+// #[Lazy()]
 
 class Content extends Component{
-    use WithPagination, WithoutUrlPagination;
+    use WithPagination;
 
+    // , WithoutUrlPagination
+    
     public function placeholder(){
         return  <<<'HTML'
                     <div class="loading">
@@ -111,6 +113,16 @@ class Content extends Component{
             session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
         }
     }
+
+    public int $perPage = 4; // ou qualquer valor inicial que você queira
+
+    protected $listeners = ['carregarMais' => 'loadMore'];
+
+    public function loadMore()
+    {
+        $this->perPage += 4; // ou a lógica que quiser
+    }
+    
 
     public function render(){
         $conteudos = Conteudo::latest()->paginate(4);
