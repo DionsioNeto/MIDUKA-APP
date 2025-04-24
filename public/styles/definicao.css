@@ -21,17 +21,6 @@ main .red *{
 }
 
 
-/*
-main .box:hover *{
-    color: var(--preto);
-}
-
-main .box .icons{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-} */
-
 .modalAccount input[type="text"],
 .modalAccount input[type="email"],
 .modalAccount input[type="password"]{
@@ -60,8 +49,17 @@ main .box .icons{
     width: 100%;
 }
 
-.modalAccount .contentModal .buttons{
+label{
     display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.buttons{
+    display: flex;
+
     gap: 5px;
 }
 
@@ -84,3 +82,21 @@ body#dark .red *{
     background-color: var(--link);
 }
 
+.btn{
+    /* background-color: var(--branco); */
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inside-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+}
