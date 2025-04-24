@@ -4,10 +4,13 @@ use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 
 class Definicoes extends Component{
+    use WithFileUploads;
+
 
     public function destroy(){
         User::findOrFail(auth()->user()->id)->delete();
@@ -72,31 +75,65 @@ class Definicoes extends Component{
         $this->isPlofileImage = !$this->isPlofileImage;
     }
 
-
     public $current_password;
     public $new_password;
     public $new_password_confirmation;
 
-
-
-    public function updatePassword()
+    public function rules()
     {
-        $this->validate();
-
-        $user = Auth::user();
-
-        // Verificar se a senha atual está correta
-        if (!Hash::check($this->current_password, $user->password)) {
-            session()->flash('error', 'A senha atual não está correta.');
-            return;
-        }
-
-        // Atualizar a senha
-        $user->password = Hash::make($this->new_password);
-        $user->save();
-
-        session()->flash('message', 'Senha atualizada com sucesso!');
+        return [
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ];
     }
+
+    
+    public $photo;
+
+public function updatedPhoto()
+{
+    // Validação rápida e clara
+    $this->validate([
+        'photo' => ['required', 'image', 'max:1024'], // 1MB
+    ]);
+
+    $user = Auth::user();
+
+    // Apaga foto anterior com verificação segura
+    if ($user->profile_photo_path && Storage::disk('public')->exists($user->profile_photo_path)) {
+        Storage::disk('public')->delete($user->profile_photo_path);
+    }
+
+    // Armazena nova foto e atualiza usuário
+    $path = $this->photo->store('profile-photos', 'public');
+
+    $user->forceFill([
+        'profile_photo_path' => $path,
+    ])->save();
+
+    session()->flash('success', 'Foto de perfil atualizada com sucesso.');
+
+    // Limpa a propriedade após o upload (opcional, mas bom para resetar input)
+    $this->reset('photo');
+}
+
+public function removePhoto()
+{
+    $user = Auth::user();
+
+    if ($user->profile_photo_path && Storage::disk('public')->exists($user->profile_photo_path)) {
+        Storage::disk('public')->delete($user->profile_photo_path);
+    }
+
+    $user->forceFill([
+        'profile_photo_path' => null,
+    ])->save();
+
+    session()->flash('success', 'Foto de perfil removida com sucesso.');
+}
+
+
+
     public $isPassWord = false;
 
     public function togglePassWord(){
@@ -110,6 +147,11 @@ class Definicoes extends Component{
     }
 
     public function render(){
-        return view('livewire.definicoes');
+        return view('livewire.definicoes',
+         [
+            'photoUrl' => Auth::user()->profile_photo_path 
+                ? Storage::url(Auth::user()->profile_photo_path)
+                : null,
+        ]);
     }
 }
