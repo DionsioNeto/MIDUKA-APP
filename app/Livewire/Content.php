@@ -9,7 +9,7 @@ use App\Models\{
     Conteudo,
     Comments,
 };
-// #[Lazy()]
+#[Lazy()]
 
 class Content extends Component{
     use WithPagination;
@@ -89,30 +89,29 @@ class Content extends Component{
 
     public $comments = [];
 
-    public function storageComment($idConteudo){
-        $this->validate([
-            'comments' => 'min:1|required',
-        ]);
-        if(isset(auth()->user()->name)){
+public function storageComment($idConteudo)
+{
+    $this->validate([
+        "comments.{$idConteudo}.content" => 'required|min:1',
+    ]);
 
-            $storageComment = new Comments;
+    if (auth()->check()) {
+        $storageComment = new Comments();
+        $storageComment->content = $this->comments[$idConteudo]['content'];
+        $storageComment->user_id = auth()->id();
+        $storageComment->conteudo_id = $idConteudo;
 
-            $storageComment->content = $this->comments[$idConteudo]['content'];
-
-            $storageComment->user_id = auth()->user()->id;
-
-            $storageComment->conteudo_id = $idConteudo;
-
-            if($storageComment->save()){
-                session()->flash('msg', 'Sucesso no envio do seu comentário');
-                $this->comments[$idConteudo]['content'] = null;
-            }else{
-                session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
-            }
-        }else{
-            session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
+        if ($storageComment->save()) {
+            session()->flash('c', 'Sucesso no envio do seu comentário');
+            $this->comments[$idConteudo]['content'] = null;
+            $this->reset("comments.{$idConteudo}");
+        } else {
+            session()->flash('auth', 'Erro ao salvar o comentário');
         }
+    } else {
+        session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
     }
+}
 
     public int $perPage = 4; // ou qualquer valor inicial que você queira
 
