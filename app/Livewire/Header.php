@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Conteudo;
 use App\Models\Notification;
 use Livewire\Attributes\Lazy;
-#[Lazy()]
+// #[Lazy()]
 
 
 class Header extends Component{

@@ -10,12 +10,11 @@
                 <i class="fa fa-keyboard"></i>
             </button>
 
-            <form action="/Pesquisar" method="get" class="search">
-                @csrf
+            <form class="search">
                 <input type="text" wire:model.live="search" class="form-control" placeholder="Pesquisar usuário..." />
-                <button>
+                <div>
                     <i class="fa fa-search"></i>
-                </button>
+                </div>
             </form>
 
         </div>
@@ -76,24 +75,27 @@
         @endif
     </header>
 
+    
     @if($search)
     <div class="result">
-        <p>Resultados para: {{ $search }}</p>
-        <ul class="list-group">
-            @foreach($users as $user)
-            <a href="/usuario/{{ $user->id }}">
-                <li class="list-group-item">
-                    <img src="{{ $user->profile_photo_url }}" alt="Profil photo">
-                    {{ $user->name }}
-                </li>
-            </a>
-            @endforeach
-        </ul>
+        <p>Resultados de usuários: {{ $search }}</p>
+        <hr>
+
+        @if ($users->count() > 0)
+            <ul class="list-group">
+                @foreach($users as $user)
+                <a href="/usuario/{{ $user->id }}">
+                    <li class="list-group-item">
+                            <img src="{{ $user->profile_photo_url }}" alt="Profile photo">
+                            {{ $user->name }}
+                    </li>
+                </a>
+                @endforeach
+            </ul>
+        @else
+            <h4>⚠️ Usuário não encontrado</h4>
+        @endif
     </div>
-    @endif
-
-
-
-
+@endif
 
 </div>
