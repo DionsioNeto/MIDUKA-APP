@@ -1,199 +1,135 @@
-<div>
-    @extends('layouts.principal')
-    @section('title', 'Mi | Vizualizar')
-    @session('content')
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MI | Conteúdo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="{{ asset('./styles/ver.css') }}">
+</head>
+<body>
 
-    @endsession
-    <link rel="stylesheet" href="./styles/ver.css">
-    <div id="main">
-    <div class="conteudo">
-        <div class="header">
-            <div class="logo">
-                <div class="last-header">
-                    <a href="/">
-                        <button>
-                            <i class="fa-solid fa-arrow-left-long"></i>
-                        </button>
-                    </a>
-                    <img src="{{ url("storage/more/logo.png") }}" class="Logo">
-                </div>
-            </div>
-            <button>
-            </button>
-            <div class="last-header">
-                <a href="/Pesquisar">
-                    <button>
-                        <i class="fa fa-search"></i>
-                    </button>
-                </a>
-
-                <button class="dark-mode" id="toggle-mode">
-                    <i class="fa-solid fa-circle-half-stroke"></i>
-                </button>
-
-                <button>
-                    <div class="notification">
-                            <i class="fa fa-bell"></i>
-                        <div class="counter">15</div>
-                    </div>
-                </button>
-                @guest
-                <a href="/perfil">
-                    <div class="img-photo">
-                        <img src="./imgs/avatar.webp" alt="">
-                    </div>
-                </a>
-                @endguest
-                @auth
-                <a href="/perfil">
-                    <div class="img-photo">
-                        <img src="{{ Auth::user()->profile_photo_url }}" alt="profile img">
-                    </div>
-                </a>
-                @endauth
-            </div>
-        </div>
-        <div class="content-archive">
-            @if ($item->type_tag == "jpg")
-            <img src="{{ url("storage/uploads/{$item->content}") }}" class="archive">
-            @elseif($item->type_tag == "mp4")
-            <video src="{{ url("storage/uploads/{$item->content}") }}" class="archive" controls></video>
-            @elseif ($item->type_tag == "mp3")
-            <div class="content-audio"> 
-                <img src="{{ url("storage/uploads/{$item->capa}") }}" class="archive">
-                <audio controls="" autoplay="" name="media">
-                    <source src="{{ url("storage/uploads/{$item->content}") }}" type="audio/mpeg">
-                </audio>
-                <div class="bor">
-                    <i class="fa fa-play"></i>
-                    <i class="fa fa-pause"></i>
-                    <i class="fa fa-re-place"></i>
-                </div>
-            </div> 
-            @elseif ($item->type_tag == "pdf")
-            <iframe src="{{ url("storage/uploads/{$item->content}") }}"" frameborder="0"></iframe>
-            @endif      
-        </div>
-    </div>
-    <div class="comentarios">
-        <div class="user-description">
-            <a href="/usuario{{ $item->user->id }}" class="inline">
-                <div class="img-photo">
-                    <img src="{{ $item->user->profile_photo_url }}">
-                </div>
-                <div class="page-name">
-                    {{ $item->user->name }}
-                    <br>
-                    <small>@ {{ $item->user->user_name }}</small>
-                </div>
+<div class="media-section">
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url("storage/more/logo.png") }}" class="Logo"  title="Logo">
             </a>
-            <div class="fle">
-                <div class="opc">
-                    <details>
-                        <summary>
-                            <i class="fa-solid fa-ellipsis"></i>
-                        </summary>
-                        <ul>
-                            <li>
-                                <i class="fa fa-mega-phone"></i>
-                                Denunciar
-                            </li>
-                            <li>
-                                <i class="fa-regular fa-bell"></i>
-                                Notificar-me
-                            </li>
-                            <li>
-                                <i class="fa fa-link"></i>
-                                Cópiar URL
-                            </li>
-                            @auth
-                                @if ($item->Guardados->count())
-                                <a wire:click.prevent="unguard({{ $item->id }})">
-                                    <li>
-                                        <i class="fa-solid fa-bookmark"></i>
-                                        Não guardar para mais tarde
-                                    </li>
-                                </a>
-                                @else
-                                <a wire:click.prevent="guard({{ $item->id }})">
-                                    <li>
-                                        <i class="fa-regular fa-bookmark"></i>
-                                        Guardar para mais tarde
-                                    </li>
-                                </a>
-                                @endif
-                            @endauth
-                            <li>
-                                <i class="fa fa-bug"></i>
-                                Notificar possível erro
-                            </li>
-                        </ul>
-                    </details>
-                </div>
-            </div>
         </div>
-        <div class="description">
-            {{$item->description}}
+    </header>
+    @if ($item->type_tag == "jpg")
+    <img src="{{ url("storage/uploads/{$item->content}") }}">
+    @elseif($item->type_tag == "mp4")
+    <video src="{{ url("storage/uploads/{$item->content}") }}" controls></video>
+    @elseif ($item->type_tag == "mp3")
+    <audio src="{{ url("storage/uploads/{$item->content}") }}"  controls="" autoplay=""></audio>
+    @elseif ($item->type_tag == "pdf")
+    <iframe src="{{ url("storage/uploads/{$item->content}") }}" frameborder="0"></iframe>
+    @endif 
+</div>
+
+<div class="post-container">
+  <div class="user">
+    <a href="/usuario{{ $item->user->id }}">
+        <div class="avatar"><img src="{{ $item->user->profile_photo_url }}"></div>
+        <div class="user-info">
+            <strong>
+                    {{$item->user->name }}
+            </strong>
+            <span class="time">
+                {{ date('d/m/Y', strtotime($item->created_at)) }} •
+                {{ date(' H', strtotime($item->created_at)) }} H {{ date('m', strtotime($item->created_at)) }}
+            </span>
         </div>
-        <div class="options">
-            <a href="#">
+    </a>
+  </div>
+
+  <div class="post-text">
+    {{$item->description}}
+  </div>
+
+  <div class="reactions">
+    <div>
+      <span><i class="fa fa-thumbs-up"></i></span> <span>{{ $item->likes->count() }}</span>
+    </div>
+    <div>
+      <span>{{ $com->count() }} comentários</span> • <span>{{ $com->count() }}compartilhamentos</span>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button>
+        {{-- @auth --}}
+            @if ($item->Likes->count())
+            <a wire:click.prevent="unlike({{ $item->id }})">
+                <i class="fa fa-thumbs-up"></i>
+            </a>
+            @else
+            <a wire:click.prevent="like({{ $item->id }})">
                 <i class="fa-regular fa-thumbs-up"></i>
-                <div class="contador">{{ $item->likes->count() }}</div>
             </a>
-            <a href="#">
-                <i class="fa-regular fa-comments"></i>
+            @endif
+        {{-- @endauth --}}
+    </button>
+    <button><i class="fa-solid fa-comments"></i></button>
+    <button>
+        @if ($item->Guardados->count())
+            <a wire:click.prevent="unguard({{ $item->id }})">
+                <li>
+                    <i class="fa-solid fa-bookmark"></i>
+                </li>
             </a>
-            <a href="{{ url("storage/uploads/{$item->content}") }}" download>
-                <i class="fa fa-download"></i>
+        @else
+            <a wire:click.prevent="guard({{ $item->id }})">
+                <li>
+                    <i class="fa-regular fa-bookmark"></i>
+                </li>
             </a>
-            <a href="#">
-                <i class="fa fa-share-nodes"></i>
-            </a>
-        </div>
-        <div class="container">
-            {{-- <div class="mainCom">
-                @if (count($com) > 0)
-                @foreach ($com as $item)
-                <div class="box">
-                    <a href="/usuario{{ $item->user->id }}">
-                        <div class="img-photo">
-                            <img src="{{ $item->user->profile_photo_url }}">
-                        </div>
-                    </a>
-                    <div class="content">
-                        <div class="name">
-                            <a href="/usuario{{ $item->user->id }}"><div>{{ $item->user->name }}</div></a>
-                        </div>
-                        <div class="teor">
-                            {{ $item->content }}
-                        </div>
-                    </div>
-                </div>
-                <div class="like">
-                    <div>
-                        <i class="fa fa-share-nodes"></i>
-                        10
-                    </div>
-                    <div>
-                        <i class="fa fa-share-nodes"></i> 2
-                    </div>
-                </div>
-                @endforeach
-                @else
-                    <h1>Sem comentários</h1>
-                @endif
-            </div> --}}
-        </div>
-        <div class="input-comment">
-            <form>
-                <textarea placeholder="Comentário"></textarea>
-                <button type="submit">
-                    <i class="fa fa-send"></i>Enviar
-                </button>
-            </form>
-        </div>
-    </div>
-    </div>
+        @endif
+    </button>
+  </div>
 
+  <div class="add-comment">
+    <div class="avatar" style="width: 32px; height: 32px;">
+        @guest
+        <a href="/perfil" title="Iniciar sessão">
+            <div class="img-photo">
+                <img src="./imgs/avatar.webp" alt="">
+            </div>
+        </a>
+        @endguest
+        @auth
+        <a href="/perfil" title="{{ Auth::user()->name }}">
+            <div class="img-photo">
+                <img src="{{ Auth::user()->profile_photo_url }}" alt="">
+            </div>
+        </a>
+        @endauth
+    </div>
+        <form wire:submit.prevent='storageComment'>
+            <textarea placeholder="Comentar como {{ Auth::user()->name }}..." wire:model='comment' ></textarea>
+            <i class="fa-solid fa-paper-plane"></i>
+        </form>
+  </div>
+
+  @if ($com->count() < 0)
+    @foreach ($com as $item)
+    <div class="comment">
+      <div class="author">Elíf Epalanga</div>
+      <div class="text">{{ $item->content }}</div>
+      <div class="time">Just now • Curtir • Responder</div>
+    </div>
+    @endforeach
+  @else
+  <div class="comment">
+    <h1>Sem comentários</h1>
+  </div>
+  @endif
+
+  <button wire:click='ss'>oiii</button>
 
 </div>
+
+
+</body>
+</html>
