@@ -97,6 +97,9 @@ header .last-header div.notification .counter{
     .search-btn{
         display: block;
     }
+    .result{
+        display: none;
+    }
 }
 
 .relactive{
