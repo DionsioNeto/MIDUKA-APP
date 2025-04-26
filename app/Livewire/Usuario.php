@@ -69,10 +69,6 @@ class Usuario extends Component{
         }
 
         $conteudos = Conteudo::where('user_id', $id)->latest()->paginate(1);
-        
-        // findOrFail($id)
-        // ->latest()
-        // ->paginate(1);
 
         $usuario = User::findOrFail($id);
         return view('livewire.usuario',[
