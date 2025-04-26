@@ -11,7 +11,7 @@
     @foreach ($conteudos as $item)
         <div class="card-video">
             <div class="user-description">
-                <a href="/usuario{{ $item->user->id }}" class="inline">
+                <a href="/usuario/{{ $item->user->id }}" class="inline">
                     <div class="img-photo">
                         <img src="{{ $item->user->profile_photo_url }}">
                     </div>
@@ -85,11 +85,14 @@
                 {{ date(' H', strtotime($item->created_at)) }} H {{ date('m', strtotime($item->created_at)) }} M |
                 <i class="fa fa-thumbs-up"></i> {{ $item->likes()->count() }}
             </div>
-            <a href="/ver{{$item->id}}">
+            <a href="/ver/{{$item->id}}">
                 <div class="description">
                     {{ strlen($item->description) > 100 ? substr($item->description, 0, 120) . ' ver mais ...' : $item->description }}
                 </div>
             </a>
+            @if (session()->has('msg'))
+                <div class="">{{ session('success') }}</div>
+            @endif
             <div class="comment">
                 <div class="c-img">
                     @guest
@@ -106,7 +109,7 @@
                         wire:model='comments.{{ $item->id }}.content'
                     >
                     <button type="submit">
-                        <i class="fa-solid fa-arrow-right-long"></i>
+                        <i class="fa-solid fa-paper-plane"></i>
                     </button>
                 </form>
             </div>
@@ -267,21 +270,7 @@
     @endforeach
     </div>
 
-
-
-
-    @if ($conteudos->hasMorePages())
-        <div class="center">
-            <div wire:loading.remove wire:target="loadMore" x-ref="infiniteScrollTrigger">
-                <img src="{{ url("storage/more/loading.gif") }}">
-                Carregando mais...
-            </div>
-            <div wire:loading wire:target="loadMore" class="text-center py-4">
-                <span>Carregando...</span>
-            </div>
-        </div>
-    @endif
-    {{-- @if ($conteudos->hasPages())
+    @if ($conteudos->hasPages())
     <hr>
     <div class="pag">
 
@@ -328,7 +317,7 @@
             </span>
         </nav>
     </div>
-    @endif --}}
+    @endif
     @else
     <livewire:no-content />
     @endif
