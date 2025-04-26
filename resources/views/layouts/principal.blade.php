@@ -11,6 +11,8 @@
         >
 
         <title>@yield('title')</title>
+        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+
 
         {{-- Icons do fontawesome --}}
         <link
@@ -23,36 +25,35 @@
         <link rel="shortcut icon" href="./imgs/docs-dark.svg" type="image/x-icon">
         {{-- CSS --}}
 
-
-        <link rel="stylesheet" href="./styles/reset.css">
-        <link rel="stylesheet" href="./styles/header.css">
-        <link rel="stylesheet" href="./styles/sidbar.css">
-        <link rel="stylesheet" href="./styles/sidbar-right.css">
-        <link rel="stylesheet" href="./styles/responsive-nav.css">
-        <link rel="stylesheet" href="./styles/perfil.css">
+        <link rel="stylesheet" href="{{ asset('./styles/reset.css') }}">
+        <link rel="stylesheet" href="{{ asset('./styles/header.css') }}">
+        <link rel="stylesheet" href="{{ asset('./styles/sidbar.css') }}">
+        <link rel="stylesheet" href="{{ asset('./styles/sidbar-right.css') }}">
+        <link rel="stylesheet" href="{{ asset('./styles/responsive-nav.css') }}">
+        <link rel="stylesheet" href="{{ asset('./styles/perfil.css') }}">
 
         {{-- Livewire styles  --}}
         @livewireStyles
 
         <!-- Estilos específicos da rota -->
         @if(request()->is('/'))
-            <link rel="stylesheet" href="./styles/style.css">
+            <link rel="stylesheet" href="{{ asset('./styles/style.css') }}">
         @elseif(request()->is('support'))
-            <link rel="stylesheet" href="./styles/support.css">
+            <link rel="stylesheet" href="{{ asset('./styles/support.css') }}">
         @elseif(request()->is('login'))
-            <link rel="stylesheet" href="./styles/login.css">
+            <link rel="stylesheet" href="{{ asset('./styles/login.css') }}">
         @elseif(request()->is('perfil'))
-            <link rel="stylesheet" href="./styles/perfil.css">
+            <link rel="stylesheet" href="{{ asset('./styles/perfil.css') }}">
         @elseif(request()->is('definicoes'))
-            <link rel="stylesheet" href="./styles/definicao.css">
+            <link rel="stylesheet" href="{{ asset('./styles/definicao.css') }}">
         @elseif(request()->is('videos'))
-            <link rel="stylesheet" href="./styles/video.css">
+            <link rel="stylesheet" href="{{ asset('./styles/video.css') }}">
         @elseif(request()->is('criar'))
-            <link rel="stylesheet" href="./styles/criar.css">
+            <link rel="stylesheet" href="{{ asset('./styles/criar.css') }}">
         @elseif(request()->is('Pesquisar'))
-            <link rel="stylesheet" href="./styles/search.css">
+            <link rel="stylesheet" href="{{ asset('./styles/search.css') }}">
         @elseif(request()->is('guardados'))
-            <link rel="stylesheet" href="./styles/guardados.css">
+            <link rel="stylesheet" href="{{ asset('./styles/guardados.css') }}">
         {{-- @elseif(request()->is('')) --}}
 
         @endif
