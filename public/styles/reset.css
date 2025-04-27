@@ -29,6 +29,24 @@ body{
     transition: 1s;
     position: relative;
     box-sizing: border-box;
+    --bg: #131313;
+}
+
+body#dark{
+    --bg: #e4e4e4;
+    background-color: var(--bg);
+}
+
+body#dark *{
+    color: var(--preto);
+}
+
+body#dark header{
+    background-color: var(--bg-dark);
+}
+
+body#dark header .search-input i{
+    color: var(--preto);
 }
 
 main{
@@ -122,24 +140,9 @@ header .search-input i{
     color: var(--branco);
 }
 
-body#dark{
-    background-color: var(--bg-dark);
-}
-
-body#dark *{
-    color: var(--preto);
-}
-
-body#dark header{
-    background-color: var(--bg-dark);
-}
-
-body#dark header .search-input i{
-    color: var(--preto);
-}
-
 details {
     position: relative;
+    z-index: 1;
 }
 
 details ul{
