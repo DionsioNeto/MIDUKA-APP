@@ -71,6 +71,7 @@
                 </div>
             </div>
             <div class="container-conteudo">
+                <div class="content-type">PDF</div>
                 <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
                 @if ($item->type_tag == "jpg")
                 <img src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo">
