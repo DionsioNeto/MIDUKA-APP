@@ -24,17 +24,6 @@ class dashboardController extends Controller{
         );
     }
 
-    // public function usuarios(){
-    //     $users = User::latest()->paginate();
-    //     return view(
-    //         'dashboard.dashboard-usuario',
-    //         [
-    //             "users"=> $users,
-    //         ]
-    //     );
-    // }
-
-
     public function usuarios(Request $request){
         $query = User::query();
 
@@ -53,14 +42,12 @@ class dashboardController extends Controller{
         ]);
     }
 
-
     public function denucias(){
         $denuncias = Denuncias::get();
         return view(
             'dashboard.dashboard-denuncias'
         );
     }
-
 
     public function conteudos(){
         $itens = Conteudo::latest()->paginate(3);
