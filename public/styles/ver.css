@@ -61,6 +61,12 @@
     border-radius: 0;
   }
 
+  .media-section audio{
+    z-index: 4;
+    position: absolute;
+    bottom: 0;
+  }
+
   .post-container {
     width: 400px;
     background-color: #242526;

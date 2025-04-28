@@ -22,6 +22,7 @@
     @elseif($item->type_tag == "mp4")
     <video src="{{ url("storage/uploads/{$item->content}") }}" controls></video>
     @elseif ($item->type_tag == "mp3")
+    <img src="{{ url("storage/uploads/{$item->capa}") }}">
     <audio src="{{ url("storage/uploads/{$item->content}") }}"  controls="" autoplay=""></audio>
     @elseif ($item->type_tag == "pdf")
     <iframe src="{{ url("storage/uploads/{$item->content}") }}" frameborder="0"></iframe>
@@ -89,28 +90,27 @@
     </button>
   </div>
 
+  @auth
   <div class="add-comment">
     <div class="avatar" style="width: 32px; height: 32px;">
-        @guest
         <a href="/perfil" title="Iniciar sessão">
             <div class="img-photo">
                 <img src="./imgs/avatar.webp" alt="">
             </div>
         </a>
-        @endguest
-        @auth
         <a href="/perfil" title="{{ Auth::user()->name }}">
             <div class="img-photo">
                 <img src="{{ Auth::user()->profile_photo_url }}" alt="">
             </div>
         </a>
-        @endauth
     </div>
         <form wire:submit.prevent='storageComment'>
             <textarea placeholder="Comentar como {{ Auth::user()->name }}..." wire:model='comment' ></textarea>
             <i class="fa-solid fa-paper-plane"></i>
         </form>
   </div>
+  @endauth
+
 
   @if ($com->count() < 0)
     @foreach ($com as $item)
@@ -125,9 +125,6 @@
     <h1>Sem comentários</h1>
   </div>
   @endif
-
-  <button wire:click='ss'>oiii</button>
-
 </div>
 
 
