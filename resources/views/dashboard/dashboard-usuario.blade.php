@@ -98,8 +98,8 @@
         
                             <div class="px-4 py-2">
                                 <div class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300 gap-2 mb-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-5 h-5 stroke-gray-400 dark:stroke-gray-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10c0 .6.4 1 1 1h16c.6 0 1-.4 1-1V7M3 3h18c.6 0 1 .4 1 1v4H2V4c0-.6.4-1 1-1z" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-gray-400 dark:stroke-indigo-300" fill="none" viewBox="0 0 24 24" stroke-width="1.5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75v.75m7.5-.75v.75m-9-2.25h10.5a2.25 2.25 0 012.25 2.25v10.5a2.25 2.25 0 01-2.25 2.25H6.75a2.25 2.25 0 01-2.25-2.25V7.5a2.25 2.25 0 012.25-2.25z" />
                                     </svg>
                                     <span>Desde: {{ date('d/m/Y', strtotime($item->created_at)) }}</span>
                                 </div>
