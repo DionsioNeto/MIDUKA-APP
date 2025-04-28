@@ -5,102 +5,77 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
-                    <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
-                        Bem vindo ao painel de control
-                    </h1>
 
-                    <p class=" text-gray-500 dark:text-gray-400 ">
-                        ...
-                    </p>
+    <div class="min-h-screen bg-white dark:bg-gray-800 px-8 flex justify-center items-start">
+        <div class="w-full max-w-7xl">
+                    
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6  lg:px-8 px-3 py-4">
+      
+            <!-- Card Usuários -->
+            <a href="/dashboard-usuario" class="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-2xl p-6 flex flex-col gap-4 transition hover:border-indigo-500 dark:hover:border-indigo-400">
+              <div class="flex items-center justify-between">
+                <div class="text-indigo-600 dark:text-indigo-400">
+                    <svg class="w-8 h-8 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A4 4 0 017 15h10a4 4 0 011.879 2.804M16 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
                 </div>
-
-                <div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
-                    <div>
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-6 stroke-gray-400">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-                            </svg>
-                            <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
-                                <a href="https://laravel.com/docs">Usuários cadastrados</a>
-                            </h2>
-                        </div>
-
-                        <p class="mt-4 text-xl text-gray-500 dark:text-gray-400 leading-relaxed">
-                            {{ $user->count() }}
-                        </p>
-
-                        <p class="mt-4 text-sm">
-                            <a href="https://laravel.com/docs" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
-                                Explore the documentation
-
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 size-5 fill-indigo-500 dark:fill-indigo-200">
-                                    <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </p>
-                    </div>
-
-                    <div>
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-6 stroke-gray-400">
-                                <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
-                            </svg>
-                            <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
-                                <a href="https://laracasts.com">Conteúdos</a>
-                            </h2>
-                        </div>
-
-                        <p class="mt-4 text-xl text-gray-500 dark:text-gray-400 leading-relaxed">
-                            {{ $content->count() }}
-                        </p>
-
-                        <p class="mt-4 text-sm">
-                            <a href="https://laracasts.com" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
-                                Start watching Laracasts
-
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 size-5 fill-indigo-500 dark:fill-indigo-200">
-                                    <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </p>
-                    </div>
-
-                    <div>
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-6 stroke-gray-400">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                            </svg>
-                            <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
-                                Denúncias
-                            </h2>
-                        </div>
-
-                        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                            ...
-                        </p>
-                    </div>
-
-                    <div>
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="size-6 stroke-gray-400">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                            </svg>
-                            <h2 class="ms-3 text-xl font-semibold text-gray-900 dark:text-white">
-                                Mensagens de support
-                            </h2>
-                        </div>
-
-                        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                            ...
-                        </p>
-                    </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">Usuários</span>
+              </div>
+              <div>
+                <p class="text-3xl font-semibold text-gray-800 dark:text-gray-100">{{ $user->count() }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Cadastrados</p>
+              </div>
+            </a>
+      
+            <!-- Card Conteúdos -->
+            <a href="/dashboard-conteudos" class="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-2xl p-6 flex flex-col gap-4 transition hover:border-green-500 dark:hover:border-green-400">
+              <div class="flex items-center justify-between">
+                <div class="text-green-600 dark:text-green-400">
+                    <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M4 12V8a4 4 0 014-4h8a4 4 0 014 4v4" />
+                    </svg>
                 </div>
-
-            </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">Conteúdos</span>
+              </div>
+              <div>
+                <p class="text-3xl font-semibold text-gray-800 dark:text-gray-100">{{ $content->count() }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Publicados</p>
+              </div>
+            </a>
+      
+            <!-- Card Denúncias -->
+            <a href="dashboard-denuncias" class="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-2xl p-6 flex flex-col gap-4 transition hover:border-red-500 dark:hover:border-red-400">
+              <div class="flex items-center justify-between">
+                <div class="text-red-600 dark:text-red-400">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-12.728 12.728m0-12.728l12.728 12.728" />
+                    </svg>
+                </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">Denúncias</span>
+              </div>
+              <div>
+                <p class="text-3xl font-semibold text-gray-800 dark:text-gray-100">{{ $denun->count() }}</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Registradas</p>
+              </div>
+            </a>
+      
+            <!-- Card Suporte -->
+            <a href="dashboard-support" class="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-2xl p-6 flex flex-col gap-4 transition hover:border-yellow-500 dark:hover:border-yellow-400">
+              <div class="flex items-center justify-between">
+                <div class="text-yellow-600 dark:text-yellow-400">
+                    <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 16v-5a2 2 0 00-2-2h-1l-3-3H9L6 9H5a2 2 0 00-2 2v5a2 2 0 002 2h14a2 2 0 002-2z" />
+                    </svg>
+                </div>
+                <span class="text-sm text-gray-500 dark:text-gray-400">Suporte</span>
+              </div>
+              <div>
+                <p class="text-3xl font-semibold text-gray-800 dark:text-gray-100">32</p>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Mensagens</p>
+              </div>
+            </a>
+      
+          </div>
         </div>
-    </div>
+      </div>
 </x-app-layout>
