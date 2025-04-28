@@ -13,11 +13,13 @@ class dashboardController extends Controller{
     public function index(){
         $user = User::get();
         $content = Conteudo::get();
+        $denun =Denuncias::get();
         return view(
             'dashboard.dashboard',
             [
                 "user" => $user,
                 "content" => $content,
+                "denun" => $denun,
             ]
         );
     }
