@@ -49,14 +49,21 @@ class dashboardController extends Controller{
         );
     }
 
-    public function conteudos(){
-        $itens = Conteudo::latest()->paginate(3);
-        return view(
-            'dashboard.dashboard-conteudos',
-            [
-                'itens' => $itens,
-            ]
-        );
+
+    public function conteudos(Request $request){
+        $query = Conteudo::query();
+    
+        // Se houver termo de pesquisa, aplicamos o filtro
+        if ($request->has('search') && $request->search != '') {
+            $query->where('description', 'like', '%' . $request->search . '%')
+                  ->orWhere('type_tag', 'like', '%' . $request->search . '%');
+        }
+    
+        $itens = $query->latest()->paginate()->withQueryString(); // Mantém o search na paginação
+    
+        return view('dashboard.dashboard-conteudos', [
+            'itens' => $itens,
+        ]);
     }
 
     public function support(){
