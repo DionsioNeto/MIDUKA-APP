@@ -24,14 +24,33 @@ class dashboardController extends Controller{
         );
     }
 
-    public function usuarios(){
-        $users = User::latest()->paginate(3);
-        return view(
-            'dashboard.dashboard-usuario',
-            [
-                "users"=> $users,
-            ]
-        );
+    // public function usuarios(){
+    //     $users = User::latest()->paginate();
+    //     return view(
+    //         'dashboard.dashboard-usuario',
+    //         [
+    //             "users"=> $users,
+    //         ]
+    //     );
+    // }
+
+
+    public function usuarios(Request $request){
+        $query = User::query();
+
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        $users = $query->latest()->paginate()->withQueryString(); // Mantém o search na paginação
+
+        return view('dashboard.dashboard-usuario', [
+            'users' => $users,
+        ]);
     }
 
 
