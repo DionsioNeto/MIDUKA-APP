@@ -71,7 +71,29 @@
                 </div>
             </div>
             <div class="container-conteudo">
-                <div class="content-type">PDF</div>
+                @if ($item->type_tag == "jpg")
+                    <div class="content-type">
+                        <i class="fa fa-images"></i>
+                        Imagem
+                    </div>
+                @elseif($item->type_tag == "mp3")
+                    <div class="content-type">
+                        <i class="fa-solid fa-microphone-lines"></i>
+                        Audio
+                    </div>
+                @elseif($item->type_tag == "pdf")
+                    <div class="content-type">
+                        <i class="fa fa-book"></i>
+                         Livro/PDF
+                    </div>
+                @elseif($item->type_tag == "mp4")
+                    <div class="content-type">
+                        <i class="fa fa-video"></i>
+                        Vídeo
+                    </div>
+                @else
+                    <div class="content-type">⚠️ O sistema do consegue identificar</div>
+                @endif
                 <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
                 @if ($item->type_tag == "jpg")
                 <img src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo">
