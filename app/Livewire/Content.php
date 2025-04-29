@@ -9,12 +9,22 @@ use App\Models\{
     Conteudo,
     Comments,
 };
-#[Lazy()]
+// #[Lazy()]''
 
 class Content extends Component{
-    use WithPagination;
+    use WithPagination , WithoutUrlPagination;
 
-    // , WithoutUrlPagination
+    // Modal de partilha
+
+    public $share = false;
+    public $text;
+
+    public function toggleShare ($id){
+        $this->share = !$this->share;
+        $this->text = "O id do conteúdo é " . $id;
+    }
+
+
     
     public function placeholder(){
         return  <<<'HTML'
