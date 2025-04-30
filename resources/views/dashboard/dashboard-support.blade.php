@@ -78,7 +78,7 @@
     
                         <!-- Ações -->
                         <div class="flex justify-between items-center mt-auto pt-3 border-t border-gray-200 dark:border-gray-700">
-                            <a href=""
+                            <a href="/dashboard-show-support/{{ $item->id }}"
                                class="flex items-center text-sm text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
                                 <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="2"
                                      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -88,9 +88,7 @@
                                 Visualizar
                             </a>
     
-                            <form method="POST" action="">
-                                @csrf
-                                @method('DELETE')
+                            <a href="/dashboard-show-support/{{ $item->id }}">                               
                                 <button type="submit" class="text-sm text-red-600 dark:text-red-400 hover:underline flex items-center">
                                     <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="2"
                                          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -99,7 +97,7 @@
                                     </svg>
                                     Excluir
                                 </button>
-                            </form>
+                            </a>
                         </div>
                     </div>
                 @endforeach
