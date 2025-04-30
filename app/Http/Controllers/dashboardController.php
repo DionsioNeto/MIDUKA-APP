@@ -81,9 +81,14 @@ class dashboardController extends Controller{
         $user = User::findOrFail($id);
         return view(
             'dashboard.dashboard-user',
-            [
-                'user' => $user
-            ]
+            ['user' => $user]
+        );
+    }
+    public function show_support($id){
+        $item = Denuncias::findOrFail($id);
+        return view(
+            'dashboard.dashboard-show-support',
+            ['item' => $item]
         );
     }
 }
