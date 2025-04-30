@@ -12,8 +12,8 @@
     </div>
     @endif
 
-    <main class="relactive">
-        <div>
+    <main>
+        <div class="relactive">
             @if (count($conteudos) > 0)
                 <div class="grid"
                 x-data 
