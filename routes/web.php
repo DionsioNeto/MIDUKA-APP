@@ -52,9 +52,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard-denuncias', [dashboardController::class, 'denucias'])->name('dashboard-denuncias');
     Route::get('/dashboard-conteudos', [dashboardController::class, 'conteudos'])->name('dashboard-conteudos');
 
-    Route::get('/tt', function(){
-        return view('project.test');
-    });
+    Route::get('/dashboard-show-support/{id}', [dashboardController::class, 'show_support'])->name('dashboard-show-support');
 
 });
 
