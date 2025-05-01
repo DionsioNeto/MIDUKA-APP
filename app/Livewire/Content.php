@@ -9,7 +9,7 @@ use App\Models\{
     Conteudo,
     Comments,
 };
-// #[Lazy()]''
+#[Lazy()]
 
 class Content extends Component{
     use WithPagination , WithoutUrlPagination;
@@ -29,45 +29,106 @@ class Content extends Component{
     public function placeholder(){
         return  <<<'HTML'
                     <div class="loading">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                
+                        <div class="lazy-content">
+                            <div class="lazy-content-top">
+                                <div class="lazy-content-photo"></div>
+                                <div class="lazy-content-traco">
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="lazy-content-show"></div>
+                        </div>
+
+                        <div class="lazy-content">
+                            <div class="lazy-content-top">
+                                <div class="lazy-content-photo"></div>
+                                <div class="lazy-content-traco">
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="lazy-content-show"></div>
+                        </div>
+
+                        <div class="lazy-content">
+                            <div class="lazy-content-top">
+                                <div class="lazy-content-photo"></div>
+                                <div class="lazy-content-traco">
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="lazy-content-show"></div>
+                        </div>
+                
                         <style>
-                            div.loading span:nth-child(2){
-                                margin: 10px 0px;
-                                width: 70%;
-                                height: 20px;
-                                border-radius: 20px;
-                                background: var(--destaque);
-                                animation: firstLoading 1500ms infinite;
+                            .lazy-content{
+                                display: flex;
+                                flex-direction: column;
+                                gap: 5px;
+                                width: 100%;
                             }
 
-                            @keyframes firstLoading {
-                                0%{
-                                    width: 70%;
-                                }50%{
-                                    width: 100%;
-                                }100%{
-                                    width: 70%;
+                            .lazy-content-top{
+                                display: flex;
+                                gap: 15px;
+                            }
+
+                            .lazy-content-photo{
+                                width: 45px;
+                                height: 45px;
+                                border-radius: 50%;
+                                background: var(--destaque);
+                            }
+                            
+                            .lazy-content-traco > div{
+                                width: 100px;
+                                height: 11px;
+                                border-radius: 10px;
+                                background: var(--destaque);
+                                margin: 5px 0;
+                            }
+
+                            .lazy-content-show{
+                                width: 100%;
+                                background: var(--destaque);
+                                height: 115px;
+                                border-radius: 5px;
+                            }
+
+                            div.loading{
+                                padding-top: 69px;
+                                padding-left: 280px;
+                                padding-right: 260px;
+                                padding-bottom: 5px;
+                                z-index: 1;
+                                display: grid;
+                                grid-template-columns: repeat(2,2fr);
+                                gap: 10px;
+                            }
+
+                            @media screen and ( max-width: 1200px) {
+                                div.loading{
+                                    padding-right: 8px;
+                                    padding-left: 250px;
                                 }
                             }
-                            div.loading span{
-                                margin: 10px 0px;
-                                width: 100%;
-                                height: 20px;
-                                border-radius: 20px;
-                                background: var(--destaque);
-                                animation: lastLoading 1500ms infinite;
+
+                            @media screen and ( max-width: 600px){
+                                div.loading{
+                                    padding-right: 8px;
+                                    padding-left: 8px;
+                                    padding-bottom: 60px;
+                                }
                             }
 
-
-                            @keyframes lastLoading {
-                                0%{
+                            @media screen and (max-width:  750px) {
+                                div.loading{
                                     width: 100%;
-                                }50%{
-                                    width: 70%;
-                                }100%{
-                                    width: 100%;
+                                    display: grid;
+                                    grid-template-columns: repeat(1,1fr);
                                 }
                             }
                         </style>
