@@ -4,7 +4,7 @@ namespace App\Livewire;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 use Livewire\Attributes\Lazy;
-// #[Lazy]
+#[Lazy]
 
 
 class Sidbar extends Component{
@@ -40,6 +40,7 @@ class Sidbar extends Component{
                             width: 70%;
                         }
                     }
+
                     div.loading span{
                         margin: 10px 0px;
                         width: 100%;
@@ -48,7 +49,6 @@ class Sidbar extends Component{
                         background: var(--destaque);
                         animation: lastLoading 1500ms infinite;
                     }
-
 
                     @keyframes lastLoading {
                         0%{
@@ -59,6 +59,7 @@ class Sidbar extends Component{
                             width: 100%;
                         }
                     }
+
                     div#si{
                         padding: 10px;
                         height: calc(98vh - 65px);
@@ -70,18 +71,18 @@ class Sidbar extends Component{
                         border-right: 1px solid var(--link);
                         position: fixed;
                     }
+
                     @media screen and ( max-width: 800px){
                         div#si{
                             margin-left: -5px;
                         }
                     }
+
                     @media screen and ( max-width: 600px){
                         div#si{
                             display: none;
                         }
                     }
-
-
                 </style>
             </div>
         HTML;
