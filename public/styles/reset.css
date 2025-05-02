@@ -383,3 +383,15 @@ small.erro{
 .center > div img{
     width: 20px;
 }
+
+.share-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:20px;
+    border-bottom: 1px solid var(--destaque);
+}
+
+.share-top button{
+    font-size: 25px;
+}

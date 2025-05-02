@@ -1,13 +1,13 @@
 <div>
-
     @if($share)
     <div class="modalAccount" style="z-index: 6;">
         <div class="contentModal">
-            <i class="fa fa-check"></i>
+            <div class="share-top">
+                <p>Partilhar conteúdo</p>
+                <button wire:click.prevent="toggleShare(null)">&times;</button>
+            </div>
             {{ $text }}
-            <br>
-            <a href="/">Ir para página principal</a>
-            <button wire:click.prevent="toggleShare(null)">Fechar</button>
+            
         </div>
     </div>
     @endif
