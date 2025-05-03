@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -9,7 +8,8 @@ use App\Models\{
     Conteudo,
     Comments,
 };
-#[Lazy()]
+
+// #[Lazy()]
 
 class Content extends Component{
     use WithPagination , WithoutUrlPagination;
@@ -22,11 +22,9 @@ class Content extends Component{
 
     public function toggleShare ($id, $link){
         $this->share = !$this->share;
-        $this->text_id = "O id do conteúdo é " . $id;
-        $this->text_link = "O link do conteúdo é " . $link;
+        $this->text_id = "http://localhost:8000/ver/ " . $id;
+        $this->text_link = $link;
     }
-
-
     
     public function placeholder(){
         return  <<<'HTML'
@@ -162,44 +160,40 @@ class Content extends Component{
 
     public $comments = [];
 
-public function storageComment($idConteudo)
-{
-    $this->validate([
-        "comments.{$idConteudo}.content" => 'required|min:1',
-    ]);
+    public function storageComment($idConteudo){
+        $this->validate([
+            "comments.{$idConteudo}.content" => 'required|min:1',
+        ]);
 
-    if (auth()->check()) {
-        $storageComment = new Comments();
-        $storageComment->content = $this->comments[$idConteudo]['content'];
-        $storageComment->user_id = auth()->id();
-        $storageComment->conteudo_id = $idConteudo;
+        if (auth()->check()) {
+            $storageComment = new Comments();
+            $storageComment->content = $this->comments[$idConteudo]['content'];
+            $storageComment->user_id = auth()->id();
+            $storageComment->conteudo_id = $idConteudo;
 
-        if ($storageComment->save()) {
-            session()->flash('c', 'Sucesso no envio do seu comentário');
-            $this->comments[$idConteudo]['content'] = null;
-            $this->reset("comments.{$idConteudo}");
+            if ($storageComment->save()) {
+                session()->flash('c', 'Sucesso no envio do seu comentário');
+                $this->comments[$idConteudo]['content'] = null;
+                $this->reset("comments.{$idConteudo}");
+            } else {
+                session()->flash('auth', 'Erro ao salvar o comentário');
+            }
         } else {
-            session()->flash('auth', 'Erro ao salvar o comentário');
+            session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
         }
-    } else {
-        session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
     }
-}
 
     public int $perPage = 4; // ou qualquer valor inicial que você queira
 
     protected $listeners = ['carregarMais' => 'loadMore'];
 
-    public function loadMore()
-    {
+    public function loadMore(){
         $this->perPage += 4; // ou a lógica que quiser
-    }
-    
+    }    
 
     public function render(){
         $conteudos = Conteudo::latest()->paginate(4);
         $comments = Comments::get();
         return view('livewire.content', ['conteudos' => $conteudos]);
     }
-
 }

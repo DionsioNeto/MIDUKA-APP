@@ -392,6 +392,37 @@ small.erro{
     border-bottom: 1px solid var(--destaque);
 }
 
+.flex-share{
+    display: flex;
+    gap: 6px;
+}
+
 .share-top button{
     font-size: 25px;
+}
+
+.input-share{
+    border: 2px solid var(--destaque);
+    border-radius: 5px;
+    padding: 5px;
+    max-width: 220px;
+    overflow: hidden;
+}
+
+.btn-share{
+    background-color: var(--branco);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+body#dark .btn-share{
+    background-color: var(--preto);
+}
+
+.btn-share i{
+    color: var(--preto);
+}
+
+body#dark .btn-share i{
+    color: var(--branco);
 }

@@ -4,11 +4,33 @@
         <div class="contentModal">
             <div class="share-top">
                 <p>Partilhar conteúdo</p>
-                <button wire:click.prevent="toggleShare(null)">&times;</button>
+                <button wire:click.prevent="toggleShare(null, null)">&times;</button>
             </div>
-            {{ $text_id }}
-            {{ $text_link }}
+            Link para o conteúdo: 
+            <div class="flex-share">
+                <div class="btn-share">
+                    <i class="fa fa-link"></i>
+                </div>
+                <div class="input-share">
+                    {{ $text_id }}
+                </div>
+                <div class="btn-share">
+                    <i class="fa-regular fa-copy"></i>
+                </div>
+            </div>  
             
+            Meta o conteúdo no seu site: 
+            <div class="flex-share">
+                <div class="btn-share">
+                    <i class="fa-regular fa-copy"></i>
+                </div>
+                <div class="input-share">
+                    {{ $text_link }}
+                </div>
+                <div class="btn-share">
+                    <i class="fa-regular fa-copy"></i>
+                </div>
+            </div>            
         </div>
     </div>
     @endif
@@ -306,6 +328,7 @@
                             </a>
                         </div>
                     </div> --}}
+                    
                 @endforeach
                 </div>
             
