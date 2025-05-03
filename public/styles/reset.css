@@ -394,11 +394,13 @@ small.erro{
 
 .flex-share{
     display: flex;
+    align-items: center;
     gap: 6px;
 }
 
 .share-top button{
     font-size: 25px;
+    padding-bottom: 8px;
 }
 
 .input-share{
@@ -407,22 +409,29 @@ small.erro{
     padding: 5px;
     max-width: 220px;
     overflow: hidden;
+    margin: 3px 0px;
 }
 
 .btn-share{
-    background-color: var(--branco);
+    background-color: var(--link);
     padding: 5px;
     border-radius: 5px;
 }
 
-body#dark .btn-share{
-    background-color: var(--preto);
+.social-media{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 10px;
 }
 
-.btn-share i{
-    color: var(--preto);
+.social-media *{
+    text-decoration: none;
 }
 
-body#dark .btn-share i{
-    color: var(--branco);
+.social-media div{
+    width: 45px;
+    height: 45px;
+    background-color: var(--destaque);
+    border-radius: 50%;
 }

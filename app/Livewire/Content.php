@@ -9,7 +9,7 @@ use App\Models\{
     Comments,
 };
 
-// #[Lazy()]
+#[Lazy()]
 
 class Content extends Component{
     use WithPagination , WithoutUrlPagination;

@@ -3,12 +3,12 @@
     <div class="modalAccount" style="z-index: 6;">
         <div class="contentModal">
             <div class="share-top">
-                <p>Partilhar conteúdo</p>
+                <h4>Partilhar conteúdo</h4>
                 <button wire:click.prevent="toggleShare(null, null)">&times;</button>
             </div>
             Link para o conteúdo: 
             <div class="flex-share">
-                <div class="btn-share">
+                <div>
                     <i class="fa fa-link"></i>
                 </div>
                 <div class="input-share">
@@ -21,16 +21,38 @@
             
             Meta o conteúdo no seu site: 
             <div class="flex-share">
-                <div class="btn-share">
-                    <i class="fa-regular fa-copy"></i>
+                <div>
+                    <i class="fa fa-code"></i>
                 </div>
                 <div class="input-share">
-                    {{ $text_link }}
+                    &lt;iframe src="{{ $text_link }}"&gt;&lt;/iframe&gt;
                 </div>
                 <div class="btn-share">
                     <i class="fa-regular fa-copy"></i>
                 </div>
-            </div>            
+            </div>  
+            <div class="social-media">
+                <a href="#">
+                    <div class="center">
+                        <i class="fa-brands fa-facebook"></i>
+                    </div>
+                </a>
+                <a href="#">
+                    <div  class="center">
+                        <i class="fa-brands fa-square-x-twitter"></i>
+                    </div>
+                </a>
+                <a href="#">
+                    <div  class="center">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>    
+                </a>
+                <a href="#">
+                    <div  class="center">
+                        <i class="fa fa-envelope"></i>
+                    </div>    
+                </a>
+            </div>          
         </div>
     </div>
     @endif
@@ -109,7 +131,7 @@
                             </div>
                         </div>
                         <div class="container-conteudo">
-                            @if ($item->type_tag == "jpg")
+                            @if ($item->type_tag == "jpg" | $item->type_tag == "png")
                                 <div class="content-type">
                                     <i class="fa fa-images"></i>
                                     Imagem
@@ -133,7 +155,7 @@
                                 <div class="content-type">⚠️ O sistema do consegue identificar</div>
                             @endif
                             <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
-                            @if ($item->type_tag == "jpg")
+                            @if ($item->type_tag == "jpg" | $item->type_tag == "png")
                             <img src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo">
                             @elseif($item->type_tag == "mp4")
                             <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo" {{--autoplay loop--}}></video>
