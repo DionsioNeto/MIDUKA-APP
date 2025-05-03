@@ -6,7 +6,8 @@
                 <p>Partilhar conteúdo</p>
                 <button wire:click.prevent="toggleShare(null)">&times;</button>
             </div>
-            {{ $text }}
+            {{ $text_id }}
+            {{ $text_link }}
             
         </div>
     </div>
@@ -179,7 +180,7 @@
                             <a href="{{ url("storage/uploads/{$item->content}") }}" download>
                                 <i class="fa fa-download"></i>
                             </a>
-                            <a wire:click.prevent="toggleShare({{ $item->id }})">
+                            <a wire:click.prevent="toggleShare({{ $item->id }}, @js(url("storage/uploads/{$item->content}")))">
                                 <i class="fa fa-share-nodes"></i>
                             </a>
                         </div>

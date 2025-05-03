@@ -17,11 +17,13 @@ class Content extends Component{
     // Modal de partilha
 
     public $share = false;
-    public $text;
+    public $text_id;
+    public $text_link;
 
-    public function toggleShare ($id){
+    public function toggleShare ($id, $link){
         $this->share = !$this->share;
-        $this->text = "O id do conteúdo é " . $id;
+        $this->text_id = "O id do conteúdo é " . $id;
+        $this->text_link = "O link do conteúdo é " . $link;
     }
 
 
