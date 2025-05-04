@@ -32,22 +32,22 @@
                 </div>
             </div>  
             <div class="social-media">
-                <a href="#">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($text_id) }}" target="_blank">
                     <div class="center">
                         <i class="fa-brands fa-facebook"></i>
                     </div>
                 </a>
-                <a href="#">
+                <a href="https://twitter.com/intent/tweet?url={{ urlencode($text_id) }}&text={{ urlencode('Confira este conteúdo incrível!') }}" target="_blank">
                     <div  class="center">
                         <i class="fa-brands fa-square-x-twitter"></i>
                     </div>
                 </a>
-                <a href="#">
+                <a href="https://wa.me/?text={{ urlencode('Confira este link: ' . $text_id) }}" target="_blank">
                     <div  class="center">
                         <i class="fa-brands fa-whatsapp"></i>
                     </div>    
                 </a>
-                <a href="#">
+                <a href="mailto:?subject={{ urlencode('Confira este conteúdo!') }}&body={{ urlencode('Olha esse link interessante: ' . $text_id) }}">
                     <div  class="center">
                         <i class="fa fa-envelope"></i>
                     </div>    
