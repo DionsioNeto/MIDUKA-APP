@@ -2,14 +2,13 @@
 
 namespace App\Livewire;
 use Livewire\Component;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Notification;
+use Livewire\Attributes\Lazy;
 use App\Models\{
     User,
     Conteudo,
 };
-
-use App\Models\Notification;
-
-use Livewire\Attributes\Lazy;
 
 #[Lazy]
 
@@ -61,21 +60,35 @@ class Header extends Component{
         $this->isNotification = !$this->isNotification;
     }
 
-    public $search = 's'; // Variável para armazenar a pesquisa
+    // Variável para armazenar a pesquisa
+    
+    public $search = '';
 
     public function render(){
+
+        //pesquisa de usuários
+        
         $users = User::where('name', 'like', '%'.$this->search.'%')
-        ->orWhere('email', 'like', '%'.$this->search.'%')
-        ->get();
+            ->orWhere('email', 'like', '%'.$this->search.'%')
+            ->get();
 
-        $notification = Notification::get();
+        //pesquisa de conteúdos
 
+        $cont = Conteudo::where('description', 'like', '%'.$this->search.'%')
+            ->get();
+
+        if(Auth::check()){
+            $notification = Notification::where('id_to', Auth::user()->id);
+        }else{
+            $notification = Notification::get();
+        }
+    
         return view(
             'livewire.header',
             [
                'users' => $users,
+               'cont' => $cont,
                'notification' => $notification,
-
            ]
         );
     }

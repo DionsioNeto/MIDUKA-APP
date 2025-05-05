@@ -114,7 +114,10 @@ header .last-header div.notification .counter{
     left: calc(50% - 150px);
     background-color: var(--bg);
     padding: 10px;
-    z-index: 1;
+    z-index: 2;
+    height: 200px;
+    width: 220px;
+    overflow-y: scroll;
 }
 
 .list-group{

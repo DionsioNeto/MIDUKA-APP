@@ -57,7 +57,7 @@
         <div class="modalNotification">
             <h2>Notificações</h2>
             <div class="notification-content">
-                @if (count($notification) > 0 )
+            @if ($notification->count() > 0)
                 @foreach ($notification as $item)
                 <div class="notification-box">
                     <img src="./imgs/avatar.webp" alt="" >
@@ -98,13 +98,24 @@
         <hr>
         <p>Resultados de conteúdos: {{ $search }}</p>
         <hr>
-        @if ($users->count() > 0)
+        @if ($cont->count() > 0)
             <ul class="list-group">
-                @foreach($users as $user)
-                <a href="/usuario/{{ $user->id }}">
+                @foreach($cont as $conts)
+                <a href="/ver/{{ $conts->id }}">
                     <li class="list-group-item">
-                            <img src="{{ $user->profile_photo_url }}" alt="Profile photo">
-                            {{ $user->name }}
+                        <img src="{{ url("storage/uploads/{$conts->capa}") }}" alt="Profile photo">
+                        {{ strlen($conts->description) > 17 ? substr($conts->description, 0, 17) . ' ver mais ...' : $conts->description }}
+                        @if ($conts->type_tag == "jpg" | $conts->type_tag == "png")
+                            <i class="fa fa-images"></i>
+                        @elseif($conts->type_tag == "mp3")
+                            <i class="fa-solid fa-microphone-lines"></i>
+                        @elseif($conts->type_tag == "pdf")
+                            <i class="fa fa-book"></i>
+                        @elseif($conts->type_tag == "mp4")
+                            <i class="fa fa-video"></i>
+                        @else
+                            ⚠️
+                        @endif
                     </li>
                 </a>
                 @endforeach
