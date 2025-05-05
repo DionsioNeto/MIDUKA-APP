@@ -276,6 +276,14 @@ main .alert-content i{
     border-radius: 10px;
 }
 
+.cinza{
+    color: var(--link);
+}
+
+.cinza *{
+    color: var(--link);
+}
+
 .modalAccount{
     width: 100%;
     min-height: 100vh;

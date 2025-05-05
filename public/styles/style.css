@@ -236,11 +236,3 @@
     width: 100%;
     height: auto;
 }
-
-.cinza{
-    color: var(--link);
-}
-
-.cinza *{
-    color: var(--link);
-}

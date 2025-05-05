@@ -2,7 +2,6 @@
 namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Livewire\WithoutUrlPagination;
 use Livewire\Attributes\Lazy;
 use App\Models\{
     Conteudo,
@@ -12,7 +11,7 @@ use App\Models\{
 #[Lazy()]
 
 class Content extends Component{
-    use WithPagination , WithoutUrlPagination;
+    use WithPagination;
 
     // Modal de partilha
 
@@ -182,18 +181,18 @@ class Content extends Component{
             session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
         }
     }
+ 
+    public int $perPage = 5;
 
-    public int $perPage = 4; // ou qualquer valor inicial que você queira
-
-    protected $listeners = ['carregarMais' => 'loadMore'];
+    protected $queryString = ['page'];
 
     public function loadMore(){
-        $this->perPage += 4; // ou a lógica que quiser
-    }    
+        $this->perPage += 5;
+    }
 
     public function render(){
-        $conteudos = Conteudo::latest()->paginate(4);
-        $comments = Comments::get();
+        $conteudos = Conteudo::latest()->paginate($this->perPage);
         return view('livewire.content', ['conteudos' => $conteudos]);
     }
+
 }

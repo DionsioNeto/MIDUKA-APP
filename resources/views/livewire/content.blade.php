@@ -60,14 +60,24 @@
     <main>
         <div class="relactive">
             @if (count($conteudos) > 0)
-                <div class="grid"
-                x-data 
-                x-init="window.onscroll = () => {
-                    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                        Livewire.dispatch('carregarMais')
-                    }
-                }"
-                >
+            <div
+            x-data="{
+                observe() {
+                    const observer = new IntersectionObserver(entries => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                @this.call('loadMore');
+                            }
+                        });
+                    }, { threshold: 1 });
+        
+                    observer.observe(this.$refs.loadMoreTrigger);
+                }
+            }"
+            x-init="observe()"
+            >
+
+            <div class="grid">
                 @foreach ($conteudos as $item)
                     <div class="card-video">
                         <div class="user-description">
@@ -352,59 +362,32 @@
                     </div> --}}
                     
                 @endforeach
-                </div>
-            
-                @if ($conteudos->hasPages())
-                <hr>
+                </div> 
+
                 <div class="pag">
-            
-                    <div>
-                        <p class="text-sm text-gray-700 leading-5 dark:text-gray-400">
-                            {!! __('Showing') !!}
-                            @if ($conteudos->firstItem())
-                                <span class="font-medium">{{ $conteudos->firstItem() }}</span>
-                                {!! __('to') !!}
-                                <span class="font-medium">{{ $conteudos->lastItem() }}</span>
-                            @else
-                                {{ $conteudos->count() }}
-                            @endif
-                            {!! __('of') !!}
-                            <span class="font-medium">{{ $conteudos->total() }}</span>
-                            {!! __('results') !!}
-                        </p>
-                    </div>
-                    <nav role="navigation" aria-label="Pagination Navigation">
-                        <span class="btn-nav">
-                            @if ($conteudos->onFirstPage())
-                                <span>
-                                    Anterior
-                                </span>
-                            @else
-                                <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev">
-                                    <i class="fa-solid fa-arrow-left-long"></i>
-                                    Anterior
-                                </button>
-                            @endif
-                        </span>
-            
-                        <span  class="btn-nav">
-                            @if ($conteudos->onLastPage())
-                                <span>
-                                    Proximo
-                                </span>
-                            @else
-                                <button wire:click="nextPage" wire:loading.attr="disabled" rel="next">
-                                    Proximo
-                                    <i class="fa-solid fa-arrow-right-long"></i>
-                                </button>
-                            @endif
-                        </span>
-                    </nav>
+                    <div x-ref="loadMoreTrigger"></div>
+
+                    @if ($conteudos->hasMorePages())
+                        <img src="{{ url("storage/more/loading.gif") }}" width="20px">
+                        <div class="cinza">Carregando mais...</div>
+                    @else
+                        <di>Nenhum conteúdo adicional.</div>
+                    @endif
                 </div>
-                @endif
-                @else
+
+                
+
+                
+
+
+
+                
+
+            </div>
+                
+            @else
                 <livewire:no-content />
-                @endif
+            @endif
                 <div wire:offline>
                     <livewire:all-pages />
                 </div>
