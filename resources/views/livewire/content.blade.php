@@ -7,15 +7,34 @@
                 <button wire:click.prevent="toggleShare(null, null)">&times;</button>
             </div>
             Link para o conteúdo: 
-            <div class="flex-share">
+            <div class="flex-share"
+            x-data="{
+                copied: false,
+                copyToClipboard() {
+                    const content = document.getElementById('copy').innerText;
+                    navigator.clipboard.writeText(content).then(() => {
+                        this.copied = true;
+                        setTimeout(() => this.copied = false, 2000);
+                    }).catch(err => {
+                        console.error('Erro ao copiar:', err);
+                    });
+                }
+            }"
+            >
                 <div>
                     <i class="fa fa-link"></i>
                 </div>
-                <div class="input-share">
+                <div class="input-share" id="copy">
                     {{ $text_id }}
                 </div>
-                <div class="btn-share">
+                <div class="btn-share" @click="copyToClipboard">
                     <i class="fa-regular fa-copy"></i>
+                </div>
+                <div
+                    x-show="copied"
+                    x-transition
+                >
+                    Copiado!
                 </div>
             </div>  
             
