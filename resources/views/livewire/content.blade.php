@@ -187,7 +187,7 @@
                             @if ($item->type_tag == "jpg" | $item->type_tag == "png")
                             <img src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo">
                             @elseif($item->type_tag == "mp4")
-                            <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo" {{--autoplay loop--}}></video>
+                            <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo"></video>
                             @endif
                         </div>
                         <div class="date cinza">
@@ -199,7 +199,12 @@
                         </div>
                         <a href="/ver/{{$item->id}}">
                             <div class="description">
-                                {{ strlen($item->description) > 100 ? substr($item->description, 0, 120) . ' ver mais ...' : $item->description }}
+                                    @if(strlen($item->description) > 100)
+                                        {{ substr($item->description, 0, 120) }}...
+                                        <span  class="cinza">ver mais...</span>
+                                    @else
+                                        {{ $item->description }}
+                                    @endif
                             </div>
                         </a>
                         @if (session()->has('msg'))
