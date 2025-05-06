@@ -45,10 +45,46 @@
 
 </div> --}}
 
-
+{{-- 
 <div>
     <form wire:submit.prevent='s' method="post">
         <input type="text" placeholder="digite" wire:model='ff'>
         <input type="submit" value="go">
     </form>
+</div> --}}
+
+<div
+    x-data="{
+        copied: false,
+        copyToClipboard() {
+            const content = document.getElementById('copy').innerText;
+            navigator.clipboard.writeText(content).then(() => {
+                this.copied = true;
+                setTimeout(() => this.copied = false, 2000);
+            }).catch(err => {
+                console.error('Erro ao copiar:', err);
+            });
+        }
+    }"
+    class="relative"
+>
+    <div id="copy" class="p-4 border rounded bg-gray-100">
+        Conteúdo para área de transferência
+    </div>
+
+    <button
+        type="button"
+        class="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+        @click="copyToClipboard"
+    >
+        Copiar Conteúdo
+    </button>
+
+    <!-- Feedback visual -->
+    <div
+        x-show="copied"
+        x-transition
+    >
+        Copiado!
+    </div>
 </div>
