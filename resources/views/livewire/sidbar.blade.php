@@ -1,94 +1,90 @@
 <div class="relactive">
-    <div class="sidbar">
 
+    <div x-data="{ path: window.location.pathname }" class="sidbar">
         <a href="/">
-            <div class="sib-box {{Request::is('/') ? 'destaque' : ''}}">
+            <div :class="path === '/' ? 'sib-box destaque' : 'sib-box'">
                 <button><i class="fa fa-home"></i></button>
                 <div class="text">Home</div>
             </div>
         </a>
-
+    
         @auth
         <a href="/perfil">
-            <div class="sib-box {{ Request::is('perfil') ? 'destaque' : '' }}">
+            <div :class="path.startsWith('/perfil') ? 'sib-box destaque' : 'sib-box'">
                 <button>
                     <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" class="user">
                 </button>
                 <div class="text">{{ Auth::user()->name }}</div>
             </div>
         </a>
-         @endauth
-        <a href="/criar"class="">
-            <div class="sib-box {{ Request::is('criar') ? 'destaque' : '' }}">
+        @endauth
+    
+        <a href="/criar">
+            <div :class="path.startsWith('/criar') ? 'sib-box destaque' : 'sib-box'">
                 <button><i class="fa-solid fa-add"></i></button>
                 <div class="text">Criar conteúdo</div>
             </div>
         </a>
+    
         @guest
-
         <a href="/perfil">
-            <div class="sib-box {{ Request::is('perfil') ? 'destaque' : '' }}">
-                <button>
-                    <i class="fa fa-user"></i>
-                </button>
-                <div class="text">{{__('Profile')}}</div>
+            <div :class="path.startsWith('/perfil') ? 'sib-box destaque' : 'sib-box'">
+                <button><i class="fa fa-user"></i></button>
+                <div class="text">{{ __('Profile') }}</div>
             </div>
         </a>
-
         @endguest
-
+    
         <a href="/guardados">
-            <div class="sib-box">
-                <button>
-                    <i class="fa-solid fa-bookmark"></i>
-                </button>
+            <div :class="path.startsWith('/guardados') ? 'sib-box destaque' : 'sib-box'">
+                <button><i class="fa-solid fa-bookmark"></i></button>
                 <div class="text">Guardados</div>
             </div>
         </a>
-
+    
         <a href="/videos">
-            <div class="sib-box {{ Request::is('videos') ? 'destaque' : '' }}">
+            <div :class="path.startsWith('/videos') ? 'sib-box destaque' : 'sib-box'">
                 <button><i class="fa fa-video"></i></button>
                 <div class="text">Vídeos</div>
             </div>
         </a>
-
+    
         <a href="/imagens">
-            <div class="sib-box {{ Request::is('imagens') ? 'destaque' : '' }}">
+            <div :class="path.startsWith('/imagens') ? 'sib-box destaque' : 'sib-box'">
                 <button><i class="fa fa-images"></i></button>
                 <div class="text">Imagens</div>
             </div>
         </a>
-
+    
         <a href="/livros-pdfs">
-            <div class="sib-box {{ Request::is('livros-pdfs') ? 'destaque' : '' }}">
+            <div :class="path.startsWith('/livros-pdfs') ? 'sib-box destaque' : 'sib-box'">
                 <button><i class="fa fa-book"></i></button>
                 <div class="text">Livros & PDFs</div>
             </div>
         </a>
-
+    
         <a href="/audios">
-            <div class="sib-box {{ Request::is('audios') ? 'destaque' : '' }}">
+            <div :class="path.startsWith('/audios') ? 'sib-box destaque' : 'sib-box'">
                 <button><i class="fa-solid fa-microphone-lines"></i></button>
-                <div class="text">Audios</div>
+                <div class="text">Áudios</div>
             </div>
         </a>
-
-
+    
         <a href="/definicoes">
-            <div class="sib-box {{ Request::is('definicoes') ? 'destaque' : '' }}">
+            <div :class="path.startsWith('/definicoes') ? 'sib-box destaque' : 'sib-box'">
                 <button><i class="fa-solid fa-gear"></i></button>
                 <div class="text">Definições</div>
             </div>
         </a>
-
+    
         <a href="/support">
-            <div class="sib-box {{ Request::is('support') ? 'destaque' : '' }}">
+            <div :class="path.startsWith('/support') ? 'sib-box destaque' : 'sib-box'">
                 <button><i class="fa-solid fa-headset"></i></button>
-                <div class="text">Support</div>
+                <div class="text">Suporte</div>
             </div>
         </a>
-        @auth
+
+            @auth
         <form action="/logout" method="post">
             @csrf
             <a href="./logout"
@@ -107,14 +103,14 @@
         @guest
 
         @if (Route::has('register'))
-            <a href="{{ route('register') }}">
-                <div class="sib-box">
-                    <button><i class="fa fa-user-plus"></i></button>
-                    <div class="text">
-                        {{ __('Create Account') }}
-                    </div>
+        <a href="{{ route('register') }}">
+            <div class="sib-box">
+                <button><i class="fa fa-user-plus"></i></button>
+                <div class="text">
+                    {{ __('Create Account') }}
                 </div>
-            </a>
+            </div>
+        </a>
         @endif
         <a href="{{ route('login') }}">
             <div class="sib-box">
@@ -124,5 +120,4 @@
         </a>
         @endguest
     </div>
-
 </div>
