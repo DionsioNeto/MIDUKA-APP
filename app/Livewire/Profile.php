@@ -18,6 +18,91 @@ class Profile extends Component{
     use WithPagination, WithoutUrlPagination;
     use WithFileUploads;
 
+    public function placeholder(){
+        return  <<<'HTML'
+            <div class="loading">
+                <div class="img-capa">
+                    <div class="img-perfil"></div>
+                </div>
+                <div class="coluna">
+                    <div class="text-coluna"></div>
+                    <div class="text-coluna two"></div>
+                    <div class="text-coluna tree"></div>
+                </div>
+                
+        
+                <style>     
+                    .img-capa{
+                        width: 100%;
+                        height: 180px;
+                        background: var(--destaque);
+                        border-radius: 15px;
+                        position: relative;
+                    }
+
+                    .img-perfil{
+                        width: 110px;
+                        height: 110px;
+                        border-radius: 50%;
+                        background: var(--link);
+                        position: absolute;
+                        bottom: -30%;
+                        left: 5%;
+                    }
+
+                    .coluna{
+                        margin-top: 60px;
+                    }
+
+                    .text-coluna{
+                        width: 100px;
+                        height: 20px;
+                        margin: 3px 0px;
+                        background: var(--destaque);
+                        border-radius: 5px;
+                    }
+
+                    .two{
+                        width: 140px;
+                    }
+
+                    .tree{
+                        width: 120px;
+                    }
+
+                    div.loading{
+                        padding-top: 69px;
+                        padding-left: 280px;
+                        padding-right: 260px;
+                        padding-bottom: 5px;
+                        z-index: 1;
+                    }
+
+                    @media screen and ( max-width: 1200px) {
+                                div.loading{
+                                    padding-right: 8px;
+                                    padding-left: 250px;
+                                }
+                            }
+
+                            @media screen and ( max-width: 600px){
+                                div.loading{
+                                    padding-right: 8px;
+                                    padding-left: 8px;
+                                    padding-bottom: 60px;
+                                }
+                            }
+
+                            @media screen and (max-width:  750px) {
+                                div.loading{
+                                    width: 100%;
+                                }
+                            }
+                </style>
+            </div>
+        HTML;
+    }
+
     public $modalEditProfile = false;
     public function ToggleModal(){
         $this->modalEditProfile = !$this->modalEditProfile;
