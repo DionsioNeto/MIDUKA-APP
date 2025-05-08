@@ -359,7 +359,8 @@ div.modal-video div.steps{
     color: var(--branco);
 }
 
-.btn-submit-simple{
+.btn-submit-simple,
+.btn-share{
     background-color: var(--link);
     color: var(--branco);
     border: none;
@@ -418,12 +419,6 @@ small.erro{
     max-width: 220px;
     overflow: hidden;
     margin: 3px 0px;
-}
-
-.btn-share{
-    background-color: var(--link);
-    padding: 5px;
-    border-radius: 5px;
 }
 
 .social-media{
