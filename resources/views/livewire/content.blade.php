@@ -243,9 +243,27 @@
                             @endif
                             <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
                             @if ($item->type_tag == "jpg" | $item->type_tag == "png")
-                            <img src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo">
+                            <div class="arquivo">
+                                <i class="fa fa-images"></i>
+                                Imagem
+                            </div>
+                            @elseif($item->type_tag == "pdf")
+                            <div class="arquivo">
+                                <i class="fa fa-book"></i>
+                                Livro
+                            </div>
+                            @elseif($item->type_tag == "mp3")
+                            <div class="arquivo">
+                                <i class="fa-solid fa-microphone-lines"></i>
+                                Audio
+                            </div>
                             @elseif($item->type_tag == "mp4")
-                            <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo"></video>
+                            <div class="arquivo">
+                                <i class="fa fa-video"></i>
+                                Vídeo
+                            </div>
+                            @else
+                                ⚠️ O sistema do consegue identificar
                             @endif
                         </div>
                         <div class="date cinza">
