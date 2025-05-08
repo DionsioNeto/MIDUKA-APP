@@ -13,20 +13,9 @@ return new class extends Migration
     {
         Schema::create('denuncias', function (Blueprint $table) {
             $table->id();
-
-            $table->string('email');
-            $table->string('phoneNumber');
-            $table->string('description');
-            $table->string('typeProblem');
-
-            //Criando chave estrangeira
-            $table->unsignedBigInteger('user_id');
-
-             //relacionando a chave "user_id" com o id da tabela "user"
-             $table->foreign('user_id')
-             ->references('id')
-             ->on('users');
-
+            $table->json('denuncia'); // campo JSON para múltiplas opções
+            $table->string('profile_or_content');            
+            $table->string('profile_or_content_id');
             $table->timestamps();
         });
     }
