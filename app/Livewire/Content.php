@@ -8,10 +8,17 @@ use App\Models\{
     Comments,
 };
 
-#[Lazy()]
+#[Lazy]
 
 class Content extends Component{
     use WithPagination;
+
+    // Denúncia
+    public $denun = false;
+
+    public function toggleDenuncia($var){
+        $this->denun = !$this->denun;
+    }
 
     // Modal de partilha
 
