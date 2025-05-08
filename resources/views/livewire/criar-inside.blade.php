@@ -200,28 +200,38 @@
     <main>
         <h1>Criar conteúdos</h1>
         <div class="grid-criar relactive">
-            <div class="box-criar" wire:click='togleModalVideo'>
-                <i class="fa fa-video"></i>
-                <h3>Vídeo</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
+            <button class="card" data-modal="modal-video" wire:click='togleModalVideo'>
+                <span class="icon">
+                    <i class="fa fa-video"></i>
+                </span>
+                <h2>Vídeo</h2>
+                <p>Crie e compartilhe vídeos educativos com facilidade.</p>
+              </button>
+        
+              <button class="card" data-modal="modal-imagem" wire:click='togleModalImg'>
+                <span class="icon">
+                    <i class="fa fa-images"></i>
+                </span>
+                <h2>Imagens</h2>
+                <p>Adicione gráficos, fotos e ilustrações educativas.</p>
+              </button>
+        
+              <button class="card" data-modal="modal-audio" wire:click='togleModalAudio'>
+                <span class="icon">
+                    <i class="fa fa-microphone-lines"></i>
+                </span>
+                <h2>Áudios</h2>
+                <p>Grave podcasts, narrações e trilhas sonoras educativas.</p>
+              </button>
+        
+              <button class="card" data-modal="modal-pdf" wire:click='togleModalPdf'>
+                <span class="icon">
+                    <i class="fa fa-book"></i>
+                </span>
+                <h2>PDF (Livros)</h2>
+                <p>Compartilhe livros e materiais em PDF.</p>
+              </button>
             </div>
-            <div class="box-criar" wire:click='togleModalImg'>
-                <i class="fa fa-images"></i>
-                <h3>Imagens</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
-            </div>
-            <div class="box-criar" wire:click='togleModalAudio'>
-                <i class="fa fa-microphone-lines"></i>
-                <h3>Audivos</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
-            </div>
-            <div class="box-criar" wire:click='togleModalPdf'>
-                <i class="fa fa-book"></i>
-                <h3>PDF (livros)</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ratione tempora exercitationem optio quibusdam corporis excepturi accusantium praesentium enim debitis voluptatum perferendis, nemo sunt error temporibus et magnam voluptates provident?</p>
-            </div>
-        </div>
-
         <div wire:offline>
             <livewire:all-pages />
         </div>
