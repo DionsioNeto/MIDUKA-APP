@@ -79,25 +79,25 @@ class Profile extends Component{
                     }
 
                     @media screen and ( max-width: 1200px) {
-                                div.loading{
-                                    padding-right: 8px;
-                                    padding-left: 250px;
-                                }
-                            }
+                        div.loading{
+                            padding-right: 8px;
+                            padding-left: 250px;
+                        }
+                    }
 
-                            @media screen and ( max-width: 600px){
-                                div.loading{
-                                    padding-right: 8px;
-                                    padding-left: 8px;
-                                    padding-bottom: 60px;
-                                }
-                            }
+                    @media screen and ( max-width: 600px){
+                        div.loading{
+                            padding-right: 8px;
+                            padding-left: 8px;
+                            padding-bottom: 60px;
+                        }
+                    }
 
-                            @media screen and (max-width:  750px) {
-                                div.loading{
-                                    width: 100%;
-                                }
-                            }
+                    @media screen and (max-width:  750px) {
+                        div.loading{
+                            width: 100%;
+                        }
+                    }
                 </style>
             </div>
         HTML;
