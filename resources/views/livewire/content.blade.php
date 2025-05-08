@@ -8,18 +8,18 @@
             </div>
             Link para o conteúdo: 
             <div class="flex-share"
-            x-data="{
-                copied: false,
-                copyToClipboard() {
-                    const content = document.getElementById('copy').innerText;
-                    navigator.clipboard.writeText(content).then(() => {
-                        this.copied = true;
-                        setTimeout(() => this.copied = false, 2000);
-                    }).catch(err => {
-                        console.error('Erro ao copiar:', err);
-                    });
-                }
-            }"
+                x-data="{
+                    copied: false,
+                    copyToClipboard() {
+                        const content = document.getElementById('copy').innerText;
+                        navigator.clipboard.writeText(content).then(() => {
+                            this.copied = true;
+                            setTimeout(() => this.copied = false, 2000);
+                        }).catch(err => {
+                            console.error('Erro ao copiar:', err);
+                        });
+                    }
+                }"
             >
                 <div>
                     <i class="fa fa-link"></i>
@@ -28,34 +28,55 @@
                     {{ $text_id }}
                 </div>
                 <div class="btn-share" @click="copyToClipboard">
-                    <i class="fa-regular fa-copy"></i>
+                    <template x-if="!copied">
+                        <i class="fa-regular fa-copy"></i>
+                    </template>
+                    <template x-if="copied">
+                        <i class="fa-solid fa-check"></i>
+                    </template>
                 </div>
-                <div
-                    x-show="copied"
-                    x-transition
-                >
-                    Copiado!
-                </div>
-            </div>  
+            </div>
+
             
-            Meta o conteúdo no seu site: 
-            <div class="flex-share">
+            <div class="flex-share"
+                x-data="{
+                    copied: false,
+                    copyToClipboard() {
+                        const content = document.getElementById('embed-code').innerText;
+                        navigator.clipboard.writeText(content).then(() => {
+                            this.copied = true;
+                            setTimeout(() => this.copied = false, 2000);
+                        }).catch(err => {
+                            console.error('Erro ao copiar:', err);
+                        });
+                    }
+                }"
+            >
                 <div>
                     <i class="fa fa-code"></i>
                 </div>
-                <div class="input-share">
+                <div class="input-share" id="embed-code">
                     &lt;iframe src="{{ $text_link }}"&gt;&lt;/iframe&gt;
                 </div>
-                <div class="btn-share">
-                    <i class="fa-regular fa-copy"></i>
+                <div class="btn-share" @click="copyToClipboard">
+                    <template x-if="!copied">
+                        <i class="fa-regular fa-copy"></i>
+                    </template>
+                    <template x-if="copied">
+                        <i class="fa-solid fa-check"></i>
+                    </template>
                 </div>
-            </div>  
+            </div>
+ 
             <div class="social-media">
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($text_id) }}" target="_blank">
-                    <div class="center">
-                        <i class="fa-brands fa-facebook"></i>
-                    </div>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($text_id) }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="center"
+                >
+                    <i class="fa-brands fa-facebook"></i>
                 </a>
+
                 <a href="https://twitter.com/intent/tweet?url={{ urlencode($text_id) }}&text={{ urlencode('Confira este conteúdo incrível!') }}" target="_blank">
                     <div  class="center">
                         <i class="fa-brands fa-square-x-twitter"></i>
@@ -72,6 +93,43 @@
                     </div>    
                 </a>
             </div>          
+        </div>
+    </div>
+    @endif
+
+    @if($denun)
+    <div class="modalAccount" style="z-index: 6;">
+        <div class="contentModal">
+            <div class="share-top">
+                <h4>Denúncia</h4>
+                <button wire:click.prevent="toggleDenuncia(null)">&times;</button>
+            </div>
+            <div class="radios-group">
+                <form action="">
+                    <label for="conteudoAdulto">
+                        <div>
+                            <input type="checkbox" name="" id="conteudoAdulto">
+                            <span for="">Conteúdo adulto</span>
+                        </div>
+                    </label> 
+                    <label for="">
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <span for="">Conteúdo sexual</span>
+                        </div>
+                    </label> 
+                    <label for="">
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <span for="">Conteúdo sexual</span>
+                        </div>
+                    </label>  
+                    <div class="btn-denuncia">
+                        <button class="btn-share">Enviar</button>
+                        <button class="btn-submit-simple" wire:click.prevent="toggleDenuncia(null)">Fechar</button>
+                    </div>   
+                </form>    
+            </div> 
         </div>
     </div>
     @endif
@@ -121,8 +179,8 @@
                                             <i class="fa-solid fa-ellipsis"></i>
                                         </summary>
                                         <ul>
-                                            <li>
-                                                <i class="fa fa-mega-phone"></i>
+                                            <li wire:click.prevent="toggleDenuncia({{ $item->id }})">
+                                                <i class="fa fa-flag"></i>
                                                 Denunciar
                                             </li>
                                             <li>
