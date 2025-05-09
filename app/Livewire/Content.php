@@ -6,6 +6,7 @@ use Livewire\Attributes\Lazy;
 use App\Models\{
     Conteudo,
     Comments,
+    Denuncias,
 };
 
 #[Lazy]
@@ -13,12 +14,35 @@ use App\Models\{
 class Content extends Component{
     use WithPagination;
 
-    // Denúncia
     public $denun = false;
+    public $den_id = "";
 
-    public function toggleDenuncia($var){
+    public function toggleDenuncia($den_id){
+        $this->den_id = $den_id;
         $this->denun = !$this->denun;
     }
+
+    public array $denuncia = [];
+
+    public function submitDen($var){
+        if($this->denuncia == !null){
+            $den = new Denuncias;
+            $den->profile_or_content = 'Conteudo';
+            $den->profile_or_content_id = $var;
+            $den->denuncia = $this->denuncia;
+
+            if($den->save()){
+                session()->flash('denNullSucess', 'A sua denúncia foi submetida com sucesso.');
+
+            }else{
+                session()->flash('denNullError', 'Erro ao submeter a sua denúncia.');
+            }
+        }else{
+            session()->flash('denNull', 'O (s) campo não podem ficar nulo.');
+
+        }
+    }
+    // Modal de partilha
 
     // Modal de partilha
 

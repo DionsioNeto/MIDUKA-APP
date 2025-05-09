@@ -101,27 +101,42 @@
     <div class="modalAccount" style="z-index: 6;">
         <div class="contentModal">
             <div class="share-top">
-                <h4>Denúncia</h4>
+                <h4>Denúncia</h4> 
                 <button wire:click.prevent="toggleDenuncia(null)">&times;</button>
             </div>
             <div class="radios-group">
-                <form action="">
-                    <label for="conteudoAdulto">
+                <form wire:submit.prevent="submitDen('{{ $den_id }}')">
+                    @if (session()->has('denNull'))
+                        <div class="">{{ session('denNull') }}</div>
+                    @endif
+                    @if (session()->has('denNullSucess'))
+                        {{ session('denNullSucess') }}
+                    @endif
+                    @if (session()->has('denNullError'))
+                        {{ session('denNullError') }}
+                    @endif
+                    <label for="den1">
                         <div>
-                            <input type="checkbox" name="" id="conteudoAdulto">
-                            <span for="">Conteúdo adulto</span>
+                            <input type="checkbox" value="sexual" wire:model="denuncia" id="den1">
+                            <span>Conteúdo sexual</span>
                         </div>
                     </label> 
-                    <label for="">
+                    <label for="den2">
                         <div>
-                            <input type="checkbox" name="" id="">
-                            <span for="">Conteúdo sexual</span>
+                            <input type="checkbox" value="violencia" wire:model="denuncia" id="den2">
+                            <span>Conteúdo violento</span>
                         </div>
                     </label> 
-                    <label for="">
+                    <label for="den3">
                         <div>
-                            <input type="checkbox" name="" id="">
-                            <span for="">Conteúdo sexual</span>
+                            <input type="checkbox" value="odio" wire:model="denuncia" id="den3">
+                            <span>Expressão de ódio</span>
+                        </div>
+                    </label>
+                    <label for="den4">
+                        <div>
+                            <input type="checkbox" value="outros" wire:model="denuncia" id="den4">
+                            <span>Outros...</span>
                         </div>
                     </label>  
                     <div class="btn-denuncia">
@@ -327,7 +342,7 @@
                             </a>
                             @endguest
             
-                            <a href="/ver{{$item->id}}">
+                            <a href="/ver/{{$item->id}}">
                                 <i class="fa-regular fa-comments"></i>
                                 <div class="contador">{{ $item->Comments }}</div>
                             </a>
