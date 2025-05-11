@@ -14,17 +14,18 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             
-            $table->unsignedBigInteger('id_from');
-
-            $table->foreign('id_from')
-            ->references('id')
-            ->on('users')
-            ->onDelete('cascade');
-
             $table->string('id_to');
             $table->string('content_notification');
             $table->boolean('verify')
             ->default(0);
+
+            $table->unsignedBigInteger('user_id');
+
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onDelete('cascade');
+
             $table->timestamps();
         });
     }
