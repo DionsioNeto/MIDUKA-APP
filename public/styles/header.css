@@ -74,16 +74,16 @@ header .last-header * i{
 header .last-header div.notification .counter{
     background-color: var(--vermelho);
     color: var(--branco);
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     font-size: 11px;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: -50%;
-    left: -50%;
+    top: -30%;
+    left: -10%;
 }
 
 .search-btn{
@@ -154,11 +154,13 @@ header .modalNotification{
     top: 60px;
     right: 0;
     max-width: 280px;
-    min-height: 70vh;
+    height: 220px;
+    padding: 10px;
     background-color: var(--bg);
     border: 1px solid var(--link);
     border-radius: 10px;
     margin: 2px;
+    overflow-x: scroll;
 }
 
 body#dark header .modalNotification{
@@ -189,6 +191,3 @@ header .modalNotification .notification-content .notification-box img{
     border-radius: 50%;
     border: 3px solid var(--destaque);
 }
-
-
-
