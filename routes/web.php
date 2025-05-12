@@ -53,6 +53,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard-conteudos', [dashboardController::class, 'conteudos'])->name('dashboard-conteudos');
 
     Route::get('/dashboard-show-support/{id}', [dashboardController::class, 'show_support'])->name('dashboard-show-support');
+    Route::get('/dashboard-show-conteudo/{id}', [dashboardController::class, 'show_conteudo'])->name('dashboard-showconteudot');
 
 });
 
