@@ -33,7 +33,11 @@
                 <button>
                     <div class="notification">
                             <i class="fa fa-bell"></i>
-                        <div class="counter">{{ $notification->count() }}</div>
+                           @auth
+                           @if ($notification_verify->count() > 0)
+                           <div class="counter"></div>
+                           @endif
+                           @endauth
                     </div>
                 </button>
             </a>
@@ -57,20 +61,29 @@
         <div class="modalNotification">
             <h2>Notificações</h2>
             <div class="notification-content">
+            @auth
             @if ($notification->count() > 0)
-                @foreach ($notification as $item)
-                <div class="notification-box">
-                    <img src="./imgs/avatar.webp" alt="" >
-                    <div class="text">
-                        <div class="nome">Dionísio Neto</div>
-                        <div class="notify">Lorem ipsum, dolor sit amet...</div>
-                    </div>
+            @foreach ($notification as $item)
+            <div class="notification-box">
+                <img src="{{ $item->user->profile_photo_url }}" alt="" >
+                <div class="text">
+                    <div class="nome">{{ $item->user->name }}</div>
+                    <div class="notify">{{ $item->content_notification }}</div>
                 </div>
-                @endforeach
             </div>
+            @endforeach  
             @else
-            <h3>Sem Notificações...</h3>
+            <div class="center">
+                Sem alguma notificações
+            </div>
             @endif
+            @endauth
+            @guest
+                <div class="center">
+                    Inicie sessão para ter acesso.
+                </div>
+            @endguest
+        </div>
         </div>
         @endif
     </header>
