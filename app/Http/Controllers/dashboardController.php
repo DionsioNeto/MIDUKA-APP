@@ -5,7 +5,8 @@ use Illuminate\Http\Request;
 use App\Models\{
     Conteudo,
     User,
-    Denuncias
+    Denuncias,
+    msg,
 };
 
 class dashboardController extends Controller{
@@ -13,7 +14,7 @@ class dashboardController extends Controller{
     public function index(){
         $user = User::get();
         $content = Conteudo::get();
-        $denun =Denuncias::get();
+        $denun = msg::get();
         return view(
             'dashboard.dashboard',
             [
@@ -49,7 +50,6 @@ class dashboardController extends Controller{
         );
     }
 
-
     public function conteudos(Request $request){
         $query = Conteudo::query();
     
@@ -67,7 +67,7 @@ class dashboardController extends Controller{
     }
 
     public function support(){
-        $denuncias = Denuncias::latest()->paginate(3);
+        $denuncias = msg::latest()->paginate(3);
 
         return view(
             'dashboard.dashboard-support',
@@ -84,12 +84,18 @@ class dashboardController extends Controller{
             ['user' => $user]
         );
     }
+
     public function show_support($id){
-        $item = Denuncias::findOrFail($id);
+        $item = msg::findOrFail($id);
         return view(
             'dashboard.dashboard-show-support',
             ['item' => $item]
         );
+    }
+
+    public function show_conteudo($id){
+        $item = Conteudo::findOrFail($id);
+        return view('dashboard.dashboard-conteudo-show', ['item' => $item]);
     }
 }
  
