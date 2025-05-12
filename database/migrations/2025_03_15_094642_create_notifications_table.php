@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('id_to');
             $table->string('content_notification');
             $table->boolean('verify')
-            ->default(0);
+            ->default(1);
 
             $table->unsignedBigInteger('user_id');
 
