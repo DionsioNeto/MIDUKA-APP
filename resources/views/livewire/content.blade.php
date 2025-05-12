@@ -233,7 +233,7 @@
                             </div>
                         </div>
                         <div class="container-conteudo">
-                            @if ($item->type_tag == "jpg" | $item->type_tag == "png")
+                            @if ($item->type_tag == "jpg" | $item->type_tag == "png" | $item->type_tag == "webp" )
                                 <div class="content-type">
                                     <i class="fa fa-images"></i>
                                     Imagem
@@ -256,29 +256,32 @@
                             @else
                                 <div class="content-type">⚠️ O sistema do consegue identificar</div>
                             @endif
+                            @if ($item->type_tag == "jpg" | $item->type_tag == "png" | $item->type_tag == "webp")
                             <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
-                            @if ($item->type_tag == "jpg" | $item->type_tag == "png")
                             <div class="arquivo">
                                 <i class="fa fa-images"></i>
                                 Imagem
                             </div>
                             @elseif($item->type_tag == "pdf")
+                            <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
                             <div class="arquivo">
                                 <i class="fa fa-book"></i>
                                 Livro
                             </div>
                             @elseif($item->type_tag == "mp3")
+                            <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
                             <div class="arquivo">
                                 <i class="fa-solid fa-microphone-lines"></i>
                                 Audio
                             </div>
                             @elseif($item->type_tag == "mp4")
+                            <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
                             <div class="arquivo">
                                 <i class="fa fa-video"></i>
                                 Vídeo
                             </div>
                             @else
-                                ⚠️ O sistema do consegue identificar
+                            ⚠️ O sistema do consegue identificar
                             @endif
                         </div>
                         <div class="date cinza">
