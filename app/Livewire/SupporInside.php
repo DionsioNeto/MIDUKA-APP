@@ -2,26 +2,26 @@
 
 namespace App\Livewire;
 use Livewire\Component;
-use App\Models\Denuncias;
+use App\Models\msg;
 
 class SupporInside extends Component{
     public $email;
     public $description;
-    public $tel;
+    public $phoneNumber;
     public $typeProblem;
 
     protected $rules = [
         'email' => 'required',
         'description' => 'required|min:20',
-        // 'tel' => 'required',
+        'phoneNumber' => 'required',
         'typeProblem' => 'required',
     ];
 
     public function store(){
         $this->validate();
-        $su = new Denuncias();
+        $su = new msg();
         $su->email = $this->email;
-        $su->phoneNumber = "123";
+        $su->phoneNumber = $this->phoneNumber;
         $su->user_id = auth()->user()->id;
         $su->description = $this->description;
         $su->typeProblem = $this->typeProblem;
