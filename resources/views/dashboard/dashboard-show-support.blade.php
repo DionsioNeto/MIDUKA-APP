@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Denúncias') }}
+            {{ __('Mensagem de supporte') }}: ({{ $item->count() }})
         </h2>
     </x-slot>
 
@@ -64,7 +64,7 @@
     
                 <!-- Ações -->
                 <div class="flex justify-end">
-                    <form method="POST" action="">
+                    <form method="POST" action="/dashboard-mgs/destroy/{{ $item->id }}" onsubmit="return confirm('Tem certeza que deseja excluir?');">
                         @csrf
                         @method('DELETE')
                         <button type="submit"
