@@ -57,6 +57,7 @@ Route::middleware(['admin'])->group(function () {
 
     Route::delete('/dashboard-conteudo/destroy/{id}', [dashboardController::class, 'destroy_conteudo']);
     Route::delete('/dashboard-mgs/destroy/{id}', [dashboardController::class, 'destroy_msg']);
+    Route::delete('/dashboard-user/destroy/{id}', [dashboardController::class, 'destroy_user']);
 });
 
 Route::middleware([
