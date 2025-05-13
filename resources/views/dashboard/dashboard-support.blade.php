@@ -1,16 +1,22 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Support do usuários') }}
+            {{ __('Mensagem de supporte') }}: ({{ $denuncias->count() }})
         </h2>
     </x-slot>
 
+    @if(session()->has('delete'))
+    <div class="w-full p-1 text-center bg-green-500 text-gray-200 font-medium opacity-80">
+        {{ session('delete') }}
+    </div>
+    @endif
+    
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
             <div class="mb-8">
-                <form method="GET" action="/dashboard-usuario" class="flex items-center max-w-md mx-auto">
+                <form method="GET" action="/dashboard-support" class="flex items-center max-w-md mx-auto">
                     <div class="relative w-full">
                         <input 
                             type="text" 
@@ -42,8 +48,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" />
                 </svg>
                 <!-- Mensagem -->
-                <h2 class="text-2xl font-semibold">Nenhum remetente ou mensagem encontrado</h2>
-                <p class="mt-2 text-base text-gray-500 dark:text-gray-400">Tente ajustar a sua pesquisa e tente novamente.</p>
+                <h2 class="text-2xl font-semibold">Nenhum remetente de mensagem encontrado</h2>
+                <p class="mt-2 text-base text-gray-500 dark:text-gray-400">Actualize a página ou tente novamente mais tarde.</p>
             </div>
             
             @else
@@ -66,18 +72,34 @@
                             </div>
                         </div>
     
-                        <!-- Conteúdo da mensagem -->
-                        <div class="mb-4">
-                            <h1 class="text-sm text-gray-700 dark:text-gray-300">
-                                {{ $item->typeProblem }}
-                            </h1>
+                        
+                        <div class="mb-2">
+                            <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Problema</p>
                             <p class="text-sm text-gray-700 dark:text-gray-300">
-                                {{ strlen($item->user->user_name) > 120 ? substr($item->mensagem, 120, 120) . ' ...' : $item->mensagem }}
+
+                                @if(strlen($item->typeProblem) > 40)
+                                    {{ substr($item->typeProblem, 0, 40) }}...
+                                    <span  class="text-gray-500">ver mais...</span>
+                                @else
+                                    {{ $item->description }}
+                                @endif
+                            </p>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Descrição</p>
+                            <p class="text-sm text-gray-700 dark:text-gray-300">
+                                @if(strlen($item->description) > 50)
+                                    {{ substr($item->description, 0, 50) }}
+                                    <span  class="text-gray-500">ver mais ...</span>
+                                @else
+                                    {{ $item->description }}
+                                @endif
                             </p>
                         </div>
     
                         <!-- Ações -->
-                        <div class="flex justify-between items-center mt-auto pt-3 border-t border-gray-200 dark:border-gray-700">
+                        <div class="flex justify-between items-center mt-auto pt-1 border-t border-gray-200 dark:border-gray-700">
                             <a href="/dashboard-show-support/{{ $item->id }}"
                                class="flex items-center text-sm text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
                                 <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="2"
@@ -87,17 +109,21 @@
                                 </svg>
                                 Visualizar
                             </a>
-    
-                            <a href="/dashboard-show-support/{{ $item->id }}">                               
-                                <button type="submit" class="text-sm text-red-600 dark:text-red-400 hover:underline flex items-center">
-                                    <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" stroke-width="2"
-                                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                              d="M6 18L18 6M6 6l12 12"/>
-                                    </svg>
-                                    Excluir
-                                </button>
-                            </a>
+
+                            <div class="flex justify-end">
+                                <form method="POST" action="/dashboard-mgs/destroy/{{ $item->id }}" onsubmit="return confirm('Tem certeza que deseja excluir?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                    class="text-sm text-red-600 dark:text-red-400 hover:underline flex items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                                             viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                        Excluir
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 @endforeach

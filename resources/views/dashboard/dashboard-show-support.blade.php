@@ -49,7 +49,7 @@
                         <p class="text-base text-gray-900 dark:text-white"> {{ $item->phoneNumber }}</p>
                     </div>
                     <div class="md:col-span-2">
-                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Assunto</p>
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Problema</p>
                         <p class="text-base text-gray-900 dark:text-white">{{ $item->typeProblem }}</p>
                     </div>
                 </div>
