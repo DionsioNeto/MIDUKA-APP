@@ -53,7 +53,10 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/dashboard/usuario/{id}', [dashboardController::class, 'user'])->name('dashboard-user');
     Route::get('/dashboard-show-support/{id}', [dashboardController::class, 'show_support'])->name('dashboard-show-support');
     Route::get('/dashboard-show-conteudo/{id}', [dashboardController::class, 'show_conteudo'])->name('dashboard-showconteudot');
-    Route::delete('dashboard-conteudo/destroy/{id}', [dashboardController::class, 'destroy_conteudo']);
+    // Rota de deleção
+
+    Route::delete('/dashboard-conteudo/destroy/{id}', [dashboardController::class, 'destroy_conteudo']);
+    Route::delete('/dashboard-mgs/destroy/{id}', [dashboardController::class, 'destroy_msg']);
 });
 
 Route::middleware([
