@@ -67,8 +67,15 @@ class dashboardController extends Controller{
         ]);
     }
 
-    public function support(){
-        $denuncias = msg::latest()->paginate(3);
+    public function support(Request $request){
+        $query = msg::query();
+
+        if($request->has('search') && $request->search != '') {
+            $query->where('typeProblem', 'like', '%' . $request->search . '%')
+                ->orWhere('description', 'like', '%' . $request->search . '%' );
+        }
+
+        $denuncias = $query->latest()->paginate()->withQueryString();
 
         return view(
             'dashboard.dashboard-support',
@@ -103,7 +110,7 @@ class dashboardController extends Controller{
 
     public function destroy_msg($id){
         msg::findOrFail($id)->delete();
-        return redirect("/dashboard-support")->with("delete", "Conteudo deletado com sucesso.");
+        return redirect("/dashboard-support")->with("delete", "Mensagem excluída com sucesso.");
     }
 
     public function destroy_conteudo($id){
