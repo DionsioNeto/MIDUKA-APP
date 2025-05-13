@@ -1,9 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Users list:') }}
+            {{ __('Users list:') }} ({{ $users->count() }})
         </h2>
     </x-slot>
+
+    @if(session()->has('delete'))
+    <div class="w-full p-1 text-center bg-green-500 text-gray-200 font-medium opacity-80">
+        {{ session('delete') }}
+    </div>
+    @endif
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -51,8 +57,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-6 lg:p-8">
                     
                         @foreach ($users as $item)
-                        <div class="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 transition hover:border-indigo-500 dark:hover:border-indigo-400 rounded-2xl shadow hover:shadow-lg transition-all duration-300 ease-in-out">
-                            <div class="flex items-center justify-between p-4">
+                        <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-2xl shadow hover:shadow-lg transition-all duration-300 ease-in-out p-4">
+                            <div class="flex items-center justify-between p-1">
                                 <div class="flex items-center">
                                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                         <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -78,20 +84,29 @@
                                         <div class="block px-4 py-2 text-xs text-gray-400">
                                             {{ __('Manage Account') }}
                                         </div>
-        
-                                        <x-dropdown-link href="{{ route('profile.show') }}">
-                                            {{ __('Profile') }}
-                                        </x-dropdown-link>
-        
+
                                         <div class="border-t border-gray-200 dark:border-gray-600"></div>
         
-                                        <x-dropdown-link href="{{ route('profile.show') }}">
-                                            {{ __('Notify account') }}
+                                        <x-dropdown-link href="/usuario/{{ $item->id }}">
+                                            {{ __('Profile') }}
+                                        </x-dropdown-link>
+                                        
+
+                                        <x-dropdown-link href="/dashboard/usuario/{{ $item->id }}}">
+                                            Gerenciar perfil
                                         </x-dropdown-link>
         
-                                        <x-dropdown-link class="text-red-600 dark:text-red-600" href="{{ route('profile.show') }}">
-                                            {{ __('Delete account') }}
+                                        <x-dropdown-link href="/dashboard/notify/{{ $item->id }}}">
+                                            {{ __('Notify account') }}
                                         </x-dropdown-link>
+                                        <form method="POST" action="/dashboard-user/destroy/{{ $item->id }}" onsubmit="return confirm('Tem certeza que deseja excluir?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                            class="block w-full px-4 py-2 text-start text-sm leading-5 text-red-600 dark:text-red-600 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-800 transition duration-150 ease-in-out">
+                                                Excluir
+                                            </button>
+                                        </form>
                                     </x-slot>
                                 </x-dropdown>
                             </div>
@@ -105,14 +120,30 @@
                                 </div>
                             </div>
         
-                            <p class="px-4 py-2 text-sm">
-                                <a href="/dashboard/usuario/{{ $item->id }}" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
-                                    Gerenciar este perfil
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
+                            <div class="flex justify-between items-center mt-auto  p-1 border-t border-gray-200 dark:border-gray-700">
+                                <a href="/dashboard/usuario/{{ $item->id }}"
+                                   class="flex items-center text-sm text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
+                                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 w-5 h-5 fill-indigo-600 dark:fill-indigo-400 rotate-180">
                                         <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
                                     </svg>
+                                    Gerenciar este perfil
                                 </a>
-                            </p>
+    
+                                <div class="flex justify-end">
+                                    <form method="POST" action="/dashboard-user/destroy/{{ $item->id }}" onsubmit="return confirm('Tem certeza que deseja excluir?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                        class="text-sm text-red-600 dark:text-red-400 hover:underline flex items-center">
+                                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                            </svg>
+                                            Excluir
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         @endforeach
                     @endif
