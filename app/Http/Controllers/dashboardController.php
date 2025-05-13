@@ -99,9 +99,16 @@ class dashboardController extends Controller{
         return view('dashboard.dashboard-conteudo-show', ['item' => $item]);
     }
 
+    // Lógica de deleção
+
+    public function destroy_msg($id){
+        msg::findOrFail($id)->delete();
+        return redirect("/dashboard-support")->with("delete", "Conteudo deletado com sucesso.");
+    }
+
     public function destroy_conteudo($id){
         Conteudo::findOrFail($id)->delete();
-        redirect("/")->with("delete", "Conteudo deletado com sucesso.");
+        return redirect("/dashboard-support")->with("delete", "Conteudo deletado com sucesso.");
     }
 }
  
