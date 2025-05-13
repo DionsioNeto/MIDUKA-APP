@@ -46,7 +46,8 @@ class dashboardController extends Controller{
     public function denucias(){
         $denuncias = Denuncias::get();
         return view(
-            'dashboard.dashboard-denuncias'
+            'dashboard.dashboard-denuncias',
+            ['denuncias' => $denuncias]
         );
     }
 
@@ -96,6 +97,11 @@ class dashboardController extends Controller{
     public function show_conteudo($id){
         $item = Conteudo::findOrFail($id);
         return view('dashboard.dashboard-conteudo-show', ['item' => $item]);
+    }
+
+    public function destroy_conteudo($id){
+        Conteudo::findOrFail($id)->delete();
+        redirect("/")->with("delete", "Conteudo deletado com sucesso.");
     }
 }
  
