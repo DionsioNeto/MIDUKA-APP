@@ -115,7 +115,12 @@ class dashboardController extends Controller{
 
     public function destroy_conteudo($id){
         Conteudo::findOrFail($id)->delete();
-        return redirect("/dashboard-support")->with("delete", "Conteudo deletado com sucesso.");
+        return redirect("/dashboard-support")->with("delete", "Conteudo Excluído com sucesso.");
+    }
+
+    public function destroy_user($id){
+        User::findOrFail($id)->delete();
+        return redirect("/dashboard-usuario")->with("delete", "Usuário Excluído com sucesso.");
     }
 }
  
