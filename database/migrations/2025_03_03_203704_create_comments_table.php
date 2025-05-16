@@ -15,13 +15,17 @@ return new class extends Migration
             $table->id();
             $table->text('content');
             $table->unsignedBigInteger('conteudo_id');
+            $table->unsignedBigInteger('user_id');
 
-            //relacionando a chave "user_id" com o id da tabela "user"
-
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+            
             $table->foreign('conteudo_id')
-            ->references('id')
-            ->on('conteudos')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('conteudos')
+                ->onDelete('cascade');
             
             $table->timestamps();
         });
