@@ -188,30 +188,98 @@ class Content extends Component{
         $conteudo->likes()->delete();
     }
 
+
     public $comments = [];
 
-    public function storageComment($idConteudo){
+    public function storageComment($idConteudo)
+    {
         $this->validate([
             "comments.{$idConteudo}.content" => 'required|min:1',
         ]);
-
-        if (auth()->check()) {
-            $storageComment = new Comments();
-            $storageComment->content = $this->comments[$idConteudo]['content'];
-            $storageComment->user_id = auth()->id();
-            $storageComment->conteudo_id = $idConteudo;
-
-            if ($storageComment->save()) {
-                session()->flash('c', 'Sucesso no envio do seu comentário');
-                $this->comments[$idConteudo]['content'] = null;
-                $this->reset("comments.{$idConteudo}");
-            } else {
-                session()->flash('auth', 'Erro ao salvar o comentário');
-            }
+    
+        if (!auth()->check()) {
+            dd("vc deve estar logado");
+            return;
+        }
+    
+        $conteudoComentario = $this->comments[$idConteudo]['content'] ?? null;
+    
+        $comment = new Comments();
+        $comment->content = $conteudoComentario;
+        $comment->user_id = auth()->id();
+        $comment->conteudo_id = $idConteudo;
+    
+        if ($comment->save()) {
+            $this->comments[$idConteudo]['content'] = '';
+            dd("sucesso");
         } else {
-            session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
+            dd("erro");
         }
     }
+    
+
+//     public $comments = [];
+
+//     public function storageComment($idConteudo)
+// {
+//     // Validação do campo específico do conteúdo
+//     $this->validate([
+//         "comments.{$idConteudo}.content" => 'required|min:1',
+//     ]);
+
+//     // Verifica se o usuário está logado
+//     if (!auth()->check()) {
+//         // session()->flash('auth', 'Você precisa estar logado para comentar.');
+//         dd("vc deve estar logado");
+//         return;
+//     }
+
+//     // Recupera o conteúdo do comentário
+//     $conteudoComentario = $this->comments[$idConteudo]['content'] ?? null;
+
+//     // Cria e salva o comentário
+//     $comment = new Comments();
+//     $comment->content = $conteudoComentario;
+//     $comment->user_id = auth()->id();
+//     $comment->conteudo_id = $idConteudo;
+
+//     if ($comment->save()) {
+//         // session()->flash('c', 'Sucesso no envio do seu comentário');
+//         $this->reset("comments.{$idConteudo}");
+//         dd("sucesso");
+//     } else {
+//         // session()->flash('auth', 'Erro ao salvar o comentário');
+//         dd("erro");
+//     }
+// }
+
+    // public function storageComment($idConteudo){
+
+        // dd("chegou... " . $idConteudo . " Conteúdo: " . $this->comments[$idConteudo]['content']);
+
+
+        // dd("chegou... " . $idConteudo . " Conteúdo: " . $this->comments[$idConteudo]);
+        // $this->validate([
+        //     "comments.{$idConteudo}.content" => 'required|min:1',
+        // ]);
+
+        // if (auth()->check()) {
+        //     $storageComment = new Comments();
+        //     $storageComment->content = $this->comments[$idConteudo]['content'];
+        //     $storageComment->user_id = auth()->id();
+        //     $storageComment->conteudo_id = $idConteudo;
+
+        //     if ($storageComment->save()) {
+        //         session()->flash('c', 'Sucesso no envio do seu comentário');
+        //         $this->comments[$idConteudo]['content'] = null;
+        //         $this->reset("comments.{$idConteudo}");
+        //     } else {
+        //         session()->flash('auth', 'Erro ao salvar o comentário');
+        //     }
+        // } else {
+        //     session()->flash('auth', 'Você precisa ter sessão iniciada para poder fazer comentários ...');
+        // }
+    // }
  
     public int $perPage = 5;
 
