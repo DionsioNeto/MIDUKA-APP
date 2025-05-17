@@ -317,7 +317,7 @@
                                 <input
                                     type="text"
                                     placeholder="Digite seu comentário"
-                                    wire:model='comments.{{ $item->id }}.content'
+                                    wire:model.defer="comments.{{ $item->id }}.content"
                                 >
                                 <button type="submit">
                                     <i class="fa-solid fa-paper-plane"></i>
