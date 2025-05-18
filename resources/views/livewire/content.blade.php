@@ -150,6 +150,25 @@
     @endif
 
     <main>
+        
+        @if(session('comment'))
+        <div
+            x-data="{ show: true }" 
+            x-show="show"
+            x-init="setTimeout(() => show = false, 5000)"
+            x-transition
+            class="feedback-comment"
+        >
+            {{ session('comment') }}
+            <button 
+                @click="show = false" 
+            >
+                &times;
+            </button>
+        </div>
+        @endif
+        
+
         <div class="relactive">
             @if (count($conteudos) > 0)
             <div
@@ -301,9 +320,6 @@
                                     @endif
                             </div>
                         </a>
-                        @if (session()->has('msg'))
-                            <div class="">{{ session('success') }}</div>
-                        @endif
                         <div class="comment">
                             <div class="c-img">
                                 @guest
