@@ -167,7 +167,8 @@
             </button>
         </div>
         @endif
-        
+
+       
 
         <div class="relactive">
             @if (count($conteudos) > 0)
@@ -190,6 +191,23 @@
 
             <div class="grid">
                 @foreach ($conteudos as $item)
+                @error("comments.{$item->id}.content")
+                <div
+                    x-data="{ show: true }" 
+                    x-show="show"
+                    x-init="setTimeout(() => show = false, 5000)"
+                    x-transition
+                    class="feedback-comment"
+                >
+                    {{ $message }}
+                    <button 
+                        @click="show = false" 
+                    >
+                        &times;
+                    </button>
+                </div>
+                @enderror
+                
                     <div class="card-video">
                         <div class="user-description">
                             <a href="/usuario/{{ $item->user->id }}" class="inline">
