@@ -170,7 +170,7 @@
 
        
 
-        <div class="relactive">
+        <diphpv class="relactive">
             @if (count($conteudos) > 0)
             <div
             x-data="{

@@ -416,7 +416,7 @@ small.erro{
     border-radius: 5px;
     padding: 5px;
     max-width: 220px;
-    overflow: hidden;
+    overflow-y: scroll;
     margin: 3px 0px;
 }
 
