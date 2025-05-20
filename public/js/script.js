@@ -42,3 +42,38 @@ document.addEventListener('click', function(event) {
         }
     });
 });
+
+// DradOrDro 
+
+function draggable() {
+    return {
+      x: 100,
+      y: 100,
+      offsetX: 0,
+      offsetY: 0,
+      isDragging: false,
+
+      init() {
+        // escuta eventos globais de mouseup e mousemove
+        document.addEventListener('mousemove', (e) => this.drag(e));
+        document.addEventListener('mouseup', () => this.endDrag());
+      },
+
+      startDrag(event) {
+        this.isDragging = true;
+        this.offsetX = event.clientX - this.x;
+        this.offsetY = event.clientY - this.y;
+      },
+
+      drag(event) {
+        if (this.isDragging) {
+          this.x = event.clientX - this.offsetX;
+          this.y = event.clientY - this.offsetY;
+        }
+      },
+
+      endDrag() {
+        this.isDragging = false;
+      }
+    };
+  }
