@@ -473,3 +473,13 @@ small.erro{
     z-index: 4;
     max-width: 90%;
 }
+
+.vermelho *,
+body#dark .vermelho *{
+    color: var(--vermelho);
+}
+
+.vermelho,
+body#dark .vermelho{
+    color: var(--vermelho);
+}
