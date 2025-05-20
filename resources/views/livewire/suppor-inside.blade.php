@@ -49,9 +49,7 @@
                     <label for="description">
                         Digite uma descrição
                         @error('description')
-                        (
-                            {{ $message }}
-                        )
+                        ({{ $message }})
                         @enderror
                     </label>
                     <input id="description" type="text" wire:model='description' placeholder="Descrição" class="btn-simple">
@@ -59,13 +57,11 @@
                 <div class="grid-insid">
                     <label for="tel">
                         Digite o número de telefone
-                        @error('tel')
-                        (
-                            {{ $message }}
-                        )
+                        @error('phoneNumber')
+                        ({{ $message }})
                         @enderror
                     </label>
-                    <input id="tel" type="text" wire:mode='tel' placeholder="Telefone" class="btn-simple">
+                    <input id="tel" type="text" wire:model='phoneNumber' placeholder="Telefone" class="btn-simple">
                 </div>
                 <div class="grid-insid">
                     <label for="typeProblem">

@@ -231,39 +231,41 @@
                                             <i class="fa-solid fa-ellipsis"></i>
                                         </summary>
                                         <ul>
-                                            <li wire:click.prevent="toggleDenuncia({{ $item->id }})">
-                                                <i class="fa fa-flag"></i>
-                                                Denunciar
+                                            
+                                            <li wire:click.prevent="toggleShare({{ $item->id }}, @js(url("storage/uploads/{$item->content}")))">
+                                                <i class="fa fa-share-nodes"></i>
+                                                Partilhar
                                             </li>
-                                            <li>
-                                                <i class="fa-regular fa-bell"></i>
-                                                Notificar-me
-                                            </li>
-                                            <li>
-                                                <i class="fa fa-link"></i>
-                                                Cópiar URL
-                                            </li>
+                                            
                                             @auth
                                                 @if ($item->Guardados->count())
-                                                <a wire:click.prevent="unguard({{ $item->id }})">
-                                                    <li>
-                                                        <i class="fa-solid fa-bookmark"></i>
-                                                        Não guardar para mais tarde
-                                                    </li>
-                                                </a>
+                                                    <a wire:click.prevent="unguard({{ $item->id }})">
+                                                        <li>
+                                                            <i class="fa-solid fa-bookmark"></i>
+                                                            Não guardar para mais tarde
+                                                        </li>
+                                                    </a>
                                                 @else
-                                                <a wire:click.prevent="guard({{ $item->id }})">
-                                                    <li>
-                                                        <i class="fa-regular fa-bookmark"></i>
-                                                        Guardar para mais tarde
-                                                    </li>
-                                                </a>
+                                                    <a wire:click.prevent="guard({{ $item->id }})">
+                                                        <li>
+                                                            <i class="fa-regular fa-bookmark"></i>
+                                                            Guardar para mais tarde
+                                                        </li>
+                                                    </a>
+                                                @endif
+                                                
+                                                @if(auth()->user()->id == $item->user->id)
+                                                <li class="vermelho" wire:click.prevent="deletePost({{ $item->id }})">
+                                                    <i class="fa fa-trash"></i>
+                                                    Excluir postagem
+                                                </li>
+                                                @else
+                                                <li wire:click.prevent="toggleDenuncia({{ $item->id }})">
+                                                    <i class="fa fa-flag"></i>
+                                                    Denunciar
+                                                </li>
                                                 @endif
                                             @endauth
-                                            <li>
-                                                <i class="fa fa-bug"></i>
-                                                Notificar possível erro
-                                            </li>
                                         </ul>
                                     </details>
                                 </div>
