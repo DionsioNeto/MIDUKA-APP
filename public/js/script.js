@@ -43,7 +43,7 @@ document.addEventListener('click', function(event) {
     });
 });
 
-// DradOrDro 
+// DradOrDrop 
 
 function draggable() {
     return {
