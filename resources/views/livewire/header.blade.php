@@ -139,4 +139,15 @@
     </div>
 @endif
 
+    @if ($beyBoard)
+        <div 
+        x-data="draggable()" 
+        x-init="init()" 
+        :style="{ left: x + 'px', top: y + 'px' }" 
+        @mousedown="startDrag($event)" 
+        class="draggable"
+        >
+            <h1>Teclado</h1>
+        </div>
+    @endif
 </div>
