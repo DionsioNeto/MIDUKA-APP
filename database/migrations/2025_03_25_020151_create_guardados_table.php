@@ -20,11 +20,13 @@ return new class extends Migration
             //relacionando a chave "user_id" com o id da tabela "user"
             $table->foreign('user_id')
             ->references('id')
-            ->on('users');
+            ->on('users')
+            ->onDelete('cascade');
 
             $table->foreign('conteudo_id')
             ->references('id')
-            ->on('conteudos');
+            ->on('conteudos')
+            ->onDelete('cascade');;
             $table->timestamps();
         });
     }
