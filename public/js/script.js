@@ -30,3 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleButton = document.getElementById('toggle-mode');
     toggleButton.addEventListener('click', toggleTheme);
 });
+ 
+
+// Dropdown
+
+document.addEventListener('click', function(event) {
+    const allDetails = document.querySelectorAll('details');
+    allDetails.forEach(details => {
+        if (details.hasAttribute('open') && !details.contains(event.target)) {
+            details.removeAttribute('open');
+        }
+    });
+});
