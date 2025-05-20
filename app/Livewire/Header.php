@@ -60,9 +60,14 @@ class Header extends Component{
         $this->isNotification = !$this->isNotification;
     }
 
+    public $beyBoard = true;
+
+    public function openKeyBoard(){
+        $this->beyBoard = !$this->beyBoard;
+    }
+
     // Variável para armazenar a pesquisa
   
-
     public $search = '';
 
     public function render(){
