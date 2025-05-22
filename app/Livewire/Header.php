@@ -60,7 +60,7 @@ class Header extends Component{
         $this->isNotification = !$this->isNotification;
     }
 
-    public $beyBoard = true;
+    public $beyBoard = false;
 
     public function openKeyBoard(){
         $this->beyBoard = !$this->beyBoard;

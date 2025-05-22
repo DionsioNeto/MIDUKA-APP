@@ -171,10 +171,12 @@ class Content extends Component{
         $guardar->Guardados()->create([
             'user_id' => auth()->user()->id
         ]);
+        return session()->flash('comment', 'Conteúdo guardado com sucesso.');
     }
 
     public function unguard(Conteudo $guardar){
         $guardar->Guardados()->delete();
+        session()->flash('comment', 'Conteúdo retirado sucesso.');
     }
 
     public function like($idConteudo){
@@ -220,6 +222,11 @@ class Content extends Component{
             }
         }
         
+    }
+
+    public function deletePost($id){
+        Conteudo::findOrFail($id)->delete();
+        session()->flash('comment', 'Conteúdo deletado com sucesso.');
     }
      
     public int $perPage = 5;
