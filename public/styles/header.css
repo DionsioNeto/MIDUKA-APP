@@ -196,6 +196,7 @@ header .modalNotification .notification-content .notification-box img{
 
 .draggable {
     background-color: var(--bg);
+    border: 1px solid var(--destaque);
     width: 150px;
     height: 150px;
     border-radius: 10px;
