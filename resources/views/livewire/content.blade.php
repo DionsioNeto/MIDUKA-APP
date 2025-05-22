@@ -272,12 +272,12 @@
                             </div>
                         </div>
                         <div class="container-conteudo">
-                            @if ($item->type_tag == "jpg" | $item->type_tag == "png" | $item->type_tag == "webp" )
+                            @if ($item->type_tag == "jpg" | $item->type_tag == "png" | $item->type_tag == "webp" | $item->type_tag == "jpeg" | $item->type_tag == "gif" | $item->type_tag == "bmp" | $item->type_tag == "tiff")
                                 <div class="content-type">
                                     <i class="fa fa-images"></i>
                                     Imagem
                                 </div>
-                            @elseif($item->type_tag == "mp3")
+                            @elseif($item->type_tag == "mp3" | $item->type_tag ==  "wav" | $item->type_tag == "m4a")
                                 <div class="content-type">
                                     <i class="fa-solid fa-microphone-lines"></i>
                                     Audio
@@ -287,7 +287,7 @@
                                     <i class="fa fa-book"></i>
                                      Livro/PDF
                                 </div>
-                            @elseif($item->type_tag == "mp4")
+                            @elseif($item->type_tag == "mp4" | $item->type_tag == "avi" | $item->type_tag == "mov" | $item->type_tag == "wmv" | $item->type_tag == "mpg" | $item->type_tag == "mpeg")
                                 <div class="content-type">
                                     <i class="fa fa-video"></i>
                                     Vídeo
@@ -295,7 +295,7 @@
                             @else
                                 <div class="content-type">⚠️ O sistema do consegue identificar</div>
                             @endif
-                            @if ($item->type_tag == "jpg" | $item->type_tag == "png" | $item->type_tag == "webp")
+                            @if ($item->type_tag == "jpg" | $item->type_tag == "png" | $item->type_tag == "webp" | $item->type_tag == "jpeg" | $item->type_tag == "gif" | $item->type_tag == "bmp" | $item->type_tag == "tiff")
                             <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
                             <div class="arquivo">
                                 <i class="fa fa-images"></i>
@@ -307,13 +307,13 @@
                                 <i class="fa fa-book"></i>
                                 Livro
                             </div>
-                            @elseif($item->type_tag == "mp3")
+                            @elseif($item->type_tag == "mp3" | $item->type_tag ==  "wav" | $item->type_tag == "m4a")
                             <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
                             <div class="arquivo">
                                 <i class="fa-solid fa-microphone-lines"></i>
                                 Audio
                             </div>
-                            @elseif($item->type_tag == "mp4")
+                            @elseif($item->type_tag == "mp4" | $item->type_tag == "avi" | $item->type_tag == "mov" | $item->type_tag == "wmv" | $item->type_tag == "mpg" | $item->type_tag == "mpeg")
                             <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
                             <div class="arquivo">
                                 <i class="fa fa-video"></i>
@@ -525,18 +525,9 @@
                         <img src="{{ url("storage/more/loading.gif") }}" width="20px">
                         <div class="cinza">Carregando mais...</div>
                     @else
-                        <di>Nenhum conteúdo adicional.</div>
+                        <div>Nenhum conteúdo adicional.</div>
                     @endif
                 </div>
-
-                
-
-                
-
-
-
-                
-
             </div>
                 
             @else
