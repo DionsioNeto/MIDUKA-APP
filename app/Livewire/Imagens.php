@@ -233,7 +233,7 @@ class Imagens extends Component{
     }
 
     public function render(){
-        $conteudos = Conteudo::where('type_tag', 'jpg' | 'png' | 'webp' | 'jpeg' | 'gif' | 'bmp' |'tiff')
+        $conteudos = Conteudo::whereIn('type_tag', ['jpg', 'png', 'webp', 'jpeg', 'gif', 'bmp', 'tiff'])
         ->latest()
         ->paginate($this->perPage);
 
