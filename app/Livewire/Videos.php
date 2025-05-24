@@ -234,8 +234,8 @@ class Videos extends Component{
     }
 
     public function render(){
-        $conteudos = Conteudo::where('type_tag', 'mp4')
-        ->latest()
+        $conteudos = Conteudo::where('type_tag', ['mp4', 'avi', 'mov', 'wmv', 'mpg', 'mpeg'])
+        ->latest('
         ->paginate($this->perPage);
 
         return view(
