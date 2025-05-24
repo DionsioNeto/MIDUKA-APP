@@ -9,6 +9,49 @@ use Livewire\Attributes\Lazy;
 
 class Audios extends Component{
     use WithPagination;
+    use WithPagination;
+
+    public $denun = false;
+    public $den_id = "";
+
+    public function toggleDenuncia($den_id){
+        $this->den_id = $den_id;
+        $this->denun = !$this->denun;
+    }
+
+    public array $denuncia = [];
+
+    public function submitDen($var){
+        if($this->denuncia == !null){
+            $den = new Denuncias;
+            $den->profile_or_content = 'Conteudo';
+            $den->profile_or_content_id = $var;
+            $den->denuncia = $this->denuncia;
+
+            if($den->save()){
+                session()->flash('denNullSucess', 'A sua denúncia foi submetida com sucesso.');
+
+            }else{
+                session()->flash('denNullError', 'Erro ao submeter a sua denúncia.');
+            }
+        }else{
+            session()->flash('denNull', 'O (s) campo não podem ficar nulo.');
+
+        }
+    }
+    // Modal de partilha
+
+    // Modal de partilha
+
+    public $share = false;
+    public $text_id;
+    public $text_link;
+
+    public function toggleShare ($id, $link){
+        $this->share = !$this->share;
+        $this->text_id = "http://localhost:8000/ver/ " . $id;
+        $this->text_link = $link;
+    }
 
     public function placeholder(){
         return  <<<'HTML'
@@ -192,7 +235,7 @@ class Audios extends Component{
     }
     
     public function render() {
-        $conteudos = Conteudo::where('type_tag', 'mp3')
+        $conteudos = Conteudo::whereIn('type_tag', ['mp3', 'wav', 'm4a'])
         ->latest() // já é orderBy('created_at', 'desc')
         ->paginate($this->perPage);
 
