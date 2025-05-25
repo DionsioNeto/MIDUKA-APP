@@ -1,55 +1,58 @@
-# Politicas de privacidade
+# Política de Privacidade
 
-## Termos na generalidade
-### 1. Termos de usabilidade:
+Última atualização: 24 de maio de 2025
 
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
+Esta Política de Privacidade descreve como coletamos, usamos e protegemos seus dados pessoais ao utilizar nosso sistema de divulgação de conteúdo.
 
-### 2. Termos de denuncia
+## 1. Dados Coletados
 
+Coletamos os seguintes tipos de dados:
 
-### 1. Termos de usabilidade:
+- **Dados pessoais:** nome, e-mail, e demais informações fornecidas no cadastro.
+- **Dados de navegação:** IP, navegador, sistema operacional, páginas acessadas.
+- **Conteúdo enviado:** arquivos, textos, comentários e outros dados inseridos na plataforma.
 
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
+## 2. Finalidade do Uso
 
-### 2. Termos de denuncia
+Usamos seus dados para:
 
+- Gerenciar sua conta e permitir o acesso à plataforma.
+- Fornecer suporte e comunicação com o usuário.
+- Melhorar a experiência de navegação e uso do sistema.
+- Garantir a segurança e integridade da plataforma.
 
-### 1. Termos de usabilidade:
+## 3. Compartilhamento de Dados
 
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
+Seus dados não serão compartilhados com terceiros, exceto:
 
-### 2. Termos de denuncia
+- Mediante consentimento expresso.
+- Por exigência legal ou judicial.
+- Para fins de prevenção à fraude e segurança.
 
+## 4. Armazenamento e Segurança
 
-### 1. Termos de usabilidade:
+Os dados são armazenados em servidores protegidos e acessíveis apenas por pessoal autorizado. Aplicamos medidas técnicas para garantir a segurança das informações.
 
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
+## 5. Direitos do Usuário
 
-### 2. Termos de denuncia
+Você pode solicitar:
 
+- Acesso, correção ou exclusão de seus dados.
+- Cancelamento do seu cadastro.
+- Revogação do consentimento para uso de dados.
 
-### 1. Termos de usabilidade:
+Envie sua solicitação para: **dionisioni304@gmail.com**
 
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
+## 6. Alterações nesta Política
 
-### 2. Termos de denuncia
+Podemos atualizar esta política periodicamente. A versão mais recente estará sempre disponível na plataforma.
 
+## 7. Contato
 
-### 1. Termos de usabilidade:
+Para dúvidas ou solicitações relacionadas à privacidade:
 
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
-- Ao criar conta você está aceitano todos os termos descritos abaixo
+- **E-mail:** dionisioni304@gmail.com 
 
-### 2. Termos de denuncia
+---
+
+Ao utilizar nosso sistema, você concorda com esta Política de Privacidade.
