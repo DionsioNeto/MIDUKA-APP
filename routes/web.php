@@ -12,7 +12,7 @@ use App\Livewire\{
 // Rota principal da aplicação (index).
 Route::get('/', [indexController:: class, 'index']);
 // Rota para ver um conteúdo
-Route::get('/ver/{id}',  [Ver::class, 'render']);
+Route::get('/ver/{id}', Ver::class);
 //Rota que nos leva a view de perfis de outros usuários...
 
 Route::get('/usuario/{id}',[Usuario::class, 'render']);
