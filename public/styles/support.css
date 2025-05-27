@@ -1,17 +1,3 @@
-.grid{
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(2,2fr);
-}
-
-@media screen and (max-width: 435px) {
-    .grid{
-        margin-top: 10px;
-        display: grid;
-        grid-template-columns: repeat(1,2fr);
-    }
-}
-
 .grid .grid-insid{
     display: flex;
     flex-direction: column;
@@ -20,4 +6,95 @@
 
 .grid .grid-insid{
     width: 100%;
+}
+
+
+section#contacto{
+   
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+section#contacto form {
+    display: flex;
+    flex-direction: column;
+}
+
+section#contacto .grid{
+    display: grid;
+    grid-template-columns: repeat(2,2fr);
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.o{
+    position: relative;
+}
+
+.o input{
+    width: 100%;
+    height: 60px;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 0 15px;
+    border: 2px solid var(--destaque);
+    background: transparent;
+    outline: none;
+    color: var(--branco);
+}
+
+section#contacto textarea{
+    height: 100px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 0 15px;
+    border: 2px solid var(--destaque);
+    background: transparent;
+    outline: none;
+    resize: none;
+}
+
+.o label{
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 19px;
+    pointer-events: none;
+    transition: .3s;
+}
+
+section#contacto input:focus,textarea:focus{
+    border: 2px solid var(--branco);
+}
+
+
+input:focus ~ label,
+input:valid ~ label,
+textarea:focus ~ label,
+textarea:valid ~ label{
+    top: 0;
+    font-size: 13px;
+    padding: 0 10px;
+    background: var(--bg);
+}
+
+section#contacto form input[type="submit"]{
+    padding: 5px;
+    border: none;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: var(--azul);
+    transition: 1s;
+}
+
+section#contacto form input[type="submit"]:hover{
+    background-color: rgba(255, 255, 255, 0.481);
+    color: rgb(55, 55, 55);
 }

@@ -56,9 +56,8 @@
   .media-section audio,
   .media-section iframe {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 40px);
     object-fit: contain;
-    border-radius: 0;
   }
 
   .media-section audio{
@@ -216,3 +215,83 @@
       font-size: 13px;
     }
   }
+
+
+
+  .custom-player {
+  width: 100%;
+  max-width: 100%;
+  background-color: #1c1e21;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
+}
+
+.custom-player video,
+.custom-player audio {
+  width: 100%;
+  max-height: 400px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.controls button {
+  background-color: #3a3b3c;
+  border: none;
+  color: #e4e6eb;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.controls input[type="range"] {
+  flex: 1;
+  appearance: none;
+  height: 5px;
+  background: #555;
+  border-radius: 4px;
+}
+
+.controls input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #09f;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.controls span {
+  color: #ccc;
+  font-size: 12px;
+  min-width: 80px;
+  text-align: center;
+}
+
+.controls input[type="range"] {
+  flex: 1;
+  max-width: 100%;
+}
+
+#videoVolume,
+#audioVolume {
+  width: 80px;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.volume-control i {
+  color: #ccc;
+  font-size: 16px;
+}
