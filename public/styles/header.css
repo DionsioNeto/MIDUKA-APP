@@ -17,6 +17,33 @@ header .logo img{
 }
 
 
+main{
+    padding-top: 69px;
+    padding-left: 280px;
+    padding-right: 260px;
+    padding-bottom: 5px;
+}
+
+@media screen and ( max-width: 1200px) {
+    main{
+        padding-right: 8px;
+        padding-left: 250px;
+    }
+}
+
+@media screen and ( max-width: 600px){
+    main{
+        padding-right: 8px;
+        padding-left: 8px;
+        padding-bottom: 60px;
+    }
+}
+
+main *{
+    color: var(--branco);
+}
+
+
 header .search-input{
     background-color: var(--preto-claro);
     border: 1px solid var(--link);
