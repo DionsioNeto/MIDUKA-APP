@@ -77,3 +77,78 @@ function draggable() {
       }
     };
   }
+
+
+  // Mideia
+
+document.addEventListener('DOMContentLoaded', () => {
+    function formatTime(seconds) {
+        const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+        const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+    }
+
+    // VIDEO
+    const video = document.getElementById('videoPlayer');
+    const videoBtn = document.getElementById('playPauseVideo');
+    const videoProgress = document.getElementById('videoProgress');
+    const videoTime = document.getElementById('videoTime');
+    const videoVolume = document.getElementById('videoVolume');
+
+    if (video) {
+        videoBtn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                videoBtn.innerHTML = '<i class="fa fa-pause"></i>';
+            } else {
+                video.pause();
+                videoBtn.innerHTML = '<i class="fa fa-play"></i>';
+            }
+        });
+
+        video.addEventListener('timeupdate', () => {
+            videoProgress.value = (video.currentTime / video.duration) * 100;
+            videoTime.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+        });
+
+        videoProgress.addEventListener('input', () => {
+            video.currentTime = (videoProgress.value / 100) * video.duration;
+        });
+
+        videoVolume.addEventListener('input', () => {
+            video.volume = videoVolume.value;
+        });
+    }
+
+      // AUDIO
+    const audio = document.getElementById('audioPlayer');
+    const audioBtn = document.getElementById('playPauseAudio');
+    const audioProgress = document.getElementById('audioProgress');
+    const audioTime = document.getElementById('audioTime');
+    const audioVolume = document.getElementById('audioVolume');
+
+    if (audio) {
+        audioBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                audioBtn.innerHTML = '<i class="fa fa-pause"></i>';
+            } else {
+                audio.pause();
+                audioBtn.innerHTML = '<i class="fa fa-play"></i>';
+            }
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            audioProgress.value = (audio.currentTime / audio.duration) * 100;
+            audioTime.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+        });
+
+        audioProgress.addEventListener('input', () => {
+            audio.currentTime = (audioProgress.value / 100) * audio.duration;
+        });
+
+        audioVolume.addEventListener('input', () => {
+            audio.volume = audioVolume.value;
+        });
+    }
+});
