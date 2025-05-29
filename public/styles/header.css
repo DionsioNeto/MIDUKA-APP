@@ -16,6 +16,13 @@ header .logo img{
     width: 40px;
 }
 
+body#dark header{
+    background-color: var(--bg-dark);
+}
+
+body#dark header .search-input i{
+    color: var(--preto);
+}
 
 main{
     padding-top: 69px;
