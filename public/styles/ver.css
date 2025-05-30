@@ -1,3 +1,5 @@
+@import url("./reset.css");
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,12 +11,12 @@
       text-decoration: none;
   }
 
-  html, body, .main {
+  html, body, .main{
     height: 100%;
     width: 100%;
   }
 
-  body {
+  .main {
     font-family: 'Segoe UI', sans-serif;
     background-color: #18191a;
     color: #e4e6eb;
@@ -39,8 +41,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-color: #6b6a6a4f;
-      padding: 0px 2px;
+      background-color: transparent;
+      padding: 2px;
   }
 
   .media-section header .logo{
@@ -48,7 +50,9 @@
   }
 
   .media-section header .logo img{
-      width: 100%;
+      width: 40px;
+      border-radius: 6px;
+      margin: 3px;
   }
 
   .media-section img,
@@ -68,13 +72,24 @@
 
   .post-container {
     width: 400px;
-    background-color: #242526;
-    border-left: 1px solid #3a3b3c;
+    background-color: var(--bg);
+    border-left: 1px solid var(--destaque);
     padding: 16px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 12px;
+  }
+
+  .avatar-comment{
+    display: flex;
+    gap: 10px;
+  }
+
+  .avatar-comment img{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
   }
 
   .user a{
@@ -84,15 +99,17 @@
   }
 
   .avatar {
+    background-color: var(--link);
     width: 40px;
     height: 40px;
-    background-color: #3a3b3c;
     border-radius: 50%;
-    overflow: hidden;
   }
 
   .avatar img{
-      width: 100%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
   }
 
   .user-info strong {
@@ -107,6 +124,7 @@
   .post-text {
     font-size: 15px;
     line-height: 1.4;
+    white-space: pre-line;
   }
 
   .reactions {
@@ -138,7 +156,7 @@
   }
 
   .comment {
-    background-color: #3a3b3c;
+    background-color: var(--destaque);
     padding: 8px;
     border-radius: 4px;
   }
@@ -151,6 +169,7 @@
   .comment .text {
     font-size: 14px;
     margin: 4px 0;
+    white-space: pre-line;
   }
 
   .comment .time {
@@ -191,7 +210,7 @@
   }
 
   @media (max-width: 768px) {
-    body {
+    .main {
       flex-direction: column;
     }
 
@@ -215,8 +234,6 @@
       font-size: 13px;
     }
   }
-
-
 
   .custom-player {
   width: 100%;
