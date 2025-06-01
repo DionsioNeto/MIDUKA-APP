@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Mail\UserDeletedMail;
+use Illuminate\Support\Facades\Mail;
 use App\Models\{
     Conteudo,
     User,
@@ -119,7 +121,14 @@ class dashboardController extends Controller{
     }
 
     public function destroy_user($id){
-        User::findOrFail($id)->delete();
+        $user = User::findOrFail($id);
+        $email = $user->email;
+        $name = $user->name;
+
+        // Enviar e-mail antes da exclusão
+        Mail::to($email)->send(new UserDeletedMail($name));
+
+        $user->delete();
         return redirect("/dashboard-usuario")->with("delete", "Usuário Excluído com sucesso.");
     }
 }
