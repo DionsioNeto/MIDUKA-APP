@@ -24,7 +24,8 @@ return new class extends Migration
              //relacionando a chave "user_id" com o id da tabela "user"
              $table->foreign('user_id')
              ->references('id')
-             ->on('users');
+             ->on('users')
+             ->delete('cascade');
             $table->timestamps();
         });
     }
