@@ -54,7 +54,7 @@ class Header extends Component{
         HTML;
     }
 
-    public $isNotification = false;
+    public $isNotification = true;
 
     public function openNotification(){
         $this->isNotification = !$this->isNotification;
@@ -82,12 +82,14 @@ class Header extends Component{
 
         $cont = Conteudo::where('description', 'like', '%'.$this->search.'%')
             ->get();
-        
-        $notification = Notification::where('id_to', auth()->id())->get();
 
-        $notification_verify = Notification::where('verify', 1)
-        ->orWhere('id_to', auth()->id())
-        ->get();
+        if (auth()->user()) {
+            $notification = Notification::where('id_to', auth()->user()->id)
+                ->latest()
+                ->get();
+        }else{
+            $notification = null;
+        }
         
         return view(
             'livewire.header',
@@ -95,7 +97,7 @@ class Header extends Component{
                'users' => $users,
                'cont' => $cont,
                'notification' => $notification,
-               'notification_verify' => $notification_verify,
+               // 'notification_verify' => $notification_verify,
            ]
         );
     }

@@ -199,7 +199,7 @@ header .modalNotification{
 
 body#dark header .modalNotification{
     background-color: var(--bg-dark);
-    border: 1px solid var(--bg);
+    border: 1px solid var(--link);
 }
 
 header .modalNotification h2{
@@ -238,4 +238,11 @@ header .modalNotification .notification-content .notification-box img{
     user-select: none;
     z-index: 999; 
     position: absolute;
+}
+
+.red-ball{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--vermelho);
 }

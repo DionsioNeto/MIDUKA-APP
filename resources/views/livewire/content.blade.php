@@ -368,7 +368,7 @@
                                 <div class="contador">{{ $item->likes()->count() }}</div>
                             </a>
                             @else
-                            <a wire:click.prevent="like({{ $item->id }})">
+                            <a wire:click.prevent="like({{ $item->id }}, {{ $item->user->id }})">
                                 <i class="fa-regular fa-thumbs-up"></i>
                                 <div class="contador">{{ $item->likes()->count() }}</div>
                             </a>
@@ -383,7 +383,7 @@
             
                             <a href="/ver/{{$item->id}}">
                                 <i class="fa-regular fa-comments"></i>
-                                <div class="contador">{{ $item->Comments }}</div>
+                                <div class="contador">{{ $item->Comments->count() }}</div>
                             </a>
                             <a href="{{ url("storage/uploads/{$item->content}") }}" download>
                                 <i class="fa fa-download"></i>

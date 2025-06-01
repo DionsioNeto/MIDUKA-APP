@@ -33,11 +33,11 @@
                 <button>
                     <div class="notification">
                             <i class="fa fa-bell"></i>
-                           @auth
+                           {{-- @auth
                            @if ($notification_verify->count() > 0)
                            <div class="counter"></div>
                            @endif
-                           @endauth
+                           @endauth --}}
                     </div>
                 </button>
             </a>
@@ -70,6 +70,10 @@
                     <div class="nome">{{ $item->user->name }}</div>
                     <div class="notify">{{ $item->content_notification }}</div>
                 </div>
+                @if($item->verify == true)
+                <div class="red-ball">
+                </div>
+                @endif
             </div>
             @endforeach  
             @else

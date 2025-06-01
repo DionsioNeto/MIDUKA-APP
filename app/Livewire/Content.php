@@ -7,6 +7,7 @@ use App\Models\{
     Conteudo,
     Comments,
     Denuncias,
+    Notification,
 };
 
 #[Lazy]
@@ -58,112 +59,112 @@ class Content extends Component{
     
     public function placeholder(){
         return  <<<'HTML'
-                    <div class="loading">
-                
-                        <div class="lazy-content">
-                            <div class="lazy-content-top">
-                                <div class="lazy-content-photo"></div>
-                                <div class="lazy-content-traco">
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                            <div class="lazy-content-show"></div>
+            <div class="loading">
+        
+                <div class="lazy-content">
+                    <div class="lazy-content-top">
+                        <div class="lazy-content-photo"></div>
+                        <div class="lazy-content-traco">
+                            <div></div>
+                            <div></div>
                         </div>
-
-                        <div class="lazy-content">
-                            <div class="lazy-content-top">
-                                <div class="lazy-content-photo"></div>
-                                <div class="lazy-content-traco">
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                            <div class="lazy-content-show"></div>
-                        </div>
-
-                        <div class="lazy-content">
-                            <div class="lazy-content-top">
-                                <div class="lazy-content-photo"></div>
-                                <div class="lazy-content-traco">
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                            <div class="lazy-content-show"></div>
-                        </div>
-                
-                        <style>
-                            .lazy-content{
-                                display: flex;
-                                flex-direction: column;
-                                gap: 5px;
-                                width: 100%;
-                            }
-
-                            .lazy-content-top{
-                                display: flex;
-                                gap: 15px;
-                            }
-
-                            .lazy-content-photo{
-                                width: 45px;
-                                height: 45px;
-                                border-radius: 50%;
-                                background: var(--destaque);
-                            }
-                            
-                            .lazy-content-traco > div{
-                                width: 100px;
-                                height: 11px;
-                                border-radius: 10px;
-                                background: var(--destaque);
-                                margin: 5px 0;
-                            }
-
-                            .lazy-content-show{
-                                width: 100%;
-                                background: var(--destaque);
-                                height: 115px;
-                                border-radius: 5px;
-                            }
-
-                            div.loading{
-                                padding-top: 69px;
-                                padding-left: 280px;
-                                padding-right: 260px;
-                                padding-bottom: 5px;
-                                z-index: 1;
-                                display: grid;
-                                grid-template-columns: repeat(2,2fr);
-                                gap: 10px;
-                            }
-
-                            @media screen and ( max-width: 1200px) {
-                                div.loading{
-                                    padding-right: 8px;
-                                    padding-left: 250px;
-                                }
-                            }
-
-                            @media screen and ( max-width: 600px){
-                                div.loading{
-                                    padding-right: 8px;
-                                    padding-left: 8px;
-                                    padding-bottom: 60px;
-                                }
-                            }
-
-                            @media screen and (max-width:  750px) {
-                                div.loading{
-                                    width: 100%;
-                                    display: grid;
-                                    grid-template-columns: repeat(1,1fr);
-                                }
-                            }
-                        </style>
                     </div>
-                HTML;
+                    <div class="lazy-content-show"></div>
+                </div>
+
+                <div class="lazy-content">
+                    <div class="lazy-content-top">
+                        <div class="lazy-content-photo"></div>
+                        <div class="lazy-content-traco">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="lazy-content-show"></div>
+                </div>
+
+                <div class="lazy-content">
+                    <div class="lazy-content-top">
+                        <div class="lazy-content-photo"></div>
+                        <div class="lazy-content-traco">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <div class="lazy-content-show"></div>
+                </div>
+        
+                <style>
+                    .lazy-content{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                        width: 100%;
+                    }
+
+                    .lazy-content-top{
+                        display: flex;
+                        gap: 15px;
+                    }
+
+                    .lazy-content-photo{
+                        width: 45px;
+                        height: 45px;
+                        border-radius: 50%;
+                        background: var(--destaque);
+                    }
+                    
+                    .lazy-content-traco > div{
+                        width: 100px;
+                        height: 11px;
+                        border-radius: 10px;
+                        background: var(--destaque);
+                        margin: 5px 0;
+                    }
+
+                    .lazy-content-show{
+                        width: 100%;
+                        background: var(--destaque);
+                        height: 115px;
+                        border-radius: 5px;
+                    }
+
+                    div.loading{
+                        padding-top: 69px;
+                        padding-left: 280px;
+                        padding-right: 260px;
+                        padding-bottom: 5px;
+                        z-index: 1;
+                        display: grid;
+                        grid-template-columns: repeat(2,2fr);
+                        gap: 10px;
+                    }
+
+                    @media screen and ( max-width: 1200px) {
+                        div.loading{
+                            padding-right: 8px;
+                            padding-left: 250px;
+                        }
+                    }
+
+                    @media screen and ( max-width: 600px){
+                        div.loading{
+                            padding-right: 8px;
+                            padding-left: 8px;
+                            padding-bottom: 60px;
+                        }
+                    }
+
+                    @media screen and (max-width:  750px) {
+                        div.loading{
+                            width: 100%;
+                            display: grid;
+                            grid-template-columns: repeat(1,1fr);
+                        }
+                    }
+                </style>
+            </div>
+        HTML;
     }
 
     public function guard($idConteudo){
@@ -179,11 +180,18 @@ class Content extends Component{
         session()->flash('comment', 'Conteúdo retirado sucesso.');
     }
 
-    public function like($idConteudo){
+    public function like($idConteudo, $id_to){
         $conteudo = Conteudo::find($idConteudo);
         $conteudo->likes()->create([
             'user_id' => auth()->user()->id
         ]);
+
+        $stor = new Notification();
+        $stor->content_notification = "Curtiu seu conteúdo";
+        $stor->conteudo_id = 4;
+        $stor->user_id = auth()->user()->id;
+        $stor->id_to = $id_to;
+        $stor->save();
     }
 
     public function unlike(Conteudo $conteudo){
@@ -212,6 +220,7 @@ class Content extends Component{
             $comment->content = $conteudoComentario;
             $comment->user_id = auth()->id();
             $comment->conteudo_id = $idConteudo;
+            $comment->id_to = 1;
         
             if ($comment->save()) {
                 $this->comments[$idConteudo]['content'] = '';

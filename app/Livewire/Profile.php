@@ -7,7 +7,6 @@ use App\Models\{
     User
 };
 use Livewire\WithPagination;
-use Livewire\WithoutUrlPagination;
 use Livewire\Attributes\Lazy;
 use Livewire\Features\SupportFileUploads\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +14,49 @@ use Illuminate\Support\Facades\Auth;
 
 
 class Profile extends Component{
-    use WithPagination, WithoutUrlPagination;
-    use WithFileUploads;
+     use WithPagination;
+
+    public $denun = false;
+    public $den_id = "";
+
+    public function toggleDenuncia($den_id){
+        $this->den_id = $den_id;
+        $this->denun = !$this->denun;
+    }
+
+    public array $denuncia = [];
+
+    public function submitDen($var){
+        if($this->denuncia == !null){
+            $den = new Denuncias;
+            $den->profile_or_content = 'Conteudo';
+            $den->profile_or_content_id = $var;
+            $den->denuncia = $this->denuncia;
+
+            if($den->save()){
+                session()->flash('denNullSucess', 'A sua denúncia foi submetida com sucesso.');
+
+            }else{
+                session()->flash('denNullError', 'Erro ao submeter a sua denúncia.');
+            }
+        }else{
+            session()->flash('denNull', 'O (s) campo não podem ficar nulo.');
+
+        }
+    }
+    // Modal de partilha
+
+    // Modal de partilha
+
+    public $share = false;
+    public $text_id;
+    public $text_link;
+
+    public function toggleShare ($id, $link){
+        $this->share = !$this->share;
+        $this->text_id = "http://localhost:8000/ver/ " . $id;
+        $this->text_link = $link;
+    }
 
     public function placeholder(){
         return  <<<'HTML'
@@ -160,11 +200,115 @@ class Profile extends Component{
         }
     }
 
+    public function insert(){
+        $this->validate([
+            'bio' => 'nullable|string|max:500',
+            'site' => 'nullable|url|max:255',
+        ]);
 
-    public function render(){
+        if($this->site == null){
+            $this->site = auth()->user()->site;
+        }
+
+
+        $User = User::find(auth()->user()->id);
+        $User->insert([
+            'site' => $this->site,
+        ]);
+        
+            session()->flash('message', 'Perfil atualizado com sucesso!');
+    }
+
+    public function guard($idConteudo){
+        $guardar = Conteudo::find($idConteudo);
+        $guardar->Guardados()->create([
+            'user_id' => auth()->user()->id
+        ]);
+        return session()->flash('comment', 'Conteúdo guardado com sucesso.');
+    }
+
+    public function unguard(Conteudo $guardar){
+        $guardar->Guardados()->delete();
+        session()->flash('comment', 'Conteúdo retirado sucesso.');
+    }
+
+    public function like($idConteudo){
+        $conteudo = Conteudo::find($idConteudo);
+        $conteudo->likes()->create([
+            'user_id' => auth()->user()->id
+        ]);
+    }
+
+    public function unlike(Conteudo $conteudo){
+        $conteudo->likes()->delete();
+    }
+
+    public $comments = [];
+
+    public function storageComment($idConteudo)
+    {
+        $this->validate([
+                "comments.{$idConteudo}.content" => 'required',
+            ],
+            [
+                "comments.{$idConteudo}.content.required" => "Você deve escrever antes de comentar",
+            ]
+        );
+    
+        if (!auth()->check()) {
+            session()->flash('comment', 'Você deve estar logado antes de comentar.');
+        }else{
+            $conteudoComentario = $this->comments[$idConteudo]['content'] ?? null;
+    
+            $comment = new Comments();
+            $comment->content = $conteudoComentario;
+            $comment->user_id = auth()->id();
+            $comment->conteudo_id = $idConteudo;
+        
+            if ($comment->save()) {
+                $this->comments[$idConteudo]['content'] = '';
+                $conteudoComentario = null;
+                session()->flash('comment', 'Sucesso ao comentar.');
+            } else {
+                session()->flash('comment', 'Ero, o seu comentário não foi salvo.');
+            }
+        }
+        
+    }
+
+    public function deletePost($id){
+        Conteudo::findOrFail($id)->delete();
+        session()->flash('comment', 'Conteúdo deletado com sucesso.');
+    }
+     
+    public int $perPage = 5;
+
+    protected $queryString = ['page'];
+
+    public function loadMore(){
+        $this->perPage += 5;
+    }
+    
+    public function render() {
         $conteudos = Conteudo::where('user_id', auth()->user()->id)
-        ->latest()
-        ->paginate(12);
+        ->latest() // já é orderBy('created_at', 'desc')
+        ->paginate($this->perPage);
+
+        // {PENDENTE
+        // $vid = Conteudo::where('user_id', auth()->user()->id)
+        // ->onWhere();
+
+        // $img = Conteudo::where('user_id', auth()->user()->id)
+        // ->onWhere();
+
+        // $aud = Conteudo::where('user_id', auth()->user()->id)
+        // ->onWhere();
+
+        // $pgf = Conteudo::where('user_id', auth()->user()->id)
+        // ->onWhere();
+        // PENDENTE}
+
+
 
         return view(
             'livewire.profile',

@@ -13,18 +13,24 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->text('content');
+            $table->text('content_notification');
             $table->unsignedBigInteger('conteudo_id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('id_to');
+
+            $table->foreign('conteudo_id')
+                ->references('id')
+                ->on('conteudos')
+                ->onDelete('cascade');
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-            
-            $table->foreign('conteudo_id')
+
+            $table->foreign('id_to')
                 ->references('id')
-                ->on('conteudos')
+                ->on('users')
                 ->onDelete('cascade');
             
             $table->timestamps();

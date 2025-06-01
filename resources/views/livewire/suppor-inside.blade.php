@@ -1,6 +1,5 @@
 <div>
     <div>
-
         @if(session('msg'))
         <div class="modalAccount">
             <div class="contentModal">
@@ -13,7 +12,6 @@
             </div>
         </div>
         @endif
-
         @if(session('Erro'))
         <div class="modalAccount">
             <div class="contentModal">
@@ -25,66 +23,48 @@
             </div>
         </div>
         @endif
-
     </div>
     <main>
         <h1>Support do usuário</h1>
-        <br>
-        <hr>
-        <form  wire:submit.prevent='store' method="post">
-            @csrf
-            <div class="grid">
-                <div class="grid-insid">
-                    <label for="email">
-                        Digite seu e-mail
-                        @error('email')
-                        (
-                            {{ $message }}
-                        )
-                        @enderror
-                    </label>
-                    <input id="email" type="text" wire:model='email' placeholder="E-mail" class="btn-simple">
+        @error('email')
+        ({{ $message }})
+        @enderror
+        @error('description')
+        ({{ $message }})
+        @enderror
+        @error('phoneNumber')
+        ({{ $message }})
+        @enderror
+        @error('typeProblem')
+        ({{ $message }})
+        @enderror
+        <section id="contacto">
+            <form wire:submit.prevent='store' method="post">
+                <div class="grid">
+                    <div class="o" >
+                        <input type="text" id="nome"  wire:model='typeProblem'>
+                        <label>Seu problema</label>
+                    </div>
+                    <div class="o" >
+                        <input type="email" wire:model='email' >
+                        <label>Email</label>
+                    </div>
+                    <div class="o" >
+                        <input type="text" id="sms" >
+                        <label>Assunto</label>
+                    </div>
+                    <div class="o" >
+                        <input type="text"  wire:model='phoneNumber'>
+                        <label>telefone</label>
+                    </div>
                 </div>
-                <div class="grid-insid">
-                    <label for="description">
-                        Digite uma descrição
-                        @error('description')
-                        ({{ $message }})
-                        @enderror
-                    </label>
-                    <input id="description" type="text" wire:model='description' placeholder="Descrição" class="btn-simple">
+                <div class="o" >
+                    <textarea wire:model='description' ></textarea>
+                    <label>Escreva a mensagem</label>
                 </div>
-                <div class="grid-insid">
-                    <label for="tel">
-                        Digite o número de telefone
-                        @error('phoneNumber')
-                        ({{ $message }})
-                        @enderror
-                    </label>
-                    <input id="tel" type="text" wire:model='phoneNumber' placeholder="Telefone" class="btn-simple">
-                </div>
-                <div class="grid-insid">
-                    <label for="typeProblem">
-                        Digite o tipo de problema
-                        @error('typeProblem')
-                        (
-                            {{ $message }}
-                        )
-                        @enderror
-                    </label>
-                    <input id="typeProblem" type="text" wire:model='typeProblem' placeholder="Tipo de problema" class="btn-simple">
-                </div>
-
-                <div class="grid-insid">
-                    <button type="submit" class="btn-submit-simple">
-                        Enviar
-                        <i class="fa-solid fa-arrow-right-long"></i>
-                    </button>
-                </div>
-
-            </div>
-        </form>
-
+                <input type="submit" value="Enviar">
+            </form>
+        </section>
         <div wire:offline>
             <livewire:all-pages />
         </div>

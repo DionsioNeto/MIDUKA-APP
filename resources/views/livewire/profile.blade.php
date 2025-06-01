@@ -1,5 +1,103 @@
 <div>
+    @if($share)
+    <div class="modalAccount" style="z-index: 6;">
+        <div class="contentModal">
+            <div class="share-top">
+                <h4>Partilhar conteúdo</h4>
+                <button wire:click.prevent="toggleShare(null, null)">&times;</button>
+            </div>
+            Link para o conteúdo: 
+            <div class="flex-share"
+                x-data="{
+                    copied: false,
+                    copyToClipboard() {
+                        const content = document.getElementById('copy').innerText;
+                        navigator.clipboard.writeText(content).then(() => {
+                            this.copied = true;
+                            setTimeout(() => this.copied = false, 2000);
+                        }).catch(err => {
+                            console.error('Erro ao copiar:', err);
+                        });
+                    }
+                }"
+            >
+                <div>
+                    <i class="fa fa-link"></i>
+                </div>
+                <div class="input-share" id="copy">
+                    {{ $text_id }}
+                </div>
+                <div class="btn-share" @click="copyToClipboard">
+                    <template x-if="!copied">
+                        <i class="fa-regular fa-copy"></i>
+                    </template>
+                    <template x-if="copied">
+                        <i class="fa-solid fa-check"></i>
+                    </template>
+                </div>
+            </div>
 
+            
+            <div class="flex-share"
+                x-data="{
+                    copied: false,
+                    copyToClipboard() {
+                        const content = document.getElementById('embed-code').innerText;
+                        navigator.clipboard.writeText(content).then(() => {
+                            this.copied = true;
+                            setTimeout(() => this.copied = false, 2000);
+                        }).catch(err => {
+                            console.error('Erro ao copiar:', err);
+                        });
+                    }
+                }"
+            >
+                <div>
+                    <i class="fa fa-code"></i>
+                </div>
+                <div class="input-share" id="embed-code">
+                    &lt;iframe src="{{ $text_link }}"&gt;&lt;/iframe&gt;
+                </div>
+                <div class="btn-share" @click="copyToClipboard">
+                    <template x-if="!copied">
+                        <i class="fa-regular fa-copy"></i>
+                    </template>
+                    <template x-if="copied">
+                        <i class="fa-solid fa-check"></i>
+                    </template>
+                </div>
+            </div>
+ 
+            <div class="social-media">
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($text_id) }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="center"
+                >
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+
+                <a href="https://twitter.com/intent/tweet?url={{ urlencode($text_id) }}&text={{ urlencode('Confira este conteúdo incrível!') }}" target="_blank">
+                    <div  class="center">
+                        <i class="fa-brands fa-square-x-twitter"></i>
+                    </div>
+                </a>
+                <a href="https://wa.me/?text={{ urlencode('Confira este link: ' . $text_id) }}" target="_blank">
+                    <div  class="center">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>    
+                </a>
+                <a href="mailto:?subject={{ urlencode('Confira este conteúdo!') }}&body={{ urlencode('Olha esse link interessante: ' . $text_id) }}">
+                    <div  class="center">
+                        <i class="fa fa-envelope"></i>
+                    </div>    
+                </a>
+            </div>          
+        </div>
+    </div>
+    @endif
+
+   
     @if ($modalEditProfile)
     <div class="modalAccount modal-video">
         <div class="contentModal">
@@ -52,6 +150,7 @@
                         </div>
                     </label>
                 
+                    @if(Auth::user()->site)
                     <!-- Campo Site -->
                     <label for="site">
                         @error('site')
@@ -62,7 +161,9 @@
                             <input type="text" placeholder="https://exemplo.com" id="site" wire:model='site'>
                         </div>
                     </label>
+                    @endif
                 
+                    @if(Auth::user()->bio)
                     <!-- Campo Bio -->
                     <label for="bio">
                         @error('bio')
@@ -73,22 +174,45 @@
                             <textarea id="bio" placeholder="Conte um pouco sobre você" wire:model='bio'></textarea>
                         </div>
                     </label>
-                    
-                    <!-- Campo Foto de Perfil -->
-                    <label for="profile_photo">
-                        @error('profile_photo')
-                            <small class="erro">{{ $message }}</small>
-                        @enderror
-                        <div class="info-text">
-                            <small>Foto de Perfil (opcional)</small>
-                            <input type="file" id="profile_photo" wire:model='profile_photo'>
-                        </div>
-                    </label>
-
+                    @endif
 
                     <div class="btn">
                         <button type="submit">Salvar</button>
                     </div>
+                </form>
+                <form wire:submit.prevent='insert' method="post" enctype="multipart/form-data">
+
+                    @if(empty(Auth::user()->site))
+                    <!-- Campo Site -->
+                    <label for="site">
+                        @error('site')
+                            <small class="erro">{{ $message }}</small>
+                        @enderror
+                        <div class="info-text">
+                            <small>Site (opcional)</small>
+                            <input type="text" placeholder="https://exemplo.com" id="site" wire:model='site'>
+                        </div>
+                    </label>
+                    @endif
+                
+                    @if(empty(Auth::user()->bio))
+                    <!-- Campo Bio -->
+                    <label for="bio">
+                        @error('bio')
+                            <small class="erro">{{ $message }}</small>
+                        @enderror
+                        <div class="info-text">
+                            <small>Bio (opcional)</small>
+                            <textarea id="bio" placeholder="Conte um pouco sobre você" wire:model='bio'></textarea>
+                        </div>
+                    </label>
+                    @endif
+                    @if(empty(Auth::user()->bio) | empty(Auth::user()->site))
+                    <div class="btn">
+                        <button type="submit">Salvar</button>
+                    </div>
+                    @endif
+
                 </form>
             </div>
         </div>
@@ -145,7 +269,7 @@
 
                     <div class="information">
                         <a>
-                            <i class="fa-solid fa-envelope"></i>
+                            <i class="fa fa-envelope"></i>
                             {{ Auth::user()->email }}
                         </a>
                     </div>
@@ -157,6 +281,13 @@
                         </a>
                     </div>
                     @endif
+                    <div class="information">
+                        <a>
+                            <i class="fa-regular fa-clock"></i>
+                            Data de adesão: 
+                            {{ date('Y', strtotime(Auth::user()->created_at)) }}
+                        </a>
+                    </div>
 
                </div>
                <br>
@@ -191,52 +322,137 @@
             <hr>
             @if (count($conteudos) > 0)
                 <div class="grid">
-                    @foreach ($conteudos as $item)
+                   @foreach ($conteudos as $item)
+                @error("comments.{$item->id}.content")
+                <div
+                    x-data="{ show: true }" 
+                    x-show="show"
+                    x-init="setTimeout(() => show = false, 5000)"
+                    x-transition
+                    class="feedback-comment"
+                >
+                    {{ $message }}
+                    <button 
+                        @click="show = false" 
+                    >
+                        &times;
+                    </button>
+                </div>
+                @enderror
+                
                     <div class="card-video">
                         <div class="user-description">
-                            <a href="/usuario{{ $item->user->id }}" class="inline">
+                            <a href="/usuario/{{ $item->user->id }}" class="inline">
                                 <div class="img-photo">
                                     <img src="{{ $item->user->profile_photo_url }}">
                                 </div>
                                 <div class="page-name">
                                     {{ $item->user->name }}
                                     <br>
-                                    <small>@ {{ Auth::user()->user_name }}</small>
+                                    <small>
+                                        @
+                                        {{ strlen($item->user->user_name) > 20 ? substr($item->user->user_name, 0, 20) . ' ...' : $item->user->user_name }}
+                                    </small>
                                 </div>
                             </a>
                             <div class="fle">
-
-                                <details>
-                                    <summary>
-                                    <a class="op">
-                                        <div class="opc">
+            
+                                <div class="opc">
+                                    <details>
+                                        <summary>
                                             <i class="fa-solid fa-ellipsis"></i>
-                                        </div>
-                                    </a>
-                                    </summary>
-                                    <ul>
-                                        <li>
-                                            <i class="fa-regular fa-copy"></i>
-                                            Cópiar link da página
-                                        </li>
-                                        <li>
-                                            <i class="fa-regular fa-edit"></i>
-                                            Editar conteúdo
-                                        </li>
-                                        <li>
-                                            <i class="fa fa-bug"></i>
-                                            Notificar possível erro
-                                        </li>
-                                    </ul>
-                                </details>
+                                        </summary>
+                                        <ul>
+                                            
+                                            <li wire:click.prevent="toggleShare({{ $item->id }}, @js(url("storage/uploads/{$item->content}")))">
+                                                <i class="fa fa-share-nodes"></i>
+                                                Partilhar
+                                            </li>
+                                            
+                                            @auth
+                                                @if ($item->Guardados->count())
+                                                    <a wire:click.prevent="unguard({{ $item->id }})">
+                                                        <li>
+                                                            <i class="fa-solid fa-bookmark"></i>
+                                                            Não guardar para mais tarde
+                                                        </li>
+                                                    </a>
+                                                @else
+                                                    <a wire:click.prevent="guard({{ $item->id }})">
+                                                        <li>
+                                                            <i class="fa-regular fa-bookmark"></i>
+                                                            Guardar para mais tarde
+                                                        </li>
+                                                    </a>
+                                                @endif
+                                                
+                                                @if(auth()->user()->id == $item->user->id)
+                                                <li class="vermelho" wire:click.prevent="deletePost({{ $item->id }})">
+                                                    <i class="fa fa-trash"></i>
+                                                    Excluir postagem
+                                                </li>
+                                                @else
+                                                <li wire:click.prevent="toggleDenuncia({{ $item->id }})">
+                                                    <i class="fa fa-flag"></i>
+                                                    Denunciar
+                                                </li>
+                                                @endif
+                                            @endauth
+                                        </ul>
+                                    </details>
+                                </div>
                             </div>
                         </div>
                         <div class="container-conteudo">
+                            @if ($item->type_tag == "jpg" | $item->type_tag == "png" | $item->type_tag == "webp" | $item->type_tag == "jpeg" | $item->type_tag == "gif" | $item->type_tag == "bmp" | $item->type_tag == "tiff")
+                                <div class="content-type">
+                                    <i class="fa fa-images"></i>
+                                    Imagem
+                                </div>
+                            @elseif($item->type_tag == "mp3" | $item->type_tag ==  "wav" | $item->type_tag == "m4a")
+                                <div class="content-type">
+                                    <i class="fa-solid fa-microphone-lines"></i>
+                                    Audio
+                                </div>
+                            @elseif($item->type_tag == "pdf")
+                                <div class="content-type">
+                                    <i class="fa fa-book"></i>
+                                     Livro/PDF
+                                </div>
+                            @elseif($item->type_tag == "mp4" | $item->type_tag == "avi" | $item->type_tag == "mov" | $item->type_tag == "wmv" | $item->type_tag == "mpg" | $item->type_tag == "mpeg")
+                                <div class="content-type">
+                                    <i class="fa fa-video"></i>
+                                    Vídeo
+                                </div>
+                            @else
+                                <div class="content-type">⚠️ O sistema do consegue identificar</div>
+                            @endif
+                            @if ($item->type_tag == "jpg" | $item->type_tag == "png" | $item->type_tag == "webp" | $item->type_tag == "jpeg" | $item->type_tag == "gif" | $item->type_tag == "bmp" | $item->type_tag == "tiff")
                             <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
-                            @if ($item->type_tag == "jpg")
-                            <img src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo">
-                            @elseif($item->type_tag == "mp4")
-                            <video src="{{ url("storage/uploads/{$item->content}") }}" class="arquivo" {{-- autoplay loop--}}></video>
+                            <div class="arquivo">
+                                <i class="fa fa-images"></i>
+                                Imagem
+                            </div>
+                            @elseif($item->type_tag == "pdf")
+                            <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
+                            <div class="arquivo">
+                                <i class="fa fa-book"></i>
+                                Livro
+                            </div>
+                            @elseif($item->type_tag == "mp3" | $item->type_tag ==  "wav" | $item->type_tag == "m4a")
+                            <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
+                            <div class="arquivo">
+                                <i class="fa-solid fa-microphone-lines"></i>
+                                Audio
+                            </div>
+                            @elseif($item->type_tag == "mp4" | $item->type_tag == "avi" | $item->type_tag == "mov" | $item->type_tag == "wmv" | $item->type_tag == "mpg" | $item->type_tag == "mpeg")
+                            <img src="{{ url("storage/uploads/{$item->capa}") }}" class="capa">
+                            <div class="arquivo">
+                                <i class="fa fa-video"></i>
+                                Vídeo
+                            </div>
+                            @else
+                            ⚠️ O sistema do consegue identificar
                             @endif
                         </div>
                         <div class="date cinza">
@@ -244,11 +460,16 @@
                             {{ date('d/m/Y', strtotime($item->created_at)) }} |
                             <i class="fa fa-clock"></i>
                             {{ date(' H', strtotime($item->created_at)) }} H {{ date('m', strtotime($item->created_at)) }} M |
-                            <i class="fa-regular fa-eye"></i> 0
+                            <i class="fa fa-thumbs-up"></i> {{ $item->likes()->count() }}
                         </div>
-                        <a href="/ver{{$item->id}}">
+                        <a href="/ver/{{$item->id}}">
                             <div class="description">
-                                {{ strlen($item->description) > 100 ? substr($item->description, 0, 100) . ' ver mais ...' : $item->description }}
+                                    @if(strlen($item->description) > 100)
+                                        {{ substr($item->description, 0, 120) }}...
+                                        <span  class="cinza">ver mais...</span>
+                                    @else
+                                        {{ $item->description }}
+                                    @endif
                             </div>
                         </a>
                         <div class="comment">
@@ -260,10 +481,14 @@
                                 <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                                 @endauth
                             </div>
-                            <form action="" method="post">
-                                <input type="text" placeholder="Digite seu comentário">
-                                <button>
-                                    <i class="fa-solid fa-arrow-right-long"></i>
+                            <form wire:submit.prevent="storageComment({{ $item->id }})">
+                                <input
+                                    type="text"
+                                    placeholder="Digite seu comentário"
+                                    wire:model.defer="comments.{{ $item->id }}.content"
+                                >
+                                <button type="submit">
+                                    <i class="fa-solid fa-paper-plane"></i>
                                 </button>
                             </form>
                         </div>
@@ -287,69 +512,32 @@
                                 <div class="contador">{{ $item->likes()->count() }}</div>
                             </a>
                             @endguest
-
-                            <a href="#">
+            
+                            <a href="/ver/{{$item->id}}">
                                 <i class="fa-regular fa-comments"></i>
-                                <div class="contador">0</div>
+                                <div class="contador">{{ $item->Comments }}</div>
                             </a>
                             <a href="{{ url("storage/uploads/{$item->content}") }}" download>
                                 <i class="fa fa-download"></i>
                             </a>
-                            <a href="#">
+                            <a wire:click.prevent="toggleShare({{ $item->id }}, @js(url("storage/uploads/{$item->content}")))">
                                 <i class="fa fa-share-nodes"></i>
                             </a>
                         </div>
                     </div>
-                    @endforeach
+                @endforeach
                 </div>
 
-                @if ($conteudos->hasPages())
-                <hr>
                 <div class="pag">
-                    <div>
-                        <p class="text-sm text-gray-700 leading-5 dark:text-gray-400">
-                            {!! __('Showing') !!}
-                            @if ($conteudos->firstItem())
-                                <span class="font-medium">{{ $conteudos->firstItem() }}</span>
-                                {!! __('to') !!}
-                                <span class="font-medium">{{ $conteudos->lastItem() }}</span>
-                            @else
-                                {{ $conteudos->count() }}
-                            @endif
-                            {!! __('of') !!}
-                            <span class="font-medium">{{ $conteudos->total() }}</span>
-                            {!! __('results') !!}
-                        </p>
-                    </div>
-                    <nav role="navigation" aria-label="Pagination Navigation">
-                        <span class="btn-nav">
-                            @if ($conteudos->onFirstPage())
-                                <span>
-                                    Anterior
-                                </span>
-                            @else
-                                <button wire:click="previousPage" wire:loading.attr="disabled" rel="prev">
-                                    <i class="fa-solid fa-arrow-left-long"></i>
-                                    Anterior
-                                </button>
-                            @endif
-                        </span>
+                    <div x-ref="loadMoreTrigger"></div>
 
-                        <span  class="btn-nav">
-                            @if ($conteudos->onLastPage())
-                                <span>
-                                    Proximo
-                                </span>
-                            @else
-                                <button wire:click="nextPage" wire:loading.attr="disabled" rel="next">
-                                    Proximo
-                                    <i class="fa-solid fa-arrow-right-long"></i>
-                                </button>
-                            @endif
-                        </span>
-                    </nav>
+                    @if ($conteudos->hasMorePages())
+                        <img src="{{ url("storage/more/loading.gif") }}" width="20px">
+                        <div class="cinza">Carregando mais...</div>
+                    @else
+                        <div>Nenhum conteúdo adicional.</div>
+                    @endif
                 </div>
-                @endif
 
             @else
                 <section class="posts">

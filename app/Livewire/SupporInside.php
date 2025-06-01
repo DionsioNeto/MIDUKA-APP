@@ -12,10 +12,19 @@ class SupporInside extends Component{
 
     protected $rules = [
         'email' => 'required',
-        'description' => 'required|min:20',
+        'description' => 'required|min:1',
         'phoneNumber' => 'required',
         'typeProblem' => 'required',
-    ];
+    ]
+    // ,[
+
+    //     'email.required' => 'O email não deve ficar vago',
+    //     'description.required' => 'A descrição não deve ficar vago',
+    //     'description.min' => 'O valor minimo para a descriçao é :min',
+    //     'phoneNumber.required' => 'O número de telefone não deve ficar vago',
+    //     'typeProblem.required' => 'O tipo de problema não deve ficar vago',
+    // ]
+    ;
 
     public function store(){
         $this->validate();

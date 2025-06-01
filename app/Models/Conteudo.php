@@ -15,9 +15,9 @@ class Conteudo extends Model
     }
 
     public function comments(){
-        return $this->belongsTo(User::class);
+        return $this->hasMany(Comments::class)->latest();
     }
-
+    
     public function Likes(){
         return $this->hasMany(Like::class)
             ->where(function($query){
