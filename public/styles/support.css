@@ -1,3 +1,14 @@
+.error-org{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.error-inside{
+    color: var(--vermelho);
+    font-weight: 500;
+}
+
 .grid .grid-insid{
     display: flex;
     flex-direction: column;
@@ -59,39 +70,31 @@ section#contacto textarea{
 
 .o label{
     position: absolute;
-    top: 50%;
     left: 15px;
     transform: translateY(-50%);
-    font-size: 19px;
     pointer-events: none;
     transition: .3s;
-}
 
-section#contacto input:focus,textarea:focus{
-    border: 2px solid var(--branco);
-}
-
-
-input:focus ~ label,
-input:valid ~ label,
-textarea:focus ~ label,
-textarea:valid ~ label{
     top: 0;
     font-size: 13px;
     padding: 0 10px;
     background: var(--bg);
 }
 
+section#contacto input:focus,textarea:focus{
+    border: 2px solid var(--branco);
+}
+
 section#contacto form input[type="submit"]{
     padding: 5px;
     border: none;
-    margin: 5px;
     border-radius: 5px;
     padding: 10px;
     font-size: 15px;
     cursor: pointer;
     background-color: var(--azul);
     transition: 1s;
+    margin-top: 10px;
 }
 
 section#contacto form input[type="submit"]:hover{
