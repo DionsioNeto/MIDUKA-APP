@@ -17,14 +17,13 @@ class Conteudo extends Model
     public function comments(){
         return $this->hasMany(Comments::class)->latest();
     }
-    
-    public function Likes(){
-        return $this->hasMany(Like::class)
-            ->where(function($query){
-                if(auth()->check()){
-                    $query->where('user_id', auth()->user()->id);
-                }
-            });
+
+    public function likes() {
+        return $this->hasMany(Like::class);
+    }
+
+    public function likedByAuthUser() {
+        return $this->hasMany(Like::class)->where('user_id', auth()->id());
     }
 
     public function Guardados(){
