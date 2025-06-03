@@ -11,7 +11,7 @@
             </button>
 
             <form class="search">
-                <input type="text" wire:model.live="search" class="form-control" placeholder="Pesquisar usuário..." />
+                <input type="text" wire:model.live="search" class="form-control" placeholder="Pesquisar usuário..."/>
                 <div>
                     <i class="fa fa-search"></i>
                 </div>
@@ -65,7 +65,7 @@
             @if ($notification->count() > 0)
             @foreach ($notification as $item)
             <div class="notification-box">
-                <img src="{{ $item->user->profile_photo_url }}" alt="" >
+                <img src="{{ $item->user->profile_photo_url }}" alt="Foto de perfil" >
                 <div class="text">
                     <div class="nome">{{ $item->user->name }}</div>
                     <div class="notify">{{ $item->content_notification }}</div>
@@ -145,13 +145,33 @@
 
     @if ($beyBoard)
         <div 
-        x-data="draggable()" 
-        x-init="init()" 
-        :style="{ left: x + 'px', top: y + 'px' }" 
-        @mousedown="startDrag($event)" 
-        class="draggable"
+            x-data="draggable()" 
+            x-init="init()" 
+            :style="{ left: x + 'px', top: y + 'px' }" 
+            @mousedown="startDrag($event)" 
+            class="draggable"
         >
-            <h1>Teclado</h1>
+            <!-- Cabeçalho do teclado -->
+            <div class="flex">
+                <h4>Teclado</h4>
+                <button type="button" wire:click='openKeyBoard'>&times;</button>
+            </div>
+
+            <!-- Letras A-Z -->
+            <div class="all">
+                @foreach(range('A', 'Z') as $letra)
+                    <button 
+                        type="button"
+                        wire:click="addChar('{{ $letra }}')"
+                    >{{ $letra }}</button>
+                @endforeach
+            </div>
+
+            <!-- Espaço e Apagar -->
+            <div class="flex" style="margin-top: 5px;">
+                <button type="button" wire:click="addChar(' ')">Espaço</button>
+                <button type="button" wire:click="backspace">Apagar</button>
+            </div>
         </div>
     @endif
 </div>

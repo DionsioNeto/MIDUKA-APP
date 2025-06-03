@@ -227,22 +227,82 @@ header .modalNotification .notification-content .notification-box img{
 }
 
 /* Teclado virtual e DragOrDrop  */
-
 .draggable {
     background-color: var(--bg);
     border: 1px solid var(--destaque);
-    width: 150px;
-    height: 150px;
-    border-radius: 10px;
+    width: 240px;
+    height: auto;
+    border-radius: 12px;
     cursor: grab;
     user-select: none;
-    z-index: 999; 
+    z-index: 999;
     position: absolute;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.red-ball{
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: var(--vermelho);
+/* Cabeçalho com título e botão de fechar */
+.draggable .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.draggable .flex h4 {
+    margin: 0;
+    font-size: 15px;
+    color: var(--texto);
+}
+
+.draggable .flex button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: var(--vermelho);
+}
+
+/* Teclas principais (A-Z) */
+.draggable .all {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+    justify-items: center;
+}
+
+.draggable .all button[type="button"] {
+    width: 30px;
+    height: 30px;
+    background-color: var(--destaque);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.draggable .all button[type="button"]:hover {
+    background-color: #2980b9;
+}
+
+/* Botões inferiores: espaço e apagar */
+.draggable .flex:last-of-type button {
+    flex: 1;
+    padding: 6px 10px;
+    font-size: 13px;
+    background-color: var(--destaque);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin: 0 2px;
+}
+
+.draggable .flex:last-of-type button:hover {
+    background-color: #2980b9;
 }

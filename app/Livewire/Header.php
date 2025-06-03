@@ -13,7 +13,7 @@ use App\Models\{
 #[Lazy]
 
 class Header extends Component{
-
+ 
     public function placeholder(){
         return <<<'HTML'
             <div class="lazy-header">
@@ -54,7 +54,7 @@ class Header extends Component{
         HTML;
     }
 
-    public $isNotification = true;
+    public $isNotification = false;
 
     public function openNotification(){
         $this->isNotification = !$this->isNotification;
@@ -69,6 +69,14 @@ class Header extends Component{
     // Variável para armazenar a pesquisa
   
     public $search = '';
+
+    public function addChar($char){
+        $this->search .= $char;
+    }
+
+    public function backspace(){
+        $this->search = mb_substr($this->search, 0, -1);
+    }
 
     public function render(){
 
