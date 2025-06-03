@@ -89,9 +89,13 @@ class dashboardController extends Controller{
 
     public function user($id){
         $user = User::findOrFail($id);
+        $userCo = Conteudo::where('user_id', $id);
         return view(
             'dashboard.dashboard-user',
-            ['user' => $user]
+            [
+                'user' => $user,
+                'userCo' => $userCo
+            ]
         );
     }
 
