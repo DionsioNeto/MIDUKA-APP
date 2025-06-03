@@ -13,9 +13,29 @@ return new class extends Migration
     {
         Schema::create('denuncias', function (Blueprint $table) {
             $table->id();
+
             $table->json('denuncia'); // campo JSON para múltiplas opções
-            $table->string('profile_or_content');            
+            $table->string('profile_or_content'); // 'profile' ou 'content'
             $table->string('profile_or_content_id');
+
+            $table->unsignedBigInteger('user_id'); // quem denunciou
+            $table->unsignedBigInteger('conteudo_id')->nullable(); // se for denúncia de conteúdo
+            $table->unsignedBigInteger('denunciado_id')->nullable(); // se for denúncia de perfil
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('conteudo_id')
+                ->references('id')
+                ->on('conteudos')
+                ->onDelete('cascade');
+
+            $table->foreign('denunciado_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');            
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->text('content_notification');
+            $table->text('content');
             $table->unsignedBigInteger('conteudo_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('id_to');
