@@ -3,17 +3,42 @@ use App\Http\Controllers\indexController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Middleware\adminAcess;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Livewire\{
     Usuario,
     Ver,
     KeyBoard,
+    EditContent,
 };
+
+
+// Rotas de verificação de e-mail (fora do grupo 'verified')
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->name('verification.notice');
+
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+        return redirect('/');
+    })->middleware(['signed'])->name('verification.verify');
+
+    Route::post('/email/verification-notification', function () {
+        request()->user()->sendEmailVerificationNotification();
+        return back()->with('message', 'Link de verificação enviado!');
+    })->middleware(['throttle:6,1'])->name('verification.send');
+});
 
 // Rota principal da aplicação (index).
 Route::get('/', [indexController:: class, 'index'])->name('home');
 // Rota para ver um conteúdo
 Route::get('/ver/{id}', Ver::class);
 //Rota que nos leva a view de perfis de outros usuários...
+
+//Rota para editar o conteudo
+
+Route::get('/edit-content/', EditContent::class);
 
 Route::get('/usuario/{id}',[Usuario::class, 'render']);
 
