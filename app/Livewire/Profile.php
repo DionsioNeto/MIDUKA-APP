@@ -290,30 +290,37 @@ class Profile extends Component{
     }
     
     public function render() {
+        if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
+            abort(redirect('/email/verify'));
+        }
         $conteudos = Conteudo::where('user_id', auth()->user()->id)
         ->latest() // já é orderBy('created_at', 'desc')
         ->paginate($this->perPage);
 
-        // {PENDENTE
-        // $vid = Conteudo::where('user_id', auth()->user()->id)
-        // ->onWhere();
+        $vid = Conteudo::where('user_id', auth()->user()->id)
+           ->where('type_tag', 'mp4')
+           ->get();
 
-        // $img = Conteudo::where('user_id', auth()->user()->id)
-        // ->onWhere();
+        $img = Conteudo::where('user_id', auth()->user()->id)
+            ->where('type_tag', 'jpg')
+            ->get();
 
-        // $aud = Conteudo::where('user_id', auth()->user()->id)
-        // ->onWhere();
+        $aud = Conteudo::where('user_id', auth()->user()->id)
+            ->where('type_tag', 'mp3')
+            ->get();
 
-        // $pgf = Conteudo::where('user_id', auth()->user()->id)
-        // ->onWhere();
-        // PENDENTE}
-
-
+        $pdf = Conteudo::where('user_id', auth()->user()->id)
+            ->where('type_tag', 'pdf')
+            ->get();
 
         return view(
             'livewire.profile',
             [
                 'conteudos' => $conteudos,
+                'vid' => $vid,
+                'img' => $img,
+                'aud' => $aud,
+                'pdf' => $pdf
             ]
         );
     }

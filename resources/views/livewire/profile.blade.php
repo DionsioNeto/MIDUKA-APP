@@ -222,10 +222,9 @@
     <main class="relactiva">
         <div>
             <div class="main-img">
-                @if (Auth::user()->photo_de_capa == null)
-                <img src="{{ url("storage/more/default.webp") }}" alt="{{ Auth::user()->name }}">
+                @if (Auth::user()->profile_photo_capa_path == null)
                 @else
-                <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
+                <img src="{{ asset('storage/' . Auth::user()->profile_photo_capa_path) }}" alt="Capa do usuário">
                 @endif
             </div>
 
@@ -245,17 +244,27 @@
                             </a>
                             </summary>
                             <ul>
-                                <li>
-                                    <i class="fa-regular fa-copy"></i>
-                                    Cópiar link da página
+                                @php
+                                    $profileLink = url('/usuario/' . Auth::user()->id);
+                                @endphp
+
+                                <li x-data="{ copied: false }"
+                                    @click="
+                                        navigator.clipboard.writeText('{{ $profileLink }}')
+                                        .then(() => {
+                                            copied = true;
+                                            setTimeout(() => copied = false, 2000);
+                                        });
+                                    "
+                                    class="cursor-pointer flex items-center space-x-2 text-gray-700 hover:text-blue-500 transition"
+                                >
+                                    <i :class="copied ? 'fa-solid fa-check text-green-500' : 'fa-regular fa-copy'"></i>
+                                    <span x-text="copied ? 'Link copiado!' : 'Copiar link do perfil'"></span>
                                 </li>
+
                                 <li wire:click='ToggleModal'>
                                     <i class="fa-regular fa-edit"></i>
                                     Editar perfil
-                                </li>
-                                <li>
-                                    <i class="fa fa-bug"></i>
-                                    Notificar possível erro
                                 </li>
                             </ul>
                         </details>
@@ -303,19 +312,19 @@
 
             <div class="all">
                 <div>
-                    <a href="">Tudo {{ $conteudos->total() }}</a>
+                    <a>Tudo {{ $conteudos->total() }}</a>
                 </div>
                 <div>
-                    <a href="">Vídeos 1</a>
+                    <a>Vídeos  {{ $vid->count() }}</a>
                 </div>
                 <div>
-                    <a href="">Imagens 0</a>
+                    <a>Imagens {{ $img->count() }}</a>
                 </div>
                 <div>
-                    <a href="">Livros 0</a>
+                    <a>Livros {{ $pdf->count() }}</a>
                 </div>
                 <div>
-                    <a href="">Audios 0</a>
+                    <a>Audios {{ $aud->count() }}</a>
                 </div>
             </div>
 
@@ -515,7 +524,7 @@
             
                             <a href="/ver/{{$item->id}}">
                                 <i class="fa-regular fa-comments"></i>
-                                <div class="contador">{{ $item->Comments }}</div>
+                                <div class="contador">{{ $item->Comments->count() }}</div>
                             </a>
                             <a href="{{ url("storage/uploads/{$item->content}") }}" download>
                                 <i class="fa fa-download"></i>
