@@ -15,10 +15,8 @@
         @livewireStyles
     </head>
     <body>  
-        <main>
-            {{ $slot }}
-        </main>
-        @livewireScripts
+    {{ $slot }}
+    @livewireScripts
         <script src="{{ asset('./js/script.js') }}"></script>
     </body>
 </html>

@@ -26,7 +26,6 @@
                              class="w-12 h-12 rounded-full object-cover border border-gray-300 dark:border-gray-600">
                         <div>
                             <h2 class="text-lg font-semibold text-gray-900 dark:text-white">{{ $user->name }}</h2>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Enviado em {{ $user->created_at->format('d/m/Y H:i') }}</p>
                         </div>
                     </div>
                 </a>
@@ -38,16 +37,12 @@
                         <p class="text-base text-gray-900 dark:text-white"> {{ $user->email }}</p>
                     </div>
                     <div>
-                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Telefone</p>
-                        <p class="text-base text-gray-900 dark:text-white"> 000000</p>
-                    </div>
-                    <div class="md:col-span-2">
-                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Problema</p>
-                        <p class="text-base text-gray-900 dark:text-white">jjj</p>
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Data de adesão</p>
+                        <p class="text-base text-gray-900 dark:text-white">{{ $user->created_at->format('d/m/Y H:i') }}</p>
                     </div>
                     <div>
-                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Telefone</p>
-                        <p class="text-base text-gray-900 dark:text-white"> 000000</p>
+                        <p class="text-sm font-medium text-gray-600 dark:text-gray-400">Conteúdos postados:</p>
+                        <p class="text-base text-gray-900 dark:text-white">{{ $userCo->count() }}</p>
                     </div>
                 </div>
     

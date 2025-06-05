@@ -4,7 +4,8 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\{
     Conteudo,
-    User
+    User,
+    Comments
 };
 use Livewire\WithPagination;
 use Livewire\Attributes\Lazy;
@@ -143,7 +144,7 @@ class Profile extends Component{
         HTML;
     }
 
-    public $modalEditProfile = false;
+    public $modalEditProfile = true;
     public function ToggleModal(){
         $this->modalEditProfile = !$this->modalEditProfile;
     }
@@ -200,23 +201,35 @@ class Profile extends Component{
         }
     }
 
-    public function insert(){
+    public function insertBio(){
         $this->validate([
             'bio' => 'nullable|string|max:500',
+        ]);
+
+        $user = User::find(auth()->user()->id);
+        
+        $user->bio = $this->bio;
+
+        if ($user->save()) {
+            dd("Sucesso!");
+        }
+            
+        session()->flash('message', 'Perfil atualizado com sucesso!');
+    }
+
+    public function insertSite(){
+         $this->validate([
             'site' => 'nullable|url|max:255',
         ]);
 
-        if($this->site == null){
-            $this->site = auth()->user()->site;
+        $user = User::find(auth()->user()->id);
+
+        $user->site = $this->site;
+
+        if ($user->save()) {
+            dd("Sucesso!");
         }
-
-
-        $User = User::find(auth()->user()->id);
-        $User->insert([
-            'site' => $this->site,
-        ]);
         
-            session()->flash('message', 'Perfil atualizado com sucesso!');
     }
 
     public function guard($idConteudo){
@@ -298,15 +311,15 @@ class Profile extends Component{
         ->paginate($this->perPage);
 
         $vid = Conteudo::where('user_id', auth()->user()->id)
-           ->where('type_tag', 'mp4')
+           ->where('type_tag', ['mp4', 'avi', 'mov', 'wmv', 'mpg', 'mpeg'])
            ->get();
 
         $img = Conteudo::where('user_id', auth()->user()->id)
-            ->where('type_tag', 'jpg')
+            ->where('type_tag', ['jpg', 'png', 'webp', 'jpeg', 'gif', 'bmp', 'tiff'])
             ->get();
 
         $aud = Conteudo::where('user_id', auth()->user()->id)
-            ->where('type_tag', 'mp3')
+            ->where('type_tag', ['mp3', 'wav', 'm4a'])
             ->get();
 
         $pdf = Conteudo::where('user_id', auth()->user()->id)

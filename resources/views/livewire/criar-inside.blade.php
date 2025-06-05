@@ -99,9 +99,16 @@
                 <button wire:click='togleModalVideo'>&times;</button>
             </div>
 
-            <form wire:submit.prevent='store' method="post" enctype="multipart/form-data">
-                @csrf
-
+            <form
+                wire:submit.prevent='store'
+                method="post"
+                enctype="multipart/form-data"
+                x-data="{ isUploading: false, progress: 0 }"
+                x-on:livewire-upload-start="isUploading = true"
+                x-on:livewire-upload-finish="isUploading = false; progress = 0"
+                x-on:livewire-upload-error="isUploading = false"
+                x-on:livewire-upload-progress="progress = $event.detail.progress"
+            >
                 <div>
                     <h3>Reservado para adicionar o conteúdo que pretende postar</h3>
                     <div class="danger">
@@ -117,7 +124,11 @@
                     </div>
                 </div>
                 
-                
+               {{--  <div x-show="isUploading" class="progress-container">
+                    <div class="progress-bar" :style="'width: ' + progress + '%'"></div>
+                    <p x-text="progress + '%'"></p>
+                </div> --}}
+
 
                 <div class="pag">
                     <div wire:loading wire:target="file" class="center">

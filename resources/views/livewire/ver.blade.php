@@ -240,7 +240,7 @@
                     </button>
                 @else
                     <button>
-                        <a wire:click.prevent="like({{ $item->id }})"><i class="fa-regular fa-thumbs-up"></i></a>
+                        <a wire:click.prevent="like({{ $item->id }}, {{ $item->user->id }})"><i class="fa-regular fa-thumbs-up"></i></a>
                     </button>
                 @endif
             @endauth
@@ -312,7 +312,7 @@
                         <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                     </a>
                 </div>
-                <form wire:submit.prevent="storageComment({{ $item->id }})">
+                <form wire:submit.prevent="storageComment({{ $item->id }}, {{ $item->user->id }})">
                     <textarea 
                         placeholder="Comentar como {{ Auth::user()->name }}..."
                         wire:model.defer="comment"

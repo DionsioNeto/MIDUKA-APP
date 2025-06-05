@@ -131,15 +131,40 @@
     @if ($imageProfileCap)
     <div class="modalAccount">
         <div class="contentModal">
-            <i class="fa fa-images"></i>
-            <h4>Tem a certeza que pretende alterar a sua foto de capa</h4>
-            <div class="img">
-                <img src="{{ Auth::user()->profile_photo_url }}" alt="">
-            </div>
-            <div class="buttons">
-                <div class="btn" wire:click="">Remover imagem</div>
-                <div class="btn" wire:click="">Selecionar imagem</div>
-                <div class="btn" wire:click="toggleImageProfileCap">Cancelar</div>
+            <div class="inside-modal">
+
+                <i class="fa fa-images"></i>
+
+                <form wire:submit.prevent="salvarCapa">
+                    <input type="file" wire:model="capa" id="select" style="display: none;">
+                    @error('capa') <span class="error">{{ $message }}</span> @enderror
+
+                    <h4>Tem certeza que deseja alterar sua foto de capa?</h4>
+
+                    @if (session()->has('success'))
+                        <div class="success">{{ session('success') }}</div>
+                    @else
+                        <div class="info">Clique na imagem para selecionar uma nova foto de capa.</div>
+                    @endif
+
+                    <label for="select" class="img cursor-pointer">
+                        @if ($photoUrl)
+                            <img src="{{ $photoUrl }}" alt="Nova capa (preview)" class="preview">
+                        @elseif (Auth::user()->profile_photo_capa_path)
+                            <img src="{{ asset('storage/' . Auth::user()->profile_photo_capa_path) }}" alt="Capa do usuário">
+                        @else
+                            <div class="no-image">Nenhuma foto de capa.</div>
+                        @endif
+                    </label>
+
+                    <div class="buttons">
+                        <div class="btn" wire:click="toggleImageProfileCap">Cancelar</div>
+                        @if (Auth::user()->profile_photo_capa_path)
+                            <div class="btn" wire:click="removePhoto">Remover imagem</div>
+                        @endif
+                        <button type="submit" class="btn">Salvar nova capa</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -107,7 +107,9 @@
             </div>
             <div class="img-all">
                 <div class="capa">
-                    <img src="{{ url("storage/more/default.webp") }}" alt="{{ Auth::user()->name }}">
+                    @if(Auth::user()->profile_photo_capa_path)
+                    <img src="{{ asset('storage/' . Auth::user()->profile_photo_capa_path) }}" alt="Capa do usuário">
+                    @endif
                 </div>
                 <div class="edit-profile-photo">
                     <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
@@ -149,41 +151,13 @@
                             <input type="text" placeholder="Digite seu nome de usuário" id="userName" wire:model='user_name'>
                         </div>
                     </label>
-                
-                    @if(Auth::user()->site)
-                    <!-- Campo Site -->
-                    <label for="site">
-                        @error('site')
-                            <small class="erro">{{ $message }}</small>
-                        @enderror
-                        <div class="info-text">
-                            <small>Site (opcional)</small>
-                            <input type="text" placeholder="https://exemplo.com" id="site" wire:model='site'>
-                        </div>
-                    </label>
-                    @endif
-                
-                    @if(Auth::user()->bio)
-                    <!-- Campo Bio -->
-                    <label for="bio">
-                        @error('bio')
-                            <small class="erro">{{ $message }}</small>
-                        @enderror
-                        <div class="info-text">
-                            <small>Bio (opcional)</small>
-                            <textarea id="bio" placeholder="Conte um pouco sobre você" wire:model='bio'></textarea>
-                        </div>
-                    </label>
-                    @endif
 
                     <div class="btn">
                         <button type="submit">Salvar</button>
                     </div>
                 </form>
-                <form wire:submit.prevent='insert' method="post" enctype="multipart/form-data">
+                <form wire:submit.prevent='insertSite' method="post" enctype="multipart/form-data">
 
-                    @if(empty(Auth::user()->site))
-                    <!-- Campo Site -->
                     <label for="site">
                         @error('site')
                             <small class="erro">{{ $message }}</small>
@@ -193,26 +167,23 @@
                             <input type="text" placeholder="https://exemplo.com" id="site" wire:model='site'>
                         </div>
                     </label>
-                    @endif
-                
-                    @if(empty(Auth::user()->bio))
-                    <!-- Campo Bio -->
+                    <div class="btn">
+                        <button type="submit">Salvar</button>
+                    </div>
+                </form>
+                <form wire:submit.prevent='insertBio' method="post" enctype="multipart/form-data">
                     <label for="bio">
                         @error('bio')
                             <small class="erro">{{ $message }}</small>
                         @enderror
                         <div class="info-text">
                             <small>Bio (opcional)</small>
-                            <textarea id="bio" placeholder="Conte um pouco sobre você" wire:model='bio'></textarea>
+                            <textarea placeholder="Conte um pouco sobre você" wire:model='bio'></textarea>
                         </div>
                     </label>
-                    @endif
-                    @if(empty(Auth::user()->bio) | empty(Auth::user()->site))
                     <div class="btn">
                         <button type="submit">Salvar</button>
                     </div>
-                    @endif
-
                 </form>
             </div>
         </div>

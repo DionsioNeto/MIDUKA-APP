@@ -349,7 +349,7 @@
                                 <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                                 @endauth
                             </div>
-                            <form wire:submit.prevent="storageComment({{ $item->id }})">
+                            <form wire:submit.prevent="storageComment({{ $item->id }}, {{ $item->user->id }})">
                                 <input
                                     type="text"
                                     placeholder="Digite seu comentário"
@@ -362,7 +362,7 @@
                         </div>
                         <div class="options">
                             @auth
-                            @if ($item->Likes->count())
+                            @if ($item->likedByAuthUser->count())
                             <a wire:click.prevent="unlike({{ $item->id }})">
                                 <i class="fa fa-thumbs-up"></i>
                                 <div class="contador">{{ $item->likes()->count() }}</div>

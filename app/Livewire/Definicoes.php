@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 
 class Definicoes extends Component{
@@ -88,13 +89,13 @@ class Definicoes extends Component{
     }
 
     
-    public $photo;
+public $photo;
 
 public function updatedPhoto()
 {
     // Validação rápida e clara
     $this->validate([
-        'photo' => ['required', 'image', 'max:1024'], // 1MB
+        'photo' => ['required', 'image', 'max:5024'],
     ]);
 
     $user = Auth::user();
@@ -116,6 +117,44 @@ public function updatedPhoto()
     // Limpa a propriedade após o upload (opcional, mas bom para resetar input)
     $this->reset('photo');
 }
+
+public $capa;
+
+public function updatedCapa()
+{
+    // preview, validação ou qualquer ação imediata após selecionar o arquivo
+    $this->validate([
+        'capa' => ['image', 'max:5024'],
+    ]);
+
+    // Se quiser, pode gerar $photoUrl para preview:
+    // $this->photoUrl = $this->capa->temporaryUrl();
+}
+
+public function salvarCapa()
+{
+    $this->validate([
+        'capa' => ['required', 'image', 'max:5024'],
+    ]);
+
+    $user = auth()->user();
+
+    if ($user->profile_photo_capa_path && Storage::disk('public')->exists($user->profile_photo_capa_path)) {
+        Storage::disk('public')->delete($user->profile_photo_capa_path);
+    }
+
+    $uniqueName = Str::uuid() . '.' . $this->capa->getClientOriginalExtension();
+    $path = $this->capa->storeAs('uploads', $uniqueName, 'public');
+
+    $user->forceFill([
+        'profile_photo_capa_path' => $path,
+    ])->save();
+
+    session()->flash('success', 'Foto de capa atualizada com sucesso.');
+
+    $this->reset('capa');
+}
+
 
 public function removePhoto()
 {

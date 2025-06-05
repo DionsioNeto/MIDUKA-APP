@@ -235,6 +235,9 @@ class Audios extends Component{
     }
     
     public function render() {
+        if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
+            abort(redirect('/email/verify'));
+        }
         $conteudos = Conteudo::whereIn('type_tag', ['mp3', 'wav', 'm4a'])
         ->latest() // já é orderBy('created_at', 'desc')
         ->paginate($this->perPage);

@@ -234,8 +234,11 @@ class Videos extends Component{
     }
 
     public function render(){
+        if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
+            abort(redirect('/email/verify'));
+        }
         $conteudos = Conteudo::where('type_tag', ['mp4', 'avi', 'mov', 'wmv', 'mpg', 'mpeg'])
-        ->latest('
+        ->latest()
         ->paginate($this->perPage);
 
         return view(

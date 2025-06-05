@@ -26,7 +26,6 @@
 
 body{
     background-color: var(--bg);
-    transition: 1s;
     position: relative;
     box-sizing: border-box;
     --bg: #131313;

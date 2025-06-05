@@ -10,6 +10,9 @@ use App\Models\Conteudo;
 class InsideUser extends Component{
 
     public function render($id){
+        if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
+            abort(redirect('/email/verify'));
+        }
 
         $usuario = User::findOrFail($id);
         return view('livewire.inside-user', ['usuario' => $usuario,]);

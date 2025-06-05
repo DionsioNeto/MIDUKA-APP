@@ -234,8 +234,11 @@ class Livros extends Component{
     }
 
     public function render(){
+        if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
+            abort(redirect('/email/verify'));
+        }
         $conteudos = Conteudo::where('type_tag', 'pdf')
-        ->latest() // já é orderBy('created_at', 'desc')
+        ->latest()
         ->paginate($this->perPage);
 
         return view(

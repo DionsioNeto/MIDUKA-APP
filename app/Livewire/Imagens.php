@@ -233,6 +233,9 @@ class Imagens extends Component{
     }
 
     public function render(){
+        if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
+            abort(redirect('/email/verify'));
+        }
         $conteudos = Conteudo::whereIn('type_tag', ['jpg', 'png', 'webp', 'jpeg', 'gif', 'bmp', 'tiff'])
         ->latest()
         ->paginate($this->perPage);

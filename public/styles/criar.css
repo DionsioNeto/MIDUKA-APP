@@ -164,3 +164,18 @@ div.modal-video .btn{
     transform: translateY(-5px);
   }
   
+  .progress-container {
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 20px;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.progress-bar {
+    background: #3490dc;
+    height: 100%;
+    transition: width 0.3s;
+}

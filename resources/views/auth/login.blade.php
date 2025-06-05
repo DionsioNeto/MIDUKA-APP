@@ -51,7 +51,7 @@
             </p>
 
             <div class="or">{{ __('or') }}</div>
-            <button class="sso" type="button">{{ __('Login with Google') }}</button>
+            <button class="sso" type="button"></button>
             <p>
                 {{__('You acknowledge that you read, and agree, to our')}} <a href="/terms-of-service">{{__('Terms of Service')}}</a> {{__('and our')}} <a href="/privacy-policy">{{__('General Policy')}}</a>.
             </p>

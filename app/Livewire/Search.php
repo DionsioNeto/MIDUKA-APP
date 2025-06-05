@@ -10,6 +10,10 @@ class Search extends Component{
 
     public function render(){
 
+        if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
+            abort(redirect('/email/verify'));
+        }
+
         $users = User::where('name', 'like', '%'.$this->search.'%')
         ->orWhere('email', 'like', '%'.$this->search.'%')
         ->get();

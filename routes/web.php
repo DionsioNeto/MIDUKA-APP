@@ -12,6 +12,9 @@ use App\Livewire\{
 };
 
 
+// /dashboard/notify/{{ $item->id }}}
+
+
 // Rotas de verificação de e-mail (fora do grupo 'verified')
 Route::middleware(['auth'])->group(function () {
 
@@ -40,7 +43,7 @@ Route::get('/ver/{id}', Ver::class);
 
 Route::get('/edit-content/', EditContent::class);
 
-Route::get('/usuario/{id}',[Usuario::class, 'render']);
+Route::get('/usuario/{id}', Usuario::class);
 
 Route::get('/Pesquisar', function(){
     return view('project.search');
@@ -83,6 +86,7 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/dashboard-conteudo/destroy/{id}', [dashboardController::class, 'destroy_conteudo']);
     Route::delete('/dashboard-mgs/destroy/{id}', [dashboardController::class, 'destroy_msg']);
     Route::delete('/dashboard-user/destroy/{id}', [dashboardController::class, 'destroy_user']);
+    Route::delete('/dashboard-denuncias/destroy/{id}', [dashboardController::class, 'destroy_denuncia']);
 });
 
 Route::middleware([

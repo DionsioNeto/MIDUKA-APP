@@ -46,6 +46,9 @@ class SupporInside extends Component{
     }
 
     public function render(){
+        if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
+            abort(redirect('/email/verify'));
+        }
         return view('livewire.suppor-inside');
     }
 

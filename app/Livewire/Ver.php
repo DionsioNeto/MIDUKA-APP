@@ -65,21 +65,32 @@ class Ver extends Component{
     }    
 
     // curtidas
-    public function like($idConteudo){
+    public function like($idConteudo, $id){
         $conteudo = Conteudo::find($idConteudo);
         $conteudo->likes()->create([
             'user_id' => auth()->user()->id
         ]);
-
         // Notificar o dono do post
 
-        $stor = new Notification();
-        $stor->content_notification = "Curtiu seu conteúdo";
-        // $stor->conteudo_id = $idConteudo;
-        $stor->user_id = auth()->user()->id;
-        $stor->id_to = 1;
-        $stor->save();
+        if (!auth()->user()->id == $id) {
+            $stor = new Notification();
+            $stor->content_notification = "Curtiu seu conteúdo";
+            // $stor->conteudo_id = $idConteudo;
+            $stor->user_id = auth()->user()->id;
+            $stor->id_to = $id;
+            $stor->save();
+        }
     }
+     // descurtidas
+
+    public function unlike(Conteudo $conteudo){
+        if (auth()->check()) {
+            $conteudo->likes()
+                ->where('user_id', auth()->id())
+                ->delete();
+        }
+    }
+
 
     public function guard($idConteudo){
         $guardar = Conteudo::find($idConteudo);
@@ -94,16 +105,11 @@ class Ver extends Component{
         session()->flash('comment', 'Conteúdo retirado sucesso.');
     }
 
-    // descurtidas
-
-    public function unlike(Conteudo $conteudo){
-        $conteudo->likes()->delete();
-    }
-
+   
     // Guardar comentarios
     
     public $comment;
-    public function storageComment($idConteudo){
+    public function storageComment($idConteudo, $id){
         $this->validate(["comment" => 'required'],
             ["comment.required" => "Você deve escrever antes de comentar"]
         );
@@ -111,21 +117,31 @@ class Ver extends Component{
         $comment->content = $this->comment;
         $comment->user_id = auth()->id();
         $comment->conteudo_id = $idConteudo;
-        $comment->id_to = 1;
+        $comment->id_to = $id;
         if($comment->save()){
             $this->comment = null;
         }
-        $stor = new Notification();
-        $stor->content_notification = "Comentou o seu conteúdo";
-        // $stor->conteudo_id = $idConteudo;
-        $stor->user_id = auth()->user()->id;
-        $stor->id_to = 1;
-        $stor->save();
+        
+
+        if (!auth()->user()->id == $id) {
+            $stor = new Notification();
+            $stor->content_notification = "Comentou seu conteúdo";
+            // $stor->conteudo_id = $idConteudo;
+            $stor->user_id = auth()->user()->id;
+            $stor->id_to = 1;
+            $stor->save();
+        }
 
     }
 
     public $id;
     public function render(){
+        
+
+        if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
+            abort(redirect('/email/verify'));
+        }
+
         $item = Conteudo::findOrFail($this->id);
         return view(
             'livewire.ver',

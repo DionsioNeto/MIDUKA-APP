@@ -45,13 +45,22 @@ class dashboardController extends Controller{
         ]);
     }
 
-    public function denucias(){
-        $denuncias = Denuncias::get();
-        return view(
-            'dashboard.dashboard-denuncias',
-            ['denuncias' => $denuncias]
-        );
+    public function denucias(Request $request)
+{
+    $query = Denuncias::query();
+
+    if ($request->has('search') && $request->search != '') {
+        $query->where('denuncia', 'like', '%' . $request->search . '%');
     }
+
+    // Paginação (recomendado) ou get()
+    $denuncias = $query->paginate(12); // ou ->get();
+
+    return view('dashboard.dashboard-denuncias', [
+        'denuncias' => $denuncias
+    ]);
+}
+
 
     public function conteudos(Request $request){
         $query = Conteudo::query();
@@ -134,6 +143,11 @@ class dashboardController extends Controller{
 
         $user->delete();
         return redirect("/dashboard-usuario")->with("delete", "Usuário Excluído com sucesso.");
+    }
+
+    public function destroy_denuncia($id){
+        Denuncias::findOrFail($id)->delete();
+        return redirect("/dashboard-denuncias")->with("delete", "Denúncia Excluída com sucesso.");
     }
 }
  

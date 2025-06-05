@@ -28,7 +28,9 @@ class Content extends Component{
     public function submitDen($var){
         if($this->denuncia == !null){
             $den = new Denuncias;
-            $den->profile_or_content = 'Conteudo';
+            $den->profile_or_content = 'Conteúdo';
+            $den->conteudo_id = $var;
+            $den->user_id = auth()->user()->id;
             $den->profile_or_content_id = $var;
             $den->denuncia = $this->denuncia;
 
@@ -43,7 +45,6 @@ class Content extends Component{
 
         }
     }
-    // Modal de partilha
 
     // Modal de partilha
 
@@ -57,115 +58,135 @@ class Content extends Component{
         $this->text_link = $link;
     }
     
-    public function placeholder(){
-        return  <<<'HTML'
-            <div class="loading">
-        
-                <div class="lazy-content">
-                    <div class="lazy-content-top">
-                        <div class="lazy-content-photo"></div>
-                        <div class="lazy-content-traco">
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="lazy-content-show"></div>
+public function placeholder(){
+    return <<<'HTML'
+    <div class="loading">
+        <div class="lazy-content">
+            <div class="lazy-content-top">
+                <div class="lazy-content-photo shimmer"></div>
+                <div class="lazy-content-traco">
+                    <div class="shimmer"></div>
+                    <div class="shimmer"></div>
                 </div>
-
-                <div class="lazy-content">
-                    <div class="lazy-content-top">
-                        <div class="lazy-content-photo"></div>
-                        <div class="lazy-content-traco">
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="lazy-content-show"></div>
-                </div>
-
-                <div class="lazy-content">
-                    <div class="lazy-content-top">
-                        <div class="lazy-content-photo"></div>
-                        <div class="lazy-content-traco">
-                            <div></div>
-                            <div></div>
-                        </div>
-                    </div>
-                    <div class="lazy-content-show"></div>
-                </div>
-        
-                <style>
-                    .lazy-content{
-                        display: flex;
-                        flex-direction: column;
-                        gap: 5px;
-                        width: 100%;
-                    }
-
-                    .lazy-content-top{
-                        display: flex;
-                        gap: 15px;
-                    }
-
-                    .lazy-content-photo{
-                        width: 45px;
-                        height: 45px;
-                        border-radius: 50%;
-                        background: var(--destaque);
-                    }
-                    
-                    .lazy-content-traco > div{
-                        width: 100px;
-                        height: 11px;
-                        border-radius: 10px;
-                        background: var(--destaque);
-                        margin: 5px 0;
-                    }
-
-                    .lazy-content-show{
-                        width: 100%;
-                        background: var(--destaque);
-                        height: 115px;
-                        border-radius: 5px;
-                    }
-
-                    div.loading{
-                        padding-top: 69px;
-                        padding-left: 280px;
-                        padding-right: 260px;
-                        padding-bottom: 5px;
-                        z-index: 1;
-                        display: grid;
-                        grid-template-columns: repeat(2,2fr);
-                        gap: 10px;
-                    }
-
-                    @media screen and ( max-width: 1200px) {
-                        div.loading{
-                            padding-right: 8px;
-                            padding-left: 250px;
-                        }
-                    }
-
-                    @media screen and ( max-width: 600px){
-                        div.loading{
-                            padding-right: 8px;
-                            padding-left: 8px;
-                            padding-bottom: 60px;
-                        }
-                    }
-
-                    @media screen and (max-width:  750px) {
-                        div.loading{
-                            width: 100%;
-                            display: grid;
-                            grid-template-columns: repeat(1,1fr);
-                        }
-                    }
-                </style>
             </div>
-        HTML;
-    }
+            <div class="lazy-content-show shimmer"></div>
+        </div>
+
+        <div class="lazy-content">
+            <div class="lazy-content-top">
+                <div class="lazy-content-photo shimmer"></div>
+                <div class="lazy-content-traco">
+                    <div class="shimmer"></div>
+                    <div class="shimmer"></div>
+                </div>
+            </div>
+            <div class="lazy-content-show shimmer"></div>
+        </div>
+
+        <div class="lazy-content">
+            <div class="lazy-content-top">
+                <div class="lazy-content-photo shimmer"></div>
+                <div class="lazy-content-traco">
+                    <div class="shimmer"></div>
+                    <div class="shimmer"></div>
+                </div>
+            </div>
+            <div class="lazy-content-show shimmer"></div>
+        </div>
+
+        <style>
+            .lazy-content {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                width: 100%;
+            }
+
+            .lazy-content-top {
+                display: flex;
+                gap: 15px;
+            }
+
+            .lazy-content-photo {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                background: var(--destaque);
+            }
+
+            .lazy-content-traco > div {
+                width: 100px;
+                height: 11px;
+                border-radius: 10px;
+                background: var(--destaque);
+                margin: 5px 0;
+            }
+
+            .lazy-content-show {
+                width: 100%;
+                background: var(--destaque);
+                height: 115px;
+                border-radius: 5px;
+            }
+
+            div.loading {
+                padding-top: 69px;
+                padding-left: 280px;
+                padding-right: 260px;
+                padding-bottom: 5px;
+                z-index: 1;
+                display: grid;
+                grid-template-columns: repeat(2, 2fr);
+                gap: 10px;
+            }
+
+            @media screen and (max-width: 1200px) {
+                div.loading {
+                    padding-right: 8px;
+                    padding-left: 250px;
+                }
+            }
+
+            @media screen and (max-width: 600px) {
+                div.loading {
+                    padding-right: 8px;
+                    padding-left: 8px;
+                    padding-bottom: 60px;
+                }
+            }
+
+            @media screen and (max-width: 750px) {
+                div.loading {
+                    width: 100%;
+                    grid-template-columns: repeat(1, 1fr);
+                }
+            }
+
+            /* Transição de cores */
+            .shimmer {
+                background: linear-gradient(
+                    90deg,
+                    var(--bg),
+                    var(--destaque),
+                    var(--bg)
+                );
+                background-size: 200% 100%;
+                animation: shimmerAnim 2.5s infinite ease-in-out;
+            }
+
+            @keyframes shimmerAnim {
+                0% {
+                    background-position: -200% 0;
+                }
+                100% {
+                    background-position: 200% 0;
+                }
+            }
+        </style>
+    </div>
+    HTML;
+}
+
 
     public function guard($idConteudo){
         $guardar = Conteudo::find($idConteudo);
@@ -186,22 +207,29 @@ class Content extends Component{
             'user_id' => auth()->user()->id
         ]);
 
-        $stor = new Notification();
-        $stor->content_notification = "Curtiu seu conteúdo";
-        $stor->conteudo_id = 4;
-        $stor->user_id = auth()->user()->id;
-        $stor->id_to = $id_to;
-        $stor->save();
+        // if (!auth()->user()->id == $id) {
+            $stor = new Notification();
+            $stor->content_notification = "Curtiu seu conteúdo";
+            $stor->conteudo_id = $idConteudo;
+            $stor->nt_from = "like";
+            $stor->user_id = auth()->user()->id;
+            $stor->id_to = $id_to;
+            $stor->save();
+        // }
     }
 
     public function unlike(Conteudo $conteudo){
-        $conteudo->likes()->delete();
+        if (auth()->check()) {
+            $conteudo->likes()
+                ->where('user_id', auth()->id())
+                ->delete();
+        }
     }
 
 
     public $comments = [];
 
-    public function storageComment($idConteudo)
+    public function storageComment($idConteudo, $id)
     {
         $this->validate([
                 "comments.{$idConteudo}.content" => 'required',
@@ -217,17 +245,27 @@ class Content extends Component{
             $conteudoComentario = $this->comments[$idConteudo]['content'] ?? null;
     
             $comment = new Comments();
-            $comment->content = $conteudoComentario;
+            $comment->content =  $conteudoComentario;
             $comment->user_id = auth()->id();
             $comment->conteudo_id = $idConteudo;
-            $comment->id_to = 1;
-        
+            $comment->id_to = $id;
             if ($comment->save()) {
                 $this->comments[$idConteudo]['content'] = '';
                 $conteudoComentario = null;
                 session()->flash('comment', 'Sucesso ao comentar.');
             } else {
                 session()->flash('comment', 'Ero, o seu comentário não foi salvo.');
+            }
+            
+
+            if (!auth()->user()->id == $id) {
+               $stor = new Notification();
+                $stor->content_notification = "Comentou seu conteúdo";
+                $stor->conteudo_id = $idConteudo;
+                $stor->nt_from = "comment";
+                $stor->user_id = auth()->user()->id;
+                $stor->id_to = $id;
+                $stor->save();
             }
         }
         
@@ -238,16 +276,20 @@ class Content extends Component{
         session()->flash('comment', 'Conteúdo deletado com sucesso.');
     }
      
-    public int $perPage = 5;
+    public int $perPage = 4;
 
     protected $queryString = ['page'];
 
     public function loadMore(){
-        $this->perPage += 5;
+        $this->perPage += 4;
     }
 
     public function render(){
-        $conteudos = Conteudo::latest()->paginate($this->perPage);
+
+        $conteudos = Conteudo::with(['likes', 'likedByAuthUser', 'user']) // opcional: eager load
+            ->latest()
+            ->paginate($this->perPage);
+
         return view('livewire.content', ['conteudos' => $conteudos]);
     }
 
