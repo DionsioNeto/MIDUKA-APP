@@ -58,6 +58,11 @@ class Header extends Component{
 
     public function openNotification(){
         $this->isNotification = !$this->isNotification;
+        if (auth()->user()) {
+            Notification::where('id_to', auth()->user()->id)->update([
+                'verify' => 0,
+            ]);
+        }
     }
 
     public $beyBoard = false;
@@ -95,8 +100,12 @@ class Header extends Component{
             $notification = Notification::where('id_to', auth()->user()->id)
                 ->latest()
                 ->get();
+
+            $notification_verify = Notification::where('id_to', auth()->user()->id)
+                ->where('verify', true)
+                ->get();
         }else{
-            $notification = null;
+            $notification = $notification_verify = null;
         }
         
         return view(
@@ -105,7 +114,7 @@ class Header extends Component{
                'users' => $users,
                'cont' => $cont,
                'notification' => $notification,
-               // 'notification_verify' => $notification_verify,
+               'notification_verify' => $notification_verify,
            ]
         );
     }

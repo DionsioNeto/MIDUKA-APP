@@ -31,29 +31,12 @@
                         </div>
                     </summary>
                     <ul>
-                        <li>
-                            <i class="fa fa-mega-phone"></i>
-                            Denunciar
-                        </li>
                         <a wire:click.prevent="unguard({{ $itens->conteudo->user->id }})">
                             <li>
                                 <i class="fa-solid fa-bookmark"></i>
-                                Não guardar para mais tarde
+                                Remover
                             </li>
                         </a>
-                        <li>
-                            <i class="fa-regular fa-bell"></i>
-                            Notificar-me
-                        </li>
-                        <li>
-                            <i class="fa fa-link"></i>
-                            Cópiar link
-                        </li>
-
-                        <li>
-                            <i class="fa fa-bug"></i>
-                            Notificar possível erro
-                        </li>
                     </ul>
                 </details>
             </div>

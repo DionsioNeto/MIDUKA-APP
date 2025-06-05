@@ -64,6 +64,10 @@ class Ver extends Component{
         return redirect()->route("home")->with("comment", "Conteúdo deletado com sucesso.");
     }    
 
+    public function delet($id){
+        Comments::findOrfail($id)->delete();
+    }
+
     // curtidas
     public function like($idConteudo, $id){
         $conteudo = Conteudo::find($idConteudo);
@@ -71,11 +75,11 @@ class Ver extends Component{
             'user_id' => auth()->user()->id
         ]);
         // Notificar o dono do post
-
-        if (!auth()->user()->id == $id) {
+        if(auth()->user()->id <> $id){
             $stor = new Notification();
             $stor->content_notification = "Curtiu seu conteúdo";
-            // $stor->conteudo_id = $idConteudo;
+            $stor->conteudo_id = $idConteudo;
+            $stor->nt_from = "like";
             $stor->user_id = auth()->user()->id;
             $stor->id_to = $id;
             $stor->save();
@@ -120,16 +124,15 @@ class Ver extends Component{
         $comment->id_to = $id;
         if($comment->save()){
             $this->comment = null;
-        }
-        
-
-        if (!auth()->user()->id == $id) {
-            $stor = new Notification();
-            $stor->content_notification = "Comentou seu conteúdo";
-            // $stor->conteudo_id = $idConteudo;
-            $stor->user_id = auth()->user()->id;
-            $stor->id_to = 1;
-            $stor->save();
+            if(auth()->user()->id <> $id){
+                $stor = new Notification();
+                $stor->content_notification = "Comentou seu conteúdo";
+                $stor->conteudo_id = $idConteudo;
+                $stor->nt_from = "like";
+                $stor->user_id = auth()->user()->id;
+                $stor->id_to = $id;
+                $stor->save();
+            }
         }
 
     }

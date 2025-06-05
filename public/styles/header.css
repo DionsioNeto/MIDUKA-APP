@@ -108,8 +108,8 @@ header .last-header * i{
 header .last-header div.notification .counter{
     background-color: var(--vermelho);
     color: var(--branco);
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     font-size: 11px;
     border-radius: 50%;
     display: flex;
@@ -202,8 +202,15 @@ body#dark header .modalNotification{
     border: 1px solid var(--link);
 }
 
+.red-ball-nt{
+    background-color: red;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
 header .modalNotification h2{
-    margin: 5px 10px;
+    margin: 5px 0px;
 }
 
 header .modalNotification .notification-content{
@@ -217,6 +224,9 @@ header .modalNotification .notification-content .notification-box{
     padding: 5px;
     border-bottom: 1px solid var(--link);
     margin: 5px;
+    background-color: var(--destaque);
+    margin-bottom: 5px;
+    border-radius: 10px
 }
 
 header .modalNotification .notification-content .notification-box img{
@@ -305,4 +315,10 @@ header .modalNotification .notification-content .notification-box img{
 
 .draggable .flex:last-of-type button:hover {
     background-color: #2980b9;
+}
+
+.time{
+    font-size: 10px;
+    color: var(--link);
+    font-weight: 900;
 }

@@ -335,7 +335,11 @@
                         </div>
                     </a>
                     <div class="text">{{ $comment->content }}</div>
-                    <div class="time">{{ date('d/m/Y - H:i', strtotime($comment->created_at)) }} • Curtir • Responder</div>
+                    <div class="time">{{ date('d/m/Y - H:i', strtotime($comment->created_at)) }} 
+                        @if ($comment->user->id == auth()->user()->id)
+                        • <a href="#" wire:click.prevent="delet({{ $comment->id }})"">Excluir</a>
+                        @endif
+                    </div>
                 </div>
             @endforeach
         @else

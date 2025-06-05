@@ -11,20 +11,7 @@
     </div>
     @endif
 
-    @if ($modalImg)
-    <div class="modalAccount criar modal-video">
-        <button wire:click='togleModalImg'>abrir IMG</button>
-        <h1>IMG</h1>
-    </div>
-    @endif
-
-    @if ($modalAudio)
-    <div class="modalAccount criar modal-video">
-        <button wire:click='togleModalAudio'>abrir audio</button>
-        <h1>Audio</h1>
-    </div>
-    @endif
-
+    
     @if ($modalPdf)
     <div class="modalAccount modal-video">
         <div class="contentModal">
@@ -95,20 +82,11 @@
                 @if(session('Erro'))
                     {{ session('Erro') }}
                 @endif
-                <h1>Adicionar vídeo</h1>
+                <h1>Adicionar conteúdo</h1>
                 <button wire:click='togleModalVideo'>&times;</button>
             </div>
 
-            <form
-                wire:submit.prevent='store'
-                method="post"
-                enctype="multipart/form-data"
-                x-data="{ isUploading: false, progress: 0 }"
-                x-on:livewire-upload-start="isUploading = true"
-                x-on:livewire-upload-finish="isUploading = false; progress = 0"
-                x-on:livewire-upload-error="isUploading = false"
-                x-on:livewire-upload-progress="progress = $event.detail.progress"
-            >
+            <form wire:submit.prevent='store'>
                 <div>
                     <h3>Reservado para adicionar o conteúdo que pretende postar</h3>
                     <div class="danger">
@@ -124,10 +102,7 @@
                     </div>
                 </div>
                 
-               {{--  <div x-show="isUploading" class="progress-container">
-                    <div class="progress-bar" :style="'width: ' + progress + '%'"></div>
-                    <p x-text="progress + '%'"></p>
-                </div> --}}
+               
 
 
                 <div class="pag">
@@ -215,24 +190,8 @@
                 <span class="icon">
                     <i class="fa fa-video"></i>
                 </span>
-                <h2>Vídeo</h2>
-                <p>Crie e compartilhe vídeos educativos com facilidade.</p>
-              </button>
-        
-              <button class="card" data-modal="modal-imagem" wire:click='togleModalImg'>
-                <span class="icon">
-                    <i class="fa fa-images"></i>
-                </span>
-                <h2>Imagens</h2>
-                <p>Adicione gráficos, fotos e ilustrações educativas.</p>
-              </button>
-        
-              <button class="card" data-modal="modal-audio" wire:click='togleModalAudio'>
-                <span class="icon">
-                    <i class="fa fa-microphone-lines"></i>
-                </span>
-                <h2>Áudios</h2>
-                <p>Grave podcasts, narrações e trilhas sonoras educativas.</p>
+                <h2>Conteúdos</h2>
+                <p>Crie e compartilhe conteúdo educativos e de recriação com facilidade.</p>
               </button>
         
               <button class="card" data-modal="modal-pdf" wire:click='togleModalPdf'>

@@ -33,11 +33,13 @@
                 <button>
                     <div class="notification">
                             <i class="fa fa-bell"></i>
-                           {{-- @auth
-                           @if ($notification_verify->count() > 0)
-                           <div class="counter"></div>
+                           @auth
+                           @if ($notification_verify->count())
+                           <div class="counter">
+                            {{ $notification_verify->count() }}
+                           </div>
                            @endif
-                           @endauth --}}
+                           @endauth
                     </div>
                 </button>
             </a>
@@ -64,17 +66,25 @@
             @auth
             @if ($notification->count() > 0)
             @foreach ($notification as $item)
-            <div class="notification-box">
-                <img src="{{ $item->user->profile_photo_url }}" alt="Foto de perfil" >
-                <div class="text">
-                    <div class="nome">{{ $item->user->name }}</div>
-                    <div class="notify">{{ $item->content_notification }}</div>
+            <a href="/ver/{{ $item->conteudo_id }}">
+                <div class="notification-box">
+                    <img src="{{ $item->user->profile_photo_url }}" alt="Foto de perfil" >
+                    <div class="text">
+                        <div class="nome">
+                            <span>{{ $item->user->name }}</span>
+                            <span class="time">
+                                {{ date('d/m/Y', strtotime($item->created_at)) }} |
+                                {{ date(' H', strtotime($item->created_at)) }} H {{ date('m', strtotime($item->created_at)) }} M 
+                            </span>
+                        </div>
+                        <div class="notify">{{ $item->content_notification }}</div>
+                    </div>
+                    @if($item->verify == true)
+                    <div class="red-ball-nt">
+                    </div>
+                    @endif
                 </div>
-                @if($item->verify == true)
-                <div class="red-ball">
-                </div>
-                @endif
-            </div>
+            </a>
             @endforeach  
             @else
             <div class="center">

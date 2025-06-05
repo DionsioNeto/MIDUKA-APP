@@ -207,7 +207,7 @@ public function placeholder(){
             'user_id' => auth()->user()->id
         ]);
 
-        // if (!auth()->user()->id == $id) {
+        if(auth()->user()->id <> $id_to){
             $stor = new Notification();
             $stor->content_notification = "Curtiu seu conteúdo";
             $stor->conteudo_id = $idConteudo;
@@ -215,7 +215,7 @@ public function placeholder(){
             $stor->user_id = auth()->user()->id;
             $stor->id_to = $id_to;
             $stor->save();
-        // }
+        }
     }
 
     public function unlike(Conteudo $conteudo){
@@ -250,22 +250,20 @@ public function placeholder(){
             $comment->conteudo_id = $idConteudo;
             $comment->id_to = $id;
             if ($comment->save()) {
+                    if(auth()->user()->id <> $id){
+                        $stor = new Notification();
+                        $stor->content_notification = "Comentou seu conteúdo";
+                        $stor->conteudo_id = $idConteudo;
+                        $stor->nt_from = "like";
+                        $stor->user_id = auth()->user()->id;
+                        $stor->id_to = $id;
+                        $stor->save();
+                    }
                 $this->comments[$idConteudo]['content'] = '';
                 $conteudoComentario = null;
                 session()->flash('comment', 'Sucesso ao comentar.');
             } else {
                 session()->flash('comment', 'Ero, o seu comentário não foi salvo.');
-            }
-            
-
-            if (!auth()->user()->id == $id) {
-               $stor = new Notification();
-                $stor->content_notification = "Comentou seu conteúdo";
-                $stor->conteudo_id = $idConteudo;
-                $stor->nt_from = "comment";
-                $stor->user_id = auth()->user()->id;
-                $stor->id_to = $id;
-                $stor->save();
             }
         }
         
