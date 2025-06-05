@@ -47,7 +47,7 @@
             <a href="/perfil" title="Iniciar sessão">
                 <div class="img-photo">
                     <img src="./imgs/avatar.webp" alt="">
-                </div>
+                </div>  
             </a>
             @endguest
             @auth

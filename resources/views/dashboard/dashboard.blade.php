@@ -76,21 +76,7 @@
             </a>
 
             <!-- Card Suporte -->
-            <a href="dashboard-support" class="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-2xl p-6 flex flex-col gap-4 transition hover:border-yellow-500 dark:hover:border-yellow-400">
-              <div class="flex items-center justify-between">
-                <div class="text-yellow-600 dark:text-yellow-400">
-                    <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 16v-5a2 2 0 00-2-2h-1l-3-3H9L6 9H5a2 2 0 00-2 2v5a2 2 0 002 2h14a2 2 0 002-2z" />
-                    </svg>
-                </div>
-                <span class="text-sm text-gray-500 dark:text-gray-400">Suporte</span>
-              </div>
-              <div>
-                <p class="text-3xl font-semibold text-gray-800 dark:text-gray-100">{{ $denun->count() }}</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">Mensagens</p>
-              </div>
-            </a>
-      
+            
           </div>
         </div>
       </div>

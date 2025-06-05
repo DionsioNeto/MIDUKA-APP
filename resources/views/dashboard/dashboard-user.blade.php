@@ -56,7 +56,7 @@
     
                 <!-- Ações -->
                 <div class="flex justify-end gap-1">
-                    <a href="{{ $user->id }}">
+                    <a href="/enviar-email/{{ $user->email }}">
                         <x-button class="bg-gray-700 hover:bg-gray-800">
                             Notificar perfil por email
                         </x-button>
@@ -66,7 +66,7 @@
                             Ver Perfil
                         </x-button>
                     </a>
-                    <form method="POST" action="/dashboard-user/destroy/{{ $user->id }}" onsubmit="return confirm('Tem certeza que deseja excluir?');>
+                    <form method="POST" action="/dashboard-user/destroy/{{ $user->id }}" onsubmit="return confirm('Tem certeza que deseja excluir?');">
                             @csrf
                             @method('DELETE')
                             <button type="submit"

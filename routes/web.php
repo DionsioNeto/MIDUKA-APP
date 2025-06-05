@@ -87,6 +87,11 @@ Route::middleware(['admin'])->group(function () {
     Route::delete('/dashboard-mgs/destroy/{id}', [dashboardController::class, 'destroy_msg']);
     Route::delete('/dashboard-user/destroy/{id}', [dashboardController::class, 'destroy_user']);
     Route::delete('/dashboard-denuncias/destroy/{id}', [dashboardController::class, 'destroy_denuncia']);
+
+    // email
+
+    Route::post('/enviar-email/{email}', [dashboardController::class, 'enviar'])->name('enviar.email');
+
 });
 
 Route::middleware([

@@ -145,6 +145,24 @@ class dashboardController extends Controller{
         return redirect("/dashboard-usuario")->with("delete", "Usuário Excluído com sucesso.");
     }
 
+    public function enviar(Request $request)
+    {
+        // Validação básica
+        $dados = $request->validate([
+            'nome' => 'required|string|max:255',
+            'email' => 'required|email',
+            'mensagem' => 'required|string',
+        ]);
+
+        // Envia o e-mail
+        Mail::to($dados['email'])->send(new EmailPersonalizado((object)[
+            'name' => $dados['nome'],
+            'email' => $dados['email']
+        ], $dados['mensagem']));
+
+        return back()->with('success', 'E-mail enviado com sucesso!');
+    }
+
     public function destroy_denuncia($id){
         Denuncias::findOrFail($id)->delete();
         return redirect("/dashboard-denuncias")->with("delete", "Denúncia Excluída com sucesso.");
